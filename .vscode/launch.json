@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Kernel",
+            "type": "python",
+            "request": "launch",
+            "module": "render.kernel",
+            "args": [
+                "--port",
+                "8080"
+            ],
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/render:${workspaceFolder}/libraries"
+            }
+        },
+        {
+            "name": "Server",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--manifest-path",
+                    "${workspaceFolder}/rs/Cargo.toml"
+                ]
+            },
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/render:${workspaceFolder}/libraries",
+                "RUST_LOG": "info",
+            }
+        }
+    ]
+}

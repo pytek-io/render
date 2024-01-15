@@ -54,11 +54,8 @@ Thumbs.db
 *.wmv
 
 __pycache__
-.vscode/launch.json
-docs/build/
-client/package-lock.json
+.venv
 rs/Cargo.lock
 render/js
 render/index.html
-.venv
-libraries/build
+client/package-lock.json
