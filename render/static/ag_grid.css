@@ -1,0 +1,51 @@
+.lm_header .lm_tab .lm_title {
+    padding-top: 3px;
+}
+
+.lm_vertical {
+    height: 0px !important;
+}
+
+body .bar_graph {
+    overflow: scroll;}
+.status {
+    padding-right: 18px;
+}
+
+.ag-header-group-text {
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 0%);
+}
+
+.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.ag-theme-alpine .ag-header {
+    font-size: 10px;
+}
+
+.ag-header-row {
+    height: 26 !important;
+}
+
+.ag-header-container {
+    height: 20px !important;
+}
+
+div.ag-theme-alpine div.ag-row {
+    font-size: 12px !important;
+}
+
+.ag-theme-alpine .ag-cell, .ag-theme-alpine .ag-full-width-row .ag-cell-wrapper.ag-row-group {
+    border: 1px solid transparent;
+        border-right-color: transparent;
+        border-right-style: solid;
+        border-right-width: 1px;
+    line-height: 26px;
+    padding-left: 17px;
+    padding-right: 17px;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
