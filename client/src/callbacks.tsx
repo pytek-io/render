@@ -41,10 +41,7 @@ export function register_callbacks() {
     registerMethod("call_js_builtin_method", call_js_builtin_method);
     registerMethod("add_event_listener", add_event_listener);
     registerMethod("update_element_prop", update_element_prop);
-    registerMethod("window.open", (address: string) => {
-        confirm("Opening " + address + " in a new window");
-        window.open(address);
-    });
+    registerMethod("window.open", window.open);
     registerMethod("fetch_attribute", fetch_attributes_generic);
     registerMethod("constant", (x: any) => () => x);
     registerMethod("identity", (x: any) => x);

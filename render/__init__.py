@@ -23,7 +23,7 @@ from .props import ChildContainer, Container
 from .utils import ResponsiveValue, add_data_namespace, call_maybe_coroutine
 from .window import Window, WindowSize, register_css_for_module
 
-__version__ = "0.8.0"
+__version__ = "0.9.0"
 
 
 OBSERVABLE_TYPES = {

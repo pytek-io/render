@@ -112,7 +112,9 @@ class ChannelManager:
         try:
             await self.connection.send(prefix + msgpack.dumps(message))
         except (ConnectionClosedError, ConnectionClosedOK):
-            pass
+            return
+        except Exception as e:
+            print(f"Failed to send message. {e}")
 
     @contextmanager
     def channel(self, channel_id: int):

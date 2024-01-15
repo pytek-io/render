@@ -49,25 +49,25 @@ extern crate env_logger;
 extern crate log;
 
 #[derive(Debug)]
-struct ReflectError {
+struct RenderError {
     details: String,
 }
 
-impl ReflectError {
-    fn new(msg: &str) -> ReflectError {
-        ReflectError {
+impl RenderError {
+    fn new(msg: &str) -> RenderError {
+        RenderError {
             details: msg.to_string(),
         }
     }
 }
 
-impl fmt::Display for ReflectError {
+impl fmt::Display for RenderError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{}", self.details)
     }
 }
 
-impl Error for ReflectError {
+impl Error for RenderError {
     fn description(&self) -> &str {
         &self.details
     }
@@ -91,7 +91,7 @@ type EpochTimeType = u64;
 enum SessionMessageType {
     MessageToClient = 1,
     SessionEnd = 2,
-    SubscribeToKernelUpdates =3,
+    SubscribeToKernelUpdates = 3,
 }
 
 enum MessageToKernel {
@@ -145,7 +145,7 @@ where
 fn coerce_to_binary(message: AxumRawMessage) -> Result<Vec<u8>> {
     match message.unwrap().unwrap() {
         Message::Binary(m) => Ok(m),
-        _ => Err(Box::new(ReflectError::new("Unexpected message format"))),
+        _ => Err(Box::new(RenderError::new("Unexpected message format"))),
     }
 }
 
@@ -243,7 +243,8 @@ impl Server {
         for kernel_id in self.subscribed_kernels.read().await.iter() {
             if let Some(kernel) = self.kernels.read().await.get(kernel_id) {
                 if *kernel.alive.read().await {
-                    if let Err(e) = send_message_to_kernel_process(&kernel.sink, "kernel update", &message)
+                    if let Err(e) =
+                        send_message_to_kernel_process(&kernel.sink, "kernel update", &message)
                     {
                         warn!("Failed to send '{code}' kernel update to kernel. {e}.");
                     }
@@ -711,10 +712,10 @@ async fn invoke_python_command(command: &str) -> Result<String> {
         Err(e) => {
             if let Some(code) = e.raw_os_error() {
                 if code == 2 {
-                    return Err(Box::new(ReflectError::new(&format!("Failed to invoke Python intepreter. {}. Make sure your Python environment in correctly setup before launching Reflect.", e.to_string()))));
+                    return Err(Box::new(RenderError::new(&format!("Failed to invoke Python intepreter. {}. Make sure your Python environment in correctly setup before launching Render.", e.to_string()))));
                 }
             }
-            return Err(Box::new(ReflectError::new(&format!(
+            return Err(Box::new(RenderError::new(&format!(
                 "Failed to invoke Python command {}. {}",
                 command,
                 e.to_string()
@@ -877,7 +878,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         &sys_info::os_type()?,
         sys_info::os_release()?
     );
-    println!("{}: {}", "Reflect".green(), &client_version);
+    println!("{}: {}", "Render".green(), &client_version);
     println!(
         "{}: {}",
         "Python version".green(),
@@ -891,7 +892,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
     let server_version = option_env!("CARGO_PKG_VERSION").unwrap_or("NOT_FOUND");
     if client_version != server_version {
         panic!(
-            "Reflect client and server versions are not matching: {} != {}",
+            "Render client and server versions are not matching: {} != {}",
             client_version, server_version
         );
     }
@@ -901,6 +902,11 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         .normalize()
         .expect(format!("invalid app folder {}", opts.app_folder).as_str())
         .into_path_buf();
+    let python_path = invoke_python_command(&format!(
+        "import os; print(os.environ.get('PYTHONPATH', ''))"
+    ))
+    .await?;
+    println!("{}: {}", "PYTHONPATH".green(), python_path);
     println!(
         "{}: {}",
         "Apps folder".green(),
@@ -920,10 +926,10 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         r#"<!DOCTYPE html>
     <html>
       <head>
-        <title>Reflect app</title>
+        <title>Render app</title>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
-        <meta content="Reflect web app" name="description">
+        <meta content="Render web app" name="description">
         <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control">
         <meta content="no-cache" http-equiv="Pragma">
         <meta content="0" http-equiv="Expires">
@@ -985,7 +991,7 @@ async fn main_aync(terminate: tokio::sync::mpsc::Sender<i32>) {
             e.to_string()
         );
     } else {
-        error!("Reflect terminated");
+        error!("Render terminated");
     }
 }
 

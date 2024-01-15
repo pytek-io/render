@@ -509,8 +509,7 @@ class Window:
             self.js_methods[js_method.name] = js_method
         return js_method.name, arguments
 
-    def serialize_object(self, value):
-        result = None
+    def serialize_object(self, parent, key, value):
         obj_type = type(value)
         module, type_name = obj_type.__module__, obj_type.__name__
         if (
@@ -520,14 +519,15 @@ class Window:
             and type_name == "Series"
         ):
             result = value.tolist()
-        if type_name == "DataFrame" and module.split(".", 1)[0] == "pandas":
+        elif type_name == "DataFrame" and module.split(".", 1)[0] == "pandas":
             result = {name: value[name].to_list() for name in value.columns}
-        if "vegalite" in module and hasattr(value, "to_dict"):
+        elif "vegalite" in module and hasattr(value, "to_dict"):
             result = value.to_dict()
-        if isinstance(value, enum.Enum):
+        elif isinstance(value, enum.Enum):
             result = value.value
-        if result is not None:
-            return "value", result
+        else:
+            raise Exception(f"Cannot serialize {value} of type {type(value)}")
+        return self._serialize_value(parent, key, result)
 
     def _serialize_value(self, parent, key, value):
         if isinstance(value, POD_TYPE):
@@ -558,7 +558,7 @@ class Window:
             value = Callback(value, None)
         if isinstance(value, Callback):
             return "callback", self.serialize_callback(key, value, None)
-        if result := self.serialize_object(value):
+        if result := self.serialize_object(parent, key, value):
             return result
         raise Exception(
             f"Cannot serialize '{key}' argument. Value can be any arbitrarily nested list, tuple, dict containing the following types: {', '.join(x.__name__ for x in POD_TYPE)}. Received {value} of type: {type(value)}."
