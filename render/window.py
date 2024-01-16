@@ -15,18 +15,31 @@ from typing import Callable, Coroutine, Dict, Iterable, Set
 import anyio
 
 from .async_objects import AsyncCachedEvaluation, AsyncGenerator
-from .common import (CURRENT_CONTROLLER, CURRENT_WINDOW,
-                     SubscribeToKernelUpdates)
-from .components import (Callback, Component, InputComponent, JSMethod,
-                         JSPartiallyAppliedCall, Props, js)
+from .common import CURRENT_CONTROLLER, CURRENT_WINDOW, SubscribeToKernelUpdates
+from .components import (
+    Callback,
+    Component,
+    InputComponent,
+    JSMethod,
+    JSPartiallyAppliedCall,
+    Props,
+    js,
+)
 from .controller import Controller
 from .mapping import Mapping
 from .observability import AutoRun, CachedEvaluation, ObservableValue
 from .props import DEFAULT_ARGS_NO_CHILDREN_NAMES
-from .utils import (CatchError, add_data_namespace, await_coroutine,
-                    call_maybe_coroutine, catch_errors_async,
-                    extract_client_stack, identity, is_async_context,
-                    method_description)
+from .utils import (
+    CatchError,
+    add_data_namespace,
+    await_coroutine,
+    call_maybe_coroutine,
+    catch_errors_async,
+    extract_client_stack,
+    identity,
+    is_async_context,
+    method_description,
+)
 
 POD_TYPE = str, float, int, bool, type(None)
 DEFAULT_ARGS_NAMES = DEFAULT_ARGS_NO_CHILDREN_NAMES

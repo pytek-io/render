@@ -25,6 +25,7 @@ use serde::Serialize;
 use std::collections::{BTreeMap, BTreeSet};
 use std::error::Error;
 use std::fmt;
+use std::fs;
 use std::io::Cursor;
 use std::io::Read;
 use std::ops::RangeFrom;
@@ -106,8 +107,11 @@ type ServerPtr = Arc<Server>;
 
 static PRINT_PYTHON_LOCATION: &str = "import sys; print(sys.executable)";
 static PRINT_PYTHON_VERSION: &str = "import platform; print(platform.python_version())";
-static PRINT_REFLECT_PATH: &str = "import render; print(render.location())";
+static PRINT_REFLECT_PATH: &str = "import render, os; print(os.path.dirname(render.__file__))";
 static PRINT_REFLECT_VERSION: &str = "import render; print(render.__version__)";
+
+static START_SCRIPT_PATH: &str = "src=\"";
+static END_SCRIPT_PATH: &str = "></script>";
 
 #[derive(Parser)]
 struct Options {
@@ -917,11 +921,21 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         "Serving apps locally at: {}",
         format!("http://localhost:{}", opts.port).blue()
     );
-    let script = invoke_python_command(&format!(
-        "import render; print(render.get_js_entry_point(r'{}'))",
-        render_folder.to_str().unwrap()
-    ))
-    .await?;
+
+    let content = fs::read_to_string(
+        &render_folder
+            .join("index.html")
+            .to_str()
+            .expect("Should have been able to append path"),
+    )
+    .expect("Failed to read index.html");
+    let start = content
+        .find(START_SCRIPT_PATH)
+        .expect(&format!("Failed to find {START_SCRIPT_PATH} in {content}"));
+    let end = content
+        .find(END_SCRIPT_PATH)
+        .expect(&format!("Failed to find {END_SCRIPT_PATH} in {content}"));
+    let script_path = &content[start + START_SCRIPT_PATH.len()..end];
     let html = format!(
         r#"<!DOCTYPE html>
     <html>
@@ -934,7 +948,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         <meta content="no-cache" http-equiv="Pragma">
         <meta content="0" http-equiv="Expires">
         <link href="/static/cogs.svg" rel="icon" type="image/x-icon">
-        <script defer="" src="{script}"></script>
+        <script defer="" src="{script_path}"></script>
       </head>
       <body style="height: 100%; background-color: rgb(15, 23, 36)">
         <div id="root" style="height: 100%">

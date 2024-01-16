@@ -51,10 +51,6 @@ class Container(Component):
         return await self.call_method("scrollTo", (x, y))
 
 
-class ChildContainer(Container):
-    CHILDREN_CAN_BE_EMPTY = False
-
-
 class Tag(Component):
     def __init__(
         self,

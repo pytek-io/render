@@ -240,7 +240,7 @@ class TestObservableListAppendExtendRemoveMapping(BaseTest):
     def setup_class(self) -> None:
         with r.Controller() as self.controller:
             self.observable = r.ObservableList()
-            self.mapping = r.create_mapping(lambda x: x * x, self.observable)
+            self.mapping = r.Mapping(lambda x: x * x, self.observable)
 
     def accessor(self):
         return self.mapping()
@@ -265,8 +265,8 @@ class TestObservableListAppendExtendRemoveChainedMapping(BaseTest):
     def setup_class(self) -> None:
         with r.Controller() as self.controller:
             self.observable = r.ObservableList()
-            mapping = r.create_mapping(lambda x: x * x, self.observable)
-            self.mapping = r.create_mapping(lambda x: x + 1, mapping)
+            mapping = r.Mapping(lambda x: x * x, self.observable)
+            self.mapping = r.Mapping(lambda x: x + 1, mapping)
 
     def accessor(self):
         return self.mapping()
@@ -295,7 +295,7 @@ class TestRecombiningDependencies(BaseTest):
 
     def setup_class(self) -> None:
         with r.Controller() as self.controller:
-            self.observable = r.create_observable(0, key="value")
+            self.observable = r.ObservableValue(0, key="value")
             observer_1 = r.CachedEvaluation(self.observable, key="observer_1")
             observer_2 = r.CachedEvaluation(self.observable, key="observer_2")
             self.observer = r.CachedEvaluation(

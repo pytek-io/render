@@ -4,14 +4,19 @@ import anyio
 
 import render as r
 
-from .utils import (count_calls, identity, pytestmark,  # noqa: F401
-                    run_and_check_calls_count, setup_controller)
+from .utils import (  # noqa: F401
+    count_calls,
+    identity,
+    pytestmark,
+    run_and_check_calls_count,
+    setup_controller,
+)
 
 
 def test_observable_list_length():
     """Mutating methods trigger observer exactely once.."""
     observed_value = None
-    observable = r.create_observable([], key="value")
+    observable = r.ObservableList([], key="value")
 
     @run_and_check_calls_count
     def update_observed_value():
@@ -39,7 +44,7 @@ def get_object_attribute(obj):
 
 
 def test_memoize():
-    a = r.create_observable(2, key="a")
+    a = r.ObservableValue(2, key="a")
     func = count_calls(lambda: a() * 2)
     test = r.memoize(key="test")(func)
     assert test() == 4
@@ -146,7 +151,7 @@ def test_nested():
 
 
 def test_controlled_cached_evaluation():
-    value = r.create_observable(1)
+    value = r.ObservableValue(1)
     controller = r.Controller()
     cached_eval = r.CachedEvaluation(lambda: value() * 2, controller=controller)
     r.autorun(lambda: print(cached_eval()))

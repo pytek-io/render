@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import inspect
+import pprint
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from collections.abc import Generator
@@ -148,7 +149,9 @@ class ObservableBase(SmartObject, Revertable, Generic[T]):
     def eval(self) -> T:
         """Unmonitored access to the value. To be used with care."""
         if CURRENT_OBSERVER.get():
-            raise Exception(f"{self}.eval should not be called while observers are being recorded")
+            raise Exception(
+                f"{self}.eval should not be called while observers are being recorded"
+            )
         return self._eval()
 
     def __call__(self) -> T:
@@ -350,3 +353,22 @@ class MemoizedMethod:
                 controller=self.controller,
             )
         return self._cached_results[args]()
+
+
+def memoize(key=None, controller=None):
+    def result(method):
+        return MemoizedMethod(method, key=key, controller=controller)
+
+    return result
+
+
+def autoprint(method, key=None, controller=None):
+    return AutoRun(lambda: print(method()), key=key, controller=controller)
+
+
+def autopprint(method, key=None, controller=None):
+    return AutoRun(lambda: pprint.pprint(method()), key=key, controller=controller)
+
+
+def autorun(method, key=None, controller=None):
+    return AutoRun(method, key=key, controller=controller)

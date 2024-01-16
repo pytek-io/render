@@ -3,8 +3,7 @@ from contextvars import ContextVar
 
 def create_app(app_class):
     from render_html import div
-    from render_utils import (HAMBURGER_MENU, create_icon,
-                              create_settings_window)
+    from render_utils import HAMBURGER_MENU, create_icon, create_settings_window
 
     from render import get_window
 

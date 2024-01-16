@@ -1,7 +1,11 @@
-from typing import Callable, Dict, Generic, Optional, TypeVar
+from typing import Callable, Dict, Generic, Optional, TypeVar, Tuple, Iterable
 
-from .observability import (ObservableBase, ObservableValue, copy_value,
-                            get_current_controller)
+from .observability import (
+    ObservableBase,
+    ObservableValue,
+    copy_value,
+    get_current_controller,
+)
 
 K = TypeVar("K")
 V = TypeVar("V")
@@ -59,7 +63,7 @@ class DictOfObservables(Generic[K, V]):
             self.observable_elements[key] = ObservableElement(self, key)
         self.observable_elements[key].value = value
 
-    def items(self):
+    def items(self) -> Iterable[Tuple[K, V]]:
         return ((k, v()) for k, v in self.observable_elements.items())
 
     def set(self, values):
@@ -67,5 +71,5 @@ class DictOfObservables(Generic[K, V]):
         for element in self.observable_elements.values():
             element.notify()
 
-    def back_reference(self):
+    def back_reference(self) -> Dict[K, V]:
         return self.actual_value()

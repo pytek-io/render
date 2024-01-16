@@ -1,4 +1,9 @@
 from contextvars import ContextVar
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .window import Window
+    from .controller import Controller
 
 MessageToClient = 1
 SessionEnd = 2
@@ -10,13 +15,13 @@ CURRENT_WINDOW = ContextVar("CURRENT_WINDOW", default=None)
 OUT_OF_SESSION_ERROR = "Trying to access current window out of a session."
 
 
-def get_current_controller():
+def get_current_controller() -> Controller:
     if controller := CURRENT_CONTROLLER.get():
         return controller
     raise Exception("no controller set")
 
 
-def get_window(throw_if_none=True):
+def get_window(throw_if_none=True) -> Window:
     maybe_window = CURRENT_WINDOW.get()
     if maybe_window is None:
         if throw_if_none:

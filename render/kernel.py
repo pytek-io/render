@@ -18,8 +18,13 @@ from asyncstdlib.builtins import map as amap
 from websockets.exceptions import ConnectionClosedError, ConnectionClosedOK
 
 from .common import MessageToClient, SessionEnd, get_window
-from .utils import (import_module, msgpack_dumps_many, msgpack_loads_many,
-                    scoped_dict_insert, scoped_set_insert)
+from .utils import (
+    import_module,
+    msgpack_dumps_many,
+    msgpack_loads_many,
+    scoped_dict_insert,
+    scoped_set_insert,
+)
 from .window import Window
 
 stdout, stderr = sys.stdout, sys.stderr
