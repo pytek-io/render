@@ -6,7 +6,6 @@ from .components import (
     InputComponent,
     JSMethod,
     Props,
-    console,
     create_callback,
     create_js_callback,
     js,
@@ -22,6 +21,7 @@ from .observability import (
     MemoizedMethod,
     ObservableValue,
     autopprint,
+    autoprint,
     autorun,
     memoize,
 )

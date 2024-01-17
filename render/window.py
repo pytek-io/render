@@ -373,7 +373,10 @@ class Window:
                         method = self.create_return_promise_result(method, promise_id)
                     await self.schedule_callback_execution(method, deserialize(value))
                 else:
-                    message = f"Callback {(callback_description + ' ') if callback_description else ''}not found. It might have been GC'ed, in that case you should take a hard reference on it."
+                    message = (
+                        f"Callback {(callback_description + ' ') if callback_description else ''}"
+                        f"not found. It might have been GC'ed, in that case you should take a hard reference on it."
+                    )
                     self.display_error_message(message)
             elif code == "componentDidMount":
                 component_id = data
