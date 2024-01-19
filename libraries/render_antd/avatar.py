@@ -4,6 +4,21 @@ from render import Component, create_callback
 class Avatar(Component):
     Module = "ant"
     JSXName = "Avatar"
+    CALLBACKS = ["onKeyPress", "onClick", "onError"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "alt",
+        "crossOrigin",
+        "draggable",
+        "gap",
+        "icon",
+        "shape",
+        "size",
+        "src",
+        "srcSet",
+    ]
 
     def __init__(
         self,
@@ -38,7 +53,7 @@ class Avatar(Component):
         self.draggable = draggable
         self.gap = gap
         self.icon = icon
-        self.onError = create_callback(onError, "onError", [])
+        self.onError = create_callback(onError, "onError")
         self.shape = shape
         self.size = size
         self.src = src
@@ -48,6 +63,18 @@ class Avatar(Component):
 class AvatarGroup(Component):
     Module = "ant"
     JSXName = "Avatar.Group"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "maxCount",
+        "maxPopoverPlacement",
+        "maxPopoverTrigger",
+        "maxStyle",
+        "shape",
+        "size",
+    ]
 
     def __init__(
         self,

@@ -1,9 +1,42 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Badge(Component):
     Module = "mantine"
     JSXName = "Badge"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "component",
+        "fullWidth",
+        "gradient",
+        "href",
+        "leftSection",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "rightSection",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -48,8 +81,8 @@ class Badge(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.component = component
         self.fullWidth = fullWidth
@@ -77,4 +110,3 @@ class Badge(Component):
         self.target = target
         self.title = title
         self.variant = variant
-        assert id is None or isinstance(id, str)

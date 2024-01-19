@@ -1,9 +1,36 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class ScrollArea(Component):
     Module = "mantine"
     JSXName = "ScrollArea"
+    CALLBACKS = ["onKeyPress", "onClick", "onScrollPositionChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "dir",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offsetScrollbars",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "scrollHideDelay",
+        "scrollbarSize",
+        "sx",
+        "type",
+        "viewportRef",
+    ]
 
     def __init__(
         self,
@@ -43,8 +70,8 @@ class ScrollArea(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.dir = dir
         self.m = m
         self.mb = mb
@@ -54,7 +81,9 @@ class ScrollArea(Component):
         self.mx = mx
         self.my = my
         self.offsetScrollbars = offsetScrollbars
-        self.onScrollPositionChange = create_callback(onScrollPositionChange)
+        self.onScrollPositionChange = create_callback(
+            onScrollPositionChange, "onScrollPositionChange"
+        )
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -67,12 +96,39 @@ class ScrollArea(Component):
         self.sx = sx
         self.type = type
         self.viewportRef = viewportRef
-        assert id is None or isinstance(id, str)
 
 
 class ScrollAreaAutosize(Component):
     Module = "mantine"
     JSXName = "ScrollArea.Autosize"
+    CALLBACKS = ["onKeyPress", "onClick", "onScrollPositionChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "dir",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offsetScrollbars",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "scrollHideDelay",
+        "scrollbarSize",
+        "maxHeight",
+        "sx",
+        "type",
+        "viewportRef",
+    ]
 
     def __init__(
         self,
@@ -113,8 +169,8 @@ class ScrollAreaAutosize(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.dir = dir
         self.m = m
         self.mb = mb
@@ -124,7 +180,9 @@ class ScrollAreaAutosize(Component):
         self.mx = mx
         self.my = my
         self.offsetScrollbars = offsetScrollbars
-        self.onScrollPositionChange = create_callback(onScrollPositionChange)
+        self.onScrollPositionChange = create_callback(
+            onScrollPositionChange, "onScrollPositionChange"
+        )
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -138,4 +196,3 @@ class ScrollAreaAutosize(Component):
         self.sx = sx
         self.type = type
         self.viewportRef = viewportRef
-        assert id is None or isinstance(id, str)

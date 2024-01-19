@@ -1,10 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Chip(InputComponent):
     Module = "mantine"
     JSXName = "Chip"
     InputName = "checked"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "type",
+        "variant",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -46,8 +73,8 @@ class Chip(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.m = m
         self.mb = mb
@@ -69,13 +96,35 @@ class Chip(InputComponent):
         self.type = type
         self.variant = variant
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)
 
 
 class ChipGroup(InputComponent):
     Module = "mantine"
     JSXName = "ChipGroup"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "multiple",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "spacing",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -113,8 +162,8 @@ class ChipGroup(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -132,4 +181,3 @@ class ChipGroup(InputComponent):
         self.py = py
         self.spacing = spacing
         self.sx = sx
-        assert id is None or isinstance(id, str)

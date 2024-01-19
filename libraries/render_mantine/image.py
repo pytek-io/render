@@ -1,9 +1,41 @@
-from render import create_callback, Component, InputComponent, add_data_namespace
+from render import Component, create_callback, add_data_namespace, Props
 
 
 class Image(Component):
     Module = "mantine"
     JSXName = "Image"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    DATA = ["src"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "alt",
+        "caption",
+        "fit",
+        "height",
+        "imageProps",
+        "imageRef",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "placeholder",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "sx",
+        "width",
+        "withPlaceholder",
+    ]
 
     def __init__(
         self,
@@ -47,8 +79,8 @@ class Image(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.alt = alt
         self.caption = caption
         self.fit = fit
@@ -75,4 +107,3 @@ class Image(Component):
         self.sx = sx
         self.width = width
         self.withPlaceholder = withPlaceholder
-        assert id is None or isinstance(id, str)

@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class SimpleGrid(Component):
     Module = "mantine"
     JSXName = "SimpleGrid"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "breakpoints",
+        "cols",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "spacing",
+        "sx",
+        "verticalSpacing",
+    ]
 
     def __init__(
         self,
@@ -40,8 +65,8 @@ class SimpleGrid(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.breakpoints = breakpoints
         self.cols = cols
         self.m = m
@@ -61,4 +86,3 @@ class SimpleGrid(Component):
         self.spacing = spacing
         self.sx = sx
         self.verticalSpacing = verticalSpacing
-        assert id is None or isinstance(id, str)

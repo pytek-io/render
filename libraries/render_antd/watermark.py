@@ -4,6 +4,18 @@ from render import Component, create_callback
 class Font(Component):
     Module = "ant"
     JSXName = "Font"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "fontFamily",
+        "fontSize",
+        "fontStyle",
+        "fontWeight",
+        "textAlign",
+    ]
 
     def __init__(
         self,
@@ -40,6 +52,22 @@ class Font(Component):
 class Watermark(Component):
     Module = "ant"
     JSXName = "Watermark"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "content",
+        "font",
+        "gap",
+        "height",
+        "image",
+        "inherit",
+        "offset",
+        "rotate",
+        "width",
+        "zIndex",
+    ]
 
     def __init__(
         self,

@@ -5,6 +5,27 @@ class Pagination(InputComponent):
     Module = "ant"
     JSXName = "Pagination"
     InputName = "current"
+    CALLBACKS = ["onKeyPress", "onClick", "onShowSizeChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "defaultPageSize",
+        "disabled",
+        "hideOnSinglePage",
+        "itemRender",
+        "pageSize",
+        "pageSizeOptions",
+        "responsive",
+        "showLessItems",
+        "showQuickJumper",
+        "showSizeChanger",
+        "showTitle",
+        "showTotal",
+        "simple",
+        "size",
+        "total",
+    ]
 
     def __init__(
         self,

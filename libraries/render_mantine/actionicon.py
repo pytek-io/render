@@ -1,9 +1,42 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, Props
 
 
 class ActionIcon(Component):
     Module = "mantine"
     JSXName = "ActionIcon"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "component",
+        "disabled",
+        "gradient",
+        "href",
+        "loaderProps",
+        "loading",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -48,8 +81,8 @@ class ActionIcon(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.component = component
         self.disabled = disabled
@@ -77,4 +110,3 @@ class ActionIcon(Component):
         self.target = target
         self.title = title
         self.variant = variant
-        assert id is None or isinstance(id, str)

@@ -3,6 +3,7 @@ from render import Component
 
 class Prism(Component):
     Module = "mantine_prism"
+    ATTRIBUTES = ["language", "withLineNumbers", "className", "style"]
 
     def __init__(
         self,
@@ -21,4 +22,4 @@ class Prism(Component):
         self.language = language
         self.withLineNumbers = withLineNumbers
         self.className = className
-        self.style = None
+        self.style = style

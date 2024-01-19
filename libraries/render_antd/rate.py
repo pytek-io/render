@@ -4,6 +4,29 @@ from render import Component, create_callback
 class Rate(Component):
     Module = "ant"
     JSXName = "Rate"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onBlur",
+        "onChange",
+        "onFocus",
+        "onHoverChange",
+        "onKeyDown",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "allowHalf",
+        "autoFocus",
+        "character",
+        "count",
+        "defaultValue",
+        "disabled",
+        "tooltips",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -44,10 +67,10 @@ class Rate(Component):
         self.count = count
         self.defaultValue = defaultValue
         self.disabled = disabled
-        self.onBlur = create_callback(onBlur, "onBlur", [])
+        self.onBlur = create_callback(onBlur, "onBlur")
         self.onChange = create_callback(onChange, "onChange", [[0]])
-        self.onFocus = create_callback(onFocus, "onFocus", [])
+        self.onFocus = create_callback(onFocus, "onFocus")
         self.onHoverChange = create_callback(onHoverChange, "onHoverChange", [[0]])
-        self.onKeyDown = create_callback(onKeyDown, "onKeyDown", [])
+        self.onKeyDown = create_callback(onKeyDown, "onKeyDown")
         self.tooltips = tooltips
         self.value = value

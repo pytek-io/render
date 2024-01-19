@@ -4,6 +4,24 @@ from render import Component, create_callback
 class Badge(Component):
     Module = "ant"
     JSXName = "Badge"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "classNames",
+        "color",
+        "count",
+        "dot",
+        "offset",
+        "overflowCount",
+        "showZero",
+        "size",
+        "status",
+        "styles",
+        "text",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -52,6 +70,8 @@ class Badge(Component):
 class BadgeRibbon(Component):
     Module = "ant"
     JSXName = "Badge.Ribbon"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "color", "placement", "text"]
 
     def __init__(
         self,

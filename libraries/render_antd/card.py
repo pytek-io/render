@@ -4,6 +4,28 @@ from render import Component, create_callback, Props
 class Card(Component):
     Module = "ant"
     JSXName = "Card"
+    CALLBACKS = ["onKeyPress", "onClick", "onTabChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "actions",
+        "activeTabKey",
+        "bodyStyle",
+        "bordered",
+        "cover",
+        "defaultActiveTabKey",
+        "extra",
+        "headStyle",
+        "hoverable",
+        "loading",
+        "size",
+        "tabBarExtraContent",
+        "tabList",
+        "tabProps",
+        "title",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -62,6 +84,8 @@ class Card(Component):
 class CardGrid(Component):
     Module = "ant"
     JSXName = "Card.Grid"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "hoverable"]
 
     def __init__(
         self,
@@ -88,6 +112,8 @@ class CardGrid(Component):
 class CardMeta(Component):
     Module = "ant"
     JSXName = "Card.Meta"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "avatar", "description", "title"]
 
     def __init__(
         self,

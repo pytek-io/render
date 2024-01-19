@@ -1,9 +1,32 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Title(Component):
     Module = "mantine"
     JSXName = "Title"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "order",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -38,8 +61,8 @@ class Title(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -57,4 +80,3 @@ class Title(Component):
         self.py = py
         self.size = size
         self.sx = sx
-        assert id is None or isinstance(id, str)

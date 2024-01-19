@@ -4,6 +4,34 @@ from render import Component, create_callback
 class Mention(Component):
     Module = "ant"
     JSXName = "Mention"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onBlur",
+        "onChange",
+        "onFocus",
+        "onResize",
+        "onSearch",
+        "onSelect",
+        "validateSearch",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoFocus",
+        "autoSize",
+        "defaultValue",
+        "filterOption",
+        "getPopupContainer",
+        "notFoundContent",
+        "options",
+        "placement",
+        "prefix",
+        "split",
+        "status",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -48,9 +76,9 @@ class Mention(Component):
         self.filterOption = filterOption
         self.getPopupContainer = getPopupContainer
         self.notFoundContent = notFoundContent
-        self.onBlur = create_callback(onBlur, "onBlur", [])
+        self.onBlur = create_callback(onBlur, "onBlur")
         self.onChange = create_callback(onChange, "onChange", [[0]])
-        self.onFocus = create_callback(onFocus, "onFocus", [])
+        self.onFocus = create_callback(onFocus, "onFocus")
         self.onResize = create_callback(
             onResize, "onResize", [[0, "width"], [0, "height"]]
         )
@@ -68,6 +96,8 @@ class Mention(Component):
 class MentionsOption(Component):
     Module = "ant"
     JSXName = "Mentions.Option"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "disabled", "label"]
 
     def __init__(
         self,

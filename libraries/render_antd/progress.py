@@ -4,6 +4,26 @@ from render import Component, create_callback
 class Progress(Component):
     Module = "ant"
     JSXName = "Progress"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "format",
+        "gapDegree",
+        "gapPosition",
+        "percent",
+        "showInfo",
+        "size",
+        "status",
+        "steps",
+        "strokeColor",
+        "strokeLinecap",
+        "strokeWidth",
+        "success",
+        "trailColor",
+        "type",
+    ]
 
     def __init__(
         self,

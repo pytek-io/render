@@ -1,9 +1,42 @@
-from render import create_callback, Component, InputComponent, add_data_namespace
+from render import Component, create_callback, add_data_namespace, Props
 
 
 class Avatar(Component):
     Module = "mantine"
     JSXName = "Avatar"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    DATA = ["src"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "alt",
+        "color",
+        "component",
+        "gradient",
+        "href",
+        "imageProps",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -48,8 +81,8 @@ class Avatar(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.alt = alt
         self.color = color
         self.component = component
@@ -77,4 +110,3 @@ class Avatar(Component):
         self.target = target
         self.title = title
         self.variant = variant
-        assert id is None or isinstance(id, str)

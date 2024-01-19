@@ -1,5 +1,3 @@
-from render.components import Component, InputComponent
-
 from .result import Result
 from .tree_select import TreeSelect, TreeSelectTreeNode
 from .config_provider import Usage

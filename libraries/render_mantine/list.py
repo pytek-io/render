@@ -1,9 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class List(Component):
     Module = "mantine"
     JSXName = "List"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "center",
+        "icon",
+        "listStyleType",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "spacing",
+        "sx",
+        "type",
+        "withPadding",
+    ]
 
     def __init__(
         self,
@@ -43,8 +71,8 @@ class List(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.center = center
         self.icon = icon
         self.listStyleType = listStyleType
@@ -67,12 +95,33 @@ class List(Component):
         self.sx = sx
         self.type = type
         self.withPadding = withPadding
-        assert id is None or isinstance(id, str)
 
 
 class ListItem(Component):
     Module = "mantine"
     JSXName = "List.Item"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "icon",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -106,8 +155,8 @@ class ListItem(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.icon = icon
         self.m = m
         self.mb = mb
@@ -124,4 +173,3 @@ class ListItem(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

@@ -1,9 +1,43 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class TransferList(Component):
     Module = "mantine"
     JSXName = "TransferList"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "breakpoint",
+        "filter",
+        "initialSelection",
+        "itemComponent",
+        "limit",
+        "listComponent",
+        "listHeight",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "nothingFound",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "searchPlaceholder",
+        "showTransferAll",
+        "sx",
+        "titles",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -50,8 +84,8 @@ class TransferList(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.breakpoint = breakpoint
         self.filter = filter
         self.initialSelection = initialSelection
@@ -67,7 +101,7 @@ class TransferList(Component):
         self.mx = mx
         self.my = my
         self.nothingFound = nothingFound
-        self.onChange = create_callback(onChange)
+        self.onChange = create_callback(onChange, "onChange")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -81,4 +115,3 @@ class TransferList(Component):
         self.sx = sx
         self.titles = titles
         self.value = value
-        assert id is None or isinstance(id, str)

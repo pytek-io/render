@@ -4,6 +4,16 @@ from render import Component, create_callback, Props
 class Breadcrumb(Component):
     Module = "ant"
     JSXName = "Breadcrumb"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "itemRender",
+        "items",
+        "params",
+        "separator",
+    ]
 
     def __init__(
         self,
@@ -36,6 +46,17 @@ class Breadcrumb(Component):
 class RouteItemType(Component):
     Module = "ant"
     JSXName = "RouteItemType"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "dropdownProps",
+        "href",
+        "menu",
+        "path",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -59,7 +80,7 @@ class RouteItemType(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.dropdownProps = dropdownProps
         self.href = href
         self.menu = menu
@@ -70,6 +91,8 @@ class RouteItemType(Component):
 class SeparatorType(Component):
     Module = "ant"
     JSXName = "SeparatorType"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "separator", "type"]
 
     def __init__(
         self,

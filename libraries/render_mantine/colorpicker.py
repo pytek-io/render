@@ -1,9 +1,43 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class ColorPicker(Component):
     Module = "mantine"
     JSXName = "ColorPicker"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onChangeEnd"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "__staticSelector",
+        "alphaLabel",
+        "defaultValue",
+        "focusable",
+        "format",
+        "fullWidth",
+        "hueLabel",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "saturationLabel",
+        "size",
+        "swatches",
+        "swatchesPerRow",
+        "sx",
+        "value",
+        "withPicker",
+    ]
 
     def __init__(
         self,
@@ -51,8 +85,8 @@ class ColorPicker(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.__staticSelector = __staticSelector
         self.alphaLabel = alphaLabel
         self.defaultValue = defaultValue
@@ -67,8 +101,8 @@ class ColorPicker(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onChange = create_callback(onChange)
-        self.onChangeEnd = create_callback(onChangeEnd)
+        self.onChange = create_callback(onChange, "onChange")
+        self.onChangeEnd = create_callback(onChangeEnd, "onChangeEnd")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -83,4 +117,3 @@ class ColorPicker(Component):
         self.sx = sx
         self.value = value
         self.withPicker = withPicker
-        assert id is None or isinstance(id, str)

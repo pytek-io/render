@@ -4,6 +4,25 @@ from render import Component, create_callback
 class Dropdown(Component):
     Module = "ant"
     JSXName = "Dropdown"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "arrow",
+        "autoAdjustOverflow",
+        "autoFocus",
+        "destroyPopupOnHide",
+        "disabled",
+        "dropdownRender",
+        "getPopupContainer",
+        "menu",
+        "open",
+        "overlayClassName",
+        "overlayStyle",
+        "placement",
+        "trigger",
+    ]
 
     def __init__(
         self,
@@ -58,6 +77,31 @@ class Dropdown(Component):
 class DropdownButton(Component):
     Module = "ant"
     JSXName = "Dropdown.Button"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "arrow",
+        "autoAdjustOverflow",
+        "autoFocus",
+        "buttonsRender",
+        "danger",
+        "destroyPopupOnHide",
+        "disabled",
+        "dropdownRender",
+        "getPopupContainer",
+        "icon",
+        "loading",
+        "menu",
+        "open",
+        "overlayClassName",
+        "overlayStyle",
+        "placement",
+        "size",
+        "trigger",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -96,7 +140,7 @@ class DropdownButton(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.arrow = arrow
         self.autoAdjustOverflow = autoAdjustOverflow
         self.autoFocus = autoFocus

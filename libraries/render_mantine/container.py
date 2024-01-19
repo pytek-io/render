@@ -1,9 +1,33 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Container(Component):
     Module = "mantine"
     JSXName = "Container"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "fluid",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sizes",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -39,8 +63,8 @@ class Container(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.fluid = fluid
         self.m = m
         self.mb = mb
@@ -59,4 +83,3 @@ class Container(Component):
         self.size = size
         self.sizes = sizes
         self.sx = sx
-        assert id is None or isinstance(id, str)

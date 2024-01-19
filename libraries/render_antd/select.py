@@ -5,6 +5,68 @@ class Select(InputComponent):
     Module = "ant"
     JSXName = "Select"
     InputName = "value"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onBlur",
+        "onClear",
+        "onDeselect",
+        "onDropdownVisibleChange",
+        "onFocus",
+        "onInputKeyDown",
+        "onMouseEnter",
+        "onMouseLeave",
+        "onPopupScroll",
+        "onSearch",
+        "onSelect",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoClearSearchValue",
+        "autoFocus",
+        "bordered",
+        "defaultActiveFirstOption",
+        "defaultOpen",
+        "disabled",
+        "dropdownRender",
+        "dropdownStyle",
+        "fieldNames",
+        "filterOption",
+        "filterSort",
+        "getPopupContainer",
+        "label",
+        "labelInValue",
+        "listHeight",
+        "loading",
+        "maxTagCount",
+        "maxTagPlaceholder",
+        "maxTagTextLength",
+        "menuItemSelectedIcon",
+        "mode",
+        "notFoundContent",
+        "open",
+        "optionFilterProp",
+        "optionLabelProp",
+        "optionRender",
+        "options",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupMatchSelectWidth",
+        "removeIcon",
+        "searchValue",
+        "showSearch",
+        "size",
+        "status",
+        "suffixIcon",
+        "tagRender",
+        "title",
+        "tokenSeparators",
+        "virtual",
+    ]
 
     def __init__(
         self,
@@ -103,17 +165,17 @@ class Select(InputComponent):
         self.menuItemSelectedIcon = menuItemSelectedIcon
         self.mode = mode
         self.notFoundContent = notFoundContent
-        self.onBlur = create_callback(onBlur, "onBlur", [])
-        self.onClear = create_callback(onClear, "onClear", [])
+        self.onBlur = create_callback(onBlur, "onBlur")
+        self.onClear = create_callback(onClear, "onClear")
         self.onDeselect = create_callback(onDeselect, "onDeselect", [[0]])
         self.onDropdownVisibleChange = create_callback(
             onDropdownVisibleChange, "onDropdownVisibleChange", [[0]]
         )
-        self.onFocus = create_callback(onFocus, "onFocus", [])
-        self.onInputKeyDown = create_callback(onInputKeyDown, "onInputKeyDown", [])
-        self.onMouseEnter = create_callback(onMouseEnter, "onMouseEnter", [])
-        self.onMouseLeave = create_callback(onMouseLeave, "onMouseLeave", [])
-        self.onPopupScroll = create_callback(onPopupScroll, "onPopupScroll", [])
+        self.onFocus = create_callback(onFocus, "onFocus")
+        self.onInputKeyDown = create_callback(onInputKeyDown, "onInputKeyDown")
+        self.onMouseEnter = create_callback(onMouseEnter, "onMouseEnter")
+        self.onMouseLeave = create_callback(onMouseLeave, "onMouseLeave")
+        self.onPopupScroll = create_callback(onPopupScroll, "onPopupScroll")
         self.onSearch = create_callback(onSearch, "onSearch", [[0]])
         self.onSelect = create_callback(onSelect, "onSelect", [[0]])
         self.open = open

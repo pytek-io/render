@@ -4,6 +4,8 @@ from render import create_callback, Component
 class Appear(Component):
     Module = "spectacle"
     JSXName = "Appear"
+    ATTRIBUTES = ["style", "className", "activeStyle", "inactiveStyle", "stepIndex", "id"]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -33,6 +35,8 @@ class Appear(Component):
 class Box(Component):
     Module = "spectacle"
     JSXName = "Box"
+    ATTRIBUTES = ["style", "className", "id", "border", "color", "layout", "position", "space"]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -66,6 +70,8 @@ class Box(Component):
 class CodePane(Component):
     Module = "spectacle"
     JSXName = "CodePane"
+    ATTRIBUTES = ["style", "className", "id", "highlightRanges", "language", "theme"]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -95,6 +101,18 @@ class CodePane(Component):
 class CodeSpan(Component):
     Module = "spectacle"
     JSXName = "CodeSpan"
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "fontSize",
+        "fontFamily",
+        "fontSize",
+        "space",
+        "typography",
+    ]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -128,6 +146,21 @@ class CodeSpan(Component):
 class Deck(Component):
     Module = "spectacle"
     JSXName = "Deck"
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoPlay",
+        "autoPlayInterval",
+        "autoPlayLoop",
+        "pageOrientation",
+        "pageSize",
+        "printScale",
+        "template",
+        "theme",
+        "transition",
+    ]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -169,6 +202,23 @@ class Deck(Component):
 class FlexBox(Component):
     Module = "spectacle"
     JSXName = "FlexBox"
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "alignItems",
+        "border",
+        "color",
+        "display",
+        "flexDirection",
+        "flexbox",
+        "height",
+        "justifyContent",
+        "layout",
+        "position",
+        "space",
+    ]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -214,6 +264,8 @@ class FlexBox(Component):
 class Grid(Component):
     Module = "spectacle"
     JSXName = "Grid"
+    ATTRIBUTES = ["style", "className", "id", "display", "grid", "layout", "position"]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -245,6 +297,18 @@ class Grid(Component):
 class Heading(Component):
     Module = "spectacle"
     JSXName = "Heading"
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "margin",
+        "textAlign",
+    ]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -280,6 +344,8 @@ class Heading(Component):
 class ListItem(Component):
     Module = "spectacle"
     JSXName = "ListItem"
+    ATTRIBUTES = ["style", "className", "id", "color", "margin", "space", "typography"]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -311,6 +377,23 @@ class ListItem(Component):
 class Slide(Component):
     Module = "spectacle"
     JSXName = "Slide"
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "backgroundColor",
+        "backgroundImage",
+        "backgroundOpacity",
+        "backgroundPosition",
+        "backgroundRepeat",
+        "backgroundSize",
+        "scaleRatio",
+        "slideNum",
+        "template",
+        "textColor",
+        "transition",
+    ]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -356,6 +439,20 @@ class Slide(Component):
 class UnorderedList(Component):
     Module = "spectacle"
     JSXName = "UnorderedList"
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "fontFamily",
+        "fontSize",
+        "listStyle",
+        "margin",
+        "space",
+        "textAlign",
+        "typography",
+    ]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,

@@ -1,9 +1,47 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class NavLink(Component):
     Module = "mantine"
     JSXName = "NavLink"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "active",
+        "childrenOffset",
+        "color",
+        "component",
+        "defaultOpened",
+        "description",
+        "disableRightSectionRotation",
+        "disabled",
+        "href",
+        "icon",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "noWrap",
+        "opened",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "rightSection",
+        "sx",
+        "target",
+        "title",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -54,8 +92,8 @@ class NavLink(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.active = active
         self.childrenOffset = childrenOffset
         self.color = color
@@ -75,7 +113,7 @@ class NavLink(Component):
         self.mx = mx
         self.my = my
         self.noWrap = noWrap
-        self.onChange = create_callback(onChange)
+        self.onChange = create_callback(onChange, "onChange")
         self.opened = opened
         self.p = p
         self.pb = pb
@@ -89,4 +127,3 @@ class NavLink(Component):
         self.target = target
         self.title = title
         self.variant = variant
-        assert id is None or isinstance(id, str)

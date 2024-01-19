@@ -1,9 +1,38 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class ColorSwatch(Component):
     Module = "mantine"
     JSXName = "ColorSwatch"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "component",
+        "href",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "withShadow",
+    ]
 
     def __init__(
         self,
@@ -44,8 +73,8 @@ class ColorSwatch(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.component = component
         self.href = href
@@ -69,4 +98,3 @@ class ColorSwatch(Component):
         self.target = target
         self.title = title
         self.withShadow = withShadow
-        assert id is None or isinstance(id, str)

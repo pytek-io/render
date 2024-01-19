@@ -1,9 +1,30 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Accordion(Component):
     Module = "mantine"
     JSXName = "Accordion"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -36,8 +57,8 @@ class Accordion(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -53,12 +74,35 @@ class Accordion(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class AccordionControl(Component):
     Module = "mantine"
     JSXName = "AccordionControl"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "chevron",
+        "disabled",
+        "icon",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -94,8 +138,8 @@ class AccordionControl(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.chevron = chevron
         self.disabled = disabled
         self.icon = icon
@@ -114,12 +158,33 @@ class AccordionControl(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class AccordionItem(Component):
     Module = "mantine"
     JSXName = "AccordionItem"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -153,8 +218,8 @@ class AccordionItem(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -171,12 +236,32 @@ class AccordionItem(Component):
         self.py = py
         self.sx = sx
         self.value = value
-        assert id is None or isinstance(id, str)
 
 
 class AccordionPanel(Component):
     Module = "mantine"
     JSXName = "AccordionPanel"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -209,8 +294,8 @@ class AccordionPanel(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -226,4 +311,3 @@ class AccordionPanel(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

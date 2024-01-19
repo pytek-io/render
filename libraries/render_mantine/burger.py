@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Burger(Component):
     Module = "mantine"
     JSXName = "Burger"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "opened",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+        "transitionDuration",
+    ]
 
     def __init__(
         self,
@@ -40,8 +65,8 @@ class Burger(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.m = m
         self.mb = mb
@@ -61,4 +86,3 @@ class Burger(Component):
         self.size = size
         self.sx = sx
         self.transitionDuration = transitionDuration
-        assert id is None or isinstance(id, str)

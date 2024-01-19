@@ -1,9 +1,4 @@
-from render import (
-    Component,
-    Container,
-    create_callback,
-    add_data_namespace,
-)
+from render import Component, Container, create_callback, add_data_namespace
 
 
 class label(Container):
@@ -12,6 +7,8 @@ class label(Container):
 
 class Link(Component):
     Module = "html"
+    ATTRIBUTES = ["style", "className", "id", "href", "target", "rel", "title", "download"]
+    CALLBACKS = ["onClick"]
 
     def __init__(
         self,
@@ -26,9 +23,8 @@ class Link(Component):
         title=None,
         download=None,
         key=None,
-        debug=False,
     ):
-        super().__init__(key, debug)
+        super().__init__(key)
         self.children = children
         self.style = style
         self.className = className
@@ -44,6 +40,8 @@ class Link(Component):
 # rmk: we should factor out those two classes
 class svg(Component):
     Module = "html"
+    ATTRIBUTES = ["width", "height", "fill", "viewBox", "style", "preserveAspectRatio"]
+    CALLBACKS = ["onClick"]
 
     def __init__(
         self,
@@ -70,6 +68,8 @@ class svg(Component):
 
 class img(Component):
     Module = "html"
+    ATTRIBUTES = ["src", "dataSrc", "className", "width", "alt", "onClick", "style"]
+    CALLBACKS = ["onClick"]
 
     def __init__(
         self,
@@ -80,11 +80,10 @@ class img(Component):
         alt=None,
         onClick=None,
         style=None,
-        debug=False,
         desc=None,
         custom_attributes=None,
     ):
-        super().__init__(desc, debug)
+        super().__init__(desc)
         self.className = className
         self.alt = alt
         self.src = add_data_namespace(src)
@@ -97,9 +96,10 @@ class img(Component):
 
 class path(Component):
     Module = "html"
+    ATTRIBUTES = ["d", "fill", "p_id", "style"]
 
-    def __init__(self, d=None, fill=None, p_id=None, debug=False, desc=None, style=None):
-        super().__init__(desc, debug)
+    def __init__(self, d=None, fill=None, p_id=None, desc=None, style=None):
+        super().__init__(desc)
         self.d = d
         self.fill = fill
         self.p_id = p_id
@@ -108,6 +108,7 @@ class path(Component):
 
 class circle(Component):
     Module = "html"
+    ATTRIBUTES = ["cx", "cy", "r", "fill", "onClick"]
 
     def __init__(
         self,
@@ -117,12 +118,11 @@ class circle(Component):
         r=None,
         fill=None,
         controller=None,
-        kwargs={},
         componentDidMount=None,
         componentWillUnmount=None,
         onClick=None,
     ):
-        super().__init__(key, controller, kwargs, componentDidMount, componentWillUnmount)
+        super().__init__(key, controller, componentDidMount, componentWillUnmount)
         self.cx = cx
         self.cy = cy
         self.r = r

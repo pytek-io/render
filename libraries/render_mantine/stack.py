@@ -1,9 +1,33 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Stack(Component):
     Module = "mantine"
     JSXName = "Stack"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "justify",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "spacing",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -39,8 +63,8 @@ class Stack(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.align = align
         self.justify = justify
         self.m = m
@@ -59,4 +83,3 @@ class Stack(Component):
         self.py = py
         self.spacing = spacing
         self.sx = sx
-        assert id is None or isinstance(id, str)

@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Tab(Component):
     Module = "mantine"
     JSXName = "Tab"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "icon",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "rightSection",
+        "sx",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -40,8 +65,8 @@ class Tab(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.icon = icon
         self.m = m
@@ -61,7 +86,6 @@ class Tab(Component):
         self.rightSection = rightSection
         self.sx = sx
         self.value = value
-        assert id is None or isinstance(id, str)
 
 
 class Tabs(InputComponent):
@@ -69,6 +93,39 @@ class Tabs(InputComponent):
     JSXName = "Tabs"
     InputCallback = "onTabChange"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onTabChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "List",
+        "Panel",
+        "Tab",
+        "activateTabWithKeyboard",
+        "allowTabDeactivation",
+        "color",
+        "inverted",
+        "keepMounted",
+        "loop",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "sx",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -117,8 +174,8 @@ class Tabs(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.List = List
         self.Panel = Panel
         self.Tab = Tab
@@ -135,7 +192,7 @@ class Tabs(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onTabChange = create_callback(onTabChange)
+        self.onTabChange = create_callback(onTabChange, "onTabChange")
         self.orientation = orientation
         self.p = p
         self.pb = pb
@@ -147,12 +204,34 @@ class Tabs(InputComponent):
         self.radius = radius
         self.sx = sx
         self.variant = variant
-        assert id is None or isinstance(id, str)
 
 
 class TabsList(Component):
     Module = "mantine"
     JSXName = "TabsList"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "grow",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -187,8 +266,8 @@ class TabsList(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.grow = grow
         self.m = m
         self.mb = mb
@@ -206,12 +285,33 @@ class TabsList(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class TabsPanel(Component):
     Module = "mantine"
     JSXName = "TabsPanel"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -245,8 +345,8 @@ class TabsPanel(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -263,4 +363,3 @@ class TabsPanel(Component):
         self.py = py
         self.sx = sx
         self.value = value
-        assert id is None or isinstance(id, str)

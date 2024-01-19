@@ -5,6 +5,37 @@ class AutoComplete(InputComponent):
     Module = "ant"
     JSXName = "AutoComplete"
     InputName = "value"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onBlur",
+        "onClear",
+        "onDropdownVisibleChange",
+        "onFocus",
+        "onSearch",
+        "onSelect",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoFocus",
+        "backfill",
+        "bordered",
+        "compact",
+        "defaultActiveFirstOption",
+        "defaultOpen",
+        "disabled",
+        "dropdownMatchSelectWidth",
+        "filterOption",
+        "notFoundContent",
+        "open",
+        "options",
+        "placeholder",
+        "popupClassName",
+        "status",
+    ]
 
     def __init__(
         self,
@@ -60,12 +91,12 @@ class AutoComplete(InputComponent):
         self.dropdownMatchSelectWidth = dropdownMatchSelectWidth
         self.filterOption = filterOption
         self.notFoundContent = notFoundContent
-        self.onBlur = create_callback(onBlur, "onBlur", [])
-        self.onClear = create_callback(onClear, "onClear", [])
+        self.onBlur = create_callback(onBlur, "onBlur")
+        self.onClear = create_callback(onClear, "onClear")
         self.onDropdownVisibleChange = create_callback(
-            onDropdownVisibleChange, "onDropdownVisibleChange", []
+            onDropdownVisibleChange, "onDropdownVisibleChange"
         )
-        self.onFocus = create_callback(onFocus, "onFocus", [])
+        self.onFocus = create_callback(onFocus, "onFocus")
         self.onSearch = create_callback(onSearch, "onSearch", [[0]])
         self.onSelect = create_callback(onSelect, "onSelect", [[0]])
         self.open = open

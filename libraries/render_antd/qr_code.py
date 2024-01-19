@@ -4,6 +4,22 @@ from render import Component, create_callback
 class QRCode(Component):
     Module = "ant"
     JSXName = "QRCode"
+    CALLBACKS = ["onKeyPress", "onClick", "onRefresh"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "bgColor",
+        "bordered",
+        "color",
+        "errorLevel",
+        "icon",
+        "iconSize",
+        "size",
+        "status",
+        "type",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -40,7 +56,7 @@ class QRCode(Component):
         self.errorLevel = errorLevel
         self.icon = icon
         self.iconSize = iconSize
-        self.onRefresh = create_callback(onRefresh, "onRefresh", [])
+        self.onRefresh = create_callback(onRefresh, "onRefresh")
         self.size = size
         self.status = status
         self.type = type

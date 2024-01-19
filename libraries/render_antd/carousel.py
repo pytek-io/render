@@ -4,6 +4,18 @@ from render import Component, create_callback
 class Carousel(Component):
     Module = "ant"
     JSXName = "Carousel"
+    CALLBACKS = ["onKeyPress", "onClick", "afterChange", "beforeChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoplay",
+        "dotPosition",
+        "dots",
+        "easing",
+        "effect",
+        "waitForAnimate",
+    ]
 
     def __init__(
         self,

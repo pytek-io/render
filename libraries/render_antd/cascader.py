@@ -5,6 +5,55 @@ class Cascader(InputComponent):
     Module = "ant"
     JSXName = "Cascader"
     InputName = "value"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "loadData",
+        "onDropdownVisibleChange",
+        "onSearch",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoClearSearchValue",
+        "autoFocus",
+        "bordered",
+        "changeOnSelect",
+        "disabled",
+        "displayRender",
+        "dropdownMenuColumnStyle",
+        "dropdownRender",
+        "expandIcon",
+        "expandTrigger",
+        "fieldNames",
+        "filter",
+        "getPopupContainer",
+        "limit",
+        "loadingIcon",
+        "matchInputWidth",
+        "maxTagCount",
+        "maxTagPlaceholder",
+        "maxTagTextLength",
+        "multiple",
+        "notFoundContent",
+        "open",
+        "options",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "removeIcon",
+        "render",
+        "searchValue",
+        "showCheckedStrategy",
+        "showSearch",
+        "size",
+        "sort",
+        "status",
+        "suffixIcon",
+        "tagRender",
+    ]
 
     def __init__(
         self,
@@ -91,7 +140,7 @@ class Cascader(InputComponent):
         self.multiple = multiple
         self.notFoundContent = notFoundContent
         self.onDropdownVisibleChange = create_callback(
-            onDropdownVisibleChange, "onDropdownVisibleChange", []
+            onDropdownVisibleChange, "onDropdownVisibleChange"
         )
         self.onSearch = create_callback(onSearch, "onSearch", [[0]])
         self.open = open

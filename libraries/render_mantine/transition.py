@@ -1,9 +1,35 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class GroupedTransition(Component):
     Module = "mantine"
     JSXName = "GroupedTransition"
+    CALLBACKS = ["onKeyPress", "onClick", "onEnter", "onEntered", "onExit", "onExited"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "duration",
+        "exitDuration",
+        "m",
+        "mb",
+        "ml",
+        "mounted",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "timingFunction",
+        "transitions",
+    ]
 
     def __init__(
         self,
@@ -45,8 +71,8 @@ class GroupedTransition(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.duration = duration
         self.exitDuration = exitDuration
         self.m = m
@@ -57,10 +83,10 @@ class GroupedTransition(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onEnter = create_callback(onEnter)
-        self.onEntered = create_callback(onEntered)
-        self.onExit = create_callback(onExit)
-        self.onExited = create_callback(onExited)
+        self.onEnter = create_callback(onEnter, "onEnter")
+        self.onEntered = create_callback(onEntered, "onEntered")
+        self.onExit = create_callback(onExit, "onExit")
+        self.onExited = create_callback(onExited, "onExited")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -71,12 +97,37 @@ class GroupedTransition(Component):
         self.sx = sx
         self.timingFunction = timingFunction
         self.transitions = transitions
-        assert id is None or isinstance(id, str)
 
 
 class Transition(Component):
     Module = "mantine"
     JSXName = "Transition"
+    CALLBACKS = ["onKeyPress", "onClick", "onEnter", "onEntered", "onExit", "onExited"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "duration",
+        "exitDuration",
+        "m",
+        "mb",
+        "ml",
+        "mounted",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "timingFunction",
+        "transition",
+    ]
 
     def __init__(
         self,
@@ -118,8 +169,8 @@ class Transition(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.duration = duration
         self.exitDuration = exitDuration
         self.m = m
@@ -130,10 +181,10 @@ class Transition(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onEnter = create_callback(onEnter)
-        self.onEntered = create_callback(onEntered)
-        self.onExit = create_callback(onExit)
-        self.onExited = create_callback(onExited)
+        self.onEnter = create_callback(onEnter, "onEnter")
+        self.onEntered = create_callback(onEntered, "onEntered")
+        self.onExit = create_callback(onExit, "onExit")
+        self.onExited = create_callback(onExited, "onExited")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -144,4 +195,3 @@ class Transition(Component):
         self.sx = sx
         self.timingFunction = timingFunction
         self.transition = transition
-        assert id is None or isinstance(id, str)

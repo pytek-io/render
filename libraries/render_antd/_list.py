@@ -4,6 +4,36 @@ from render import Component, create_callback
 class List(Component):
     Module = "ant"
     JSXName = "List"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "bordered",
+        "column",
+        "dataSource",
+        "footer",
+        "grid",
+        "gutter",
+        "header",
+        "itemLayout",
+        "lg",
+        "loadMore",
+        "loading",
+        "locale",
+        "md",
+        "pagination",
+        "position",
+        "renderItem",
+        "rowKey",
+        "size",
+        "sm",
+        "split",
+        "xl",
+        "xs",
+        "xxl",
+    ]
 
     def __init__(
         self,
@@ -76,6 +106,17 @@ class List(Component):
 class ListItem(Component):
     Module = "ant"
     JSXName = "List.Item"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "actions",
+        "avatar",
+        "description",
+        "extra",
+        "title",
+    ]
 
     def __init__(
         self,

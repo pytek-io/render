@@ -4,6 +4,26 @@ from render import Component, create_callback
 class Button(Component):
     Module = "ant"
     JSXName = "Button"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "block",
+        "classNames",
+        "danger",
+        "disabled",
+        "ghost",
+        "href",
+        "htmlType",
+        "icon",
+        "loading",
+        "shape",
+        "size",
+        "styles",
+        "target",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -36,7 +56,7 @@ class Button(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.block = block
         self.classNames = classNames
         self.danger = danger

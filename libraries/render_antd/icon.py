@@ -4,6 +4,21 @@ from render import Component, create_callback, Props
 class Icon(Component):
     Module = "ant-icons"
     JSXName = "Icon"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "component",
+        "extraCommonProps",
+        "fill",
+        "height",
+        "rotate",
+        "scriptUrl",
+        "spin",
+        "twoToneColor",
+        "width",
+    ]
 
     def __init__(
         self,

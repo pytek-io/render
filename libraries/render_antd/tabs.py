@@ -4,6 +4,17 @@ from render import Component, create_callback
 class TabItemType(Component):
     Module = "ant"
     JSXName = "TabItemType"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "closeIcon",
+        "destroyInactiveTabPane",
+        "disabled",
+        "forceRender",
+        "label",
+    ]
 
     def __init__(
         self,
@@ -38,6 +49,37 @@ class TabItemType(Component):
 class Tabs(Component):
     Module = "ant"
     JSXName = "Tabs"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onChange",
+        "onEdit",
+        "onTabClick",
+        "onTabScroll",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "activeKey",
+        "addIcon",
+        "animated",
+        "centered",
+        "defaultActiveKey",
+        "destroyInactiveTabPane",
+        "hideAdd",
+        "indicatorSize",
+        "items",
+        "moreIcon",
+        "popupClassName",
+        "renderTabBar",
+        "size",
+        "tabBarExtraContent",
+        "tabBarGutter",
+        "tabBarStyle",
+        "tabPosition",
+        "type",
+    ]
 
     def __init__(
         self,

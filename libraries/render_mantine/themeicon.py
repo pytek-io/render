@@ -1,9 +1,35 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class ThemeIcon(Component):
     Module = "mantine"
     JSXName = "ThemeIcon"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "gradient",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -41,8 +67,8 @@ class ThemeIcon(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.gradient = gradient
         self.m = m
@@ -63,4 +89,3 @@ class ThemeIcon(Component):
         self.size = size
         self.sx = sx
         self.variant = variant
-        assert id is None or isinstance(id, str)

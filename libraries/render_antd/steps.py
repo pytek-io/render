@@ -4,6 +4,18 @@ from render import Component, create_callback
 class StepItem(Component):
     Module = "ant"
     JSXName = "Step.Item"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "description",
+        "disabled",
+        "icon",
+        "status",
+        "subTitle",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -40,6 +52,23 @@ class StepItem(Component):
 class Steps(Component):
     Module = "ant"
     JSXName = "Steps"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "current",
+        "direction",
+        "initial",
+        "items",
+        "labelPlacement",
+        "percent",
+        "progressDot",
+        "responsive",
+        "size",
+        "status",
+        "type",
+    ]
 
     def __init__(
         self,

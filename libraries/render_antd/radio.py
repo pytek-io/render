@@ -4,6 +4,17 @@ from render import Component, create_callback, InputComponent
 class Radio(Component):
     Module = "ant"
     JSXName = "Radio"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoFocus",
+        "checked",
+        "defaultChecked",
+        "disabled",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -39,6 +50,18 @@ class RadioGroup(InputComponent):
     Module = "ant"
     JSXName = "Radio.Group"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "buttonStyle",
+        "disabled",
+        "name",
+        "optionType",
+        "options",
+        "size",
+    ]
 
     def __init__(
         self,

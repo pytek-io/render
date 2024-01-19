@@ -4,6 +4,43 @@ from render import Component, create_callback
 class Upload(Component):
     Module = "ant"
     JSXName = "Upload"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "action",
+        "beforeUpload",
+        "onChange",
+        "onDownload",
+        "onDrop",
+        "onPreview",
+        "onRemove",
+        "previewFile",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "accept",
+        "customRequest",
+        "data",
+        "defaultFileList",
+        "directory",
+        "disabled",
+        "fileList",
+        "headers",
+        "iconRender",
+        "isImageUrl",
+        "itemRender",
+        "listType",
+        "maxCount",
+        "method",
+        "multiple",
+        "name",
+        "openFileDialogOnClick",
+        "progress",
+        "showUploadList",
+        "withCredentials",
+    ]
 
     def __init__(
         self,
@@ -69,9 +106,9 @@ class Upload(Component):
         self.method = method
         self.multiple = multiple
         self.name = name
-        self.onChange = create_callback(onChange, "onChange", [])
+        self.onChange = create_callback(onChange, "onChange")
         self.onDownload = create_callback(onDownload, "onDownload", [[0]])
-        self.onDrop = create_callback(onDrop, "onDrop", [])
+        self.onDrop = create_callback(onDrop, "onDrop")
         self.onPreview = create_callback(onPreview, "onPreview", [[0]])
         self.onRemove = create_callback(onRemove, "onRemove", [[0]])
         self.openFileDialogOnClick = openFileDialogOnClick
@@ -84,6 +121,19 @@ class Upload(Component):
 class UploadFile(Component):
     Module = "ant"
     JSXName = "UploadFile"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "crossOrigin",
+        "name",
+        "percent",
+        "status",
+        "thumbUrl",
+        "uid",
+        "url",
+    ]
 
     def __init__(
         self,

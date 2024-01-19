@@ -4,6 +4,18 @@ from render import Component, create_callback
 class Skeleton(Component):
     Module = "ant"
     JSXName = "Skeleton"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "active",
+        "avatar",
+        "loading",
+        "paragraph",
+        "round",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -40,6 +52,8 @@ class Skeleton(Component):
 class SkeletonAvatar(Component):
     Module = "ant"
     JSXName = "Skeleton.Avatar"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "active", "shape", "size"]
 
     def __init__(
         self,
@@ -70,6 +84,8 @@ class SkeletonAvatar(Component):
 class SkeletonButton(Component):
     Module = "ant"
     JSXName = "Skeleton.Button"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "active", "block", "shape", "size"]
 
     def __init__(
         self,
@@ -102,6 +118,8 @@ class SkeletonButton(Component):
 class SkeletonInput(Component):
     Module = "ant"
     JSXName = "Skeleton.Input"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "active", "size"]
 
     def __init__(
         self,
@@ -130,6 +148,8 @@ class SkeletonInput(Component):
 class SkeletonParagraph(Component):
     Module = "ant"
     JSXName = "Skeleton.Paragraph"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "rows", "width"]
 
     def __init__(
         self,
@@ -158,6 +178,8 @@ class SkeletonParagraph(Component):
 class SkeletonTitle(Component):
     Module = "ant"
     JSXName = "Skeleton.Title"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "width"]
 
     def __init__(
         self,

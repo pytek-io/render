@@ -1,4 +1,4 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class PasswordInput(InputComponent):
@@ -6,6 +6,32 @@ class PasswordInput(InputComponent):
     JSXName = "PasswordInput"
     InputName = "value"
     NewValuePath = "currentTarget.value"
+    CALLBACKS = ["onKeyPress", "onClick", "onVisibilityChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "defaultVisible",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "toggleTabIndex",
+        "visibilityToggleIcon",
+        "visibilityToggleLabel",
+        "visible",
+    ]
 
     def __init__(
         self,
@@ -47,8 +73,8 @@ class PasswordInput(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.defaultVisible = defaultVisible
         self.m = m
         self.mb = mb
@@ -57,7 +83,9 @@ class PasswordInput(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onVisibilityChange = create_callback(onVisibilityChange)
+        self.onVisibilityChange = create_callback(
+            onVisibilityChange, "onVisibilityChange"
+        )
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -70,4 +98,3 @@ class PasswordInput(InputComponent):
         self.visibilityToggleIcon = visibilityToggleIcon
         self.visibilityToggleLabel = visibilityToggleLabel
         self.visible = visible
-        assert id is None or isinstance(id, str)

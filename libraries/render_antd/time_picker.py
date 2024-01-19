@@ -5,6 +5,38 @@ class RangePicker(InputComponent):
     Module = "ant"
     JSXName = "RangePicker"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange", "onSelect"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoFocus",
+        "bordered",
+        "cellRender",
+        "changeOnBlur",
+        "disabled",
+        "disabledTime",
+        "format",
+        "getPopupContainer",
+        "hideDisabledOptions",
+        "hourStep",
+        "inputReadOnly",
+        "minuteStep",
+        "open",
+        "order",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupStyle",
+        "renderExtraFooter",
+        "secondStep",
+        "showNow",
+        "size",
+        "status",
+        "suffixIcon",
+        "use12Hours",
+    ]
 
     def __init__(
         self,
@@ -89,6 +121,37 @@ class TimePicker(InputComponent):
     Module = "ant"
     JSXName = "TimePicker"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange", "onSelect"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoFocus",
+        "bordered",
+        "cellRender",
+        "changeOnBlur",
+        "disabled",
+        "disabledTime",
+        "format",
+        "getPopupContainer",
+        "hideDisabledOptions",
+        "hourStep",
+        "inputReadOnly",
+        "minuteStep",
+        "open",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupStyle",
+        "renderExtraFooter",
+        "secondStep",
+        "showNow",
+        "size",
+        "status",
+        "suffixIcon",
+        "use12Hours",
+    ]
 
     def __init__(
         self,

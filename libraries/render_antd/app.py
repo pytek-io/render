@@ -4,6 +4,8 @@ from render import Component, create_callback
 class App(Component):
     Module = "ant"
     JSXName = "App"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "component", "message", "notification"]
 
     def __init__(
         self,

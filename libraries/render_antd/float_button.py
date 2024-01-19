@@ -4,6 +4,20 @@ from render import Component, create_callback
 class FloatButton(Component):
     Module = "ant"
     JSXName = "FloatButton"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "badge",
+        "description",
+        "href",
+        "icon",
+        "shape",
+        "target",
+        "tooltip",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -30,7 +44,7 @@ class FloatButton(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.badge = badge
         self.description = description
         self.href = href
@@ -44,6 +58,22 @@ class FloatButton(Component):
 class FloatButtonBackTop(Component):
     Module = "ant"
     JSXName = "FloatButton.BackTop"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "badge",
+        "description",
+        "duration",
+        "href",
+        "icon",
+        "shape",
+        "target",
+        "tooltip",
+        "type",
+        "visibilityHeight",
+    ]
 
     def __init__(
         self,
@@ -72,7 +102,7 @@ class FloatButtonBackTop(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.badge = badge
         self.description = description
         self.duration = duration
@@ -88,6 +118,22 @@ class FloatButtonBackTop(Component):
 class FloatButtonGroup(Component):
     Module = "ant"
     JSXName = "FloatButton.Group"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "badge",
+        "description",
+        "href",
+        "icon",
+        "open",
+        "shape",
+        "target",
+        "tooltip",
+        "trigger",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -117,7 +163,7 @@ class FloatButtonGroup(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.badge = badge
         self.description = description
         self.href = href

@@ -4,6 +4,22 @@ from render import Component, create_callback, Props
 class Tour(Component):
     Module = "ant"
     JSXName = "Tour"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "arrow",
+        "closeIcon",
+        "current",
+        "indicatorsRender",
+        "mask",
+        "open",
+        "placement",
+        "scrollIntoViewOptions",
+        "type",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -41,7 +57,7 @@ class Tour(Component):
         self.indicatorsRender = indicatorsRender
         self.mask = mask
         self.onChange = create_callback(onChange, "onChange", [[0]])
-        self.onClose = create_callback(onClose, "onClose", [])
+        self.onClose = create_callback(onClose, "onClose")
         self.open = open
         self.placement = placement
         self.scrollIntoViewOptions = scrollIntoViewOptions
@@ -52,6 +68,24 @@ class Tour(Component):
 class TourStep(Component):
     Module = "ant"
     JSXName = "TourStep"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "arrow",
+        "closeIcon",
+        "cover",
+        "description",
+        "mask",
+        "nextButtonProps",
+        "placement",
+        "prevButtonProps",
+        "scrollIntoViewOptions",
+        "target",
+        "title",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -90,7 +124,7 @@ class TourStep(Component):
         self.description = description
         self.mask = mask
         self.nextButtonProps = nextButtonProps
-        self.onClose = create_callback(onClose, "onClose", [])
+        self.onClose = create_callback(onClose, "onClose")
         self.placement = placement
         self.prevButtonProps = prevButtonProps
         self.scrollIntoViewOptions = scrollIntoViewOptions

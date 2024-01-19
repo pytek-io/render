@@ -5,6 +5,8 @@ class Segmented(InputComponent):
     Module = "ant"
     JSXName = "Segmented"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "block", "disabled", "options", "size"]
 
     def __init__(
         self,

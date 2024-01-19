@@ -3,6 +3,7 @@ from render import Component
 
 class PrismCodeFormatter(Component):
     Module = "prism"
+    ATTRIBUTES = ["code", "language", "theme", "lineNumbers", "style"]
 
     def __init__(
         self,
@@ -11,7 +12,6 @@ class PrismCodeFormatter(Component):
         theme=None,
         lineNumbers=False,
         style=None,
-        debug=False,
         desc=None,
     ):
         super().__init__(key=desc)

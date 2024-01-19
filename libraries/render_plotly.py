@@ -3,6 +3,8 @@ from render import create_callback, Component
 
 class Plot(Component):
     Module = "plotly"
+    ATTRIBUTES = ["data", "layout", "style", "config", "useResizeHandler", "onUpdate"]
+    CALLBACKS = ["onUpdate"]
 
     def __init__(
         self,
@@ -28,4 +30,4 @@ class Graph(Plot):
     JSXName = "Plot"
 
     def __init__(self, figure, desc=None):
-        super().__init__(desc=desc, **figure.to_dict())
+        super().__init__(desc=desc, **(figure.to_dict() if hasattr(figure, "to_dict") else {}))

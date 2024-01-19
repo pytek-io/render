@@ -5,6 +5,62 @@ class TreeSelect(InputComponent):
     Module = "ant"
     JSXName = "TreeSelect"
     InputName = "value"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "loadData",
+        "onDropdownVisibleChange",
+        "onSearch",
+        "onSelect",
+        "onTreeExpand",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoClearSearchValue",
+        "bordered",
+        "disabled",
+        "dropdownRender",
+        "dropdownStyle",
+        "fieldNames",
+        "filterTreeNode",
+        "getPopupContainer",
+        "labelInValue",
+        "listHeight",
+        "maxTagCount",
+        "maxTagPlaceholder",
+        "maxTagTextLength",
+        "multiple",
+        "notFoundContent",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupMatchSelectWidth",
+        "searchValue",
+        "showCheckedStrategy",
+        "showSearch",
+        "size",
+        "status",
+        "suffixIcon",
+        "switcherIcon",
+        "tagRender",
+        "treeCheckStrictly",
+        "treeCheckable",
+        "treeData",
+        "treeDataSimpleMode",
+        "treeDefaultExpandAll",
+        "treeDefaultExpandedKeys",
+        "treeExpandAction",
+        "treeExpandedKeys",
+        "treeIcon",
+        "treeLine",
+        "treeLoadedKeys",
+        "treeNodeFilterProp",
+        "treeNodeLabelProp",
+        "virtual",
+    ]
 
     def __init__(
         self,
@@ -94,10 +150,10 @@ class TreeSelect(InputComponent):
         self.multiple = multiple
         self.notFoundContent = notFoundContent
         self.onDropdownVisibleChange = create_callback(
-            onDropdownVisibleChange, "onDropdownVisibleChange", []
+            onDropdownVisibleChange, "onDropdownVisibleChange"
         )
-        self.onSearch = create_callback(onSearch, "onSearch", [])
-        self.onSelect = create_callback(onSelect, "onSelect", [])
+        self.onSearch = create_callback(onSearch, "onSearch")
+        self.onSelect = create_callback(onSelect, "onSelect")
         self.onTreeExpand = create_callback(onTreeExpand, "onTreeExpand", [[0]])
         self.placeholder = placeholder
         self.placement = placement
@@ -130,6 +186,19 @@ class TreeSelect(InputComponent):
 class TreeSelectTreeNode(Component):
     Module = "ant"
     JSXName = "TreeSelect.TreeNode"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "checkable",
+        "disableCheckbox",
+        "disabled",
+        "isLeaf",
+        "selectable",
+        "title",
+        "value",
+    ]
 
     def __init__(
         self,

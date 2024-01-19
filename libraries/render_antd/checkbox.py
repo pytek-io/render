@@ -5,6 +5,8 @@ class Checkbox(InputComponent):
     Module = "ant"
     JSXName = "Checkbox"
     InputName = "checked"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "autoFocus", "disabled", "indeterminate"]
 
     def __init__(
         self,
@@ -39,6 +41,8 @@ class CheckboxGroup(InputComponent):
     Module = "ant"
     JSXName = "Checkbox.Group"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "disabled", "name", "options"]
 
     def __init__(
         self,

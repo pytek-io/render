@@ -1,9 +1,35 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Dialog(Component):
     Module = "mantine"
     JSXName = "Dialog"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "bottom",
+        "left",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "right",
+        "sx",
+        "withCloseButton",
+    ]
 
     def __init__(
         self,
@@ -42,8 +68,8 @@ class Dialog(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.bottom = bottom
         self.left = left
         self.m = m
@@ -53,7 +79,7 @@ class Dialog(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onClose = create_callback(onClose)
+        self.onClose = create_callback(onClose, "onClose")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -65,4 +91,3 @@ class Dialog(Component):
         self.right = right
         self.sx = sx
         self.withCloseButton = withCloseButton
-        assert id is None or isinstance(id, str)

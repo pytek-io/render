@@ -1,9 +1,55 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Modal(Component):
     Module = "mantine"
     JSXName = "Modal"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "centered",
+        "closeButtonLabel",
+        "closeOnClickOutside",
+        "closeOnEscape",
+        "fullScreen",
+        "lockScroll",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "opened",
+        "overflow",
+        "overlayBlur",
+        "overlayColor",
+        "overlayOpacity",
+        "p",
+        "padding",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "shadow",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "transition",
+        "transitionDuration",
+        "transitionTimingFunction",
+        "trapFocus",
+        "withCloseButton",
+        "withFocusReturn",
+        "withinPortal",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -62,8 +108,8 @@ class Modal(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.centered = centered
         self.closeButtonLabel = closeButtonLabel
         self.closeOnClickOutside = closeOnClickOutside
@@ -77,7 +123,7 @@ class Modal(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onClose = create_callback(onClose)
+        self.onClose = create_callback(onClose, "onClose")
         self.opened = opened
         self.overflow = overflow
         self.overlayBlur = overlayBlur
@@ -105,4 +151,3 @@ class Modal(Component):
         self.withFocusReturn = withFocusReturn
         self.withinPortal = withinPortal
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)

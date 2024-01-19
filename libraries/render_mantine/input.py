@@ -1,9 +1,49 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, Props
 
 
 class Input(Component):
     Module = "mantine"
     JSXName = "Input"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "__staticSelector",
+        "component",
+        "disabled",
+        "href",
+        "icon",
+        "iconWidth",
+        "invalid",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "multiline",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pointer",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "required",
+        "rightSection",
+        "rightSectionProps",
+        "rightSectionWidth",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "variant",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -55,8 +95,8 @@ class Input(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.__staticSelector = __staticSelector
         self.component = component
         self.disabled = disabled
@@ -91,4 +131,3 @@ class Input(Component):
         self.title = title
         self.variant = variant
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)

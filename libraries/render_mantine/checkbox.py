@@ -1,10 +1,42 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Checkbox(InputComponent):
     Module = "mantine"
     JSXName = "Checkbox"
     InputName = "checked"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "description",
+        "error",
+        "icon",
+        "indeterminate",
+        "label",
+        "labelPosition",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "transitionDuration",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -51,8 +83,8 @@ class Checkbox(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.description = description
         self.error = error
@@ -79,13 +111,38 @@ class Checkbox(InputComponent):
         self.sx = sx
         self.transitionDuration = transitionDuration
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)
 
 
 class CheckboxGroup(InputComponent):
     Module = "mantine"
     JSXName = "CheckboxGroup"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offset",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "spacing",
+        "sx",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -126,8 +183,8 @@ class CheckboxGroup(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -148,12 +205,33 @@ class CheckboxGroup(InputComponent):
         self.spacing = spacing
         self.sx = sx
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)
 
 
 class CheckboxIcon(Component):
     Module = "mantine"
     JSXName = "CheckboxIcon"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "indeterminate",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -187,8 +265,8 @@ class CheckboxIcon(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.indeterminate = indeterminate
         self.m = m
         self.mb = mb
@@ -205,4 +283,3 @@ class CheckboxIcon(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

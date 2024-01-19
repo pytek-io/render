@@ -4,6 +4,44 @@ from render import Component, create_callback, Props
 class Menu(Component):
     Module = "ant"
     JSXName = "Menu"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onDeselect",
+        "onOpenChange",
+        "onSelect",
+        "onTitleClick",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "danger",
+        "dashed",
+        "defaultOpenKeys",
+        "defaultSelectedKeys",
+        "disabled",
+        "expandIcon",
+        "forceSubMenuRender",
+        "icon",
+        "inlineCollapsed",
+        "inlineIndent",
+        "items",
+        "label",
+        "mode",
+        "multiple",
+        "openKeys",
+        "overflowedIndicator",
+        "popupClassName",
+        "popupOffset",
+        "selectable",
+        "selectedKeys",
+        "subMenuCloseDelay",
+        "subMenuOpenDelay",
+        "theme",
+        "title",
+        "triggerSubMenuAction",
+    ]
 
     def __init__(
         self,
@@ -67,7 +105,7 @@ class Menu(Component):
         self.mode = mode
         self.multiple = multiple
         self.onDeselect = create_callback(onDeselect, "onDeselect", [[0, "key"]])
-        self.onOpenChange = create_callback(onOpenChange, "onOpenChange", [])
+        self.onOpenChange = create_callback(onOpenChange, "onOpenChange")
         self.onSelect = create_callback(onSelect, "onSelect", [[0, "key"]])
         self.onTitleClick = create_callback(onTitleClick, "onTitleClick", [[0, "key"]])
         self.openKeys = openKeys
@@ -84,6 +122,36 @@ class Menu(Component):
 
 
 class MenuProps(Props):
+    CALLBACKS = ["onClick", "onDeselect", "onOpenChange", "onSelect", "onTitleClick"]
+    ATTRIBUTES = [
+        "danger",
+        "dashed",
+        "defaultOpenKeys",
+        "defaultSelectedKeys",
+        "disabled",
+        "expandIcon",
+        "forceSubMenuRender",
+        "icon",
+        "inlineCollapsed",
+        "inlineIndent",
+        "items",
+        "label",
+        "mode",
+        "multiple",
+        "openKeys",
+        "overflowedIndicator",
+        "popupClassName",
+        "popupOffset",
+        "selectable",
+        "selectedKeys",
+        "style",
+        "subMenuCloseDelay",
+        "subMenuOpenDelay",
+        "theme",
+        "title",
+        "triggerSubMenuAction",
+    ]
+
     def __init__(
         self,
         children=None,
@@ -138,7 +206,7 @@ class MenuProps(Props):
         self.multiple = multiple
         self.onClick = create_callback(onClick, "onClick", [[0, "key"]])
         self.onDeselect = create_callback(onDeselect, "onDeselect", [[0, "key"]])
-        self.onOpenChange = create_callback(onOpenChange, "onOpenChange", [])
+        self.onOpenChange = create_callback(onOpenChange, "onOpenChange")
         self.onSelect = create_callback(onSelect, "onSelect", [[0, "key"]])
         self.onTitleClick = create_callback(onTitleClick, "onTitleClick", [[0, "key"]])
         self.openKeys = openKeys

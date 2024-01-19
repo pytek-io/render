@@ -1,9 +1,32 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class CopyButton(Component):
     Module = "mantine"
     JSXName = "CopyButton"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "timeout",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -38,8 +61,8 @@ class CopyButton(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -57,4 +80,3 @@ class CopyButton(Component):
         self.sx = sx
         self.timeout = timeout
         self.value = value
-        assert id is None or isinstance(id, str)

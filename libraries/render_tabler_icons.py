@@ -3,6 +3,7 @@ from render import Component
 
 class Icon(Component):
     Module = "tabler_icons"
+    ATTRIBUTES = ["style", "className", "id", "size", "stroke"]
 
     def __init__(
         self,

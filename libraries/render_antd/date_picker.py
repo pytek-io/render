@@ -5,6 +5,46 @@ class DatePicker(InputComponent):
     Module = "ant"
     JSXName = "DatePicker"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onOk", "onOpenChange", "onPanelChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "autoFocus",
+        "bordered",
+        "cellRender",
+        "changeOnBlur",
+        "dateRender",
+        "disabled",
+        "disabledDate",
+        "disabledTime",
+        "format",
+        "getPopupContainer",
+        "inputReadOnly",
+        "locale",
+        "mode",
+        "nextIcon",
+        "open",
+        "panelRender",
+        "picker",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupStyle",
+        "presets",
+        "prevIcon",
+        "renderExtraFooter",
+        "showNow",
+        "showTime",
+        "showTime_defaultValue",
+        "showToday",
+        "size",
+        "status",
+        "suffixIcon",
+        "superNextIcon",
+        "superPrevIcon",
+    ]
 
     def __init__(
         self,
@@ -79,7 +119,7 @@ class DatePicker(InputComponent):
         self.locale = locale
         self.mode = mode
         self.nextIcon = nextIcon
-        self.onOk = create_callback(onOk, "onOk", [])
+        self.onOk = create_callback(onOk, "onOk")
         self.onOpenChange = create_callback(onOpenChange, "onOpenChange", [[0]])
         self.onPanelChange = create_callback(onPanelChange, "onPanelChange", [[0], [1]])
         self.open = open
@@ -107,6 +147,52 @@ class RangePicker(InputComponent):
     Module = "ant"
     JSXName = "RangePicker"
     InputName = "value"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onCalendarChange",
+        "onOpenChange",
+        "onPanelChange",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowClear",
+        "allowEmpty",
+        "autoFocus",
+        "bordered",
+        "cellRender",
+        "changeOnBlur",
+        "dateRender",
+        "disabled",
+        "disabledDate",
+        "disabledTime",
+        "format",
+        "getPopupContainer",
+        "inputReadOnly",
+        "locale",
+        "mode",
+        "nextIcon",
+        "open",
+        "panelRender",
+        "picker",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupStyle",
+        "presets",
+        "prevIcon",
+        "renderExtraFooter",
+        "separator",
+        "showTime",
+        "showTime_defaultValue",
+        "size",
+        "status",
+        "suffixIcon",
+        "superNextIcon",
+        "superPrevIcon",
+    ]
 
     def __init__(
         self,

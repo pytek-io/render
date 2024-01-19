@@ -5,6 +5,40 @@ class Transfer(InputComponent):
     Module = "ant"
     JSXName = "Transfer"
     InputName = "targetKeys"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onItemSelect",
+        "onItemSelectAll",
+        "onScroll",
+        "onSearch",
+        "onSelectChange",
+        "oneWay",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "dataSource",
+        "direction",
+        "disabled",
+        "filterOption",
+        "filteredItems",
+        "footer",
+        "listStyle",
+        "locale",
+        "operationStyle",
+        "operations",
+        "pagination",
+        "render",
+        "selectAllLabels",
+        "selectedKeys",
+        "selectionsIcon",
+        "showSearch",
+        "showSelectAll",
+        "status",
+        "titles",
+    ]
 
     def __init__(
         self,
@@ -69,7 +103,7 @@ class Transfer(InputComponent):
         self.onSelectChange = create_callback(
             onSelectChange, "onSelectChange", [[0], [1]]
         )
-        self.oneWay = create_callback(oneWay, "oneWay", [])
+        self.oneWay = create_callback(oneWay, "oneWay")
         self.operationStyle = operationStyle
         self.operations = operations
         self.pagination = pagination

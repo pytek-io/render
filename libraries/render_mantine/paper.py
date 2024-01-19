@@ -1,9 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Paper(Component):
     Module = "mantine"
     JSXName = "Paper"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "component",
+        "href",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "shadow",
+        "sx",
+        "target",
+        "title",
+        "withBorder",
+    ]
 
     def __init__(
         self,
@@ -43,8 +71,8 @@ class Paper(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.component = component
         self.href = href
         self.m = m
@@ -67,4 +95,3 @@ class Paper(Component):
         self.target = target
         self.title = title
         self.withBorder = withBorder
-        assert id is None or isinstance(id, str)

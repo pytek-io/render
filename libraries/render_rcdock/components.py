@@ -1,5 +1,4 @@
 from enum import Enum
-from itertools import count
 
 from render import (
     Component,
@@ -31,6 +30,8 @@ class DropDirection(Enum):
 class DockLayout(Component):
     REF_HOOK = "ref"
     Module = "rc-dock"
+    ATTRIBUTES = ["style", "className", "id", "defaultLayout"]
+    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -41,10 +42,9 @@ class DockLayout(Component):
         key=None,
         onKeyPress=None,
         defaultLayout=None,
-        desc=None,
         componentDidMount=None,
     ):
-        super().__init__(key=desc, componentDidMount=componentDidMount)
+        super().__init__(key=key, componentDidMount=componentDidMount)
         self.children = children
         self.style = style
         self.className = className

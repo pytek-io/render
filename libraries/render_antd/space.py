@@ -4,6 +4,17 @@ from render import Component, create_callback
 class Space(Component):
     Module = "ant"
     JSXName = "Space"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "direction",
+        "size",
+        "split",
+        "wrap",
+    ]
 
     def __init__(
         self,
@@ -38,6 +49,8 @@ class Space(Component):
 class SpaceCompact(Component):
     Module = "ant"
     JSXName = "Space.Compact"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "block", "direction", "size"]
 
     def __init__(
         self,

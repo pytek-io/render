@@ -1,9 +1,35 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Group(Component):
     Module = "mantine"
     JSXName = "Group"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "grow",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "noWrap",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "spacing",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -41,8 +67,8 @@ class Group(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.align = align
         self.grow = grow
         self.m = m
@@ -63,4 +89,3 @@ class Group(Component):
         self.py = py
         self.spacing = spacing
         self.sx = sx
-        assert id is None or isinstance(id, str)

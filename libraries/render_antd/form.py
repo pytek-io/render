@@ -4,6 +4,38 @@ from render import Component, create_callback, Props
 class Form(Component):
     Module = "ant"
     JSXName = "Form"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onFieldsChange",
+        "onFinish",
+        "onFinishFailed",
+        "onValuesChange",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "colon",
+        "component",
+        "disabled",
+        "feedbackIcons",
+        "fields",
+        "form",
+        "initialValues",
+        "labelAlign",
+        "labelCol",
+        "labelWrap",
+        "layout",
+        "name",
+        "preserve",
+        "requiredMark",
+        "scrollToFirstError",
+        "size",
+        "validateMessages",
+        "validateTrigger",
+        "wrapperCol",
+    ]
 
     def __init__(
         self,
@@ -82,6 +114,41 @@ class Form(Component):
 class FormItem(Component):
     Module = "ant"
     JSXName = "Form.Item"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "colon",
+        "dependencies",
+        "extra",
+        "getValueFromEvent",
+        "getValueProps",
+        "hasFeedback",
+        "help",
+        "hidden",
+        "htmlFor",
+        "initialValue",
+        "label",
+        "labelAlign",
+        "labelCol",
+        "messageVariables",
+        "name",
+        "noStyle",
+        "normalize",
+        "preserve",
+        "required",
+        "rules",
+        "shouldUpdate",
+        "tooltip",
+        "trigger",
+        "validateDebounce",
+        "validateFirst",
+        "validateStatus",
+        "validateTrigger",
+        "valuePropName",
+        "wrapperCol",
+    ]
 
     def __init__(
         self,
@@ -164,6 +231,8 @@ class FormItem(Component):
 class FormList(Component):
     Module = "ant"
     JSXName = "Form.List"
+    CALLBACKS = ["onKeyPress", "onClick", "add", "move", "remove"]
+    ATTRIBUTES = ["style", "className", "id", "initialValue", "name", "rules"]
 
     def __init__(
         self,
@@ -200,6 +269,32 @@ class FormList(Component):
 class FormProvider(Component):
     Module = "ant"
     JSXName = "Form.Provider"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onFormChange",
+        "onFormFinish",
+        "resetFields",
+        "scrollToField",
+        "setFieldValue",
+        "setFields",
+        "setFieldsValue",
+        "submit",
+        "validateFields",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "getFieldError",
+        "getFieldInstance",
+        "getFieldValue",
+        "getFieldsError",
+        "getFieldsValue",
+        "isFieldTouched",
+        "isFieldValidating",
+        "isFieldsTouched",
+    ]
 
     def __init__(
         self,

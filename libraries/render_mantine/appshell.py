@@ -1,9 +1,40 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class AppShell(Component):
     Module = "mantine"
     JSXName = "AppShell"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "aside",
+        "asideOffsetBreakpoint",
+        "fixed",
+        "footer",
+        "header",
+        "hidden",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "navbar",
+        "navbarOffsetBreakpoint",
+        "p",
+        "padding",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -46,8 +77,8 @@ class AppShell(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.aside = aside
         self.asideOffsetBreakpoint = asideOffsetBreakpoint
         self.fixed = fixed
@@ -73,12 +104,40 @@ class AppShell(Component):
         self.py = py
         self.sx = sx
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class Aside(Component):
     Module = "mantine"
     JSXName = "Aside"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "fixed",
+        "height",
+        "hidden",
+        "hiddenBreakpoint",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "width",
+        "withBorder",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -119,8 +178,8 @@ class Aside(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.fixed = fixed
         self.height = height
         self.hidden = hidden
@@ -144,12 +203,37 @@ class Aside(Component):
         self.width = width
         self.withBorder = withBorder
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class Footer(Component):
     Module = "mantine"
     JSXName = "Footer"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "fixed",
+        "height",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "withBorder",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -187,8 +271,8 @@ class Footer(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.fixed = fixed
         self.height = height
         self.m = m
@@ -209,12 +293,37 @@ class Footer(Component):
         self.sx = sx
         self.withBorder = withBorder
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class Header(Component):
     Module = "mantine"
     JSXName = "Header"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "fixed",
+        "height",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "withBorder",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -252,8 +361,8 @@ class Header(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.fixed = fixed
         self.height = height
         self.m = m
@@ -274,12 +383,40 @@ class Header(Component):
         self.sx = sx
         self.withBorder = withBorder
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class Navbar(Component):
     Module = "mantine"
     JSXName = "Navbar"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "fixed",
+        "height",
+        "hidden",
+        "hiddenBreakpoint",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "width",
+        "withBorder",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -320,8 +457,8 @@ class Navbar(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.fixed = fixed
         self.height = height
         self.hidden = hidden
@@ -345,4 +482,3 @@ class Navbar(Component):
         self.width = width
         self.withBorder = withBorder
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)

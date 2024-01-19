@@ -5,6 +5,18 @@ class Switch(InputComponent):
     Module = "ant"
     JSXName = "Switch"
     InputName = "checked"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoFocus",
+        "checkedChildren",
+        "disabled",
+        "loading",
+        "size",
+        "unCheckedChildren",
+    ]
 
     def __init__(
         self,

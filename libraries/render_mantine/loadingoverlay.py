@@ -1,9 +1,40 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, Props
 
 
 class LoadingOverlay(Component):
     Module = "mantine"
     JSXName = "LoadingOverlay"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "exitTransitionDuration",
+        "loader",
+        "loaderProps",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "overlayBlur",
+        "overlayColor",
+        "overlayOpacity",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "sx",
+        "transitionDuration",
+        "visible",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -46,8 +77,8 @@ class LoadingOverlay(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.exitTransitionDuration = exitTransitionDuration
         self.loader = loader
         self.loaderProps = loaderProps
@@ -73,4 +104,3 @@ class LoadingOverlay(Component):
         self.transitionDuration = transitionDuration
         self.visible = visible
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)

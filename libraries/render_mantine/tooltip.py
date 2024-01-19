@@ -1,10 +1,52 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Tooltip(InputComponent):
     Module = "mantine"
     JSXName = "Tooltip"
     InputName = "opened"
+    CALLBACKS = ["onKeyPress", "onClick", "onPositionChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "arrowOffset",
+        "arrowSize",
+        "closeDelay",
+        "color",
+        "disabled",
+        "events",
+        "inline",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "multiline",
+        "mx",
+        "my",
+        "offset",
+        "openDelay",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "positionDependencies",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "refProp",
+        "sx",
+        "transition",
+        "transitionDuration",
+        "width",
+        "withArrow",
+        "withinPortal",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -62,8 +104,8 @@ class Tooltip(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.arrowOffset = arrowOffset
         self.arrowSize = arrowSize
         self.closeDelay = closeDelay
@@ -81,7 +123,7 @@ class Tooltip(InputComponent):
         self.mx = mx
         self.my = my
         self.offset = offset
-        self.onPositionChange = create_callback(onPositionChange)
+        self.onPositionChange = create_callback(onPositionChange, "onPositionChange")
         self.openDelay = openDelay
         self.p = p
         self.pb = pb
@@ -101,12 +143,43 @@ class Tooltip(InputComponent):
         self.withArrow = withArrow
         self.withinPortal = withinPortal
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class TooltipFloating(Component):
     Module = "mantine"
     JSXName = "TooltipFloating"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "disabled",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "multiline",
+        "mx",
+        "my",
+        "offset",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "refProp",
+        "sx",
+        "width",
+        "withinPortal",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -150,8 +223,8 @@ class TooltipFloating(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.disabled = disabled
         self.label = label
@@ -178,12 +251,34 @@ class TooltipFloating(Component):
         self.width = width
         self.withinPortal = withinPortal
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class TooltipGroup(Component):
     Module = "mantine"
     JSXName = "TooltipGroup"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "closeDelay",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "openDelay",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -218,8 +313,8 @@ class TooltipGroup(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.closeDelay = closeDelay
         self.m = m
         self.mb = mb
@@ -237,4 +332,3 @@ class TooltipGroup(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

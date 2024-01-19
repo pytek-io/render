@@ -4,6 +4,23 @@ from render import Component, create_callback
 class Collapse(Component):
     Module = "ant"
     JSXName = "Collapse"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "accordion",
+        "activeKey",
+        "bordered",
+        "collapsible",
+        "defaultActiveKey",
+        "destroyInactivePanel",
+        "expandIcon",
+        "expandIconPosition",
+        "ghost",
+        "items",
+        "size",
+    ]
 
     def __init__(
         self,
@@ -45,13 +62,24 @@ class Collapse(Component):
         self.expandIconPosition = expandIconPosition
         self.ghost = ghost
         self.items = items
-        self.onChange = create_callback(onChange, "onChange", [])
+        self.onChange = create_callback(onChange, "onChange")
         self.size = size
 
 
 class CollapsePanel(Component):
     Module = "ant"
     JSXName = "Collapse.Panel"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "collapsible",
+        "extra",
+        "forceRender",
+        "header",
+        "showArrow",
+    ]
 
     def __init__(
         self,

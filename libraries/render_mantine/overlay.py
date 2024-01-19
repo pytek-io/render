@@ -1,9 +1,40 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Overlay(Component):
     Module = "mantine"
     JSXName = "Overlay"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "blur",
+        "color",
+        "component",
+        "gradient",
+        "href",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "opacity",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "sx",
+        "target",
+        "title",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -46,8 +77,8 @@ class Overlay(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.blur = blur
         self.color = color
         self.component = component
@@ -73,4 +104,3 @@ class Overlay(Component):
         self.target = target
         self.title = title
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)

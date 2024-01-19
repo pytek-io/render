@@ -1,9 +1,32 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class OptionalPortal(Component):
     Module = "mantine"
     JSXName = "OptionalPortal"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "target",
+        "withinPortal",
+    ]
 
     def __init__(
         self,
@@ -38,8 +61,8 @@ class OptionalPortal(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -57,12 +80,33 @@ class OptionalPortal(Component):
         self.sx = sx
         self.target = target
         self.withinPortal = withinPortal
-        assert id is None or isinstance(id, str)
 
 
 class Portal(Component):
     Module = "mantine"
     JSXName = "Portal"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "target",
+    ]
 
     def __init__(
         self,
@@ -96,8 +140,8 @@ class Portal(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -114,4 +158,3 @@ class Portal(Component):
         self.py = py
         self.sx = sx
         self.target = target
-        assert id is None or isinstance(id, str)

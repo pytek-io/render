@@ -4,6 +4,20 @@ from render import Component, create_callback
 class Alert(Component):
     Module = "ant"
     JSXName = "Alert"
+    CALLBACKS = ["onKeyPress", "onClick", "afterClose", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "action",
+        "banner",
+        "closeIcon",
+        "description",
+        "icon",
+        "message",
+        "showIcon",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -34,13 +48,13 @@ class Alert(Component):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.action = action
-        self.afterClose = create_callback(afterClose, "afterClose", [])
+        self.afterClose = create_callback(afterClose, "afterClose")
         self.banner = banner
         self.closeIcon = closeIcon
         self.description = description
         self.icon = icon
         self.message = message
-        self.onClose = create_callback(onClose, "onClose", [])
+        self.onClose = create_callback(onClose, "onClose")
         self.showIcon = showIcon
         self.type = type
 
@@ -48,6 +62,8 @@ class Alert(Component):
 class AlertErrorBoundary(Component):
     Module = "ant"
     JSXName = "Alert.ErrorBoundary"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "description", "message"]
 
     def __init__(
         self,

@@ -5,6 +5,33 @@ class InputNumber(InputComponent):
     Module = "ant"
     JSXName = "InputNumber"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onPressEnter", "onStep"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "addonAfter",
+        "addonBefore",
+        "autoFocus",
+        "bordered",
+        "changeOnBlur",
+        "controls",
+        "decimalSeparator",
+        "disabled",
+        "formatter",
+        "keyboard",
+        "max",
+        "min",
+        "parser",
+        "placeholder",
+        "precision",
+        "prefix",
+        "readOnly",
+        "size",
+        "status",
+        "step",
+        "stringMode",
+    ]
 
     def __init__(
         self,
@@ -62,7 +89,7 @@ class InputNumber(InputComponent):
         self.keyboard = keyboard
         self.max = max
         self.min = min
-        self.onPressEnter = create_callback(onPressEnter, "onPressEnter", [])
+        self.onPressEnter = create_callback(onPressEnter, "onPressEnter")
         self.onStep = create_callback(
             onStep, "onStep", [[0], [1, "offset"], [1, "type"]]
         )

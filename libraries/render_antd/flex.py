@@ -4,6 +4,19 @@ from render import Component, create_callback
 class Flex(Component):
     Module = "ant"
     JSXName = "Flex"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "component",
+        "flex",
+        "gap",
+        "justify",
+        "vertical",
+        "wrap",
+    ]
 
     def __init__(
         self,

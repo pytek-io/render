@@ -1,10 +1,47 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class MultiSelect(InputComponent):
     Module = "mantine"
     JSXName = "MultiSelect"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onCreate", "onSearchChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "clearButtonLabel",
+        "clearButtonTabIndex",
+        "clearSearchOnBlur",
+        "clearSearchOnChange",
+        "clearable",
+        "creatable",
+        "dropdownComponent",
+        "filter",
+        "getCreateLabel",
+        "m",
+        "maxDropdownHeight",
+        "maxSelectedValues",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "searchValue",
+        "searchable",
+        "selectOnBlur",
+        "shouldCreate",
+        "sx",
+        "valueComponent",
+    ]
 
     def __init__(
         self,
@@ -58,8 +95,8 @@ class MultiSelect(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.clearButtonLabel = clearButtonLabel
         self.clearButtonTabIndex = clearButtonTabIndex
         self.clearSearchOnBlur = clearSearchOnBlur
@@ -78,8 +115,8 @@ class MultiSelect(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onCreate = create_callback(onCreate)
-        self.onSearchChange = create_callback(onSearchChange)
+        self.onCreate = create_callback(onCreate, "onCreate")
+        self.onSearchChange = create_callback(onSearchChange, "onSearchChange")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -93,12 +130,37 @@ class MultiSelect(InputComponent):
         self.shouldCreate = shouldCreate
         self.sx = sx
         self.valueComponent = valueComponent
-        assert id is None or isinstance(id, str)
 
 
 class MultiSelectValue(Component):
     Module = "mantine"
     JSXName = "MultiSelectValue"
+    CALLBACKS = ["onKeyPress", "onClick", "onRemove"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "disabled",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "readOnly",
+        "size",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -137,8 +199,8 @@ class MultiSelectValue(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.disabled = disabled
         self.label = label
         self.m = m
@@ -148,7 +210,7 @@ class MultiSelectValue(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onRemove = create_callback(onRemove)
+        self.onRemove = create_callback(onRemove, "onRemove")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -160,4 +222,3 @@ class MultiSelectValue(Component):
         self.readOnly = readOnly
         self.size = size
         self.sx = sx
-        assert id is None or isinstance(id, str)

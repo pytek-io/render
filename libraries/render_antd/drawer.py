@@ -4,6 +4,35 @@ from render import Component, create_callback
 class Drawer(Component):
     Module = "ant"
     JSXName = "Drawer"
+    CALLBACKS = ["onKeyPress", "onClick", "afterOpenChange", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoFocus",
+        "classNames",
+        "closeIcon",
+        "contentWrapperStyle",
+        "destroyOnClose",
+        "extra",
+        "footer",
+        "forceRender",
+        "getContainer",
+        "headerStyle",
+        "height",
+        "keyboard",
+        "mask",
+        "maskClosable",
+        "open",
+        "placement",
+        "push",
+        "rootStyle",
+        "size",
+        "styles",
+        "title",
+        "width",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -65,7 +94,7 @@ class Drawer(Component):
         self.keyboard = keyboard
         self.mask = mask
         self.maskClosable = maskClosable
-        self.onClose = create_callback(onClose, "onClose", [])
+        self.onClose = create_callback(onClose, "onClose")
         self.open = open
         self.placement = placement
         self.push = push

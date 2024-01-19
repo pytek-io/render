@@ -4,6 +4,32 @@ from render import Component, create_callback, add_data_namespace
 class Image(Component):
     Module = "ant"
     JSXName = "Image"
+    CALLBACKS = ["onKeyPress", "onClick", "onError", "onVisibleChange"]
+    DATA = ["src"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "alt",
+        "closeIcon",
+        "fallback",
+        "forceRender",
+        "getContainer",
+        "height",
+        "imageRender",
+        "mask",
+        "maskClassName",
+        "maxScale",
+        "minScale",
+        "movable",
+        "placeholder",
+        "preview",
+        "rootClassName",
+        "scaleStep",
+        "toolbarRender",
+        "visible",
+        "width",
+    ]
 
     def __init__(
         self,
@@ -57,7 +83,7 @@ class Image(Component):
         self.maxScale = maxScale
         self.minScale = minScale
         self.movable = movable
-        self.onError = create_callback(onError, "onError", [])
+        self.onError = create_callback(onError, "onError")
         self.onVisibleChange = create_callback(
             onVisibleChange, "onVisibleChange", [[0], [1]]
         )
@@ -74,6 +100,30 @@ class Image(Component):
 class PreviewGroup(Component):
     Module = "ant"
     JSXName = "PreviewGroup"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onVisibleChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "closeIcon",
+        "countRender",
+        "current",
+        "fallback",
+        "forceRender",
+        "getContainer",
+        "imageRender",
+        "items",
+        "mask",
+        "maskClassName",
+        "maxScale",
+        "minScale",
+        "movable",
+        "preview",
+        "rootClassName",
+        "scaleStep",
+        "toolbarRender",
+        "visible",
+    ]
 
     def __init__(
         self,

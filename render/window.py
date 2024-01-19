@@ -582,7 +582,10 @@ class Window:
 
     def serialize_props(self, parent, component: Component):
         result = {}
-        for name, attribute in component.own_attributes(callback=False):
+        for name in component.ATTRIBUTES + component.DATA:
+            attribute = getattr(component, name)
+            if attribute is None:
+                continue
             # rmk: we evaluate callables at top level only, we test mapping first as they are callable
             if isinstance(attribute, Mapping):
                 attribute = list(attribute())
@@ -590,11 +593,10 @@ class Window:
                 while callable(attribute):
                     attribute = attribute()
             elif component.is_stale:
-                continue
-            if attribute is not None:
-                result["data-src" if name == "dataSrc" else name] = self._serialize(
-                    parent, attribute, name
-                )
+                continue  # not need to send static props again if the component is stale
+            result["data-src" if name == "dataSrc" else name] = self._serialize(
+                parent, attribute, name
+            )
             component._props_values[name] = attribute
         if isinstance(component, InputComponent):
             component()  # forcing dependency
@@ -655,20 +657,26 @@ class Window:
             result["_children"] = self.serialize_children(component)
             result["props"] = self.serialize_props(parent, component)
             # react children need to be keyed, we want the wrapper to have the same key if any (this is needed when wrapping ant menu items)
-            result["callbacks"] = [
-                self.serialize_callback(
-                    attribute_name,
-                    attribute_value,
-                    input_control_params=[
-                        component.InputName,
-                        component.NewValuePath,
-                    ]
-                    if isinstance(component, InputComponent)
-                    and attribute_name == getattr(component, "ChangeEventName", "onChange")
-                    else None,
-                )
-                for attribute_name, attribute_value in component.own_attributes(callback=True)
-            ]
+            callbacks = []
+            callback_names = component.CALLBACKS
+            if isinstance(component, InputComponent):
+                callback_names = chain(callback_names, ["onChange"])
+            for attribute_name in callback_names:
+                if value := getattr(component, attribute_name):
+                    callbacks.append(
+                        self.serialize_callback(
+                            attribute_name,
+                            value,
+                            input_control_params=[
+                                component.InputName,
+                                component.NewValuePath,
+                            ]
+                            if isinstance(component, InputComponent)
+                            and attribute_name == getattr(component, "ChangeEventName", "onChange")
+                            else None,
+                        )
+                    )
+            result["callbacks"] = callbacks
         result["statefull"] = bool(
             parent is None
             or isinstance(component, InputComponent)

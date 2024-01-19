@@ -1,10 +1,41 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class SegmentedControl(InputComponent):
     Module = "mantine"
     JSXName = "SegmentedControl"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "data",
+        "disabled",
+        "fullWidth",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "name",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "transitionDuration",
+        "transitionTimingFunction",
+    ]
 
     def __init__(
         self,
@@ -50,8 +81,8 @@ class SegmentedControl(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.data = data
         self.disabled = disabled
@@ -77,4 +108,3 @@ class SegmentedControl(InputComponent):
         self.sx = sx
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
-        assert id is None or isinstance(id, str)

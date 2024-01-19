@@ -1,10 +1,44 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Select(InputComponent):
     Module = "mantine"
     JSXName = "Select"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onCreate", "onSearchChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowDeselect",
+        "clearButtonLabel",
+        "clearButtonTabIndex",
+        "clearable",
+        "creatable",
+        "dropdownComponent",
+        "filterDataOnExactSearchMatch",
+        "getCreateLabel",
+        "m",
+        "maxDropdownHeight",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "searchValue",
+        "searchable",
+        "selectOnBlur",
+        "shouldCreate",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -55,8 +89,8 @@ class Select(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.allowDeselect = allowDeselect
         self.clearButtonLabel = clearButtonLabel
         self.clearButtonTabIndex = clearButtonTabIndex
@@ -73,8 +107,8 @@ class Select(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onCreate = create_callback(onCreate)
-        self.onSearchChange = create_callback(onSearchChange)
+        self.onCreate = create_callback(onCreate, "onCreate")
+        self.onSearchChange = create_callback(onSearchChange, "onSearchChange")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -87,4 +121,3 @@ class Select(InputComponent):
         self.selectOnBlur = selectOnBlur
         self.shouldCreate = shouldCreate
         self.sx = sx
-        assert id is None or isinstance(id, str)

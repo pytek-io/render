@@ -1,10 +1,54 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class RangeSlider(InputComponent):
     Module = "mantine"
     JSXName = "RangeSlider"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onChangeEnd"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "disabled",
+        "inverted",
+        "label",
+        "labelAlwaysOn",
+        "labelTransition",
+        "labelTransitionDuration",
+        "labelTransitionTimingFunction",
+        "m",
+        "marks",
+        "max",
+        "mb",
+        "min",
+        "minRange",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "name",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "precision",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "scale",
+        "showLabelOnHover",
+        "size",
+        "step",
+        "sx",
+        "thumbChildren",
+        "thumbFromLabel",
+        "thumbSize",
+        "thumbToLabel",
+    ]
 
     def __init__(
         self,
@@ -64,8 +108,8 @@ class RangeSlider(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.disabled = disabled
         self.inverted = inverted
@@ -86,7 +130,7 @@ class RangeSlider(InputComponent):
         self.mx = mx
         self.my = my
         self.name = name
-        self.onChangeEnd = create_callback(onChangeEnd)
+        self.onChangeEnd = create_callback(onChangeEnd, "onChangeEnd")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -105,13 +149,54 @@ class RangeSlider(InputComponent):
         self.thumbFromLabel = thumbFromLabel
         self.thumbSize = thumbSize
         self.thumbToLabel = thumbToLabel
-        assert id is None or isinstance(id, str)
 
 
 class Slider(InputComponent):
     Module = "mantine"
     JSXName = "Slider"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onChangeEnd"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "disabled",
+        "inverted",
+        "label",
+        "labelAlwaysOn",
+        "labelTransition",
+        "labelTransitionDuration",
+        "labelTransitionTimingFunction",
+        "m",
+        "marks",
+        "max",
+        "mb",
+        "min",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "name",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "precision",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "scale",
+        "showLabelOnHover",
+        "size",
+        "step",
+        "sx",
+        "thumbChildren",
+        "thumbLabel",
+        "thumbSize",
+    ]
 
     def __init__(
         self,
@@ -169,8 +254,8 @@ class Slider(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.disabled = disabled
         self.inverted = inverted
@@ -190,7 +275,7 @@ class Slider(InputComponent):
         self.mx = mx
         self.my = my
         self.name = name
-        self.onChangeEnd = create_callback(onChangeEnd)
+        self.onChangeEnd = create_callback(onChangeEnd, "onChangeEnd")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -208,4 +293,3 @@ class Slider(InputComponent):
         self.thumbChildren = thumbChildren
         self.thumbLabel = thumbLabel
         self.thumbSize = thumbSize
-        assert id is None or isinstance(id, str)

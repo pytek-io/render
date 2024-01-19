@@ -5,6 +5,7 @@ class Editor(Component):
     Module = "monaco"
     JSXName = "Editor"
     REF_HOOK = "onMount"
+    ATTRIBUTES = ["height", "defaultLanguage", "defaultValue", "style", "options"]
 
     def __init__(
         self,
@@ -14,9 +15,8 @@ class Editor(Component):
         style=None,
         options=None,
         desc=None,
-        debug=False,
     ):
-        super().__init__(desc, debug)
+        super().__init__(desc)
         self.height = height
         self.defaultLanguage = defaultLanguage
         self.defaultValue = defaultValue

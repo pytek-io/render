@@ -1,9 +1,38 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Progress(Component):
     Module = "mantine"
     JSXName = "Progress"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "animate",
+        "color",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "sections",
+        "size",
+        "striped",
+        "sx",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -44,8 +73,8 @@ class Progress(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.animate = animate
         self.color = color
         self.label = label
@@ -69,4 +98,3 @@ class Progress(Component):
         self.striped = striped
         self.sx = sx
         self.value = value
-        assert id is None or isinstance(id, str)

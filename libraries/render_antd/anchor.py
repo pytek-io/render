@@ -4,6 +4,22 @@ from render import Component, create_callback
 class Anchor(Component):
     Module = "ant"
     JSXName = "Anchor"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "affix",
+        "bounds",
+        "direction",
+        "getContainer",
+        "getCurrentAnchor",
+        "items",
+        "offsetTop",
+        "replace",
+        "showInkInFixed",
+        "targetOffset",
+    ]
 
     def __init__(
         self,
@@ -50,6 +66,8 @@ class Anchor(Component):
 class AnchorItem(Component):
     Module = "ant"
     JSXName = "Anchor.Item"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "href", "replace", "target", "title"]
 
     def __init__(
         self,
@@ -82,6 +100,8 @@ class AnchorItem(Component):
 class AnchorLink(Component):
     Module = "ant"
     JSXName = "Anchor.Link"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "href", "target", "title"]
 
     def __init__(
         self,

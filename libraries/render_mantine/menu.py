@@ -1,10 +1,42 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Menu(InputComponent):
     Module = "mantine"
     JSXName = "Menu"
     InputName = "opened"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "classNames",
+        "clickOutsideEvents",
+        "closeDelay",
+        "closeOnClickOutside",
+        "closeOnEscape",
+        "closeOnItemClick",
+        "loop",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "openDelay",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "styles",
+        "sx",
+        "trigger",
+        "unstyled",
+    ]
 
     def __init__(
         self,
@@ -53,8 +85,8 @@ class Menu(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.classNames = classNames
         self.clickOutsideEvents = clickOutsideEvents
         self.closeDelay = closeDelay
@@ -69,8 +101,8 @@ class Menu(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onClose = create_callback(onClose)
-        self.onOpen = create_callback(onOpen)
+        self.onClose = create_callback(onClose, "onClose")
+        self.onOpen = create_callback(onOpen, "onOpen")
         self.openDelay = openDelay
         self.p = p
         self.pb = pb
@@ -83,12 +115,32 @@ class Menu(InputComponent):
         self.sx = sx
         self.trigger = trigger
         self.unstyled = unstyled
-        assert id is None or isinstance(id, str)
 
 
 class MenuDivider(Component):
     Module = "mantine"
     JSXName = "Menu.Divider"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -121,8 +173,8 @@ class MenuDivider(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -138,12 +190,32 @@ class MenuDivider(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class MenuDropdown(Component):
     Module = "mantine"
     JSXName = "Menu.Dropdown"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -176,8 +248,8 @@ class MenuDropdown(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -193,12 +265,40 @@ class MenuDropdown(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class MenuItem(Component):
     Module = "mantine"
     JSXName = "Menu.Item"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "closeMenuOnClick",
+        "color",
+        "component",
+        "href",
+        "icon",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "rightSection",
+        "sx",
+        "target",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -239,8 +339,8 @@ class MenuItem(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.closeMenuOnClick = closeMenuOnClick
         self.color = color
         self.component = component
@@ -264,12 +364,32 @@ class MenuItem(Component):
         self.sx = sx
         self.target = target
         self.title = title
-        assert id is None or isinstance(id, str)
 
 
 class MenuLabel(Component):
     Module = "mantine"
     JSXName = "Menu.Label"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -302,8 +422,8 @@ class MenuLabel(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -319,12 +439,33 @@ class MenuLabel(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class MenuTarget(Component):
     Module = "mantine"
     JSXName = "Menu.Target"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "refProp",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -358,8 +499,8 @@ class MenuTarget(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -376,4 +517,3 @@ class MenuTarget(Component):
         self.py = py
         self.refProp = refProp
         self.sx = sx
-        assert id is None or isinstance(id, str)

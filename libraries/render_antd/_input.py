@@ -5,6 +5,28 @@ class Input(InputComponent):
     Module = "ant"
     JSXName = "Input"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onPressEnter"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "addonAfter",
+        "addonBefore",
+        "allowClear",
+        "bordered",
+        "classNames",
+        "count",
+        "disabled",
+        "maxLength",
+        "placeholder",
+        "prefix",
+        "showCount",
+        "size",
+        "status",
+        "styles",
+        "suffix",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -52,7 +74,7 @@ class Input(InputComponent):
         self.count = count
         self.disabled = disabled
         self.maxLength = maxLength
-        self.onPressEnter = create_callback(onPressEnter, "onPressEnter", [])
+        self.onPressEnter = create_callback(onPressEnter, "onPressEnter")
         self.placeholder = placeholder
         self.prefix = prefix
         self.showCount = showCount
@@ -66,6 +88,8 @@ class Input(InputComponent):
 class InputGroup(Component):
     Module = "ant"
     JSXName = "Input.Group"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = ["style", "className", "id", "compact", "size"]
 
     def __init__(
         self,
@@ -94,6 +118,17 @@ class InputGroup(Component):
 class InputPassword(Component):
     Module = "ant"
     JSXName = "Input.Password"
+    CALLBACKS = ["onKeyPress", "onClick", "onVisibleChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "blur",
+        "focus",
+        "iconRender",
+        "visibilityToggle",
+        "visible",
+    ]
 
     def __init__(
         self,
@@ -122,7 +157,7 @@ class InputPassword(Component):
         self.blur = blur
         self.focus = focus
         self.iconRender = iconRender
-        self.onVisibleChange = create_callback(onVisibleChange, "onVisibleChange", [])
+        self.onVisibleChange = create_callback(onVisibleChange, "onVisibleChange")
         self.visibilityToggle = visibilityToggle
         self.visible = visible
 
@@ -130,6 +165,32 @@ class InputPassword(Component):
 class InputSearch(Component):
     Module = "ant"
     JSXName = "Input.Search"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onPressEnter", "onSearch"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "addonAfter",
+        "addonBefore",
+        "allowClear",
+        "bordered",
+        "classNames",
+        "count",
+        "defaultValue",
+        "disabled",
+        "enterButton",
+        "loading",
+        "maxLength",
+        "placeholder",
+        "prefix",
+        "showCount",
+        "size",
+        "status",
+        "styles",
+        "suffix",
+        "type",
+        "value",
+    ]
 
     def __init__(
         self,
@@ -183,8 +244,8 @@ class InputSearch(Component):
         self.enterButton = enterButton
         self.loading = loading
         self.maxLength = maxLength
-        self.onChange = create_callback(onChange, "onChange", [])
-        self.onPressEnter = create_callback(onPressEnter, "onPressEnter", [])
+        self.onChange = create_callback(onChange, "onChange")
+        self.onPressEnter = create_callback(onPressEnter, "onPressEnter")
         self.onSearch = create_callback(onSearch, "onSearch", [[0]])
         self.placeholder = placeholder
         self.prefix = prefix
@@ -201,6 +262,31 @@ class InputTextArea(InputComponent):
     Module = "ant"
     JSXName = "Input.TextArea"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onPressEnter", "onResize"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "addonAfter",
+        "addonBefore",
+        "allowClear",
+        "autoSize",
+        "bordered",
+        "classNames",
+        "cols",
+        "count",
+        "disabled",
+        "maxLength",
+        "placeholder",
+        "prefix",
+        "rows",
+        "showCount",
+        "size",
+        "status",
+        "styles",
+        "suffix",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -254,7 +340,7 @@ class InputTextArea(InputComponent):
         self.count = count
         self.disabled = disabled
         self.maxLength = maxLength
-        self.onPressEnter = create_callback(onPressEnter, "onPressEnter", [])
+        self.onPressEnter = create_callback(onPressEnter, "onPressEnter")
         self.onResize = create_callback(
             onResize, "onResize", [[0, "width"], [0, "height"]]
         )

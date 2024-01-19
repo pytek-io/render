@@ -4,6 +4,22 @@ from render import Component, create_callback, Props
 class Popconfirm(Component):
     Module = "ant"
     JSXName = "Popconfirm"
+    CALLBACKS = ["onKeyPress", "onClick", "onCancel", "onConfirm", "onPopupClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "cancelButtonProps",
+        "cancelText",
+        "description",
+        "disabled",
+        "icon",
+        "okButtonProps",
+        "okText",
+        "okType",
+        "showCancel",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -44,8 +60,8 @@ class Popconfirm(Component):
         self.okButtonProps = okButtonProps
         self.okText = okText
         self.okType = okType
-        self.onCancel = create_callback(onCancel, "onCancel", [])
-        self.onConfirm = create_callback(onConfirm, "onConfirm", [])
-        self.onPopupClick = create_callback(onPopupClick, "onPopupClick", [])
+        self.onCancel = create_callback(onCancel, "onCancel")
+        self.onConfirm = create_callback(onConfirm, "onConfirm")
+        self.onPopupClick = create_callback(onPopupClick, "onPopupClick")
         self.showCancel = showCancel
         self.title = title

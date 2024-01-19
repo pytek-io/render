@@ -1,10 +1,45 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class ColorInput(InputComponent):
     Module = "mantine"
     JSXName = "ColorInput"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onChangeEnd"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "disallowInput",
+        "dropdownZIndex",
+        "fixOnBlur",
+        "format",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "shadow",
+        "size",
+        "swatches",
+        "swatchesPerRow",
+        "sx",
+        "transition",
+        "transitionDuration",
+        "transitionTimingFunction",
+        "withPicker",
+        "withPreview",
+        "withinPortal",
+    ]
 
     def __init__(
         self,
@@ -55,8 +90,8 @@ class ColorInput(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.disallowInput = disallowInput
         self.dropdownZIndex = dropdownZIndex
         self.fixOnBlur = fixOnBlur
@@ -68,7 +103,7 @@ class ColorInput(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onChangeEnd = create_callback(onChangeEnd)
+        self.onChangeEnd = create_callback(onChangeEnd, "onChangeEnd")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -87,4 +122,3 @@ class ColorInput(InputComponent):
         self.withPicker = withPicker
         self.withPreview = withPreview
         self.withinPortal = withinPortal
-        assert id is None or isinstance(id, str)

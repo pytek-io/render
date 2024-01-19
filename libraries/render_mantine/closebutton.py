@@ -1,9 +1,31 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class CloseButton(Component):
     Module = "mantine"
     JSXName = "CloseButton"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "iconSize",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -37,8 +59,8 @@ class CloseButton(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.iconSize = iconSize
         self.m = m
         self.mb = mb
@@ -55,4 +77,3 @@ class CloseButton(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

@@ -1,10 +1,56 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Popover(InputComponent):
     Module = "mantine"
     JSXName = "Popover"
     InputName = "opened"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen", "onPositionChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "__staticSelector",
+        "arrowOffset",
+        "arrowSize",
+        "classNames",
+        "clickOutsideEvents",
+        "closeOnClickOutside",
+        "closeOnEscape",
+        "disabled",
+        "exitTransitionDuration",
+        "m",
+        "mb",
+        "middlewares",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offset",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "positionDependencies",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "shadow",
+        "styles",
+        "sx",
+        "transition",
+        "transitionDuration",
+        "trapFocus",
+        "unstyled",
+        "width",
+        "withArrow",
+        "withRoles",
+        "withinPortal",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -68,8 +114,8 @@ class Popover(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.__staticSelector = __staticSelector
         self.arrowOffset = arrowOffset
         self.arrowSize = arrowSize
@@ -88,9 +134,9 @@ class Popover(InputComponent):
         self.mx = mx
         self.my = my
         self.offset = offset
-        self.onClose = create_callback(onClose)
-        self.onOpen = create_callback(onOpen)
-        self.onPositionChange = create_callback(onPositionChange)
+        self.onClose = create_callback(onClose, "onClose")
+        self.onOpen = create_callback(onOpen, "onOpen")
+        self.onPositionChange = create_callback(onPositionChange, "onPositionChange")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -113,12 +159,32 @@ class Popover(InputComponent):
         self.withRoles = withRoles
         self.withinPortal = withinPortal
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)
 
 
 class PopoverDropdown(Component):
     Module = "mantine"
     JSXName = "Popover.Dropdown"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -151,8 +217,8 @@ class PopoverDropdown(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -168,12 +234,34 @@ class PopoverDropdown(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class PopoverTarget(Component):
     Module = "mantine"
     JSXName = "Popover.Target"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "popupType",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "refProp",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -208,8 +296,8 @@ class PopoverTarget(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -227,4 +315,3 @@ class PopoverTarget(Component):
         self.py = py
         self.refProp = refProp
         self.sx = sx
-        assert id is None or isinstance(id, str)

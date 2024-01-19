@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class FileButton(Component):
     Module = "mantine"
     JSXName = "FileButton"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "resetRef"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "accept",
+        "form",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "multiple",
+        "mx",
+        "my",
+        "name",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -42,8 +67,8 @@ class FileButton(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.accept = accept
         self.form = form
         self.m = m
@@ -55,7 +80,7 @@ class FileButton(Component):
         self.mx = mx
         self.my = my
         self.name = name
-        self.onChange = create_callback(onChange)
+        self.onChange = create_callback(onChange, "onChange")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -63,6 +88,5 @@ class FileButton(Component):
         self.pt = pt
         self.px = px
         self.py = py
-        self.resetRef = create_callback(resetRef)
+        self.resetRef = create_callback(resetRef, "resetRef")
         self.sx = sx
-        assert id is None or isinstance(id, str)

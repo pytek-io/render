@@ -1,9 +1,53 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Drawer(Component):
     Module = "mantine"
     JSXName = "Drawer"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "closeButtonLabel",
+        "closeOnClickOutside",
+        "closeOnEscape",
+        "lockScroll",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "opened",
+        "overlayBlur",
+        "overlayColor",
+        "overlayOpacity",
+        "p",
+        "padding",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "shadow",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "transition",
+        "transitionDuration",
+        "transitionTimingFunction",
+        "trapFocus",
+        "withCloseButton",
+        "withFocusReturn",
+        "withOverlay",
+        "withinPortal",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -60,8 +104,8 @@ class Drawer(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.closeButtonLabel = closeButtonLabel
         self.closeOnClickOutside = closeOnClickOutside
         self.closeOnEscape = closeOnEscape
@@ -73,7 +117,7 @@ class Drawer(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onClose = create_callback(onClose)
+        self.onClose = create_callback(onClose, "onClose")
         self.opened = opened
         self.overlayBlur = overlayBlur
         self.overlayColor = overlayColor
@@ -101,4 +145,3 @@ class Drawer(Component):
         self.withOverlay = withOverlay
         self.withinPortal = withinPortal
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)

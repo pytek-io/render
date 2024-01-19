@@ -1,9 +1,49 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, Props
 
 
 class Button(Component):
     Module = "mantine"
     JSXName = "Button"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "compact",
+        "component",
+        "disabled",
+        "fullWidth",
+        "gradient",
+        "href",
+        "leftIcon",
+        "loaderPosition",
+        "loaderProps",
+        "loading",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "rightIcon",
+        "size",
+        "sx",
+        "target",
+        "title",
+        "type",
+        "uppercase",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -55,8 +95,8 @@ class Button(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.compact = compact
         self.component = component
@@ -91,12 +131,34 @@ class Button(Component):
         self.type = type
         self.uppercase = uppercase
         self.variant = variant
-        assert id is None or isinstance(id, str)
 
 
 class ButtonGroup(Component):
     Module = "mantine"
     JSXName = "ButtonGroup"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "buttonBorderWidth",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -131,8 +193,8 @@ class ButtonGroup(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.buttonBorderWidth = buttonBorderWidth
         self.m = m
         self.mb = mb
@@ -150,4 +212,3 @@ class ButtonGroup(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

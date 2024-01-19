@@ -4,6 +4,8 @@ from render import Component, create_callback
 class Tag(Component):
     Module = "ant"
     JSXName = "Tag"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose"]
+    ATTRIBUTES = ["style", "className", "id", "bordered", "closeIcon", "color", "icon"]
 
     def __init__(
         self,
@@ -32,12 +34,14 @@ class Tag(Component):
         self.closeIcon = closeIcon
         self.color = color
         self.icon = icon
-        self.onClose = create_callback(onClose, "onClose", [])
+        self.onClose = create_callback(onClose, "onClose")
 
 
 class TagCheckableTag(Component):
     Module = "ant"
     JSXName = "Tag.CheckableTag"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = ["style", "className", "id", "checked"]
 
     def __init__(
         self,

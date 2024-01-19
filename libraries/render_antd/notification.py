@@ -4,6 +4,27 @@ from render import Component, create_callback
 class Notification(Component):
     Module = "ant"
     JSXName = "Notification"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "bottom",
+        "btn",
+        "closeIcon",
+        "description",
+        "duration",
+        "getContainer",
+        "icon",
+        "maxCount",
+        "message",
+        "placement",
+        "props",
+        "role",
+        "rtl",
+        "stack",
+        "top",
+    ]
 
     def __init__(
         self,
@@ -38,7 +59,7 @@ class Notification(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.bottom = bottom
         self.btn = btn
         self.closeIcon = closeIcon
@@ -48,7 +69,7 @@ class Notification(Component):
         self.icon = icon
         self.maxCount = maxCount
         self.message = message
-        self.onClose = create_callback(onClose, "onClose", [])
+        self.onClose = create_callback(onClose, "onClose")
         self.placement = placement
         self.props = props
         self.role = role

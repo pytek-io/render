@@ -1,4 +1,4 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class TextInput(InputComponent):
@@ -6,6 +6,31 @@ class TextInput(InputComponent):
     JSXName = "TextInput"
     InputName = "value"
     NewValuePath = "currentTarget.value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "__staticSelector",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+        "type",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -45,8 +70,8 @@ class TextInput(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.__staticSelector = __staticSelector
         self.m = m
         self.mb = mb
@@ -66,4 +91,3 @@ class TextInput(InputComponent):
         self.sx = sx
         self.type = type
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)

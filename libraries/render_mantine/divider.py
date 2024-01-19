@@ -1,9 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, Props
 
 
 class Divider(Component):
     Module = "mantine"
     JSXName = "Divider"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "label",
+        "labelPosition",
+        "labelProps",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+        "variant",
+    ]
 
     def __init__(
         self,
@@ -43,8 +71,8 @@ class Divider(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.label = label
         self.labelPosition = labelPosition
@@ -67,4 +95,3 @@ class Divider(Component):
         self.size = size
         self.sx = sx
         self.variant = variant
-        assert id is None or isinstance(id, str)

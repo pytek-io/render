@@ -1,9 +1,48 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Col(Component):
     Module = "mantine"
     JSXName = "Col"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "lg",
+        "m",
+        "mb",
+        "md",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offset",
+        "offsetLg",
+        "offsetMd",
+        "offsetSm",
+        "offsetXl",
+        "offsetXs",
+        "order",
+        "orderLg",
+        "orderMd",
+        "orderSm",
+        "orderXl",
+        "orderXs",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sm",
+        "span",
+        "sx",
+        "xl",
+        "xs",
+    ]
 
     def __init__(
         self,
@@ -54,8 +93,8 @@ class Col(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.lg = lg
         self.m = m
         self.mb = mb
@@ -89,12 +128,37 @@ class Col(Component):
         self.sx = sx
         self.xl = xl
         self.xs = xs
-        assert id is None or isinstance(id, str)
 
 
 class Grid(Component):
     Module = "mantine"
     JSXName = "Grid"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "columns",
+        "grow",
+        "gutter",
+        "justify",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -132,8 +196,8 @@ class Grid(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.align = align
         self.columns = columns
         self.grow = grow
@@ -154,4 +218,3 @@ class Grid(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

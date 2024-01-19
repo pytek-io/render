@@ -1,4 +1,4 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class FileInput(InputComponent):
@@ -6,6 +6,37 @@ class FileInput(InputComponent):
     JSXName = "FileInput"
     InputName = "value"
     NewValuePath = "name"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "accept",
+        "clearButtonLabel",
+        "clearButtonTabIndex",
+        "clearable",
+        "form",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "multiple",
+        "mx",
+        "my",
+        "name",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+        "valueComponent",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -51,8 +82,8 @@ class FileInput(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.accept = accept
         self.clearButtonLabel = clearButtonLabel
         self.clearButtonTabIndex = clearButtonTabIndex
@@ -78,4 +109,3 @@ class FileInput(InputComponent):
         self.sx = sx
         self.valueComponent = valueComponent
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)

@@ -1,9 +1,44 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Indicator(Component):
     Module = "mantine"
     JSXName = "Indicator"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "disabled",
+        "dot",
+        "inline",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offset",
+        "overflowCount",
+        "p",
+        "pb",
+        "pl",
+        "position",
+        "pr",
+        "processing",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "showZero",
+        "size",
+        "sx",
+        "withBorder",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -50,8 +85,8 @@ class Indicator(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.disabled = disabled
         self.dot = dot
@@ -81,4 +116,3 @@ class Indicator(Component):
         self.sx = sx
         self.withBorder = withBorder
         self.zIndex = zIndex
-        assert id is None or isinstance(id, str)

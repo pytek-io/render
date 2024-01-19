@@ -1,10 +1,33 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class JsonInput(InputComponent):
     Module = "mantine"
     JSXName = "JsonInput"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "formatOnBlur",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "validationError",
+    ]
 
     def __init__(
         self,
@@ -42,8 +65,8 @@ class JsonInput(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.formatOnBlur = formatOnBlur
         self.m = m
         self.mb = mb
@@ -61,4 +84,3 @@ class JsonInput(InputComponent):
         self.py = py
         self.sx = sx
         self.validationError = validationError
-        assert id is None or isinstance(id, str)

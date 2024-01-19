@@ -6,6 +6,31 @@ class Slider(InputComponent):
     JSXName = "Slider"
     InputName = "value"
     ChangeEventName = "onAfterChange"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoAdjustOverflow",
+        "autoFocus",
+        "disabled",
+        "dots",
+        "draggableTrack",
+        "formatter",
+        "getPopupContainer",
+        "included",
+        "keyboard",
+        "marks",
+        "max",
+        "min",
+        "open",
+        "placement",
+        "range",
+        "reverse",
+        "step",
+        "tooltip",
+        "vertical",
+    ]
 
     def __init__(
         self,

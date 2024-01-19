@@ -1,9 +1,38 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Table(Component):
     Module = "mantine"
     JSXName = "Table"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "captionSide",
+        "fontSize",
+        "highlightOnHover",
+        "horizontalSpacing",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "striped",
+        "sx",
+        "verticalSpacing",
+        "withBorder",
+        "withColumnBorders",
+    ]
 
     def __init__(
         self,
@@ -44,8 +73,8 @@ class Table(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.captionSide = captionSide
         self.fontSize = fontSize
         self.highlightOnHover = highlightOnHover
@@ -69,4 +98,3 @@ class Table(Component):
         self.verticalSpacing = verticalSpacing
         self.withBorder = withBorder
         self.withColumnBorders = withColumnBorders
-        assert id is None or isinstance(id, str)

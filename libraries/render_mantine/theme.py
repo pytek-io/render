@@ -1,9 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class MantineProvider(Component):
     Module = "mantine"
     JSXName = "MantineProvider"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "emotionCache",
+        "inherit",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "theme",
+        "withCSSVariables",
+        "withGlobalStyles",
+        "withNormalizeCSS",
+        "styles",
+    ]
 
     def __init__(
         self,
@@ -43,8 +71,8 @@ class MantineProvider(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.emotionCache = emotionCache
         self.inherit = inherit
         self.m = m
@@ -67,4 +95,3 @@ class MantineProvider(Component):
         self.withGlobalStyles = withGlobalStyles
         self.withNormalizeCSS = withNormalizeCSS
         self.styles = styles
-        assert id is None or isinstance(id, str)

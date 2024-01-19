@@ -7,6 +7,8 @@ class Container(Component):
     Module = "html"
     REF_HOOK = "ref"
     CHILDREN_CAN_BE_EMPTY = True
+    ATTRIBUTES = ["id", "className", "style", "size", "role", "ariaLabel"]
+    CALLBACKS = ["onClick", "onScroll"]
 
     def __init__(
         self,
@@ -23,11 +25,9 @@ class Container(Component):
         custom_attributes=None,
         componentDidMount=None,
         componentWillUnmount=None,
-        **kwargs
     ):
         super().__init__(
             key=key,
-            kwargs=kwargs,
             componentDidMount=componentDidMount,
             componentWillUnmount=componentWillUnmount,
         )

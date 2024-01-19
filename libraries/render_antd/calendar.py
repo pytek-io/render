@@ -4,6 +4,24 @@ from render import Component, create_callback
 class Calendar(Component):
     Module = "ant"
     JSXName = "Calendar"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onPanelChange", "onSelect"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "dateCellRender",
+        "dateFullCellRender",
+        "defaultValue",
+        "disabledDate",
+        "fullscreen",
+        "headerRender",
+        "locale",
+        "mode",
+        "monthCellRender",
+        "monthFullCellRender",
+        "validRange",
+        "value",
+    ]
 
     def __init__(
         self,

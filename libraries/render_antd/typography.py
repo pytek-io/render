@@ -4,6 +4,24 @@ from render import Component, create_callback
 class TypographyLink(Component):
     Module = "ant"
     JSXName = "Typography.Link"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "code",
+        "copyable",
+        "delete",
+        "disabled",
+        "editable",
+        "ellipsis",
+        "href",
+        "level",
+        "mark",
+        "target",
+        "type",
+        "underline",
+    ]
 
     def __init__(
         self,
@@ -54,6 +72,47 @@ class TypographyLink(Component):
 class TypographyParagraph(Component):
     Module = "ant"
     JSXName = "Typography.Paragraph"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onCancel",
+        "onChange",
+        "onCopy",
+        "onEllipsis",
+        "onEnd",
+        "onExpand",
+        "onStart",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoSize",
+        "code",
+        "copyable",
+        "delete",
+        "disabled",
+        "editable",
+        "editing",
+        "ellipsis",
+        "enterIcon",
+        "expandable",
+        "format",
+        "icon",
+        "italic",
+        "mark",
+        "maxLength",
+        "rows",
+        "strong",
+        "suffix",
+        "symbol",
+        "text",
+        "tooltip",
+        "tooltips",
+        "triggerType",
+        "type",
+        "underline",
+    ]
 
     def __init__(
         self,
@@ -104,7 +163,7 @@ class TypographyParagraph(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.autoSize = autoSize
         self.code = code
         self.copyable = copyable
@@ -120,13 +179,13 @@ class TypographyParagraph(Component):
         self.italic = italic
         self.mark = mark
         self.maxLength = maxLength
-        self.onCancel = create_callback(onCancel, "onCancel", [])
+        self.onCancel = create_callback(onCancel, "onCancel")
         self.onChange = create_callback(onChange, "onChange", [[0]])
-        self.onCopy = create_callback(onCopy, "onCopy", [])
+        self.onCopy = create_callback(onCopy, "onCopy")
         self.onEllipsis = create_callback(onEllipsis, "onEllipsis", [[0]])
-        self.onEnd = create_callback(onEnd, "onEnd", [])
-        self.onExpand = create_callback(onExpand, "onExpand", [])
-        self.onStart = create_callback(onStart, "onStart", [])
+        self.onEnd = create_callback(onEnd, "onEnd")
+        self.onExpand = create_callback(onExpand, "onExpand")
+        self.onStart = create_callback(onStart, "onStart")
         self.rows = rows
         self.strong = strong
         self.suffix = suffix
@@ -142,6 +201,24 @@ class TypographyParagraph(Component):
 class TypographyText(Component):
     Module = "ant"
     JSXName = "Typography.Text"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "code",
+        "copyable",
+        "delete",
+        "disabled",
+        "editable",
+        "ellipsis",
+        "italic",
+        "keyboard",
+        "mark",
+        "strong",
+        "type",
+        "underline",
+    ]
 
     def __init__(
         self,
@@ -172,7 +249,7 @@ class TypographyText(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.code = code
         self.copyable = copyable
         self.delete = delete
@@ -190,6 +267,23 @@ class TypographyText(Component):
 class TypographyTitle(Component):
     Module = "ant"
     JSXName = "Typography.Title"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "code",
+        "copyable",
+        "delete",
+        "disabled",
+        "editable",
+        "ellipsis",
+        "italic",
+        "level",
+        "mark",
+        "type",
+        "underline",
+    ]
 
     def __init__(
         self,
@@ -219,7 +313,7 @@ class TypographyTitle(Component):
         self.className = className
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick", [])
+        self.onClick = create_callback(onClick, "onClick")
         self.code = code
         self.copyable = copyable
         self.delete = delete

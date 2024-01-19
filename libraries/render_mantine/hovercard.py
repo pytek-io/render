@@ -1,9 +1,33 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class HoverCard(Component):
     Module = "mantine"
     JSXName = "HoverCard"
+    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "closeDelay",
+        "initiallyOpened",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "openDelay",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -41,8 +65,8 @@ class HoverCard(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.closeDelay = closeDelay
         self.initiallyOpened = initiallyOpened
         self.m = m
@@ -52,8 +76,8 @@ class HoverCard(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onClose = create_callback(onClose)
-        self.onOpen = create_callback(onOpen)
+        self.onClose = create_callback(onClose, "onClose")
+        self.onOpen = create_callback(onOpen, "onOpen")
         self.openDelay = openDelay
         self.p = p
         self.pb = pb
@@ -63,12 +87,32 @@ class HoverCard(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class HoverCardDropdown(Component):
     Module = "mantine"
     JSXName = "HoverCard.Dropdown"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -101,8 +145,8 @@ class HoverCardDropdown(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -118,12 +162,32 @@ class HoverCardDropdown(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class HoverCardTarget(Component):
     Module = "mantine"
     JSXName = "HoverCard.Target"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -156,8 +220,8 @@ class HoverCardTarget(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -173,4 +237,3 @@ class HoverCardTarget(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

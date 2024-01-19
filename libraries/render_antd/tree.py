@@ -4,6 +4,56 @@ from render import Component, create_callback
 class DirectoryTree(Component):
     Module = "ant"
     JSXName = "Directory.Tree"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "loadData",
+        "onCheck",
+        "onDragEnd",
+        "onDragEnter",
+        "onDragLeave",
+        "onDragOver",
+        "onDragStart",
+        "onDrop",
+        "onExpand",
+        "onLoad",
+        "onRightClick",
+        "onSelect",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowDrop",
+        "autoExpandParent",
+        "blockNode",
+        "checkStrictly",
+        "checkable",
+        "checkedKeys",
+        "defaultCheckedKeys",
+        "defaultExpandAll",
+        "defaultExpandParent",
+        "defaultExpandedKeys",
+        "defaultSelectedKeys",
+        "disabled",
+        "draggable",
+        "expandedKeys",
+        "fieldNames",
+        "filterTreeNode",
+        "height",
+        "icon",
+        "loadedKeys",
+        "multiple",
+        "rootStyle",
+        "selectable",
+        "selectedKeys",
+        "showIcon",
+        "showLine",
+        "switcherIcon",
+        "titleRender",
+        "treeData",
+        "virtual",
+    ]
 
     def __init__(
         self,
@@ -122,6 +172,56 @@ class DirectoryTree(Component):
 class Tree(Component):
     Module = "ant"
     JSXName = "Tree"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "loadData",
+        "onCheck",
+        "onDragEnd",
+        "onDragEnter",
+        "onDragLeave",
+        "onDragOver",
+        "onDragStart",
+        "onDrop",
+        "onExpand",
+        "onLoad",
+        "onRightClick",
+        "onSelect",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "allowDrop",
+        "autoExpandParent",
+        "blockNode",
+        "checkStrictly",
+        "checkable",
+        "checkedKeys",
+        "defaultCheckedKeys",
+        "defaultExpandAll",
+        "defaultExpandParent",
+        "defaultExpandedKeys",
+        "defaultSelectedKeys",
+        "disabled",
+        "draggable",
+        "expandedKeys",
+        "fieldNames",
+        "filterTreeNode",
+        "height",
+        "icon",
+        "loadedKeys",
+        "multiple",
+        "rootStyle",
+        "selectable",
+        "selectedKeys",
+        "showIcon",
+        "showLine",
+        "switcherIcon",
+        "titleRender",
+        "treeData",
+        "virtual",
+    ]
 
     def __init__(
         self,
@@ -240,6 +340,20 @@ class Tree(Component):
 class TreeNode(Component):
     Module = "ant"
     JSXName = "TreeNode"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "checkable",
+        "disableCheckbox",
+        "disabled",
+        "expandAction",
+        "icon",
+        "isLeaf",
+        "selectable",
+        "title",
+    ]
 
     def __init__(
         self,

@@ -1,10 +1,41 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Switch(InputComponent):
     Module = "mantine"
     JSXName = "Switch"
     InputName = "checked"
+    CALLBACKS = ["onKeyPress", "onClick", "onLabel"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "description",
+        "error",
+        "label",
+        "labelPosition",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offLabel",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+        "thumbIcon",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -51,8 +82,8 @@ class Switch(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.description = description
         self.error = error
@@ -66,7 +97,7 @@ class Switch(InputComponent):
         self.mx = mx
         self.my = my
         self.offLabel = offLabel
-        self.onLabel = create_callback(onLabel)
+        self.onLabel = create_callback(onLabel, "onLabel")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -79,13 +110,38 @@ class Switch(InputComponent):
         self.sx = sx
         self.thumbIcon = thumbIcon
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)
 
 
 class SwitchGroup(InputComponent):
     Module = "mantine"
     JSXName = "SwitchGroup"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "offset",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "spacing",
+        "sx",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -126,8 +182,8 @@ class SwitchGroup(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -148,4 +204,3 @@ class SwitchGroup(InputComponent):
         self.spacing = spacing
         self.sx = sx
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)

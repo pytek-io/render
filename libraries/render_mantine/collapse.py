@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Collapse(Component):
     Module = "mantine"
     JSXName = "Collapse"
+    CALLBACKS = ["onKeyPress", "onClick", "onTransitionEnd"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "animateOpacity",
+        "in_",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "transitionDuration",
+        "transitionTimingFunction",
+    ]
 
     def __init__(
         self,
@@ -41,8 +66,8 @@ class Collapse(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.animateOpacity = animateOpacity
         self.in_ = in_
         self.m = m
@@ -52,7 +77,7 @@ class Collapse(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onTransitionEnd = create_callback(onTransitionEnd)
+        self.onTransitionEnd = create_callback(onTransitionEnd, "onTransitionEnd")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -63,4 +88,3 @@ class Collapse(Component):
         self.sx = sx
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
-        assert id is None or isinstance(id, str)

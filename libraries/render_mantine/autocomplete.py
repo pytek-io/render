@@ -1,10 +1,33 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Autocomplete(InputComponent):
     Module = "mantine"
     JSXName = "Autocomplete"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onItemSubmit"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "dropdownComponent",
+        "m",
+        "maxDropdownHeight",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -43,8 +66,8 @@ class Autocomplete(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.dropdownComponent = dropdownComponent
         self.m = m
         self.maxDropdownHeight = maxDropdownHeight
@@ -54,7 +77,7 @@ class Autocomplete(InputComponent):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onItemSubmit = create_callback(onItemSubmit)
+        self.onItemSubmit = create_callback(onItemSubmit, "onItemSubmit")
         self.p = p
         self.pb = pb
         self.pl = pl
@@ -63,4 +86,3 @@ class Autocomplete(InputComponent):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

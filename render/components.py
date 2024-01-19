@@ -6,28 +6,6 @@ from .common import get_window
 from .observability import ObservableBase, ObservableValue, ObserverBase
 from .utils import CatchError, method_description
 
-RENDER_ATTRIBUTES_ = set(
-    [
-        "key",
-        "weak_ref",
-        "callback",
-        "weak_callback",
-        "debug",
-        "on_didmount",
-        "on_unmount",
-        "mount_status",
-        "is_stale",
-        "parent",
-        "parent_relationship",
-        "children_counter",
-        "children",
-        "input_value_update",
-        "_displayed_value",
-        "custom_attributes",
-        "controller",
-        "has_dependencies",
-    ]
-)
 JSMETHODS_REPOSITORY = {}
 
 
@@ -84,9 +62,7 @@ class RemoteObject:
         result_id, remote_call_outcome = window.create_pending_result()
         arguments = [window._serialize(None, arg) for arg in args]
         await window.wait_for_modules_to_load()
-        window.send_nowait(
-            "remote call", (self._nb, method_name.split("."), arguments, result_id)
-        )
+        window.send_nowait("remote call", (self._nb, method_name.split("."), arguments, result_id))
         success, result = await remote_call_outcome
         if not success:
             with CatchError():
@@ -103,12 +79,14 @@ class Component(ObserverBase, RemoteObject):
 
     JSXName = None
     REF_HOOK = None
+    CALLBACKS = []
+    DATA = []
+    ATTRIBUTES = []
 
     def __init__(
         self,
         key,
         controller=None,
-        kwargs={},
         componentDidMount=None,
         componentWillUnmount=None,
     ):
@@ -116,10 +94,8 @@ class Component(ObserverBase, RemoteObject):
         RemoteObject.__init__(self)
         self._cached_children = None
         self._props_values = {}
-        self.on_didmount = componentDidMount or kwargs.get("componentDidMount", None)
-        self.on_unmount = componentWillUnmount or kwargs.get(
-            "componentWillUnmount", None
-        )
+        self.on_didmount = componentDidMount
+        self.on_unmount = componentWillUnmount
         self.mount_status = "unknown"
         self.is_stale = False
         self.parent = None
@@ -130,20 +106,6 @@ class Component(ObserverBase, RemoteObject):
     def _window(self):
         maybe_window = get_window(throw_if_none=False)
         return maybe_window.weak_ref() if maybe_window else None
-
-    def own_attributes(self, callback=False):
-        for name, attribute in self.__dict__.items():
-            if (
-                name not in RENDER_ATTRIBUTES_
-                and not name.startswith("_")
-                and attribute is not None
-            ):
-                if callback == isinstance(attribute, Callback):
-                    yield name, attribute
-        if not callback:
-            custom_attributes = getattr(self, "custom_attributes", None)
-            if custom_attributes:
-                yield from custom_attributes.items()
 
     def _children(self):
         children = getattr(self, "children", None)
@@ -181,9 +143,7 @@ class InputComponent(Component):
         self.input_value_update = False
         if isinstance(value, (ObservableValue, ObservableBase)):
             if default_value is not None:
-                raise Exception(
-                    "Cannot specify both a value and a default value at the same time"
-                )
+                raise Exception("Cannot specify both a value and a default value at the same time")
             self._value, default_value = value, value._eval()
         else:
             if value is not None and not callable(value):
@@ -225,9 +185,7 @@ class InputComponent(Component):
             self.ChangeEventName,
             Callback(
                 onchange_callback,
-                data_paths=[
-                    [0] + (self.NewValuePath.split(".") if self.NewValuePath else [])
-                ],
+                data_paths=[[0] + (self.NewValuePath.split(".") if self.NewValuePath else [])],
             ),
         )
 
@@ -282,12 +240,8 @@ class Callback:
         return f"Event<{self.description}: {repr(self.method)}>"
 
 
-def create_callback(
-    maybe_callback_or_callable, argument_name="", data_paths=(), is_promise=False
-):
-    if maybe_callback_or_callable is None or isinstance(
-        maybe_callback_or_callable, Callback
-    ):
+def create_callback(maybe_callback_or_callable, argument_name="", data_paths=(), is_promise=False):
+    if maybe_callback_or_callable is None or isinstance(maybe_callback_or_callable, Callback):
         return maybe_callback_or_callable
     assert callable(
         maybe_callback_or_callable
@@ -298,7 +252,6 @@ def create_callback(
 def js_arrow(name: str, definition: str, modules=()) -> JSMethod:
     result = JSMethod(name, definition)
     result.modules = [
-        module.replace("render_", "").replace("ant_icons", "ant-icons")
-        for module in modules
+        module.replace("render_", "").replace("ant_icons", "ant-icons") for module in modules
     ]
     return result

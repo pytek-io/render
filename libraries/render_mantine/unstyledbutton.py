@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class UnstyledButton(Component):
     Module = "mantine"
     JSXName = "UnstyledButton"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "component",
+        "href",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+        "target",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -40,8 +65,8 @@ class UnstyledButton(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.component = component
         self.href = href
         self.m = m
@@ -61,4 +86,3 @@ class UnstyledButton(Component):
         self.sx = sx
         self.target = target
         self.title = title
-        assert id is None or isinstance(id, str)

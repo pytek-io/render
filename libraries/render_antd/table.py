@@ -4,6 +4,47 @@ from render import Component, create_callback, Props
 class Column(Component):
     Module = "ant"
     JSXName = "Column"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onCell",
+        "onFilter",
+        "onFilterDropdownOpenChange",
+        "onHeaderCell",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "colSpan",
+        "dataIndex",
+        "defaultFilteredValue",
+        "defaultSortOrder",
+        "ellipsis",
+        "filterDropdown",
+        "filterDropdownOpen",
+        "filterIcon",
+        "filterMode",
+        "filterMultiple",
+        "filterResetToDefaultFilteredValue",
+        "filterSearch",
+        "filtered",
+        "filteredValue",
+        "filters",
+        "fixed",
+        "render",
+        "responsive",
+        "rowScope",
+        "shouldCellUpdate",
+        "showSorterTooltip",
+        "sortDirections",
+        "sortIcon",
+        "sortOrder",
+        "sorter",
+        "title",
+        "width",
+    ]
 
     def __init__(
         self,
@@ -94,6 +135,52 @@ class Column(Component):
 class ColumnGroup(Component):
     Module = "ant"
     JSXName = "ColumnGroup"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onCell",
+        "onChange",
+        "onExpand",
+        "onExpandedRowsChange",
+        "onSelect",
+        "onSelectAll",
+        "onSelectInvert",
+        "onSelectMultiple",
+        "onSelectNone",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "checkStrictly",
+        "childrenColumnName",
+        "columnTitle",
+        "columnWidth",
+        "defaultExpandAllRows",
+        "defaultExpandedRowKeys",
+        "expandIcon",
+        "expandRowByClick",
+        "expandedRowClassName",
+        "expandedRowKeys",
+        "expandedRowRender",
+        "fixed",
+        "getCheckboxProps",
+        "hideSelectAll",
+        "indentSize",
+        "position",
+        "preserveSelectedRowKeys",
+        "renderCell",
+        "rowExpandable",
+        "scrollToFirstRowOnChange",
+        "selectedRowKeys",
+        "selections",
+        "showExpandColumn",
+        "text",
+        "title",
+        "type",
+        "x",
+        "y",
+    ]
 
     def __init__(
         self,
@@ -167,7 +254,7 @@ class ColumnGroup(Component):
         self.indentSize = indentSize
         self.onCell = create_callback(onCell, "onCell", [[1]])
         self.onChange = create_callback(onChange, "onChange", [[0]])
-        self.onExpand = create_callback(onExpand, "onExpand", [])
+        self.onExpand = create_callback(onExpand, "onExpand")
         self.onExpandedRowsChange = create_callback(
             onExpandedRowsChange, "onExpandedRowsChange", [[0]]
         )
@@ -177,7 +264,7 @@ class ColumnGroup(Component):
         self.onSelectMultiple = create_callback(
             onSelectMultiple, "onSelectMultiple", [[0], [1], [2]]
         )
-        self.onSelectNone = create_callback(onSelectNone, "onSelectNone", [])
+        self.onSelectNone = create_callback(onSelectNone, "onSelectNone")
         self.position = position
         self.preserveSelectedRowKeys = preserveSelectedRowKeys
         self.renderCell = renderCell
@@ -196,6 +283,43 @@ class ColumnGroup(Component):
 class Table(Component):
     Module = "ant"
     JSXName = "Table"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onChange",
+        "onHeaderRow",
+        "onRow",
+        "scrollTo",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "bordered",
+        "columns",
+        "components",
+        "dataSource",
+        "expandable",
+        "footer",
+        "getPopupContainer",
+        "loading",
+        "locale",
+        "nativeElement",
+        "pagination",
+        "rowClassName",
+        "rowKey",
+        "rowSelection",
+        "scroll",
+        "showHeader",
+        "showSorterTooltip",
+        "size",
+        "sortDirections",
+        "sticky",
+        "summary",
+        "tableLayout",
+        "title",
+        "virtual",
+    ]
 
     def __init__(
         self,

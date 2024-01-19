@@ -1,9 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Timeline(Component):
     Module = "mantine"
     JSXName = "Timeline"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "active",
+        "align",
+        "bulletSize",
+        "color",
+        "lineWidth",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "reverseActive",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -43,8 +71,8 @@ class Timeline(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.active = active
         self.align = align
         self.bulletSize = bulletSize
@@ -67,12 +95,42 @@ class Timeline(Component):
         self.radius = radius
         self.reverseActive = reverseActive
         self.sx = sx
-        assert id is None or isinstance(id, str)
 
 
 class TimelineItem(Component):
     Module = "mantine"
     JSXName = "TimelineItem"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "active",
+        "align",
+        "bullet",
+        "bulletSize",
+        "color",
+        "lineActive",
+        "lineVariant",
+        "lineWidth",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "sx",
+        "title",
+    ]
 
     def __init__(
         self,
@@ -115,8 +173,8 @@ class TimelineItem(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.active = active
         self.align = align
         self.bullet = bullet
@@ -142,4 +200,3 @@ class TimelineItem(Component):
         self.radius = radius
         self.sx = sx
         self.title = title
-        assert id is None or isinstance(id, str)

@@ -4,6 +4,22 @@ from render import Component, create_callback
 class Statistic(Component):
     Module = "ant"
     JSXName = "Statistic"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "decimalSeparator",
+        "formatter",
+        "groupSeparator",
+        "loading",
+        "precision",
+        "prefix",
+        "suffix",
+        "title",
+        "value",
+        "valueStyle",
+    ]
 
     def __init__(
         self,
@@ -48,6 +64,18 @@ class Statistic(Component):
 class StatisticCountdown(Component):
     Module = "ant"
     JSXName = "Statistic.Countdown"
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onFinish"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "format",
+        "prefix",
+        "suffix",
+        "title",
+        "value",
+        "valueStyle",
+    ]
 
     def __init__(
         self,
@@ -77,7 +105,7 @@ class StatisticCountdown(Component):
         self.onClick = create_callback(onClick, "onClick")
         self.format = format
         self.onChange = create_callback(onChange, "onChange", [[0]])
-        self.onFinish = create_callback(onFinish, "onFinish", [])
+        self.onFinish = create_callback(onFinish, "onFinish")
         self.prefix = prefix
         self.suffix = suffix
         self.title = title

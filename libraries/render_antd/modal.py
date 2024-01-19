@@ -4,6 +4,48 @@ from render import Component, create_callback, Props
 class Modal(Component):
     Module = "ant"
     JSXName = "Modal"
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "afterClose",
+        "afterOpenChange",
+        "onCancel",
+        "onOk",
+    ]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "autoFocusButton",
+        "cancelButtonProps",
+        "cancelText",
+        "centered",
+        "classNames",
+        "closeIcon",
+        "confirmLoading",
+        "content",
+        "destroyOnClose",
+        "extra",
+        "focusTriggerAfterClose",
+        "footer",
+        "forceRender",
+        "getContainer",
+        "icon",
+        "keyboard",
+        "mask",
+        "maskClosable",
+        "modalRender",
+        "okButtonProps",
+        "okText",
+        "okType",
+        "open",
+        "originNode",
+        "styles",
+        "title",
+        "width",
+        "wrapClassName",
+        "zIndex",
+    ]
 
     def __init__(
         self,
@@ -56,7 +98,7 @@ class Modal(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.afterClose = create_callback(afterClose, "afterClose", [])
+        self.afterClose = create_callback(afterClose, "afterClose")
         self.afterOpenChange = create_callback(
             afterOpenChange, "afterOpenChange", [[0]]
         )
@@ -82,8 +124,8 @@ class Modal(Component):
         self.okButtonProps = okButtonProps
         self.okText = okText
         self.okType = okType
-        self.onCancel = create_callback(onCancel, "onCancel", [])
-        self.onOk = create_callback(onOk, "onOk", [])
+        self.onCancel = create_callback(onCancel, "onCancel")
+        self.onOk = create_callback(onOk, "onOk")
         self.open = open
         self.originNode = originNode
         self.styles = styles

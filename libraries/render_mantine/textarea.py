@@ -1,10 +1,37 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Textarea(InputComponent):
     Module = "mantine"
     JSXName = "Textarea"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "__staticSelector",
+        "autosize",
+        "m",
+        "maxRows",
+        "mb",
+        "minRows",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -46,8 +73,8 @@ class Textarea(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.__staticSelector = __staticSelector
         self.autosize = autosize
         self.m = m
@@ -69,4 +96,3 @@ class Textarea(InputComponent):
         self.size = size
         self.sx = sx
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)

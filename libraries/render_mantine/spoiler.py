@@ -1,9 +1,36 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Spoiler(Component):
     Module = "mantine"
     JSXName = "Spoiler"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "controlRef",
+        "hideLabel",
+        "initialState",
+        "m",
+        "maxHeight",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "showLabel",
+        "sx",
+        "transitionDuration",
+    ]
 
     def __init__(
         self,
@@ -42,8 +69,8 @@ class Spoiler(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.controlRef = controlRef
         self.hideLabel = hideLabel
         self.initialState = initialState
@@ -65,4 +92,3 @@ class Spoiler(Component):
         self.showLabel = showLabel
         self.sx = sx
         self.transitionDuration = transitionDuration
-        assert id is None or isinstance(id, str)

@@ -1,9 +1,35 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class RingProgress(Component):
     Module = "mantine"
     JSXName = "RingProgress"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "label",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "roundCaps",
+        "sections",
+        "size",
+        "sx",
+        "thickness",
+    ]
 
     def __init__(
         self,
@@ -41,8 +67,8 @@ class RingProgress(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.label = label
         self.m = m
         self.mb = mb
@@ -63,4 +89,3 @@ class RingProgress(Component):
         self.size = size
         self.sx = sx
         self.thickness = thickness
-        assert id is None or isinstance(id, str)

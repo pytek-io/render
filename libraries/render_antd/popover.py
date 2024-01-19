@@ -4,6 +4,30 @@ from render import Component, create_callback
 class Popover(Component):
     Module = "ant"
     JSXName = "Popover"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "arrowPointAtCenter",
+        "autoAdjustOverflow",
+        "color",
+        "content",
+        "defaultOpen",
+        "destroyTooltipOnHide",
+        "getPopupContainer",
+        "mouseEnterDelay",
+        "mouseLeaveDelay",
+        "open",
+        "overlayClassName",
+        "overlayInnerStyle",
+        "overlayStyle",
+        "placement",
+        "title",
+        "trigger",
+        "zIndex",
+    ]
 
     def __init__(
         self,

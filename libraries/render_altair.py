@@ -3,18 +3,22 @@ from render import Component
 
 class Chart(Component):
     Module = "altair"
+    ATTRIBUTES = ["spec", "actions", "style", "signalListeners"]
 
     def __init__(
         self,
         spec,
         desc=None,
-        debug=False,
         actions=False,
         signalListeners=None,
         style=None,
     ):
-        super().__init__(desc, debug)
-        self.spec = (lambda: spec().to_dict()) if callable(spec) else spec.to_dict()
+        super().__init__(desc)
+        if callable(spec):
+            spec = lambda: spec().to_dict()
+        elif hasattr(spec, "to_dict"):
+            spec = spec.to_dict()
+        self.spec = spec
         self.actions = actions
         self.style = style
         self.signalListeners = signalListeners

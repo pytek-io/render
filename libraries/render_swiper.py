@@ -6,6 +6,8 @@ class Swiper(InputComponent):
     NewValuePath = "activeIndex"
     ChangeEventName = "onSlideChange"
     InputName = None
+    ATTRIBUTES = ["navigation", "lazy", "style"]
+    CALLBACKS = ["onSlideChange"]
 
     def __init__(
         self,
@@ -26,11 +28,12 @@ class Swiper(InputComponent):
 
 class SwiperSlide(Component):
     Module = "swiper"
+    ATTRIBUTES = []
 
     def __init__(
         self,
         children=None,
-        desc=None,
+        key=None,
     ):
-        super().__init__(key=desc)
+        super().__init__(key=key)
         self.children = children

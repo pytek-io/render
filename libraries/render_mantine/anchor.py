@@ -1,9 +1,48 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Anchor(Component):
     Module = "mantine"
     JSXName = "Anchor"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "color",
+        "component",
+        "gradient",
+        "href",
+        "inherit",
+        "inline",
+        "italic",
+        "lineClamp",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "span",
+        "strikethrough",
+        "sx",
+        "target",
+        "title",
+        "transform",
+        "underline",
+        "variant",
+        "weight",
+    ]
 
     def __init__(
         self,
@@ -54,8 +93,8 @@ class Anchor(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.align = align
         self.color = color
         self.component = component
@@ -89,4 +128,3 @@ class Anchor(Component):
         self.underline = underline
         self.variant = variant
         self.weight = weight
-        assert id is None or isinstance(id, str)

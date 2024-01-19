@@ -1,10 +1,44 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class Pagination(InputComponent):
     Module = "mantine"
     JSXName = "Pagination"
     InputName = "page"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "boundaries",
+        "color",
+        "disabled",
+        "getItemAriaLabel",
+        "initialPage",
+        "itemComponent",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "siblings",
+        "size",
+        "spacing",
+        "sx",
+        "total",
+        "withControls",
+        "withEdges",
+    ]
 
     def __init__(
         self,
@@ -53,8 +87,8 @@ class Pagination(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.boundaries = boundaries
         self.color = color
         self.disabled = disabled
@@ -83,12 +117,34 @@ class Pagination(InputComponent):
         self.total = total
         self.withControls = withControls
         self.withEdges = withEdges
-        assert id is None or isinstance(id, str)
 
 
 class PaginationItem(Component):
     Module = "mantine"
     JSXName = "PaginationItem"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "active",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "page",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -123,8 +179,8 @@ class PaginationItem(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.active = active
         self.m = m
         self.mb = mb
@@ -142,4 +198,3 @@ class PaginationItem(Component):
         self.px = px
         self.py = py
         self.sx = sx
-        assert id is None or isinstance(id, str)

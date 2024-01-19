@@ -4,6 +4,30 @@ from render import Component, create_callback
 class Tooltip(Component):
     Module = "ant"
     JSXName = "Tooltip"
+    CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "align",
+        "arrow",
+        "autoAdjustOverflow",
+        "color",
+        "defaultOpen",
+        "destroyTooltipOnHide",
+        "fresh",
+        "getPopupContainer",
+        "mouseEnterDelay",
+        "mouseLeaveDelay",
+        "open",
+        "overlayClassName",
+        "overlayInnerStyle",
+        "overlayStyle",
+        "placement",
+        "title",
+        "trigger",
+        "zIndex",
+    ]
 
     def __init__(
         self,

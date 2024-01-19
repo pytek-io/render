@@ -4,6 +4,19 @@ from render import Component, create_callback
 class Spin(Component):
     Module = "ant"
     JSXName = "Spin"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "delay",
+        "fullscreen",
+        "indicator",
+        "size",
+        "spinning",
+        "tip",
+        "wrapperClassName",
+    ]
 
     def __init__(
         self,

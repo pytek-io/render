@@ -1,9 +1,47 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class Step(Component):
     Module = "mantine"
     JSXName = "Step"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "__staticSelector",
+        "allowStepClick",
+        "allowStepSelect",
+        "color",
+        "completedIcon",
+        "description",
+        "icon",
+        "iconPosition",
+        "iconSize",
+        "label",
+        "loading",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "progressIcon",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "state",
+        "sx",
+        "withIcon",
+    ]
 
     def __init__(
         self,
@@ -53,8 +91,8 @@ class Step(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.__staticSelector = __staticSelector
         self.allowStepClick = allowStepClick
         self.allowStepSelect = allowStepSelect
@@ -87,12 +125,43 @@ class Step(Component):
         self.state = state
         self.sx = sx
         self.withIcon = withIcon
-        assert id is None or isinstance(id, str)
 
 
 class Stepper(Component):
     Module = "mantine"
     JSXName = "Stepper"
+    CALLBACKS = ["onKeyPress", "onClick", "onStepClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "active",
+        "breakpoint",
+        "color",
+        "completedIcon",
+        "contentPadding",
+        "iconPosition",
+        "iconSize",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "progressIcon",
+        "pt",
+        "px",
+        "py",
+        "radius",
+        "size",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -137,8 +206,8 @@ class Stepper(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.active = active
         self.breakpoint = breakpoint
         self.color = color
@@ -153,7 +222,7 @@ class Stepper(Component):
         self.mt = mt
         self.mx = mx
         self.my = my
-        self.onStepClick = create_callback(onStepClick)
+        self.onStepClick = create_callback(onStepClick, "onStepClick")
         self.orientation = orientation
         self.p = p
         self.pb = pb
@@ -166,4 +235,3 @@ class Stepper(Component):
         self.radius = radius
         self.size = size
         self.sx = sx
-        assert id is None or isinstance(id, str)

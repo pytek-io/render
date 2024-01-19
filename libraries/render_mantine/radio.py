@@ -1,4 +1,4 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Radio(InputComponent):
@@ -6,6 +6,37 @@ class Radio(InputComponent):
     JSXName = "Radio"
     InputName = "checked"
     NewValuePath = "currentTarget.value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "color",
+        "description",
+        "error",
+        "icon",
+        "label",
+        "labelPosition",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "sx",
+        "transitionDuration",
+        "value",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -51,8 +82,8 @@ class Radio(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.description = description
         self.error = error
@@ -78,13 +109,39 @@ class Radio(InputComponent):
         self.transitionDuration = transitionDuration
         self.value = value
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)
 
 
 class RadioGroup(InputComponent):
     Module = "mantine"
     JSXName = "RadioGroup"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "name",
+        "offset",
+        "orientation",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "size",
+        "spacing",
+        "sx",
+        "wrapperProps",
+    ]
 
     def __init__(
         self,
@@ -126,8 +183,8 @@ class RadioGroup(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.m = m
         self.mb = mb
         self.ml = ml
@@ -149,4 +206,3 @@ class RadioGroup(InputComponent):
         self.spacing = spacing
         self.sx = sx
         self.wrapperProps = wrapperProps
-        assert id is None or isinstance(id, str)

@@ -3,18 +3,18 @@ from render import Component
 
 class Icon(Component):
     Module = "iconify"
+    ATTRIBUTES = ["icon", "width", "height", "color", "style"]
 
     def __init__(
         self,
         desc=None,
-        debug=False,
         icon=None,
         width=None,
         height=None,
         color=None,
         style=None,
     ):
-        super().__init__(desc, debug)
+        super().__init__(desc)
         self.icon = icon
         self.width = width
         self.height = height

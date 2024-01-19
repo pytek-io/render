@@ -1,5 +1,3 @@
-from render.components import Component, InputComponent
-
 from .box import Box
 from .colorinput import ColorInput
 from .theme import MantineProvider

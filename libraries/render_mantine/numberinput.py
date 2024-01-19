@@ -1,10 +1,46 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback, InputComponent
 
 
 class NumberInput(InputComponent):
     Module = "mantine"
     JSXName = "NumberInput"
     InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "decimalSeparator",
+        "formatter",
+        "handlersRef",
+        "hideControls",
+        "m",
+        "max",
+        "mb",
+        "min",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "noClampOnBlur",
+        "p",
+        "parser",
+        "pb",
+        "pl",
+        "pr",
+        "precision",
+        "pt",
+        "px",
+        "py",
+        "removeTrailingZeros",
+        "startValue",
+        "step",
+        "stepHoldDelay",
+        "stepHoldInterval",
+        "sx",
+        "type",
+    ]
 
     def __init__(
         self,
@@ -55,8 +91,8 @@ class NumberInput(InputComponent):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.decimalSeparator = decimalSeparator
         self.formatter = formatter
         self.handlersRef = handlersRef
@@ -87,4 +123,3 @@ class NumberInput(InputComponent):
         self.stepHoldInterval = stepHoldInterval
         self.sx = sx
         self.type = type
-        assert id is None or isinstance(id, str)

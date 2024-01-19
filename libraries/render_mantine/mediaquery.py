@@ -1,9 +1,34 @@
-from render import create_callback, Component, InputComponent
+from render import Component, create_callback
 
 
 class MediaQuery(Component):
     Module = "mantine"
     JSXName = "MediaQuery"
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "largerThan",
+        "m",
+        "mb",
+        "ml",
+        "mr",
+        "mt",
+        "mx",
+        "my",
+        "p",
+        "pb",
+        "pl",
+        "pr",
+        "pt",
+        "px",
+        "py",
+        "query",
+        "smallerThan",
+        "styles",
+        "sx",
+    ]
 
     def __init__(
         self,
@@ -40,8 +65,8 @@ class MediaQuery(Component):
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
-        self.onClick = create_callback(onClick)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.largerThan = largerThan
         self.m = m
         self.mb = mb
@@ -61,4 +86,3 @@ class MediaQuery(Component):
         self.smallerThan = smallerThan
         self.styles = styles
         self.sx = sx
-        assert id is None or isinstance(id, str)
