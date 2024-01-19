@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from os.path import dirname, join
+from subprocess import run
 import collections
 import importlib
 import inspect
@@ -40,7 +42,7 @@ def is_async_context():
 
 def maybe_prefixed_content(prefix, content):
     if content.startswith(prefix):
-        return content[len(prefix) :]
+        return content[len(prefix):]
 
 
 def import_module(module_path, reload=True):
@@ -75,7 +77,7 @@ def CatchError(err_back=None):
         yield
     except anyio.get_cancelled_exc_class():
         raise
-    except:
+    except:  # noqa: E722
         traceback.print_exc()
         exc_type, e, tb = sys.exc_info()
         try:
@@ -297,3 +299,7 @@ def is_numpy_or_pandas_object(value):
     if module.startswith("pandas") and type_name == "DataFrame":
         return True
     return False
+
+
+def launch_server():
+    run([join(dirname(__file__), "render")] + sys.argv[1:])
