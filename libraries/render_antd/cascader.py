@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Cascader(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Cascader"
     InputName = "value"
     CALLBACKS = [

@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Select(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Select"
     InputName = "value"
     CALLBACKS = [

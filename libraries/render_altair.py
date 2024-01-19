@@ -15,7 +15,8 @@ class Chart(Component):
     ):
         super().__init__(desc)
         if callable(spec):
-            spec = lambda: spec().to_dict()
+            original_spec = spec
+            spec = lambda: original_spec().to_dict()
         elif hasattr(spec, "to_dict"):
             spec = spec.to_dict()
         self.spec = spec

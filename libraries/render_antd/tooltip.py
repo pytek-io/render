@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Tooltip(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Tooltip"
     CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
     ATTRIBUTES = [

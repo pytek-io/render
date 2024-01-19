@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Empty(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Empty"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "description", "image", "imageStyle"]

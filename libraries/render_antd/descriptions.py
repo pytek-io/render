@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Descriptions(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Descriptions"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -61,8 +61,8 @@ class Descriptions(Component):
         self.title = title
 
 
-class DescriptionsItem(Component):
-    Module = "ant"
+class Item(Component):
+    Module = "antd"
     JSXName = "Descriptions.Item"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

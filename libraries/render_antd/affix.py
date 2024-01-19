@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Affix(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Affix"
     CALLBACKS = ["onKeyPress", "onClick", "onChange"]
     ATTRIBUTES = ["style", "className", "id", "offsetBottom", "offsetTop", "target"]

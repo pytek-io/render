@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Drawer(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Drawer"
     CALLBACKS = ["onKeyPress", "onClick", "afterOpenChange", "onClose"]
     ATTRIBUTES = [

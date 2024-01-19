@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Tag(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Tag"
     CALLBACKS = ["onKeyPress", "onClick", "onClose"]
     ATTRIBUTES = ["style", "className", "id", "bordered", "closeIcon", "color", "icon"]
@@ -37,8 +37,8 @@ class Tag(Component):
         self.onClose = create_callback(onClose, "onClose")
 
 
-class TagCheckableTag(Component):
-    Module = "ant"
+class CheckableTag(Component):
+    Module = "antd"
     JSXName = "Tag.CheckableTag"
     CALLBACKS = ["onKeyPress", "onClick", "onChange"]
     ATTRIBUTES = ["style", "className", "id", "checked"]

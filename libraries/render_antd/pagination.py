@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Pagination(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Pagination"
     InputName = "current"
     CALLBACKS = ["onKeyPress", "onClick", "onShowSizeChange"]

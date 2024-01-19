@@ -18,7 +18,7 @@ window.process = {
   },
 };
 
-window.reflect = {};  
+window.reflect = {};
 const component_records = new Map();
 const dom_object_or_refs = new WeakValueMap();
 const pending_calls = new WeakValueMap();
@@ -201,12 +201,14 @@ export function registerModuleDeferred(name, callback) {
 
 window.createElement = React.createElement;
 
-export function registerModule(namespace, constructors) {
-  for (const [name, constructor] of Object.entries(constructors)) {
-    // skipping this object as it looping through its properties emit warnings
-    if (name == "ConfigProvider" && namespace == "ant") {
-      continue
-    }
+export function registerModuleAttributes(namespace: string, module) {
+  for (const [name, attribute] of Object.entries(module)) {
+    registerComponent(name, attribute, namespace);
+  }
+}
+
+export function registerComponents(namespace: string, components) {
+  for (const [name, constructor] of components) {
     registerComponent(name, constructor, namespace);
   }
 }
@@ -228,16 +230,9 @@ function resolveComponent([namespace, name]: [string, string]) {
   if (!componentsForNamespace) {
     throw new Error(`unknown library ${namespace}`);
   }
-  const parsed_name = name.split(".");
-  let actual_component = componentsForNamespace.get(parsed_name[0]);
+  let actual_component = componentsForNamespace.get(name);
   if (actual_component === undefined) {
     throw new Error(`constructor ${name} not found in ${namespace} module`);
-  }
-  for (let i = 1; i < parsed_name.length; i++) {
-    actual_component = actual_component[parsed_name[i]];
-    if (actual_component === undefined) {
-      throw new Error(`invalid constructor ${name}`);
-    }
   }
   return actual_component;
 }
@@ -504,7 +499,6 @@ function process_message(event) {
         document.title = data;
         break;
       case "add links":
-        console.log("adding links", data);
         add_links(data);
         break;
       case "variable":

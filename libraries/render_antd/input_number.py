@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class InputNumber(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "InputNumber"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick", "onPressEnter", "onStep"]

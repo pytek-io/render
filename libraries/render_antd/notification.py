@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Notification(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Notification"
     CALLBACKS = ["onKeyPress", "onClick", "onClose"]
     ATTRIBUTES = [

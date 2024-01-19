@@ -1,42 +1,8 @@
 from render import Component, create_callback
 
 
-class Items(Component):
-    Module = "ant"
-    JSXName = "Items"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = ["style", "className", "id", "color", "dot", "label", "position"]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        color=None,
-        dot=None,
-        label=None,
-        position=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.color = color
-        self.dot = dot
-        self.label = label
-        self.position = position
-
-
 class Timeline(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Timeline"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

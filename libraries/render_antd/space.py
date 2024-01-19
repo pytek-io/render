@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Space(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Space"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -46,8 +46,8 @@ class Space(Component):
         self.wrap = wrap
 
 
-class SpaceCompact(Component):
-    Module = "ant"
+class Compact(Component):
+    Module = "antd"
     JSXName = "Space.Compact"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "block", "direction", "size"]

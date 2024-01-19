@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Carousel(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Carousel"
     CALLBACKS = ["onKeyPress", "onClick", "afterChange", "beforeChange"]
     ATTRIBUTES = [

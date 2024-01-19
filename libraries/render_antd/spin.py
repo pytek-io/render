@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Spin(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Spin"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Col(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Col"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -68,7 +68,7 @@ class Col(Component):
 
 
 class Row(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Row"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "align", "gutter", "justify", "wrap"]

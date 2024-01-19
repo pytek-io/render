@@ -1,4 +1,4 @@
-import { registerModule, registerMethod, registerModuleDeferred } from "../app";
+import { registerModuleAttributes, registerMethod, registerModuleDeferred } from "../app";
 
 export function register() {
   registerModuleDeferred("spectacle", async () => {
@@ -20,6 +20,6 @@ export function register() {
       </FlexBox>
     );
     registerMethod("presentation_template", template);
-    registerModule("spectacle", module);
+    registerModuleAttributes("spectacle", module);
   });
 }

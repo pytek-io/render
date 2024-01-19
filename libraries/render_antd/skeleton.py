@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Skeleton(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Skeleton"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -49,8 +49,8 @@ class Skeleton(Component):
         self.title = title
 
 
-class SkeletonAvatar(Component):
-    Module = "ant"
+class Avatar(Component):
+    Module = "antd"
     JSXName = "Skeleton.Avatar"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "active", "shape", "size"]
@@ -81,8 +81,8 @@ class SkeletonAvatar(Component):
         self.size = size
 
 
-class SkeletonButton(Component):
-    Module = "ant"
+class Button(Component):
+    Module = "antd"
     JSXName = "Skeleton.Button"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "active", "block", "shape", "size"]
@@ -115,8 +115,8 @@ class SkeletonButton(Component):
         self.size = size
 
 
-class SkeletonInput(Component):
-    Module = "ant"
+class Input(Component):
+    Module = "antd"
     JSXName = "Skeleton.Input"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "active", "size"]
@@ -145,8 +145,8 @@ class SkeletonInput(Component):
         self.size = size
 
 
-class SkeletonParagraph(Component):
-    Module = "ant"
+class Paragraph(Component):
+    Module = "antd"
     JSXName = "Skeleton.Paragraph"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "rows", "width"]
@@ -175,8 +175,8 @@ class SkeletonParagraph(Component):
         self.width = width
 
 
-class SkeletonTitle(Component):
-    Module = "ant"
+class Title(Component):
+    Module = "antd"
     JSXName = "Skeleton.Title"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "width"]

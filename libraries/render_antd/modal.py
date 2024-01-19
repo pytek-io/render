@@ -2,7 +2,7 @@ from render import Component, create_callback, Props
 
 
 class Modal(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Modal"
     CALLBACKS = [
         "onKeyPress",

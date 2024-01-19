@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class TreeSelect(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "TreeSelect"
     InputName = "value"
     CALLBACKS = [
@@ -183,8 +183,8 @@ class TreeSelect(InputComponent):
         self.virtual = virtual
 
 
-class TreeSelectTreeNode(Component):
-    Module = "ant"
+class TreeNode(Component):
+    Module = "antd"
     JSXName = "TreeSelect.TreeNode"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

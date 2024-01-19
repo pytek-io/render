@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class FloatButton(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "FloatButton"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -55,8 +55,8 @@ class FloatButton(Component):
         self.type = type
 
 
-class FloatButtonBackTop(Component):
-    Module = "ant"
+class BackTop(Component):
+    Module = "antd"
     JSXName = "FloatButton.BackTop"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -115,8 +115,8 @@ class FloatButtonBackTop(Component):
         self.visibilityHeight = visibilityHeight
 
 
-class FloatButtonGroup(Component):
-    Module = "ant"
+class Group(Component):
+    Module = "antd"
     JSXName = "FloatButton.Group"
     CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
     ATTRIBUTES = [

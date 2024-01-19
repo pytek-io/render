@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class List(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "List"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -103,8 +103,8 @@ class List(Component):
         self.xxl = xxl
 
 
-class ListItem(Component):
-    Module = "ant"
+class Item(Component):
+    Module = "antd"
     JSXName = "List.Item"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

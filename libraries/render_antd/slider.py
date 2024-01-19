@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Slider(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Slider"
     InputName = "value"
     ChangeEventName = "onAfterChange"

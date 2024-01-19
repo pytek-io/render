@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Progress(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Progress"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

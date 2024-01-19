@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Avatar(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Avatar"
     CALLBACKS = ["onKeyPress", "onClick", "onError"]
     ATTRIBUTES = [
@@ -60,8 +60,8 @@ class Avatar(Component):
         self.srcSet = srcSet
 
 
-class AvatarGroup(Component):
-    Module = "ant"
+class Group(Component):
+    Module = "antd"
     JSXName = "Avatar.Group"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

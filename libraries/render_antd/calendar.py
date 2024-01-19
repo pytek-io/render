@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Calendar(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Calendar"
     CALLBACKS = ["onKeyPress", "onClick", "onChange", "onPanelChange", "onSelect"]
     ATTRIBUTES = [

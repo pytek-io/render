@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Badge(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Badge"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -67,8 +67,8 @@ class Badge(Component):
         self.title = title
 
 
-class BadgeRibbon(Component):
-    Module = "ant"
+class Ribbon(Component):
+    Module = "antd"
     JSXName = "Badge.Ribbon"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "color", "placement", "text"]

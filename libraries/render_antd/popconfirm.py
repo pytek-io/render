@@ -2,7 +2,7 @@ from render import Component, create_callback, Props
 
 
 class Popconfirm(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Popconfirm"
     CALLBACKS = ["onKeyPress", "onClick", "onCancel", "onConfirm", "onPopupClick"]
     ATTRIBUTES = [

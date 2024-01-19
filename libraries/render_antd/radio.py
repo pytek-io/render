@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Radio(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Radio"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -46,8 +46,8 @@ class Radio(Component):
         self.value = value
 
 
-class RadioGroup(InputComponent):
-    Module = "ant"
+class Group(InputComponent):
+    Module = "antd"
     JSXName = "Radio.Group"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]

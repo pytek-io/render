@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class AutoComplete(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "AutoComplete"
     InputName = "value"
     CALLBACKS = [

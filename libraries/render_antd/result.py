@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Result(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Result"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

@@ -1,7 +1,7 @@
-import { registerModule, registerModuleDeferred } from "../app";
+import { registerModuleAttributes, registerModuleDeferred } from "../app";
 
 export function register() {
   registerModuleDeferred("mantine", async () => {
-    registerModule("mantine", await import("@mantine/core"));
+    registerModuleAttributes("mantine", await import("@mantine/core"));
   });
 }

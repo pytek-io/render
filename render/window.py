@@ -660,7 +660,7 @@ class Window:
             callbacks = []
             callback_names = component.CALLBACKS
             if isinstance(component, InputComponent):
-                callback_names = chain(callback_names, ["onChange"])
+                callback_names = chain(callback_names, [getattr(component, "ChangeEventName", "onChange")])
             for attribute_name in callback_names:
                 if value := getattr(component, attribute_name):
                     callbacks.append(

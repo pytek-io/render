@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Rate(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Rate"
     CALLBACKS = [
         "onKeyPress",

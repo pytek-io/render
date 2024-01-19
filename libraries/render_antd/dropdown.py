@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Dropdown(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Dropdown"
     CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
     ATTRIBUTES = [
@@ -74,8 +74,8 @@ class Dropdown(Component):
         self.trigger = trigger
 
 
-class DropdownButton(Component):
-    Module = "ant"
+class Button(Component):
+    Module = "antd"
     JSXName = "Dropdown.Button"
     CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
     ATTRIBUTES = [

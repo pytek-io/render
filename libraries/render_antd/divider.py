@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Divider(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Divider"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

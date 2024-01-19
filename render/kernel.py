@@ -33,7 +33,7 @@ stdout, stderr = sys.stdout, sys.stderr
 CLIENT_MESSAGE_PREFIX = 0
 KERNEL_MESSAGE_PREFIX = 1
 MAX_KERNEL_UPDATE_LAG = 100
-MAX_CHANNEL_LAG = 100
+MAX_CHANNEL_LAG = 1000  # we can send dozens of messages at once when deleting a ui component and its children
 
 
 def import_uv_loop():
@@ -93,7 +93,10 @@ class Channel:
         await self.channel_manager.connection.send(msgpack_dumps_many(message))
 
     def send_nowait(self, message):
-        self.channel_manager.send_sink.send_nowait((self.prefix, message))
+        try:
+            self.channel_manager.send_sink.send_nowait((self.prefix, message))
+        except anyio.WouldBlock:
+            print("Channel lagged too much. Message dropped.", message)
 
 
 class ChannelManager:

@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Checkbox(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Checkbox"
     InputName = "checked"
     CALLBACKS = ["onKeyPress", "onClick"]
@@ -37,8 +37,8 @@ class Checkbox(InputComponent):
         self.indeterminate = indeterminate
 
 
-class CheckboxGroup(InputComponent):
-    Module = "ant"
+class Group(InputComponent):
+    Module = "antd"
     JSXName = "Checkbox.Group"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]

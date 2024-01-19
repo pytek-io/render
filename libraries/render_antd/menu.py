@@ -2,7 +2,7 @@ from render import Component, create_callback, Props
 
 
 class Menu(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Menu"
     CALLBACKS = [
         "onKeyPress",

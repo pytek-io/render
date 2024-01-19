@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Anchor(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Anchor"
     CALLBACKS = ["onKeyPress", "onClick", "onChange"]
     ATTRIBUTES = [
@@ -63,8 +63,8 @@ class Anchor(Component):
         self.targetOffset = targetOffset
 
 
-class AnchorItem(Component):
-    Module = "ant"
+class Item(Component):
+    Module = "antd"
     JSXName = "Anchor.Item"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "href", "replace", "target", "title"]
@@ -97,8 +97,8 @@ class AnchorItem(Component):
         self.title = title
 
 
-class AnchorLink(Component):
-    Module = "ant"
+class Link(Component):
+    Module = "antd"
     JSXName = "Anchor.Link"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "href", "target", "title"]

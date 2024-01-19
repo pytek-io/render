@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class QRCode(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "QRCode"
     CALLBACKS = ["onKeyPress", "onClick", "onRefresh"]
     ATTRIBUTES = [

@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Statistic(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Statistic"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -61,8 +61,8 @@ class Statistic(Component):
         self.valueStyle = valueStyle
 
 
-class StatisticCountdown(Component):
-    Module = "ant"
+class Countdown(Component):
+    Module = "antd"
     JSXName = "Statistic.Countdown"
     CALLBACKS = ["onKeyPress", "onClick", "onChange", "onFinish"]
     ATTRIBUTES = [

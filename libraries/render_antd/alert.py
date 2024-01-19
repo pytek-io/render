@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Alert(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Alert"
     CALLBACKS = ["onKeyPress", "onClick", "afterClose", "onClose"]
     ATTRIBUTES = [
@@ -59,8 +59,8 @@ class Alert(Component):
         self.type = type
 
 
-class AlertErrorBoundary(Component):
-    Module = "ant"
+class ErrorBoundary(Component):
+    Module = "antd"
     JSXName = "Alert.ErrorBoundary"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "description", "message"]

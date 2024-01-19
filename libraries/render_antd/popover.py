@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Popover(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Popover"
     CALLBACKS = ["onKeyPress", "onClick", "onOpenChange"]
     ATTRIBUTES = [

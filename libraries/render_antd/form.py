@@ -2,7 +2,7 @@ from render import Component, create_callback, Props
 
 
 class Form(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Form"
     CALLBACKS = [
         "onKeyPress",
@@ -111,8 +111,8 @@ class Form(Component):
         self.wrapperCol = wrapperCol
 
 
-class FormItem(Component):
-    Module = "ant"
+class Item(Component):
+    Module = "antd"
     JSXName = "Form.Item"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -228,8 +228,8 @@ class FormItem(Component):
         self.wrapperCol = wrapperCol
 
 
-class FormList(Component):
-    Module = "ant"
+class List(Component):
+    Module = "antd"
     JSXName = "Form.List"
     CALLBACKS = ["onKeyPress", "onClick", "add", "move", "remove"]
     ATTRIBUTES = ["style", "className", "id", "initialValue", "name", "rules"]
@@ -266,8 +266,8 @@ class FormList(Component):
         self.rules = rules
 
 
-class FormProvider(Component):
-    Module = "ant"
+class Provider(Component):
+    Module = "antd"
     JSXName = "Form.Provider"
     CALLBACKS = [
         "onKeyPress",

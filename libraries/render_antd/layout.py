@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Layout(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Layout"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "hasSider"]
@@ -29,8 +29,8 @@ class Layout(Component):
         self.hasSider = hasSider
 
 
-class LayoutContent(Component):
-    Module = "ant"
+class Content(Component):
+    Module = "antd"
     JSXName = "Layout.Content"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "hasSider"]
@@ -57,8 +57,8 @@ class LayoutContent(Component):
         self.hasSider = hasSider
 
 
-class LayoutFooter(Component):
-    Module = "ant"
+class Footer(Component):
+    Module = "antd"
     JSXName = "Layout.Footer"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "hasSider"]
@@ -85,8 +85,8 @@ class LayoutFooter(Component):
         self.hasSider = hasSider
 
 
-class LayoutHeader(Component):
-    Module = "ant"
+class Header(Component):
+    Module = "antd"
     JSXName = "Layout.Header"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "hasSider"]
@@ -113,8 +113,8 @@ class LayoutHeader(Component):
         self.hasSider = hasSider
 
 
-class LayoutSider(Component):
-    Module = "ant"
+class Sider(Component):
+    Module = "antd"
     JSXName = "Layout.Sider"
     CALLBACKS = ["onKeyPress", "onClick", "onBreakpoint", "onCollapse"]
     ATTRIBUTES = [

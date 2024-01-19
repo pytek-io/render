@@ -1,8 +1,8 @@
 from render import Component, create_callback
 
 
-class TypographyLink(Component):
-    Module = "ant"
+class Link(Component):
+    Module = "antd"
     JSXName = "Typography.Link"
     CALLBACKS = ["onKeyPress", "onClick", "onChange"]
     ATTRIBUTES = [
@@ -69,8 +69,8 @@ class TypographyLink(Component):
         self.underline = underline
 
 
-class TypographyParagraph(Component):
-    Module = "ant"
+class Paragraph(Component):
+    Module = "antd"
     JSXName = "Typography.Paragraph"
     CALLBACKS = [
         "onKeyPress",
@@ -198,8 +198,8 @@ class TypographyParagraph(Component):
         self.underline = underline
 
 
-class TypographyText(Component):
-    Module = "ant"
+class Text(Component):
+    Module = "antd"
     JSXName = "Typography.Text"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
@@ -264,8 +264,8 @@ class TypographyText(Component):
         self.underline = underline
 
 
-class TypographyTitle(Component):
-    Module = "ant"
+class Title(Component):
+    Module = "antd"
     JSXName = "Typography.Title"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

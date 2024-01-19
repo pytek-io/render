@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Transfer(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Transfer"
     InputName = "targetKeys"
     CALLBACKS = [

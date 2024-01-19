@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Input(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Input"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick", "onPressEnter"]
@@ -85,8 +85,8 @@ class Input(InputComponent):
         self.type = type
 
 
-class InputGroup(Component):
-    Module = "ant"
+class Group(Component):
+    Module = "antd"
     JSXName = "Input.Group"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "compact", "size"]
@@ -115,8 +115,8 @@ class InputGroup(Component):
         self.size = size
 
 
-class InputPassword(Component):
-    Module = "ant"
+class Password(Component):
+    Module = "antd"
     JSXName = "Input.Password"
     CALLBACKS = ["onKeyPress", "onClick", "onVisibleChange"]
     ATTRIBUTES = [
@@ -162,8 +162,8 @@ class InputPassword(Component):
         self.visible = visible
 
 
-class InputSearch(Component):
-    Module = "ant"
+class Search(Component):
+    Module = "antd"
     JSXName = "Input.Search"
     CALLBACKS = ["onKeyPress", "onClick", "onChange", "onPressEnter", "onSearch"]
     ATTRIBUTES = [
@@ -258,8 +258,8 @@ class InputSearch(Component):
         self.value = value
 
 
-class InputTextArea(InputComponent):
-    Module = "ant"
+class TextArea(InputComponent):
+    Module = "antd"
     JSXName = "Input.TextArea"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick", "onPressEnter", "onResize"]

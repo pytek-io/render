@@ -2,7 +2,7 @@ from render import Component, create_callback, InputComponent
 
 
 class Segmented(InputComponent):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Segmented"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]

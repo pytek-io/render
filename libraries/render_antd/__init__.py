@@ -7,59 +7,55 @@ from render.components import JSMethod
 from render.props import Container
 
 from ._auto import *
-from ._input import Input as InputBase
-from ._input import InputGroup, InputPassword
-from ._input import InputSearch as InputSearchBase
-from ._input import InputTextArea as InputTextAreaBase
-from ._list import List as ListBase
-from ._list import ListItem
-from .alert import Alert as AlertBase
-from .alert import AlertErrorBoundary
-from .anchor import Anchor as AnchorBase
-from .anchor import AnchorLink
+from .input import Input as InputBase
+from .input import Password as InputPassword, Group as InputGroup
+from .input import Search as InputSearchBase
+from .input import TextArea as InputTextAreaBase
+from .list import List as ListBase, Item as ListItem
+from .anchor import Anchor as AnchorBase, Link as AnchorLink
 from .auto_complete import AutoComplete as AutoCompleteBase
-from .avatar import Avatar as AvatarBase
-from .avatar import AvatarGroup
-from .badge import Badge as BadgeBase
-from .badge import BadgeRibbon
+from .avatar import Avatar as AvatarBase, Group as AvatarGroup
+from .badge import Badge as BadgeBase, Ribbon as BadgeRibbon
 from .button import Button as ButtonBase
-from .card import Card as CardBase
-from .card import CardGrid
-from .checkbox import Checkbox as CheckboxBase
-from .checkbox import CheckboxGroup
-from .collapse import Collapse as CollapseBase
-from .collapse import CollapsePanel
+from .card import Card as CardBase, Grid as CardGrid
+from .checkbox import Checkbox as CheckboxBase, Group as CheckboxGroup
+from .collapse import Collapse as CollapseBase, Panel as CollapsePanel
 from .date_picker import DatePicker as DatePickerBase
 from .date_picker import RangePicker as DateRangePicker
-from .descriptions import Descriptions as DescriptionsBase
-from .descriptions import DescriptionsItem
-from .dropdown import Dropdown as DropdownBase
-from .dropdown import DropdownButton
+from .descriptions import Descriptions as DescriptionsBase, Item as DescriptionsItem
+from .dropdown import Dropdown as DropdownBase, Button as DropdownButton
 from .empty import Empty
-from .float_button import FloatButton as FloatButtonBase
-from .float_button import FloatButtonBackTop, FloatButtonGroup
-from .form import Form as BaseForm
-from .form import FormItem, FormList
+from .float_button import (
+    FloatButton as FloatButtonBase,
+    Group as FloatButtonGroup,
+    BackTop as FloatButtonBackTop,
+)
+from .form import Form as BaseForm, Item as FormItem, List as FormList
 from .grid import Col, Row
 from .image import Image as ImageBase
 from .input_number import InputNumber as InputNumberBase
-from .layout import Layout as LayoutBase
-from .layout import LayoutContent, LayoutFooter, LayoutHeader, LayoutSider
+from .layout import (
+    Layout as LayoutBase,
+    Content as LayoutContent,
+    Footer as LayoutFooter,
+    Header as LayoutHeader,
+    Sider as LayoutSider,
+)
 from .modal import Modal as ModalBase
-from .radio import Radio as RadioBase
-from .radio import RadioGroup
-from .statistic import Statistic as StatisticBase
-from .statistic import StatisticCountdown
+from .radio import Radio as RadioBase, Group as RadioGroup
+from .statistic import Statistic as StatisticBase, Countdown as StatisticCountdown
 from .table import Table
 from .time_picker import RangePicker as TimeRangePicker
 from .time_picker import TimePicker as TimePickerBase
-from .tree import DirectoryTree
 from .tree import Tree as TreeBase
 from .tree import TreeNode as TreeNodeBase
-from .tree_select import TreeSelect as TreeSelectBase
-from .tree_select import TreeSelectTreeNode
-from .typography import (TypographyLink, TypographyParagraph, TypographyText,
-                         TypographyTitle)
+from .tree_select import TreeSelect as TreeSelectBase, TreeNode as TreeSelectTreeNode
+from .typography import (
+    Link as TypographyLink,
+    Paragraph as TypographyParagraph,
+    Text as TypographyText,
+    Title as TypographyTitle,
+)
 
 
 def create_row(elements, col_kwargs={}, gutter=10, align="middle", **kwargs):
@@ -153,10 +149,6 @@ class Collapse(CollapseBase):
     Panel = CollapsePanel
 
 
-class Alert(AlertBase):
-    ErrorBoundary = AlertErrorBoundary
-
-
 class Descriptions(DescriptionsBase):
     Item = DescriptionsItem
 
@@ -226,15 +218,15 @@ class TreeSelect(TreeSelectBase):
     TreeNode = TreeSelectTreeNode
 
 
-DirectoryTree.JSXName = "Tree.DirectoryTree"
+# DirectoryTree.JSXName = "Tree.DirectoryTree"
 
 
-class Tree(TreeBase):
-    DirectoryTree = DirectoryTree
+# class Tree(TreeBase):
+#     DirectoryTree = DirectoryTree
 
-    class TreeNode(TreeNodeBase):
-        JSXName = "TreeTreeNode"
-        DirectoryTree = DirectoryTree
+#     class TreeNode(TreeNodeBase):
+#         JSXName = "TreeTreeNode"
+#         DirectoryTree = DirectoryTree
 
 
 class Dropdown(DropdownBase):
@@ -299,9 +291,7 @@ def flatten_options_values(options):
 class AutoComplete(AutoCompleteBase):
     def validate(self, value):
         return value in set(
-            flatten_options_values(call_if_callable(self.options))
-            if self.options
-            else []
+            flatten_options_values(call_if_callable(self.options)) if self.options else []
         )
 
     @classmethod

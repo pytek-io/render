@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Collapse(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Collapse"
     CALLBACKS = ["onKeyPress", "onClick", "onChange"]
     ATTRIBUTES = [
@@ -66,8 +66,8 @@ class Collapse(Component):
         self.size = size
 
 
-class CollapsePanel(Component):
-    Module = "ant"
+class Panel(Component):
+    Module = "antd"
     JSXName = "Collapse.Panel"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

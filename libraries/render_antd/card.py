@@ -2,7 +2,7 @@ from render import Component, create_callback, Props
 
 
 class Card(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Card"
     CALLBACKS = ["onKeyPress", "onClick", "onTabChange"]
     ATTRIBUTES = [
@@ -81,8 +81,8 @@ class Card(Component):
         self.type = type
 
 
-class CardGrid(Component):
-    Module = "ant"
+class Grid(Component):
+    Module = "antd"
     JSXName = "Card.Grid"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "hoverable"]
@@ -109,8 +109,8 @@ class CardGrid(Component):
         self.hoverable = hoverable
 
 
-class CardMeta(Component):
-    Module = "ant"
+class Meta(Component):
+    Module = "antd"
     JSXName = "Card.Meta"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "avatar", "description", "title"]

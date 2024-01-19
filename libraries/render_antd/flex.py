@@ -2,7 +2,7 @@ from render import Component, create_callback
 
 
 class Flex(Component):
-    Module = "ant"
+    Module = "antd"
     JSXName = "Flex"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

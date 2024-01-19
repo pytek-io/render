@@ -1,5 +1,5 @@
 import {
-  registerModule,
+  registerModuleAttributes,
   registerModuleDeferred,
   registerComponent,
   registerMethod,
@@ -23,7 +23,7 @@ export function register() {
   registerModuleDeferred("ant-icons", async () => {
     // Icon has to be imported explicitely (probably because it is not explicitly marked as default or sth...)
     const module = await import("@ant-design/icons");
-    registerModule("ant-icons", module);
+    registerModuleAttributes("ant-icons", module);
     registerComponent("Icon", module.default, "ant-icons");
     registerMethod("EditSvg", EditSvg);
   });
