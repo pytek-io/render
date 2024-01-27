@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import "regenerator-runtime/runtime.js";
@@ -147,9 +147,21 @@ function getOS() {
   return os;
 }
 
-export function registerComponent(name, constructor, namespace) {
+function wrap_inside_suspense(lazy_component) {
+  return ({children, ...props}) => {
+    return React.createElement(Suspense, {}, React.createElement(lazy_component, props, 
+                  ...(children
+              ? children.constructor.name == "Array"
+                ? children
+                : [children]
+              : [])
+      ));
+  }
+}
+
+export function registerComponent(name, constructor, namespace, lazy = false) {
   if (constructor == undefined) {
-    console.error(`${name} constructor is not a valid`);
+    console.error(`${name} is not a valid constructor`);
   }
   // we need to use window as a global because those are created after export
   if (window.componentRegister == undefined) {
@@ -158,39 +170,8 @@ export function registerComponent(name, constructor, namespace) {
   if (!window.componentRegister.has(namespace)) {
     window.componentRegister.set(namespace, new Map());
   }
-  window.componentRegister.get(namespace).set(name, constructor);
-  if (namespace != undefined) {
-    const module_name = `reflect_${namespace.replace("-", "_")}`;
-    if (window[module_name] == undefined) {
-      window[module_name] = {};
-    }
-    window[module_name][name] = (children, props) =>
-      React.createElement(
-        constructor,
-        props,
-        ...(children
-          ? children.constructor.name == "Array"
-            ? children
-            : [children]
-          : [])
-      );
-    for (const [attribute_name, attribute] of Object.entries(constructor)) {
-      if (attribute && attribute.render != undefined) {
-        window[module_name][name][attribute_name] = (children, props) => {
-          return React.createElement(
-            attribute,
-            props,
-            ...(children
-              ? children.constructor.name == "Array"
-                ? children
-                : [children]
-              : [])
-          );
-        };
-      }
-    }
+  window.componentRegister.get(namespace).set(name, lazy ? wrap_inside_suspense(constructor): constructor);
   }
-}
 
 export function registerModuleDeferred(name, callback) {
   if (window.modules_callbacks == undefined) {
@@ -199,17 +180,15 @@ export function registerModuleDeferred(name, callback) {
   window.modules_callbacks.set(name, callback);
 }
 
-window.createElement = React.createElement;
-
 export function registerModuleAttributes(namespace: string, module) {
   for (const [name, attribute] of Object.entries(module)) {
     registerComponent(name, attribute, namespace);
   }
 }
 
-export function registerComponents(namespace: string, components) {
+export function registerComponents(namespace: string, components, lazy=false) {
   for (const [name, constructor] of components) {
-    registerComponent(name, constructor, namespace);
+    registerComponent(name, constructor, namespace, lazy);
   }
 }
 
