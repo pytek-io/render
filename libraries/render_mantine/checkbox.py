@@ -115,7 +115,7 @@ class Checkbox(InputComponent):
 
 class CheckboxGroup(InputComponent):
     Module = "mantine"
-    JSXName = "CheckboxGroup"
+    JSXName = "Checkbox.Group"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

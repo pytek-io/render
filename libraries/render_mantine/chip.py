@@ -100,7 +100,7 @@ class Chip(InputComponent):
 
 class ChipGroup(InputComponent):
     Module = "mantine"
-    JSXName = "ChipGroup"
+    JSXName = "Chip.Group"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

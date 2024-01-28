@@ -121,7 +121,7 @@ class Pagination(InputComponent):
 
 class PaginationItem(Component):
     Module = "mantine"
-    JSXName = "PaginationItem"
+    JSXName = "Pagination.Item"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",

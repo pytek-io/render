@@ -114,7 +114,7 @@ class Switch(InputComponent):
 
 class SwitchGroup(InputComponent):
     Module = "mantine"
-    JSXName = "SwitchGroup"
+    JSXName = "Switch.Group"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [

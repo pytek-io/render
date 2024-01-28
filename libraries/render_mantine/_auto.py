@@ -84,7 +84,7 @@ from .closebutton import CloseButton
 from .group import Group
 from .kbd import Kbd
 from .jsoninput import JsonInput
-from .scrollarea import ScrollArea, ScrollAreaAutosize
+from .scrollarea import ScrollArea
 from .highlight import Highlight
 from .pagination import Pagination, PaginationItem
 from .unstyledbutton import UnstyledButton

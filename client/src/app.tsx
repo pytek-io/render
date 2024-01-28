@@ -342,6 +342,8 @@ function update_component_state(component_record, update) {
 
 const context = new Context();
 
+window.reflect.context = context; // this is used by the callbacks
+
 function onHashChange() {
   context.send("hash", location.hash.slice(1));
 }

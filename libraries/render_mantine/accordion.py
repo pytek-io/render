@@ -78,7 +78,7 @@ class Accordion(Component):
 
 class AccordionControl(Component):
     Module = "mantine"
-    JSXName = "AccordionControl"
+    JSXName = "Accordion.Control"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
@@ -162,7 +162,7 @@ class AccordionControl(Component):
 
 class AccordionItem(Component):
     Module = "mantine"
-    JSXName = "AccordionItem"
+    JSXName = "Accordion.Item"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
@@ -240,7 +240,7 @@ class AccordionItem(Component):
 
 class AccordionPanel(Component):
     Module = "mantine"
-    JSXName = "AccordionPanel"
+    JSXName = "Accordion.Panel"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",

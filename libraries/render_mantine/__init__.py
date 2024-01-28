@@ -15,7 +15,7 @@ from .menu import (
     MenuTarget,
 )
 from .numberinput import NumberInput as NumberInputBase
-from .scrollarea import ScrollArea, ScrollAreaAutosize
+from .scrollarea import ScrollArea
 
 
 class ComparableEnum(Enum):
@@ -70,7 +70,6 @@ Menu.Label = MenuLabel
 Menu.Target = MenuTarget
 List.Item = ListItem
 Navbar.Section = NavbarSection
-ScrollArea.Autosize = ScrollAreaAutosize
 
 
 class NumberInput(NumberInputBase):

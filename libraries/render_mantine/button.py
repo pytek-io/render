@@ -135,7 +135,7 @@ class Button(Component):
 
 class ButtonGroup(Component):
     Module = "mantine"
-    JSXName = "ButtonGroup"
+    JSXName = "Button.Group"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",

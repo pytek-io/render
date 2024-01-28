@@ -134,7 +134,7 @@ class MultiSelect(InputComponent):
 
 class MultiSelectValue(Component):
     Module = "mantine"
-    JSXName = "MultiSelectValue"
+    JSXName = "MultiSelect.Value"
     CALLBACKS = ["onKeyPress", "onClick", "onRemove"]
     ATTRIBUTES = [
         "style",

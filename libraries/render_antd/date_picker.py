@@ -163,8 +163,6 @@ class RangePicker(InputComponent):
         "separator",
         "showTime",
         "showTime_defaultValue",
-        "picker",
-        "bordered",
     ]
 
     def __init__(
@@ -191,8 +189,6 @@ class RangePicker(InputComponent):
         separator=None,
         showTime=None,
         showTime_defaultValue=None,
-        picker=None,
-        bordered=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -216,5 +212,3 @@ class RangePicker(InputComponent):
         self.separator = separator
         self.showTime = showTime
         self.showTime_defaultValue = showTime_defaultValue
-        self.picker = picker
-        self.bordered = bordered

@@ -3,7 +3,7 @@ from render import Component, create_callback, InputComponent
 
 class Tab(Component):
     Module = "mantine"
-    JSXName = "Tab"
+    JSXName = "Tabs.Tab"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
@@ -208,7 +208,7 @@ class Tabs(InputComponent):
 
 class TabsList(Component):
     Module = "mantine"
-    JSXName = "TabsList"
+    JSXName = "Tabs.List"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
@@ -289,7 +289,7 @@ class TabsList(Component):
 
 class TabsPanel(Component):
     Module = "mantine"
-    JSXName = "TabsPanel"
+    JSXName = "Tabs.Panel"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",

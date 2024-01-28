@@ -147,7 +147,7 @@ class Tooltip(InputComponent):
 
 class TooltipFloating(Component):
     Module = "mantine"
-    JSXName = "TooltipFloating"
+    JSXName = "Tooltip.Floating"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
@@ -255,7 +255,7 @@ class TooltipFloating(Component):
 
 class TooltipGroup(Component):
     Module = "mantine"
-    JSXName = "TooltipGroup"
+    JSXName = "Tooltip.Group"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",

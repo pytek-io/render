@@ -111,6 +111,6 @@ const components = [
 
 export function register() {
   registerModuleDeferred("antd", async () => {
-    registerComponents("antd", components);
+    registerComponents("antd", components, true);
   });
 }

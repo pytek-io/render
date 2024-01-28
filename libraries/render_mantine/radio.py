@@ -113,7 +113,7 @@ class Radio(InputComponent):
 
 class RadioGroup(InputComponent):
     Module = "mantine"
-    JSXName = "RadioGroup"
+    JSXName = "Radio.Group"
     InputName = "value"
     CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
