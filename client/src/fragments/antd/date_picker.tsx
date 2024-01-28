@@ -23,4 +23,4 @@ function RenderDatePicker(props) {
     return React.createElement(DatePicker, props_clone);
 }
 
-export default DatePicker;
+export default RenderDatePicker;

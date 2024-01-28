@@ -143,10 +143,11 @@ class DatePicker(InputComponent):
         self.superPrevIcon = superPrevIcon
 
 
-class RangePicker(Component):
+class RangePicker(InputComponent):
     Module = "antd"
     JSXName = "DatePicker.RangePicker"
-    CALLBACKS = ["onKeyPress", "onClick", "onCalendarChange", "onChange"]
+    InputName = "value"
+    CALLBACKS = ["onKeyPress", "onClick", "onCalendarChange"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -154,7 +155,6 @@ class RangePicker(Component):
         "allowEmpty",
         "cellRender",
         "dateRender",
-        "defaultValue",
         "disabled",
         "disabledTime",
         "format",
@@ -163,7 +163,8 @@ class RangePicker(Component):
         "separator",
         "showTime",
         "showTime_defaultValue",
-        "value",
+        "picker",
+        "bordered",
     ]
 
     def __init__(
@@ -175,24 +176,26 @@ class RangePicker(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
+        onChange=None,
+        defaultValue=None,
+        value=None,
         allowEmpty=None,
         cellRender=None,
         dateRender=None,
-        defaultValue=None,
         disabled=None,
         disabledTime=None,
         format=None,
         onCalendarChange=None,
-        onChange=None,
         presets=None,
         renderExtraFooter=None,
         separator=None,
         showTime=None,
         showTime_defaultValue=None,
-        value=None,
+        picker=None,
+        bordered=None,
         controller=None,
     ):
-        super().__init__(key, controller)
+        super().__init__(key, controller, onChange, value, defaultValue)
         self.children = children
         self.style = style
         self.className = className
@@ -202,17 +205,16 @@ class RangePicker(Component):
         self.allowEmpty = allowEmpty
         self.cellRender = cellRender
         self.dateRender = dateRender
-        self.defaultValue = defaultValue
         self.disabled = disabled
         self.disabledTime = disabledTime
         self.format = format
         self.onCalendarChange = create_callback(
             onCalendarChange, "onCalendarChange", [[], [], [2, "range"]]
         )
-        self.onChange = create_callback(onChange, "onChange", [[]])
         self.presets = presets
         self.renderExtraFooter = renderExtraFooter
         self.separator = separator
         self.showTime = showTime
         self.showTime_defaultValue = showTime_defaultValue
-        self.value = value
+        self.picker = picker
+        self.bordered = bordered

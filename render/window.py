@@ -119,11 +119,24 @@ def deserialize(value):
     if data_type == "list":
         return [deserialize(element) for element in data_value]
     if data_type == "datetime":
-        return datetime.fromtimestamp(data_value / 1000)
+        return datetime.datetime.fromtimestamp(data_value / 1000)
     if data_type == "dict":
         return {key: deserialize(value) for key, value in data_value}
     assert data_type == "value"
     return data_value
+
+
+def convert_time_to_datetime(value: datetime.time):
+    origin_date = datetime.datetime.fromtimestamp(0)
+    return datetime.datetime(
+        year=origin_date.year,
+        month=origin_date.month,
+        day=origin_date.day,
+        hour=value.hour,
+        minute=value.minute,
+        second=value.second,
+        microsecond=value.microsecond,
+    )
 
 
 async def delayed_callback(callbacks_sink, delay, callback, args):
@@ -567,7 +580,9 @@ class Window:
             )
         if isinstance(value, datetime.date):
             value = datetime.datetime(value.year, value.month, value.day)
-        if isinstance(value, (datetime.datetime, datetime.time)):
+        if isinstance(value, datetime.time):
+            value = convert_time_to_datetime(value)
+        if isinstance(value, datetime.datetime):
             return "date", value.timestamp()
         if callable(value):
             # callable inside data are treated as callbacks
@@ -660,7 +675,9 @@ class Window:
             callbacks = []
             callback_names = component.CALLBACKS
             if isinstance(component, InputComponent):
-                callback_names = chain(callback_names, [getattr(component, "ChangeEventName", "onChange")])
+                callback_names = chain(
+                    callback_names, [getattr(component, "ChangeEventName", "onChange")]
+                )
             for attribute_name in callback_names:
                 if value := getattr(component, attribute_name):
                     callbacks.append(

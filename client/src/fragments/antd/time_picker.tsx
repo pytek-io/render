@@ -11,4 +11,4 @@ const RenderTimePicker = ({ value, defaultValue, ...rest }) => {
     );
   };
 
-export default TimePicker;
+export default RenderTimePicker;

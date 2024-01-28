@@ -196,12 +196,12 @@ class Checkbox(CheckboxBase):
 
 class DatePicker(DatePickerBase):
     class RangePicker(DateRangePicker):
-        JSXName = "DatePicker.RangePicker"
+        pass
 
 
 class TimePicker(TimePickerBase):
     class RangePicker(TimeRangePicker):
-        JSXName = "TimePicker.RangePicker"
+        pass
 
 
 Empty.PRESENTED_IMAGE_SIMPLE = "PRESENTED_IMAGE_SIMPLE"
