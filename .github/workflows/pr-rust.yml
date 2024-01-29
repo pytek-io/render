@@ -1,0 +1,15 @@
+name: Rust PR
+on: [pull_request]
+defaults:
+  run:
+    working-directory: rs
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: rustfmt
+      - run: cargo test
+      - run: cargo fmt -- --check
