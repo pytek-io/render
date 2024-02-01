@@ -541,7 +541,6 @@ impl Server {
                 .await
                 .next()
                 .expect("Internal error, failed to generate session id");
-            info!("Assigning session {session_id} to kernel {kernel_id}.");
             send_message_to_kernel_process(
                 &kernel.sink,
                 "start session",
@@ -636,7 +635,7 @@ impl Server {
             .await
             .next()
             .expect("Failed to generate kernel id.");
-        info!("Kernel process, pid {pid}, connected, will be kernel {kernel_id}.");
+        info!("Kernel process, pid {pid}, connected to server, will be kernel {kernel_id}.");
         let _kernel_life_manager = KernelLifeManager::new(
             self.kernel_updates_sender.clone(),
             kernel_id,
@@ -753,9 +752,10 @@ where
 
 async fn manage_http_request(
     _user_agent: Option<TypedHeader<headers::UserAgent>>,
-    _uri: Uri,
+    uri: Uri,
     Extension(server): Extension<ServerPtr>,
 ) -> Html<String> {
+    info!("Serving html page at {uri}.");
     Html(server.html.clone())
 }
 
@@ -1010,7 +1010,7 @@ async fn main_aync(terminate: tokio::sync::mpsc::Sender<i32>) {
 }
 
 fn main() {
-    env_logger::init();
+    env_logger::builder().format_timestamp_millis().init();
     let runtime = tokio::runtime::Builder::new_multi_thread()
         .enable_all()
         .build()
