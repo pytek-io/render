@@ -2,6 +2,7 @@ from contextlib import contextmanager
 from typing import Callable, Iterable, List, Optional, Set
 from weakref import ReferenceType
 
+from itertools import chain
 from .common import CURRENT_CONTROLLER
 from .observability import ObservableBase, ObserverBase, Revertable
 from .utils import groupby, print_exception, resolve_weak_refs
@@ -34,23 +35,23 @@ class Controller:
                 self.stale_outside_observers.add(observable)
 
     @contextmanager
-    def transaction(self):
+    def notify_transaction(self):
         inside_transaction, self.inside_transaction = (self.inside_transaction, True)
         try:
             yield
         finally:
             self.inside_transaction = inside_transaction
         if not inside_transaction:
+            self.stale_inside_observers, stale_inside_observers = set(), self.stale_inside_observers
             try:
-                for observer in self.stale_inside_observers:
+                for observer in stale_inside_observers:
                     with print_exception():
                         observer._update()
             finally:
                 self.inside_transaction = False
-                self.stale_inside_observers.clear()
 
     def notify_observers(self, observers: Iterable[ObserverBase]):
-        with self.transaction():
+        with self.notify_transaction():
             for observer in observers:
                 if (
                     observer in self.stale_inside_observers
@@ -62,12 +63,16 @@ class Controller:
                     observer.notify()
                 else:
                     self.stale_outside_observers.add(observer)
+        # In rare cases, new observers may have been notified during the updates (eg: inside AutoRun updates)
+        if not self.inside_transaction and self.stale_inside_observers:
+            self.stale_inside_observers, stale_inside_observers = set(), self.stale_inside_observers
+            self.notify_observers(stale_inside_observers)
+
 
     def notify_observables_observers(self, observables: List[ObservableBase]):
-        observers = set()
+        observers = set(chain.from_iterable(observable.observers for observable in observables))
         for observable in observables:
-            while observable.observers:
-                observers.add(observable.observers.pop())
+            observable.observers.clear()
         self.notify_observers(observer() for observer in observers if observer())
 
     def revert(self):

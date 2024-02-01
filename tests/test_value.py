@@ -159,12 +159,22 @@ def test_controlled_cached_evaluation():
     print(cached_eval())
 
 
-
-
-
 async def test_controlled_cached_evaluation_async():
     try:
         async with anyio.create_task_group() as tg:
             tg.start_soon(test)
     except Exception as e:
         print(e)
+
+
+def test_notification_during_updates():
+    obs1 = r.ObservableValue(1)
+    obs2 = r.ObservableValue(2)
+
+    def update():
+        obs1()
+        obs2.set(3)
+
+    auto_run_1 = r.AutoRun(update, "auto_run_1")
+    auto_run_2 = r.AutoRun(obs2, "auto_run_2")
+    obs1.set(2)
