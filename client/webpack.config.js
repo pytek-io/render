@@ -18,6 +18,10 @@ module.exports = function (env, argv) {
     resolve: {
       extensions: [".tsx", ".ts", ".js", "scss", "css"],
     },
+    externals: {
+      "react": "React",
+      "react-dom": "ReactDOM",
+    },
     module: {
       rules: [
         {

@@ -948,6 +948,8 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         <meta content="no-cache" http-equiv="Pragma">
         <meta content="0" http-equiv="Expires">
         <link href="/static/cogs.svg" rel="icon" type="image/x-icon">
+        <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
         <script defer="" src="{script_path}"></script>
       </head>
       <body style="height: 100%; background-color: rgb(15, 23, 36)">
