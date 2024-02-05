@@ -3,7 +3,8 @@ from collections.abc import Iterable
 from more_itertools import first
 
 from .common import get_window
-from .observability import ObservableBase, ObservableValue, ObserverBase
+from .observability import ObservableValue, ObserverBase
+from .dict_of_observables import ObservableElement
 from .utils import CatchError, method_description
 
 JSMETHODS_REPOSITORY = {}
@@ -11,14 +12,6 @@ JSMETHODS_REPOSITORY = {}
 
 class JSRemoteCallError(Exception):
     pass
-
-
-def schedule_callback(delay: float, callback, *args):
-    get_window().delayed_callbacks.append((delay, callback, args))
-
-
-async def execute(method, *args):
-    return await get_window().execute(method, args)
 
 
 class js:
@@ -48,9 +41,13 @@ class JSPartiallyAppliedCall:
         self.arguments = arguments
 
 
+class Props:
+    """This is a marker class for the props of a component. It is transformed into a regular JS object."""
+
+    pass
+
 class RemoteObject:
     def __init__(self):
-        super().__init__()
         self._nb = None
 
     async def call_method(self, method_name, args=()):
@@ -75,7 +72,6 @@ class RemoteObject:
 
 
 class Component(ObserverBase, RemoteObject):
-    """A component is an observer that will observer its children and properties."""
 
     JSXName = None
     REF_HOOK = None
@@ -109,20 +105,17 @@ class Component(ObserverBase, RemoteObject):
 
     def _children(self):
         children = getattr(self, "children", None)
-        while callable(children) and not isinstance(children, InputComponent):
+        while not isinstance(children, InputComponent) and callable(children):
             children = children()
         if children is None:
             return []
+        # children can be a single child or a list of children
         if not isinstance(children, Iterable) or isinstance(children, (str, Component)):
             children = first(children)
         return children
 
-    def jsx_component_name(self):
-        return self.Module, self.JSXName or type(self).__name__
-
     def __repr__(self) -> str:
-        module, name = self.jsx_component_name()
-        return f"<{module}.{name}:{self.key}>"
+        return f"<{self.Module}.{self.JSXName or type(self).__name__}:{self.key}>"
 
     def _update(self):
         if self.mount_status != "unknown":
@@ -141,14 +134,14 @@ class InputComponent(Component):
     def __init__(self, key, controller, onChange, value, default_value):
         super().__init__(key=key, controller=controller)
         self.input_value_update = False
-        if isinstance(value, (ObservableValue, ObservableBase)):
+        if isinstance(value, (ObservableValue, ObservableElement)):
             if default_value is not None:
-                raise Exception("Cannot specify both a value and a default value at the same time")
+                raise Exception("Input component value and default value cannot be both speficied.")
             self._value, default_value = value, value._eval()
         else:
-            if value is not None and not callable(value):
+            if value is not None:
                 raise TypeError(
-                    f"{self.InputName} must be one of (Observable, BoundDataAttribute, BoundDictAttribute) if specified found {type(value)} instead"
+                    f"{self.InputName} must be one of (ObservableValue, ObservableElement) if specified found {type(value)} instead"
                 )
             self._value = ObservableValue(default_value, controller=controller, key=key)
         with self.register_as_current_observer():
@@ -189,9 +182,6 @@ class InputComponent(Component):
             ),
         )
 
-        def evaluate(self):
-            return self.__call__()
-
     def displayed_value(self):
         return self._displayed_value
 
@@ -213,9 +203,6 @@ class InputComponent(Component):
         Component._update(self)
         self._displayed_value = self._value._eval()
 
-
-class Props:
-    pass
 
 
 class Callback:

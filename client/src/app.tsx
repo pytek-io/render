@@ -204,14 +204,14 @@ export async function loadScript(module_name, url: string) {
   return window[module_name];
 }
 
-function resolveComponent([namespace, name]: [string, string]) {
-  const componentsForNamespace = window.componentRegister.get(namespace);
+function resolveComponent({module, js_name}: {module: string, js_name: string}) {
+  const componentsForNamespace = window.componentRegister.get(module);
   if (!componentsForNamespace) {
-    throw new Error(`unknown library ${namespace}`);
+    throw new Error(`unknown library ${module}`);
   }
-  let actual_component = componentsForNamespace.get(name);
+  let actual_component = componentsForNamespace.get(js_name);
   if (actual_component === undefined) {
-    throw new Error(`constructor ${name} not found in ${namespace} module`);
+    throw new Error(`constructor ${js_name} not found in ${module} module`);
   }
   return actual_component;
 }
@@ -706,8 +706,8 @@ function build_children_and_props(component_record, update) {
   }
   component_record.state["children"] = children;
   const result = { ["props"]: _props, ["children"]: children };
-  if (update.component_type) {
-    result.constructor = resolveComponent(update.component_type);
+  if (update.module) {
+    result.constructor = resolveComponent(update);
   }
   return result;
 }
@@ -756,7 +756,7 @@ function createOrReuseComponent(details) {
   component_records.set(details.nb, component_record);
   // rmk: we need to build a valid component_record before calling this method
   component_record.state = build_children_and_props(component_record, details);
-  const constructor = resolveComponent(details.component_type);
+  const constructor = resolveComponent(details);
   // rmk: we might have a race condition if we have received an update before reaching that line (not sure it is possible though)
   component_record.react_element = details.statefull
     ? React.createElement(StateComponent, {

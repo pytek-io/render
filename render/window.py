@@ -662,8 +662,9 @@ class Window:
         elif not component.is_stale:
             return "component", {"nb": component._nb, "reuse": True}
         result = {
+            "module": component.Module,
+            "js_name": component.JSXName or type(component).__name__,
             "key": component.key,
-            "component_type": component.jsx_component_name(),
             "error": None,
             "nb": component._nb,
             "ref_hook": component.REF_HOOK,
@@ -684,14 +685,17 @@ class Window:
                         self.serialize_callback(
                             attribute_name,
                             value,
-                            input_control_params=[
-                                component.InputName,
-                                component.NewValuePath,
-                            ]
-                            if isinstance(component, InputComponent)
-                            and attribute_name == getattr(component, "ChangeEventName", "onChange")
-                            else None,
-                        )
+                            input_control_params=(
+                                [
+                                    component.InputName,
+                                    component.NewValuePath,
+                                ]
+                                if isinstance(component, InputComponent)
+                                and attribute_name
+                                == getattr(component, "ChangeEventName", "onChange")
+                                else None
+                            ),
+                        ),
                     )
             result["callbacks"] = callbacks
         result["statefull"] = bool(

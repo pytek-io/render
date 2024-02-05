@@ -10,7 +10,6 @@ from .components import (
     create_js_callback,
     js,
     js_arrow,
-    schedule_callback,
 )
 from .controller import Controller
 from .dict_of_observables import DictOfObservables
@@ -71,5 +70,4 @@ __all__ = [
     "launch_server",
     "memoize",
     "register_css_for_module",
-    "schedule_callback",
 ]
