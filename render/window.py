@@ -18,6 +18,7 @@ from .async_objects import AsyncCachedEvaluation, AsyncGenerator
 from .common import CURRENT_CONTROLLER, CURRENT_WINDOW, SubscribeToKernelUpdates
 from .components import (
     Callback,
+    create_callback,
     Component,
     InputComponent,
     JSMethod,
@@ -379,18 +380,15 @@ class Window:
     async def connection_loop(self):
         async for code, data in self._connection:
             if code == "event":
-                callback_description, callback_id, promise_id, value = data
-                method = self.callbacks.get(callback_id, None)
-                if method:
+                description, callback_id, promise_id, value = data
+                if method := self.callbacks.get(callback_id, None):
                     if promise_id:
                         method = self.create_return_promise_result(method, promise_id)
                     await self.schedule_callback_execution(method, deserialize(value))
                 else:
-                    message = (
-                        f"Callback {(callback_description + ' ') if callback_description else ''}"
-                        f"not found. It might have been GC'ed, in that case you should take a hard reference on it."
+                    self.display_error_message(
+                        f"Callback {description} not found. It has probably been GC'ed, in that case you should take a hard reference on it."
                     )
-                    self.display_error_message(message)
             elif code == "componentDidMount":
                 component_id = data
                 if component := self.components.get(component_id, None):
@@ -597,6 +595,11 @@ class Window:
 
     def serialize_props(self, parent, component: Component):
         result = {}
+        for attribute_name in component.CALLBACKS:
+            if value := getattr(component, attribute_name):
+                if not isinstance(value, Callback):
+                    value = create_callback(value, attribute_name)
+                result[attribute_name] = "callback", self.serialize_callback(attribute_name, value)
         for name in component.ATTRIBUTES + component.DATA:
             attribute = getattr(component, name)
             if attribute is None:
@@ -632,27 +635,24 @@ class Window:
             self.callbacks_hard_refs.add(method)
         return callback_id
 
-    def serialize_callback(self, argument_name, callback: Callback, input_control_params):
+    def serialize_callback(self, argument_name: str, callback: Callback, input_control_params=None):
         result = callback.__dict__.copy()
-        result.update(
-            [
-                ("argument_name", argument_name),
-                ("input_control_params", input_control_params),
-            ]
-        )
         method = result.pop("method")
-        if method is not None:
-            result["callback_id"] = self.register_callback(method)
+        result.update(
+            argument_name=argument_name,
+            input_control_params=input_control_params,
+            description=method_description(method),
+            callback_id=self.register_callback(method),
+        )
         return result
 
     def _serialize_component(self, parent, component: Component):
         if component._nb is None:
             self.load_js_module(component.Module)
-            component._nb = component_nb = next(self.components_counter)
-            component.mount_status = "mounting"
-            self.components[component_nb] = component
+            component.mount_status, component._nb = "mounting", next(self.components_counter)
+            self.components[component._nb] = component
             if parent is None:
-                self.root_components[component_nb] = component
+                self.root_components[component._nb] = component
             else:
                 component.parent = parent.weak_ref
             if component._window() is not self:
@@ -661,52 +661,36 @@ class Window:
                 )
         elif not component.is_stale:
             return "component", {"nb": component._nb, "reuse": True}
-        result = {
+        with component.register_as_current_observer():
+            children = self.serialize_children(component)
+            props = self.serialize_props(parent, component)
+            if isinstance(component, InputComponent):
+                change_event_name = getattr(component, "ChangeEventName", "onChange")
+                if callback := getattr(component, change_event_name):
+                    props[change_event_name] = "callback", (
+                        self.serialize_callback(
+                            change_event_name, callback, [component.InputName, component.NewValuePath]
+                        )
+                    )
+        # react children need to be keyed, we want the wrapper to have the same key if any (this is needed when wrapping ant menu items)
+        return "component", {
             "module": component.Module,
             "js_name": component.JSXName or type(component).__name__,
             "key": component.key,
             "error": None,
             "nb": component._nb,
             "ref_hook": component.REF_HOOK,
+            "_children": children,
+            "props": props,
+            "statefull": bool(
+                parent is None
+                or isinstance(component, InputComponent)
+                or component.has_dependencies
+                or component.on_didmount
+                or component.on_unmount
+                or component.REF_HOOK
+            ),
         }
-        with component.register_as_current_observer():
-            result["_children"] = self.serialize_children(component)
-            result["props"] = self.serialize_props(parent, component)
-            # react children need to be keyed, we want the wrapper to have the same key if any (this is needed when wrapping ant menu items)
-            callbacks = []
-            callback_names = component.CALLBACKS
-            if isinstance(component, InputComponent):
-                callback_names = chain(
-                    callback_names, [getattr(component, "ChangeEventName", "onChange")]
-                )
-            for attribute_name in callback_names:
-                if value := getattr(component, attribute_name):
-                    callbacks.append(
-                        self.serialize_callback(
-                            attribute_name,
-                            value,
-                            input_control_params=(
-                                [
-                                    component.InputName,
-                                    component.NewValuePath,
-                                ]
-                                if isinstance(component, InputComponent)
-                                and attribute_name
-                                == getattr(component, "ChangeEventName", "onChange")
-                                else None
-                            ),
-                        ),
-                    )
-            result["callbacks"] = callbacks
-        result["statefull"] = bool(
-            parent is None
-            or isinstance(component, InputComponent)
-            or component.has_dependencies
-            or component.on_didmount
-            or component.on_unmount
-            or component.REF_HOOK
-        )
-        return "component", result
 
     def _serialize(self, parent, component, name=None):
         if isinstance(component, Component):

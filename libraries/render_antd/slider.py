@@ -5,8 +5,7 @@ class Slider(InputComponent):
     Module = "antd"
     JSXName = "Slider"
     InputName = "value"
-    ChangeEventName = "onAfterChange"
-    CALLBACKS = ["onKeyPress", "onClick", "onChange"]
+    CALLBACKS = ["onKeyPress", "onClick", "onAfterChange"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -41,7 +40,7 @@ class Slider(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onAfterChange=None,
+        onChange=None,
         defaultValue=None,
         value=None,
         autoAdjustOverflow=None,
@@ -56,7 +55,7 @@ class Slider(InputComponent):
         marks=None,
         max=None,
         min=None,
-        onChange=None,
+        onAfterChange=None,
         open=None,
         placement=None,
         range=None,
@@ -66,7 +65,7 @@ class Slider(InputComponent):
         vertical=None,
         controller=None,
     ):
-        super().__init__(key, controller, onAfterChange, value, defaultValue)
+        super().__init__(key, controller, onChange, value, defaultValue)
         self.children = children
         self.style = style
         self.className = className
@@ -85,7 +84,7 @@ class Slider(InputComponent):
         self.marks = marks
         self.max = max
         self.min = min
-        self.onChange = create_callback(onChange, "onChange", [[0]])
+        self.onAfterChange = create_callback(onAfterChange, "onAfterChange", [[0]])
         self.open = open
         self.placement = placement
         self.range = range

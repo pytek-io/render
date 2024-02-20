@@ -1,4 +1,4 @@
-import { registerMethod, fetch_attribute, fetch_attributes } from "./app";
+import { registerMethod } from "./app";
 
 function update_element_prop(tag_name: string, property_path: string[], properties) {
     let element = document.getElementsByTagName(tag_name);
@@ -28,21 +28,11 @@ function add_event_listener(eventName: string, callBack) {
     });
 }
 
-function fetch_attributes_generic(argument) {
-    if (argument == undefined) {
-        return (x: any) => x;
-    }
-    return (typeof argument == "string" ? fetch_attribute : fetch_attributes)(
-        argument
-    );
-}
-
 export function register_callbacks() {
     registerMethod("call_js_builtin_method", call_js_builtin_method);
     registerMethod("add_event_listener", add_event_listener);
     registerMethod("update_element_prop", update_element_prop);
     registerMethod("window.open", window.open);
-    registerMethod("fetch_attribute", fetch_attributes_generic);
     registerMethod("constant", (x: any) => () => x);
     registerMethod("identity", (x: any) => x);
     registerMethod("key", (event: any) => event.key);

@@ -5,7 +5,7 @@ from more_itertools import first
 from .common import get_window
 from .observability import ObservableValue, ObserverBase
 from .dict_of_observables import ObservableElement
-from .utils import CatchError, method_description
+from .utils import CatchError
 
 JSMETHODS_REPOSITORY = {}
 
@@ -204,8 +204,8 @@ class InputComponent(Component):
         self._displayed_value = self._value._eval()
 
 
-
 class Callback:
+
     def __init__(
         self,
         method=None,
@@ -217,14 +217,11 @@ class Callback:
     ):
         assert not isinstance(method, Callback)
         self.method = method
-        self.description = method_description(method)
         self.data_paths = data_paths
         self.is_promise = is_promise
         self.stop_propagation = stop_propagation
         self.prevent_default = prevent_default
-
-    def __repr__(self) -> str:
-        return f"Event<{self.description}: {repr(self.method)}>"
+        self.callback_name = callback_name
 
 
 def create_callback(maybe_callback_or_callable, argument_name="", data_paths=(), is_promise=False):

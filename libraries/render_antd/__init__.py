@@ -78,6 +78,14 @@ def create_method_call(message_type, notification_type):
 
     return result
 
+class notification:
+    open = create_method_call("notification", "open")
+    info = create_method_call("notification", "info")
+    success = create_method_call("notification", "success")
+    warning = create_method_call("notification", "warning")
+    error = create_method_call("notification", "error")
+    close = create_method_call("notification", "close")
+
 
 @contextlib.contextmanager
 def create_loading_message(message_):
@@ -102,13 +110,6 @@ if get_window(throw_if_none=False):
     get_window().set_notification_hook(create_loading_message)
 
 
-class notification:
-    open = create_method_call("notification", "open")
-    info = create_method_call("notification", "info")
-    success = create_method_call("notification", "success")
-    warning = create_method_call("notification", "warning")
-    error = create_method_call("notification", "error")
-    close = create_method_call("notification", "close")
 
 
 class message:

@@ -25,7 +25,7 @@ const pending_calls = new WeakValueMap();
 window.reflect.component_records = component_records;
 window.reflect.dom_object_or_refs = dom_object_or_refs;
 
-let promise_id = 1; // starting from 1 to make it nullable
+let current_promise_id = 1; // starting from 1 to make it nullable
 const pending_promises = new Map();
 const variables = new Map();
 
@@ -69,17 +69,6 @@ export function fetch_attribute(attribute_path: string) {
     return result;
   };
 }
-
-export function fetch_attributes(attribute_paths) {
-  return (object: any) => {
-    const result = [];
-    for (const attribute_path of attribute_paths) {
-      result.push(fetch_attribute(attribute_path)(object));
-    }
-    return result;
-  };
-}
-
 function new_fetch_attribute(attributes: string[]) {
   return (object: any) => {
     let result = object;
@@ -237,9 +226,6 @@ class Context {
     if (msg.length == 1) {
       msg = msg[0]
     }
-    // if (this.socket == null) {
-    //   this.socket = create_websocket();
-    // }
     this.buffer.push(msg);
     if (!this.flush_pending) {
       this.flush_pending = true;
@@ -284,7 +270,7 @@ function invoke_method(object, data) {
   let success = false;
   try {
     const call_args = serialized_call_args.map((arg) =>
-      deserializeComponentOrData(`${method_name} arguments`, arg)
+      deserializeComponentOrData(null, `${method_name} arguments`, arg)
     );
     for (let i = 0; i + 1 < method_name.length; i++) {
       object = object[method_name[i]];
@@ -415,7 +401,7 @@ function process_message(event) {
         });
         break;
       case "root":
-        deserializeComponentOrData(`${method_name} arguments`, data);
+        deserializeComponentOrData(component_records.get(0), `${method_name} arguments`, data);
         createRoot(document.getElementById("root")).render(
           component_records.get(0).react_element
         );
@@ -460,6 +446,7 @@ function process_message(event) {
         break;
       case "js free method call":
         const [method_name, call_args] = deserializeComponentOrData(
+          null,
           `${method_name} arguments`,
           data
         );
@@ -610,7 +597,7 @@ function serialize_value(value: any) {
   return ["value", value];
 }
 
-const create_callback = (callback_details, component_record) => {
+const create_callback = (component_record, callback_details) => {
   const {
     description,
     callback_id,
@@ -656,43 +643,26 @@ const create_callback = (callback_details, component_record) => {
         `failed to serialize ${value} ${js_name} ${data_paths} result, ${value} ${e}`
       );
     }
+    let promise_id = is_promise ? current_promise_id : null;
+    context.send("event", [description, callback_id, promise_id, value]);
     if (is_promise) {
       return new Promise((resolve, reject) => {
-        const this_promise_id = promise_id;
-        promise_id += 1;
-        pending_promises[this_promise_id] = [resolve, reject];
-        _notify_event(callback_id, value, description, this_promise_id);
+        pending_promises[promise_id] = [resolve, reject];
+        current_promise_id += 1;
       }).catch((error) => console.error(error));
-    } else {
-      _notify_event(callback_id, value, description, null);
     }
+
   };
 };
 
-function _notify_event(callback_id, value, description, this_promise_id) {
-  context.send("event", [description, callback_id, this_promise_id, value]);
-}
-
-function notify_event(callback_id, args, description) {
-  _notify_event(callback_id, serialize_value(args), description, null)
-}
-
-window.reflect.notify_event = notify_event;
-
 function build_children_and_props(component_record, update) {
-  const { nb, _children, callbacks, props, key, error } = update;
+  const { nb, _children, props, key, error } = update;
   const props_defs = Object.fromEntries(
     Object.entries(props || []).map(([name, details]) => {
-      return [name, deserializeComponentOrData(name, details)];
+      return [name, deserializeComponentOrData(component_record, name, details)];
     })
   );
-  const callbacks_defs = Object.fromEntries(
-    (callbacks || []).map((callback_details) => [
-      callback_details.argument_name,
-      create_callback(callback_details, component_record),
-    ])
-  );
-  const _props = { key, ...props_defs, ...callbacks_defs };
+  const _props = { key, ...props_defs };
   let children = null;
   if (error) {
     children = [React.createElement("pre", { style: { color: "red", "borderStyle": "dotted" } }, error)];
@@ -700,7 +670,7 @@ function build_children_and_props(component_record, update) {
     children =
       _children != null && _children != undefined
         ? _children.map((data_args: any) => {
-          return deserializeComponentOrData("children", data_args, true);
+          return deserializeComponentOrData(component_record, "children", data_args, true);
         })
         : null;
   }
@@ -712,10 +682,10 @@ function build_children_and_props(component_record, update) {
   return result;
 }
 
-function deserialize_js_method(name, data_args) {
+function deserialize_js_method(component_record, name, data_args) {
   const [method_name, serialized_args] = data_args;
   const curried_args = serialized_args.map((arg) =>
-    deserializeComponentOrData(`${name} arguments`, arg)
+    deserializeComponentOrData(component_record, `${name} arguments`, arg)
   );
   let method = resolveMethod(method_name);
   const curried_method =
@@ -774,6 +744,7 @@ function createOrReuseComponent(details) {
 }
 
 function deserializeComponentOrData(
+  component_record, 
   name: string,
   [dataType, details],
   call_method = false
@@ -787,22 +758,22 @@ function deserializeComponentOrData(
       return Object.fromEntries(
         details.map(([name, value]) => [
           name,
-          deserializeComponentOrData(name, value),
+          deserializeComponentOrData(component_record, name, value),
         ])
       );
     case "list":
       return details.map((value, index) =>
-        deserializeComponentOrData(index, value)
+        deserializeComponentOrData(component_record, index, value)
       );
     case "date":
       return new Date(details * 1000);
     case "js_method":
-      const method = deserialize_js_method(name, details);
+      const method = deserialize_js_method(component_record, name, details);
       return call_method ? method() : method;
     case "js_expression":
       return () => eval(details);
     case "callback":
-      return create_callback(details);
+      return create_callback(component_record, details);
     case "object":
       return variables.get(details);
     default:
