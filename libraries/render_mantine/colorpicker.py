@@ -9,7 +9,6 @@ class ColorPicker(Component):
         "style",
         "className",
         "id",
-        "__staticSelector",
         "alphaLabel",
         "defaultValue",
         "focusable",
@@ -48,7 +47,6 @@ class ColorPicker(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
-        __staticSelector=None,
         alphaLabel=None,
         defaultValue=None,
         focusable=None,
@@ -87,7 +85,6 @@ class ColorPicker(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.__staticSelector = __staticSelector
         self.alphaLabel = alphaLabel
         self.defaultValue = defaultValue
         self.focusable = focusable

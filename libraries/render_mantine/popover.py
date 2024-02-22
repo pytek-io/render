@@ -10,7 +10,6 @@ class Popover(InputComponent):
         "style",
         "className",
         "id",
-        "__staticSelector",
         "arrowOffset",
         "arrowSize",
         "classNames",
@@ -64,7 +63,6 @@ class Popover(InputComponent):
         onChange=None,
         defaultOpened=None,
         opened=None,
-        __staticSelector=None,
         arrowOffset=None,
         arrowSize=None,
         classNames=None,
@@ -116,7 +114,6 @@ class Popover(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.__staticSelector = __staticSelector
         self.arrowOffset = arrowOffset
         self.arrowSize = arrowSize
         self.classNames = classNames

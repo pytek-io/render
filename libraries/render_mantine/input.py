@@ -9,7 +9,6 @@ class Input(Component):
         "style",
         "className",
         "id",
-        "__staticSelector",
         "component",
         "disabled",
         "href",
@@ -54,7 +53,6 @@ class Input(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
-        __staticSelector=None,
         component=None,
         disabled=None,
         href=None,
@@ -97,7 +95,6 @@ class Input(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.__staticSelector = __staticSelector
         self.component = component
         self.disabled = disabled
         self.href = href

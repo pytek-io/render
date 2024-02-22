@@ -11,7 +11,6 @@ class TextInput(InputComponent):
         "style",
         "className",
         "id",
-        "__staticSelector",
         "m",
         "mb",
         "ml",
@@ -44,7 +43,6 @@ class TextInput(InputComponent):
         onChange=None,
         defaultValue="",
         value=None,
-        __staticSelector=None,
         m=None,
         mb=None,
         ml=None,
@@ -72,7 +70,6 @@ class TextInput(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.__staticSelector = __staticSelector
         self.m = m
         self.mb = mb
         self.ml = ml

@@ -10,7 +10,6 @@ class Textarea(InputComponent):
         "style",
         "className",
         "id",
-        "__staticSelector",
         "autosize",
         "m",
         "maxRows",
@@ -45,7 +44,6 @@ class Textarea(InputComponent):
         onChange=None,
         defaultValue=None,
         value=None,
-        __staticSelector=None,
         autosize=None,
         m=None,
         maxRows=None,
@@ -75,7 +73,6 @@ class Textarea(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.__staticSelector = __staticSelector
         self.autosize = autosize
         self.m = m
         self.maxRows = maxRows

@@ -98,9 +98,6 @@ class Tabs(InputComponent):
         "style",
         "className",
         "id",
-        "List",
-        "Panel",
-        "Tab",
         "activateTabWithKeyboard",
         "allowTabDeactivation",
         "color",
@@ -139,9 +136,6 @@ class Tabs(InputComponent):
         onChange=None,
         defaultValue=None,
         value=None,
-        List=None,
-        Panel=None,
-        Tab=None,
         activateTabWithKeyboard=None,
         allowTabDeactivation=None,
         color=None,
@@ -176,9 +170,6 @@ class Tabs(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.List = List
-        self.Panel = Panel
-        self.Tab = Tab
         self.activateTabWithKeyboard = activateTabWithKeyboard
         self.allowTabDeactivation = allowTabDeactivation
         self.color = color

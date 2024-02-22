@@ -9,7 +9,6 @@ class Step(Component):
         "style",
         "className",
         "id",
-        "__staticSelector",
         "allowStepClick",
         "allowStepSelect",
         "color",
@@ -52,7 +51,6 @@ class Step(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
-        __staticSelector=None,
         allowStepClick=None,
         allowStepSelect=None,
         color=None,
@@ -93,7 +91,6 @@ class Step(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.__staticSelector = __staticSelector
         self.allowStepClick = allowStepClick
         self.allowStepSelect = allowStepSelect
         self.color = color
