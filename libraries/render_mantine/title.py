@@ -5,28 +5,7 @@ class Title(Component):
     Module = "mantine"
     JSXName = "Title"
     CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "order",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "size",
-        "sx",
-    ]
+    ATTRIBUTES = ["style", "className", "id", "lineClamp", "order", "size", "textWrap"]
 
     def __init__(
         self,
@@ -37,23 +16,10 @@ class Title(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
+        lineClamp=None,
         order=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         size=None,
-        sx=None,
+        textWrap=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -63,20 +29,7 @@ class Title(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
+        self.lineClamp = lineClamp
         self.order = order
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.size = size
-        self.sx = sx
+        self.textWrap = textWrap

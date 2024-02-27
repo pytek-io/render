@@ -9,29 +9,21 @@ class Table(Component):
         "style",
         "className",
         "id",
+        "borderColor",
         "captionSide",
-        "fontSize",
+        "data",
         "highlightOnHover",
+        "highlightOnHoverColor",
         "horizontalSpacing",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
+        "layout",
+        "stickyHeader",
+        "stickyHeaderOffset",
         "striped",
-        "sx",
+        "stripedColor",
         "verticalSpacing",
-        "withBorder",
         "withColumnBorders",
+        "withRowBorders",
+        "withTableBorder",
     ]
 
     def __init__(
@@ -43,29 +35,21 @@ class Table(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
+        borderColor=None,
         captionSide=None,
-        fontSize=None,
+        data=None,
         highlightOnHover=None,
+        highlightOnHoverColor=None,
         horizontalSpacing=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
+        layout=None,
+        stickyHeader=None,
+        stickyHeaderOffset=None,
         striped=None,
-        sx=None,
+        stripedColor=None,
         verticalSpacing=None,
-        withBorder=None,
         withColumnBorders=None,
+        withRowBorders=None,
+        withTableBorder=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -75,26 +59,18 @@ class Table(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.borderColor = borderColor
         self.captionSide = captionSide
-        self.fontSize = fontSize
+        self.data = data
         self.highlightOnHover = highlightOnHover
+        self.highlightOnHoverColor = highlightOnHoverColor
         self.horizontalSpacing = horizontalSpacing
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
+        self.layout = layout
+        self.stickyHeader = stickyHeader
+        self.stickyHeaderOffset = stickyHeaderOffset
         self.striped = striped
-        self.sx = sx
+        self.stripedColor = stripedColor
         self.verticalSpacing = verticalSpacing
-        self.withBorder = withBorder
         self.withColumnBorders = withColumnBorders
+        self.withRowBorders = withRowBorders
+        self.withTableBorder = withTableBorder

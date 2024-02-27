@@ -4,7 +4,13 @@ from render import Component, create_callback
 class ColorPicker(Component):
     Module = "mantine"
     JSXName = "ColorPicker"
-    CALLBACKS = ["onKeyPress", "onClick", "onChange", "onChangeEnd"]
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onChange",
+        "onChangeEnd",
+        "onColorSwatchClick",
+    ]
     ATTRIBUTES = [
         "style",
         "className",
@@ -15,25 +21,10 @@ class ColorPicker(Component):
         "format",
         "fullWidth",
         "hueLabel",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "saturationLabel",
         "size",
         "swatches",
         "swatchesPerRow",
-        "sx",
         "value",
         "withPicker",
     ]
@@ -53,27 +44,13 @@ class ColorPicker(Component):
         format=None,
         fullWidth=None,
         hueLabel=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
         onChange=None,
         onChangeEnd=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
+        onColorSwatchClick=None,
         saturationLabel=None,
         size=None,
         swatches=None,
         swatchesPerRow=None,
-        sx=None,
         value=None,
         withPicker=None,
         controller=None,
@@ -91,26 +68,14 @@ class ColorPicker(Component):
         self.format = format
         self.fullWidth = fullWidth
         self.hueLabel = hueLabel
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
         self.onChange = create_callback(onChange, "onChange")
         self.onChangeEnd = create_callback(onChangeEnd, "onChangeEnd")
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
+        self.onColorSwatchClick = create_callback(
+            onColorSwatchClick, "onColorSwatchClick"
+        )
         self.saturationLabel = saturationLabel
         self.size = size
         self.swatches = swatches
         self.swatchesPerRow = swatchesPerRow
-        self.sx = sx
         self.value = value
         self.withPicker = withPicker

@@ -5,27 +5,7 @@ class AspectRatio(Component):
     Module = "mantine"
     JSXName = "AspectRatio"
     CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "ratio",
-        "sx",
-    ]
+    ATTRIBUTES = ["style", "className", "id", "ratio"]
 
     def __init__(
         self,
@@ -36,22 +16,7 @@ class AspectRatio(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         ratio=None,
-        sx=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -61,19 +26,4 @@ class AspectRatio(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.ratio = ratio
-        self.sx = sx

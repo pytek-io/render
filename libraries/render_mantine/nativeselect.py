@@ -12,23 +12,28 @@ class NativeSelect(InputComponent):
         "className",
         "id",
         "data",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "placeholder",
-        "pr",
-        "pt",
-        "px",
-        "py",
+        "description",
+        "descriptionProps",
+        "disabled",
+        "error",
+        "errorProps",
+        "inputContainer",
+        "inputWrapperOrder",
+        "label",
+        "labelProps",
+        "leftSection",
+        "leftSectionPointerEvents",
+        "leftSectionProps",
+        "leftSectionWidth",
+        "radius",
+        "required",
+        "rightSection",
+        "rightSectionPointerEvents",
+        "rightSectionProps",
+        "rightSectionWidth",
         "size",
-        "sx",
+        "withAsterisk",
+        "withErrorStyles",
         "wrapperProps",
     ]
 
@@ -45,23 +50,28 @@ class NativeSelect(InputComponent):
         defaultValue=None,
         value=None,
         data=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        placeholder=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
+        description=None,
+        descriptionProps=None,
+        disabled=None,
+        error=None,
+        errorProps=None,
+        inputContainer=None,
+        inputWrapperOrder=None,
+        label=None,
+        labelProps=None,
+        leftSection=None,
+        leftSectionPointerEvents=None,
+        leftSectionProps=None,
+        leftSectionWidth=None,
+        radius=None,
+        required=None,
+        rightSection=None,
+        rightSectionPointerEvents=None,
+        rightSectionProps=None,
+        rightSectionWidth=None,
         size=None,
-        sx=None,
+        withAsterisk=None,
+        withErrorStyles=None,
         wrapperProps=None,
         controller=None,
     ):
@@ -73,21 +83,26 @@ class NativeSelect(InputComponent):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.data = data
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.placeholder = placeholder
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
+        self.description = description
+        self.descriptionProps = descriptionProps
+        self.disabled = disabled
+        self.error = error
+        self.errorProps = errorProps
+        self.inputContainer = inputContainer
+        self.inputWrapperOrder = inputWrapperOrder
+        self.label = label
+        self.labelProps = labelProps
+        self.leftSection = leftSection
+        self.leftSectionPointerEvents = leftSectionPointerEvents
+        self.leftSectionProps = leftSectionProps
+        self.leftSectionWidth = leftSectionWidth
+        self.radius = radius
+        self.required = required
+        self.rightSection = rightSection
+        self.rightSectionPointerEvents = rightSectionPointerEvents
+        self.rightSectionProps = rightSectionProps
+        self.rightSectionWidth = rightSectionWidth
         self.size = size
-        self.sx = sx
+        self.withAsterisk = withAsterisk
+        self.withErrorStyles = withErrorStyles
         self.wrapperProps = wrapperProps

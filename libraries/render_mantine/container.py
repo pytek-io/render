@@ -5,29 +5,7 @@ class Container(Component):
     Module = "mantine"
     JSXName = "Container"
     CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "fluid",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "size",
-        "sizes",
-        "sx",
-    ]
+    ATTRIBUTES = ["style", "className", "id", "fluid", "size"]
 
     def __init__(
         self,
@@ -39,23 +17,7 @@ class Container(Component):
         onKeyPress=None,
         onClick=None,
         fluid=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         size=None,
-        sizes=None,
-        sx=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -66,20 +28,4 @@ class Container(Component):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.fluid = fluid
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.size = size
-        self.sizes = sizes
-        self.sx = sx

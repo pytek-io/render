@@ -10,31 +10,19 @@ class SegmentedControl(InputComponent):
         "style",
         "className",
         "id",
+        "autoContrast",
         "color",
         "data",
         "disabled",
         "fullWidth",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
         "name",
         "orientation",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "radius",
+        "readOnly",
         "size",
-        "sx",
         "transitionDuration",
         "transitionTimingFunction",
+        "withItemsBorders",
     ]
 
     def __init__(
@@ -49,31 +37,19 @@ class SegmentedControl(InputComponent):
         onChange=None,
         defaultValue=None,
         value=None,
+        autoContrast=None,
         color=None,
         data=None,
         disabled=None,
         fullWidth=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
         name=None,
         orientation=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         radius=None,
+        readOnly=None,
         size=None,
-        sx=None,
         transitionDuration=None,
         transitionTimingFunction=None,
+        withItemsBorders=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -83,28 +59,16 @@ class SegmentedControl(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.autoContrast = autoContrast
         self.color = color
         self.data = data
         self.disabled = disabled
         self.fullWidth = fullWidth
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
         self.name = name
         self.orientation = orientation
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.radius = radius
+        self.readOnly = readOnly
         self.size = size
-        self.sx = sx
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
+        self.withItemsBorders = withItemsBorders

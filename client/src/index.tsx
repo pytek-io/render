@@ -31,6 +31,6 @@ import { register as register_iconify } from './libraries/iconify'
 register_iconify()
 import { register as register_tabler_icons } from './libraries/tabler_icons'
 register_tabler_icons()
-import { register_mantine_prism } from './libraries/mantine_prism'
+import { register_mantine_prism } from './libraries/mantine_code_highlight'
 register_mantine_prism()
 main()

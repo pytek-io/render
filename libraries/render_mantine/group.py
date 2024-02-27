@@ -10,25 +10,11 @@ class Group(Component):
         "className",
         "id",
         "align",
+        "gap",
         "grow",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "noWrap",
-        "p",
-        "pb",
-        "pl",
-        "position",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "spacing",
-        "sx",
+        "justify",
+        "preventGrowOverflow",
+        "wrap",
     ]
 
     def __init__(
@@ -41,25 +27,11 @@ class Group(Component):
         onKeyPress=None,
         onClick=None,
         align=None,
+        gap=None,
         grow=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        noWrap=None,
-        p=None,
-        pb=None,
-        pl=None,
-        position=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        spacing=None,
-        sx=None,
+        justify=None,
+        preventGrowOverflow=None,
+        wrap=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -70,22 +42,8 @@ class Group(Component):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.align = align
+        self.gap = gap
         self.grow = grow
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.noWrap = noWrap
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.position = position
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.spacing = spacing
-        self.sx = sx
+        self.justify = justify
+        self.preventGrowOverflow = preventGrowOverflow
+        self.wrap = wrap

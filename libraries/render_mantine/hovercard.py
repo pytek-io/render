@@ -1,32 +1,42 @@
-from render import Component, create_callback
+from render import Component, create_callback, Props
 
 
 class HoverCard(Component):
     Module = "mantine"
     JSXName = "HoverCard"
-    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen"]
+    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen", "onPositionChange"]
     ATTRIBUTES = [
         "style",
         "className",
         "id",
+        "arrowOffset",
+        "arrowPosition",
+        "arrowRadius",
+        "arrowSize",
+        "clickOutsideEvents",
         "closeDelay",
+        "closeOnClickOutside",
+        "closeOnEscape",
+        "defaultOpened",
+        "disabled",
         "initiallyOpened",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
+        "keepMounted",
+        "middlewares",
+        "offset",
         "openDelay",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "sx",
+        "portalProps",
+        "position",
+        "positionDependencies",
+        "radius",
+        "returnFocus",
+        "shadow",
+        "transitionProps",
+        "trapFocus",
+        "width",
+        "withArrow",
+        "withRoles",
+        "withinPortal",
+        "zIndex",
     ]
 
     def __init__(
@@ -38,26 +48,37 @@ class HoverCard(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
+        arrowOffset=None,
+        arrowPosition=None,
+        arrowRadius=None,
+        arrowSize=None,
+        clickOutsideEvents=None,
         closeDelay=None,
+        closeOnClickOutside=None,
+        closeOnEscape=None,
+        defaultOpened=None,
+        disabled=None,
         initiallyOpened=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
+        keepMounted=None,
+        middlewares=None,
+        offset=None,
         onClose=None,
         onOpen=None,
+        onPositionChange=None,
         openDelay=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        sx=None,
+        portalProps=None,
+        position=None,
+        positionDependencies=None,
+        radius=None,
+        returnFocus=None,
+        shadow=None,
+        transitionProps=None,
+        trapFocus=None,
+        width=None,
+        withArrow=None,
+        withRoles=None,
+        withinPortal=None,
+        zIndex=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -67,173 +88,97 @@ class HoverCard(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.arrowOffset = arrowOffset
+        self.arrowPosition = arrowPosition
+        self.arrowRadius = arrowRadius
+        self.arrowSize = arrowSize
+        self.clickOutsideEvents = clickOutsideEvents
         self.closeDelay = closeDelay
+        self.closeOnClickOutside = closeOnClickOutside
+        self.closeOnEscape = closeOnEscape
+        self.defaultOpened = defaultOpened
+        self.disabled = disabled
         self.initiallyOpened = initiallyOpened
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
+        self.keepMounted = keepMounted
+        self.middlewares = middlewares
+        self.offset = offset
         self.onClose = create_callback(onClose, "onClose")
         self.onOpen = create_callback(onOpen, "onOpen")
+        self.onPositionChange = create_callback(onPositionChange, "onPositionChange")
         self.openDelay = openDelay
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.sx = sx
+        self.portalProps = portalProps
+        self.position = position
+        self.positionDependencies = positionDependencies
+        self.radius = radius
+        self.returnFocus = returnFocus
+        self.shadow = shadow
+        self.transitionProps = transitionProps
+        self.trapFocus = trapFocus
+        self.width = width
+        self.withArrow = withArrow
+        self.withRoles = withRoles
+        self.withinPortal = withinPortal
+        self.zIndex = zIndex
 
+    class Dropdown(Component):
+        Module = "mantine"
+        JSXName = "HoverCard.Dropdown"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id"]
 
-class HoverCardDropdown(Component):
-    Module = "mantine"
-    JSXName = "HoverCard.Dropdown"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "sx",
-    ]
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
 
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        sx=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.sx = sx
+    class Target(Component):
+        Module = "mantine"
+        JSXName = "HoverCard.Target"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "eventPropsWrapperName",
+            "popupType",
+            "refProp",
+        ]
 
-
-class HoverCardTarget(Component):
-    Module = "mantine"
-    JSXName = "HoverCard.Target"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "sx",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        sx=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.sx = sx
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            eventPropsWrapperName=None,
+            popupType=None,
+            refProp=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.eventPropsWrapperName = eventPropsWrapperName
+            self.popupType = popupType
+            self.refProp = refProp

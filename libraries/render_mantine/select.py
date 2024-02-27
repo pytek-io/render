@@ -1,43 +1,65 @@
-from render import Component, create_callback, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Select(InputComponent):
     Module = "mantine"
     JSXName = "Select"
     InputName = "value"
-    CALLBACKS = ["onKeyPress", "onClick", "onCreate", "onSearchChange"]
+    CALLBACKS = [
+        "onKeyPress",
+        "onClick",
+        "onDropdownClose",
+        "onDropdownOpen",
+        "onOptionSubmit",
+        "onSearchChange",
+    ]
     ATTRIBUTES = [
         "style",
         "className",
         "id",
         "allowDeselect",
-        "clearButtonLabel",
-        "clearButtonTabIndex",
+        "checkIconPosition",
+        "clearButtonProps",
         "clearable",
-        "creatable",
-        "dropdownComponent",
-        "filterDataOnExactSearchMatch",
-        "getCreateLabel",
-        "m",
+        "comboboxProps",
+        "data",
+        "defaultDropdownOpened",
+        "defaultSearchValue",
+        "description",
+        "descriptionProps",
+        "disabled",
+        "dropdownOpened",
+        "error",
+        "errorProps",
+        "filter",
+        "hiddenInputProps",
+        "inputContainer",
+        "inputWrapperOrder",
+        "label",
+        "labelProps",
+        "leftSection",
+        "leftSectionPointerEvents",
+        "leftSectionProps",
+        "leftSectionWidth",
+        "limit",
         "maxDropdownHeight",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
+        "nothingFoundMessage",
+        "pointer",
+        "radius",
+        "required",
+        "rightSection",
+        "rightSectionPointerEvents",
+        "rightSectionProps",
+        "rightSectionWidth",
         "searchValue",
         "searchable",
-        "selectOnBlur",
-        "shouldCreate",
-        "sx",
+        "selectFirstOptionOnChange",
+        "size",
+        "withAsterisk",
+        "withCheckIcon",
+        "withErrorStyles",
+        "withScrollArea",
+        "wrapperProps",
     ]
 
     def __init__(
@@ -53,35 +75,52 @@ class Select(InputComponent):
         defaultValue=None,
         value=None,
         allowDeselect=None,
-        clearButtonLabel=None,
-        clearButtonTabIndex=None,
+        checkIconPosition=None,
+        clearButtonProps=None,
         clearable=None,
-        creatable=None,
-        dropdownComponent=None,
-        filterDataOnExactSearchMatch=None,
-        getCreateLabel=None,
-        m=None,
+        comboboxProps=None,
+        data=None,
+        defaultDropdownOpened=None,
+        defaultSearchValue=None,
+        description=None,
+        descriptionProps=None,
+        disabled=None,
+        dropdownOpened=None,
+        error=None,
+        errorProps=None,
+        filter=None,
+        hiddenInputProps=None,
+        inputContainer=None,
+        inputWrapperOrder=None,
+        label=None,
+        labelProps=None,
+        leftSection=None,
+        leftSectionPointerEvents=None,
+        leftSectionProps=None,
+        leftSectionWidth=None,
+        limit=None,
         maxDropdownHeight=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        onCreate=None,
+        nothingFoundMessage=None,
+        onDropdownClose=None,
+        onDropdownOpen=None,
+        onOptionSubmit=None,
         onSearchChange=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
+        pointer=None,
+        radius=None,
+        required=None,
+        rightSection=None,
+        rightSectionPointerEvents=None,
+        rightSectionProps=None,
+        rightSectionWidth=None,
         searchValue=None,
         searchable=None,
-        selectOnBlur=None,
-        shouldCreate=None,
-        sx=None,
+        selectFirstOptionOnChange=None,
+        size=None,
+        withAsterisk=None,
+        withCheckIcon=None,
+        withErrorStyles=None,
+        withScrollArea=None,
+        wrapperProps=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -92,32 +131,49 @@ class Select(InputComponent):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.allowDeselect = allowDeselect
-        self.clearButtonLabel = clearButtonLabel
-        self.clearButtonTabIndex = clearButtonTabIndex
+        self.checkIconPosition = checkIconPosition
+        self.clearButtonProps = clearButtonProps
         self.clearable = clearable
-        self.creatable = creatable
-        self.dropdownComponent = dropdownComponent
-        self.filterDataOnExactSearchMatch = filterDataOnExactSearchMatch
-        self.getCreateLabel = getCreateLabel
-        self.m = m
+        self.comboboxProps = comboboxProps
+        self.data = data
+        self.defaultDropdownOpened = defaultDropdownOpened
+        self.defaultSearchValue = defaultSearchValue
+        self.description = description
+        self.descriptionProps = descriptionProps
+        self.disabled = disabled
+        self.dropdownOpened = dropdownOpened
+        self.error = error
+        self.errorProps = errorProps
+        self.filter = filter
+        self.hiddenInputProps = hiddenInputProps
+        self.inputContainer = inputContainer
+        self.inputWrapperOrder = inputWrapperOrder
+        self.label = label
+        self.labelProps = labelProps
+        self.leftSection = leftSection
+        self.leftSectionPointerEvents = leftSectionPointerEvents
+        self.leftSectionProps = leftSectionProps
+        self.leftSectionWidth = leftSectionWidth
+        self.limit = limit
         self.maxDropdownHeight = maxDropdownHeight
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.onCreate = create_callback(onCreate, "onCreate")
+        self.nothingFoundMessage = nothingFoundMessage
+        self.onDropdownClose = create_callback(onDropdownClose, "onDropdownClose")
+        self.onDropdownOpen = create_callback(onDropdownOpen, "onDropdownOpen")
+        self.onOptionSubmit = create_callback(onOptionSubmit, "onOptionSubmit")
         self.onSearchChange = create_callback(onSearchChange, "onSearchChange")
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
+        self.pointer = pointer
+        self.radius = radius
+        self.required = required
+        self.rightSection = rightSection
+        self.rightSectionPointerEvents = rightSectionPointerEvents
+        self.rightSectionProps = rightSectionProps
+        self.rightSectionWidth = rightSectionWidth
         self.searchValue = searchValue
         self.searchable = searchable
-        self.selectOnBlur = selectOnBlur
-        self.shouldCreate = shouldCreate
-        self.sx = sx
+        self.selectFirstOptionOnChange = selectFirstOptionOnChange
+        self.size = size
+        self.withAsterisk = withAsterisk
+        self.withCheckIcon = withCheckIcon
+        self.withErrorStyles = withErrorStyles
+        self.withScrollArea = withScrollArea
+        self.wrapperProps = wrapperProps

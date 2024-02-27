@@ -10,31 +10,18 @@ class Checkbox(InputComponent):
         "style",
         "className",
         "id",
+        "autoContrast",
         "color",
         "description",
         "error",
         "icon",
+        "iconColor",
         "indeterminate",
         "label",
         "labelPosition",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "radius",
+        "rootRef",
         "size",
-        "sx",
-        "transitionDuration",
         "wrapperProps",
     ]
 
@@ -50,31 +37,18 @@ class Checkbox(InputComponent):
         onChange=None,
         defaultChecked=None,
         checked=None,
+        autoContrast=None,
         color=None,
         description=None,
         error=None,
         icon=None,
+        iconColor=None,
         indeterminate=None,
         label=None,
         labelPosition=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         radius=None,
+        rootRef=None,
         size=None,
-        sx=None,
-        transitionDuration=None,
         wrapperProps=None,
         controller=None,
     ):
@@ -85,123 +59,91 @@ class Checkbox(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.autoContrast = autoContrast
         self.color = color
         self.description = description
         self.error = error
         self.icon = icon
+        self.iconColor = iconColor
         self.indeterminate = indeterminate
         self.label = label
         self.labelPosition = labelPosition
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.radius = radius
+        self.rootRef = rootRef
         self.size = size
-        self.sx = sx
-        self.transitionDuration = transitionDuration
         self.wrapperProps = wrapperProps
 
+    class Group(InputComponent):
+        Module = "mantine"
+        JSXName = "Checkbox.Group"
+        InputName = "value"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "description",
+            "descriptionProps",
+            "error",
+            "errorProps",
+            "inputContainer",
+            "inputWrapperOrder",
+            "label",
+            "labelElement",
+            "labelProps",
+            "readOnly",
+            "required",
+            "size",
+            "withAsterisk",
+            "wrapperProps",
+        ]
 
-class CheckboxGroup(InputComponent):
-    Module = "mantine"
-    JSXName = "Checkbox.Group"
-    InputName = "value"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "offset",
-        "orientation",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "size",
-        "spacing",
-        "sx",
-        "wrapperProps",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        offset=None,
-        orientation=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        size=None,
-        spacing=None,
-        sx=None,
-        wrapperProps=None,
-        controller=None,
-    ):
-        super().__init__(key, controller, onChange, value, defaultValue)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.offset = offset
-        self.orientation = orientation
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.size = size
-        self.spacing = spacing
-        self.sx = sx
-        self.wrapperProps = wrapperProps
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            onChange=None,
+            defaultValue=None,
+            value=None,
+            description=None,
+            descriptionProps=None,
+            error=None,
+            errorProps=None,
+            inputContainer=None,
+            inputWrapperOrder=None,
+            label=None,
+            labelElement=None,
+            labelProps=None,
+            readOnly=None,
+            required=None,
+            size=None,
+            withAsterisk=None,
+            wrapperProps=None,
+            controller=None,
+        ):
+            super().__init__(key, controller, onChange, value, defaultValue)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.description = description
+            self.descriptionProps = descriptionProps
+            self.error = error
+            self.errorProps = errorProps
+            self.inputContainer = inputContainer
+            self.inputWrapperOrder = inputWrapperOrder
+            self.label = label
+            self.labelElement = labelElement
+            self.labelProps = labelProps
+            self.readOnly = readOnly
+            self.required = required
+            self.size = size
+            self.withAsterisk = withAsterisk
+            self.wrapperProps = wrapperProps

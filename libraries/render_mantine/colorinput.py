@@ -1,4 +1,4 @@
-from render import Component, create_callback, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class ColorInput(InputComponent):
@@ -10,35 +10,42 @@ class ColorInput(InputComponent):
         "style",
         "className",
         "id",
+        "closeOnColorSwatchClick",
+        "description",
+        "descriptionProps",
+        "disabled",
         "disallowInput",
-        "dropdownZIndex",
+        "error",
+        "errorProps",
+        "eyeDropperButtonProps",
+        "eyeDropperIcon",
         "fixOnBlur",
         "format",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "shadow",
+        "inputContainer",
+        "inputWrapperOrder",
+        "label",
+        "labelProps",
+        "leftSection",
+        "leftSectionPointerEvents",
+        "leftSectionProps",
+        "leftSectionWidth",
+        "pointer",
+        "popoverProps",
+        "radius",
+        "required",
+        "rightSection",
+        "rightSectionPointerEvents",
+        "rightSectionProps",
+        "rightSectionWidth",
         "size",
         "swatches",
         "swatchesPerRow",
-        "sx",
-        "transition",
-        "transitionDuration",
-        "transitionTimingFunction",
+        "withAsterisk",
+        "withErrorStyles",
+        "withEyeDropper",
         "withPicker",
         "withPreview",
-        "withinPortal",
+        "wrapperProps",
     ]
 
     def __init__(
@@ -53,36 +60,43 @@ class ColorInput(InputComponent):
         onChange=None,
         defaultValue="",
         value=None,
+        closeOnColorSwatchClick=None,
+        description=None,
+        descriptionProps=None,
+        disabled=None,
         disallowInput=None,
-        dropdownZIndex=None,
+        error=None,
+        errorProps=None,
+        eyeDropperButtonProps=None,
+        eyeDropperIcon=None,
         fixOnBlur=None,
         format=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
+        inputContainer=None,
+        inputWrapperOrder=None,
+        label=None,
+        labelProps=None,
+        leftSection=None,
+        leftSectionPointerEvents=None,
+        leftSectionProps=None,
+        leftSectionWidth=None,
         onChangeEnd=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        shadow=None,
+        pointer=None,
+        popoverProps=None,
+        radius=None,
+        required=None,
+        rightSection=None,
+        rightSectionPointerEvents=None,
+        rightSectionProps=None,
+        rightSectionWidth=None,
         size=None,
         swatches=None,
         swatchesPerRow=None,
-        sx=None,
-        transition=None,
-        transitionDuration=None,
-        transitionTimingFunction=None,
+        withAsterisk=None,
+        withErrorStyles=None,
+        withEyeDropper=None,
         withPicker=None,
         withPreview=None,
-        withinPortal=None,
+        wrapperProps=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -92,33 +106,40 @@ class ColorInput(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.closeOnColorSwatchClick = closeOnColorSwatchClick
+        self.description = description
+        self.descriptionProps = descriptionProps
+        self.disabled = disabled
         self.disallowInput = disallowInput
-        self.dropdownZIndex = dropdownZIndex
+        self.error = error
+        self.errorProps = errorProps
+        self.eyeDropperButtonProps = eyeDropperButtonProps
+        self.eyeDropperIcon = eyeDropperIcon
         self.fixOnBlur = fixOnBlur
         self.format = format
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
+        self.inputContainer = inputContainer
+        self.inputWrapperOrder = inputWrapperOrder
+        self.label = label
+        self.labelProps = labelProps
+        self.leftSection = leftSection
+        self.leftSectionPointerEvents = leftSectionPointerEvents
+        self.leftSectionProps = leftSectionProps
+        self.leftSectionWidth = leftSectionWidth
         self.onChangeEnd = create_callback(onChangeEnd, "onChangeEnd")
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.shadow = shadow
+        self.pointer = pointer
+        self.popoverProps = popoverProps
+        self.radius = radius
+        self.required = required
+        self.rightSection = rightSection
+        self.rightSectionPointerEvents = rightSectionPointerEvents
+        self.rightSectionProps = rightSectionProps
+        self.rightSectionWidth = rightSectionWidth
         self.size = size
         self.swatches = swatches
         self.swatchesPerRow = swatchesPerRow
-        self.sx = sx
-        self.transition = transition
-        self.transitionDuration = transitionDuration
-        self.transitionTimingFunction = transitionTimingFunction
+        self.withAsterisk = withAsterisk
+        self.withErrorStyles = withErrorStyles
+        self.withEyeDropper = withEyeDropper
         self.withPicker = withPicker
         self.withPreview = withPreview
-        self.withinPortal = withinPortal
+        self.wrapperProps = wrapperProps

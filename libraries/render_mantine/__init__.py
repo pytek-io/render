@@ -1,21 +1,8 @@
 import operator
 from enum import Enum
 
-from render import Container as ContainerBase
-
 from ._auto import *
-from .grid import Col, Grid
-from .list import List, ListItem
-from .menu import (
-    Menu,
-    MenuDivider,
-    MenuDropdown,
-    MenuItem,
-    MenuLabel,
-    MenuTarget,
-)
 from .numberinput import NumberInput as NumberInputBase
-from .scrollarea import ScrollArea
 
 
 class ComparableEnum(Enum):
@@ -55,21 +42,6 @@ BREAKPOINTS_VALUES = [
     BreakPoint.lg.value,
     BreakPoint.xl.value,
 ]
-
-
-class NavbarSection(ContainerBase):
-    Module = "mantine"
-    JSXName = "Navbar.Section"
-
-
-Grid.Col = Col
-Menu.Divider = MenuDivider
-Menu.Dropdown = MenuDropdown
-Menu.Item = MenuItem
-Menu.Label = MenuLabel
-Menu.Target = MenuTarget
-List.Item = ListItem
-Navbar.Section = NavbarSection
 
 
 class NumberInput(NumberInputBase):

@@ -1,41 +1,44 @@
-from render import Component, create_callback, InputComponent
+from render import Component, create_callback, InputComponent, Props
 
 
 class Menu(InputComponent):
     Module = "mantine"
     JSXName = "Menu"
     InputName = "opened"
-    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen"]
+    CALLBACKS = ["onKeyPress", "onClick", "onClose", "onOpen", "onPositionChange"]
     ATTRIBUTES = [
         "style",
         "className",
         "id",
-        "classNames",
+        "arrowOffset",
+        "arrowPosition",
+        "arrowRadius",
+        "arrowSize",
         "clickOutsideEvents",
         "closeDelay",
         "closeOnClickOutside",
         "closeOnEscape",
         "closeOnItemClick",
+        "disabled",
+        "keepMounted",
         "loop",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
+        "menuItemTabIndex",
+        "middlewares",
+        "offset",
         "openDelay",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "styles",
-        "sx",
+        "portalProps",
+        "position",
+        "positionDependencies",
+        "radius",
+        "returnFocus",
+        "shadow",
+        "transitionProps",
+        "trapFocus",
         "trigger",
-        "unstyled",
+        "width",
+        "withArrow",
+        "withinPortal",
+        "zIndex",
     ]
 
     def __init__(
@@ -50,34 +53,38 @@ class Menu(InputComponent):
         onChange=None,
         defaultOpened=None,
         opened=None,
-        classNames=None,
+        arrowOffset=None,
+        arrowPosition=None,
+        arrowRadius=None,
+        arrowSize=None,
         clickOutsideEvents=None,
         closeDelay=None,
         closeOnClickOutside=None,
         closeOnEscape=None,
         closeOnItemClick=None,
+        disabled=None,
+        keepMounted=None,
         loop=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
+        menuItemTabIndex=None,
+        middlewares=None,
+        offset=None,
         onClose=None,
         onOpen=None,
+        onPositionChange=None,
         openDelay=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        styles=None,
-        sx=None,
+        portalProps=None,
+        position=None,
+        positionDependencies=None,
+        radius=None,
+        returnFocus=None,
+        shadow=None,
+        transitionProps=None,
+        trapFocus=None,
         trigger=None,
-        unstyled=None,
+        width=None,
+        withArrow=None,
+        withinPortal=None,
+        zIndex=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, opened, defaultOpened)
@@ -87,358 +94,181 @@ class Menu(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.classNames = classNames
+        self.arrowOffset = arrowOffset
+        self.arrowPosition = arrowPosition
+        self.arrowRadius = arrowRadius
+        self.arrowSize = arrowSize
         self.clickOutsideEvents = clickOutsideEvents
         self.closeDelay = closeDelay
         self.closeOnClickOutside = closeOnClickOutside
         self.closeOnEscape = closeOnEscape
         self.closeOnItemClick = closeOnItemClick
+        self.disabled = disabled
+        self.keepMounted = keepMounted
         self.loop = loop
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
+        self.menuItemTabIndex = menuItemTabIndex
+        self.middlewares = middlewares
+        self.offset = offset
         self.onClose = create_callback(onClose, "onClose")
         self.onOpen = create_callback(onOpen, "onOpen")
+        self.onPositionChange = create_callback(onPositionChange, "onPositionChange")
         self.openDelay = openDelay
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.styles = styles
-        self.sx = sx
+        self.portalProps = portalProps
+        self.position = position
+        self.positionDependencies = positionDependencies
+        self.radius = radius
+        self.returnFocus = returnFocus
+        self.shadow = shadow
+        self.transitionProps = transitionProps
+        self.trapFocus = trapFocus
         self.trigger = trigger
-        self.unstyled = unstyled
+        self.width = width
+        self.withArrow = withArrow
+        self.withinPortal = withinPortal
+        self.zIndex = zIndex
 
+    class Divider(Component):
+        Module = "mantine"
+        JSXName = "Menu.Divider"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id"]
 
-class MenuDropdown(Component):
-    Module = "mantine"
-    JSXName = "Menu.Dropdown"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "sx",
-    ]
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
 
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        sx=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.sx = sx
+    class Dropdown(Component):
+        Module = "mantine"
+        JSXName = "Menu.Dropdown"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id"]
 
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
 
-class MenuItem(Component):
-    Module = "mantine"
-    JSXName = "Menu.Item"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "closeMenuOnClick",
-        "color",
-        "component",
-        "href",
-        "icon",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "rightSection",
-        "sx",
-        "target",
-        "title",
-    ]
+    class Item(Component):
+        Module = "mantine"
+        JSXName = "Menu.Item"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "closeMenuOnClick",
+            "color",
+            "disabled",
+            "leftSection",
+            "rightSection",
+        ]
 
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        closeMenuOnClick=None,
-        color=None,
-        component=None,
-        href=None,
-        icon=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        rightSection=None,
-        sx=None,
-        target=None,
-        title=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.closeMenuOnClick = closeMenuOnClick
-        self.color = color
-        self.component = component
-        self.href = href
-        self.icon = icon
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.rightSection = rightSection
-        self.sx = sx
-        self.target = target
-        self.title = title
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            closeMenuOnClick=None,
+            color=None,
+            disabled=None,
+            leftSection=None,
+            rightSection=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.closeMenuOnClick = closeMenuOnClick
+            self.color = color
+            self.disabled = disabled
+            self.leftSection = leftSection
+            self.rightSection = rightSection
 
+    class Label(Component):
+        Module = "mantine"
+        JSXName = "Menu.Label"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id"]
 
-class MenuLabel(Component):
-    Module = "mantine"
-    JSXName = "Menu.Label"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "sx",
-    ]
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
 
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        sx=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.sx = sx
+    class Target(Component):
+        Module = "mantine"
+        JSXName = "Menu.Target"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id", "refProp"]
 
-
-class MenuTarget(Component):
-    Module = "mantine"
-    JSXName = "Menu.Target"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "refProp",
-        "sx",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        refProp=None,
-        sx=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.refProp = refProp
-        self.sx = sx
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            refProp=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.refProp = refProp

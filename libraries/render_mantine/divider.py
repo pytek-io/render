@@ -1,4 +1,4 @@
-from render import Component, create_callback, Props
+from render import Component, create_callback
 
 
 class Divider(Component):
@@ -12,25 +12,8 @@ class Divider(Component):
         "color",
         "label",
         "labelPosition",
-        "labelProps",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
         "orientation",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "size",
-        "sx",
-        "variant",
     ]
 
     def __init__(
@@ -45,25 +28,8 @@ class Divider(Component):
         color=None,
         label=None,
         labelPosition=None,
-        labelProps=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
         orientation=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         size=None,
-        sx=None,
-        variant=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -76,22 +42,5 @@ class Divider(Component):
         self.color = color
         self.label = label
         self.labelPosition = labelPosition
-        self.labelProps = labelProps
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
         self.orientation = orientation
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.size = size
-        self.sx = sx
-        self.variant = variant

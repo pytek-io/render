@@ -15,24 +15,10 @@ class Switch(InputComponent):
         "error",
         "label",
         "labelPosition",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
         "offLabel",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "radius",
+        "rootRef",
         "size",
-        "sx",
         "thumbIcon",
         "wrapperProps",
     ]
@@ -54,25 +40,11 @@ class Switch(InputComponent):
         error=None,
         label=None,
         labelPosition=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
         offLabel=None,
         onLabel=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         radius=None,
+        rootRef=None,
         size=None,
-        sx=None,
         thumbIcon=None,
         wrapperProps=None,
         controller=None,
@@ -89,118 +61,85 @@ class Switch(InputComponent):
         self.error = error
         self.label = label
         self.labelPosition = labelPosition
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
         self.offLabel = offLabel
         self.onLabel = create_callback(onLabel, "onLabel")
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.radius = radius
+        self.rootRef = rootRef
         self.size = size
-        self.sx = sx
         self.thumbIcon = thumbIcon
         self.wrapperProps = wrapperProps
 
+    class Group(InputComponent):
+        Module = "mantine"
+        JSXName = "Switch.Group"
+        InputName = "value"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "description",
+            "descriptionProps",
+            "error",
+            "errorProps",
+            "inputContainer",
+            "inputWrapperOrder",
+            "label",
+            "labelElement",
+            "labelProps",
+            "readOnly",
+            "required",
+            "size",
+            "withAsterisk",
+            "wrapperProps",
+        ]
 
-class SwitchGroup(InputComponent):
-    Module = "mantine"
-    JSXName = "Switch.Group"
-    InputName = "value"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "offset",
-        "orientation",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "size",
-        "spacing",
-        "sx",
-        "wrapperProps",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        offset=None,
-        orientation=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        size=None,
-        spacing=None,
-        sx=None,
-        wrapperProps=None,
-        controller=None,
-    ):
-        super().__init__(key, controller, onChange, value, defaultValue)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.offset = offset
-        self.orientation = orientation
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.size = size
-        self.spacing = spacing
-        self.sx = sx
-        self.wrapperProps = wrapperProps
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            onChange=None,
+            defaultValue=None,
+            value=None,
+            description=None,
+            descriptionProps=None,
+            error=None,
+            errorProps=None,
+            inputContainer=None,
+            inputWrapperOrder=None,
+            label=None,
+            labelElement=None,
+            labelProps=None,
+            readOnly=None,
+            required=None,
+            size=None,
+            withAsterisk=None,
+            wrapperProps=None,
+            controller=None,
+        ):
+            super().__init__(key, controller, onChange, value, defaultValue)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.description = description
+            self.descriptionProps = descriptionProps
+            self.error = error
+            self.errorProps = errorProps
+            self.inputContainer = inputContainer
+            self.inputWrapperOrder = inputWrapperOrder
+            self.label = label
+            self.labelElement = labelElement
+            self.labelProps = labelProps
+            self.readOnly = readOnly
+            self.required = required
+            self.size = size
+            self.withAsterisk = withAsterisk
+            self.wrapperProps = wrapperProps

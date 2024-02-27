@@ -9,26 +9,11 @@ class ThemeIcon(Component):
         "style",
         "className",
         "id",
+        "autoContrast",
         "color",
         "gradient",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "radius",
         "size",
-        "sx",
-        "variant",
     ]
 
     def __init__(
@@ -40,26 +25,11 @@ class ThemeIcon(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
+        autoContrast=None,
         color=None,
         gradient=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         radius=None,
         size=None,
-        sx=None,
-        variant=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -69,23 +39,8 @@ class ThemeIcon(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.autoContrast = autoContrast
         self.color = color
         self.gradient = gradient
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.radius = radius
         self.size = size
-        self.sx = sx
-        self.variant = variant

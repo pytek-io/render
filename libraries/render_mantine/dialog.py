@@ -1,4 +1,4 @@
-from render import Component, create_callback
+from render import Component, create_callback, Props
 
 
 class Dialog(Component):
@@ -9,26 +9,18 @@ class Dialog(Component):
         "style",
         "className",
         "id",
-        "bottom",
-        "left",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
+        "keepMounted",
+        "opened",
+        "portalProps",
         "position",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "right",
-        "sx",
+        "radius",
+        "shadow",
+        "size",
+        "transitionProps",
+        "withBorder",
         "withCloseButton",
+        "withinPortal",
+        "zIndex",
     ]
 
     def __init__(
@@ -40,27 +32,19 @@ class Dialog(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
-        bottom=None,
-        left=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
+        keepMounted=None,
         onClose=None,
-        p=None,
-        pb=None,
-        pl=None,
+        opened=None,
+        portalProps=None,
         position=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        right=None,
-        sx=None,
+        radius=None,
+        shadow=None,
+        size=None,
+        transitionProps=None,
+        withBorder=None,
         withCloseButton=None,
+        withinPortal=None,
+        zIndex=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -70,24 +54,16 @@ class Dialog(Component):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
-        self.bottom = bottom
-        self.left = left
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
+        self.keepMounted = keepMounted
         self.onClose = create_callback(onClose, "onClose")
-        self.p = p
-        self.pb = pb
-        self.pl = pl
+        self.opened = opened
+        self.portalProps = portalProps
         self.position = position
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.right = right
-        self.sx = sx
+        self.radius = radius
+        self.shadow = shadow
+        self.size = size
+        self.transitionProps = transitionProps
+        self.withBorder = withBorder
         self.withCloseButton = withCloseButton
+        self.withinPortal = withinPortal
+        self.zIndex = zIndex

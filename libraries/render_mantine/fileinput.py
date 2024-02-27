@@ -12,29 +12,39 @@ class FileInput(InputComponent):
         "className",
         "id",
         "accept",
-        "clearButtonLabel",
-        "clearButtonTabIndex",
+        "capture",
+        "clearButtonProps",
         "clearable",
+        "description",
+        "descriptionProps",
+        "disabled",
+        "error",
+        "errorProps",
+        "fileInputProps",
         "form",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
+        "inputContainer",
+        "inputWrapperOrder",
+        "label",
+        "labelProps",
+        "leftSection",
+        "leftSectionPointerEvents",
+        "leftSectionProps",
+        "leftSectionWidth",
         "multiple",
-        "mx",
-        "my",
         "name",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
+        "placeholder",
+        "pointer",
+        "radius",
+        "readOnly",
+        "required",
+        "rightSection",
+        "rightSectionPointerEvents",
+        "rightSectionProps",
+        "rightSectionWidth",
         "size",
-        "sx",
         "valueComponent",
+        "withAsterisk",
+        "withErrorStyles",
         "wrapperProps",
     ]
 
@@ -51,29 +61,39 @@ class FileInput(InputComponent):
         defaultValue=None,
         value=None,
         accept=None,
-        clearButtonLabel=None,
-        clearButtonTabIndex=None,
+        capture=None,
+        clearButtonProps=None,
         clearable=None,
+        description=None,
+        descriptionProps=None,
+        disabled=None,
+        error=None,
+        errorProps=None,
+        fileInputProps=None,
         form=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
+        inputContainer=None,
+        inputWrapperOrder=None,
+        label=None,
+        labelProps=None,
+        leftSection=None,
+        leftSectionPointerEvents=None,
+        leftSectionProps=None,
+        leftSectionWidth=None,
         multiple=None,
-        mx=None,
-        my=None,
         name=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
+        placeholder=None,
+        pointer=None,
+        radius=None,
+        readOnly=None,
+        required=None,
+        rightSection=None,
+        rightSectionPointerEvents=None,
+        rightSectionProps=None,
+        rightSectionWidth=None,
         size=None,
-        sx=None,
         valueComponent=None,
+        withAsterisk=None,
+        withErrorStyles=None,
         wrapperProps=None,
         controller=None,
     ):
@@ -85,27 +105,37 @@ class FileInput(InputComponent):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.accept = accept
-        self.clearButtonLabel = clearButtonLabel
-        self.clearButtonTabIndex = clearButtonTabIndex
+        self.capture = capture
+        self.clearButtonProps = clearButtonProps
         self.clearable = clearable
+        self.description = description
+        self.descriptionProps = descriptionProps
+        self.disabled = disabled
+        self.error = error
+        self.errorProps = errorProps
+        self.fileInputProps = fileInputProps
         self.form = form
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
+        self.inputContainer = inputContainer
+        self.inputWrapperOrder = inputWrapperOrder
+        self.label = label
+        self.labelProps = labelProps
+        self.leftSection = leftSection
+        self.leftSectionPointerEvents = leftSectionPointerEvents
+        self.leftSectionProps = leftSectionProps
+        self.leftSectionWidth = leftSectionWidth
         self.multiple = multiple
-        self.mx = mx
-        self.my = my
         self.name = name
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
+        self.placeholder = placeholder
+        self.pointer = pointer
+        self.radius = radius
+        self.readOnly = readOnly
+        self.required = required
+        self.rightSection = rightSection
+        self.rightSectionPointerEvents = rightSectionPointerEvents
+        self.rightSectionProps = rightSectionProps
+        self.rightSectionWidth = rightSectionWidth
         self.size = size
-        self.sx = sx
         self.valueComponent = valueComponent
+        self.withAsterisk = withAsterisk
+        self.withErrorStyles = withErrorStyles
         self.wrapperProps = wrapperProps

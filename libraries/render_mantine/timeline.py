@@ -11,26 +11,12 @@ class Timeline(Component):
         "id",
         "active",
         "align",
+        "autoContrast",
         "bulletSize",
         "color",
         "lineWidth",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
         "radius",
         "reverseActive",
-        "sx",
     ]
 
     def __init__(
@@ -44,26 +30,12 @@ class Timeline(Component):
         onClick=None,
         active=None,
         align=None,
+        autoContrast=None,
         bulletSize=None,
         color=None,
         lineWidth=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
         radius=None,
         reverseActive=None,
-        sx=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -75,128 +47,53 @@ class Timeline(Component):
         self.onClick = create_callback(onClick, "onClick")
         self.active = active
         self.align = align
+        self.autoContrast = autoContrast
         self.bulletSize = bulletSize
         self.color = color
         self.lineWidth = lineWidth
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
         self.radius = radius
         self.reverseActive = reverseActive
-        self.sx = sx
 
+    class Item(Component):
+        Module = "mantine"
+        JSXName = "Timeline.Item"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "bullet",
+            "color",
+            "lineVariant",
+            "radius",
+            "title",
+        ]
 
-class TimelineItem(Component):
-    Module = "mantine"
-    JSXName = "TimelineItem"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "active",
-        "align",
-        "bullet",
-        "bulletSize",
-        "color",
-        "lineActive",
-        "lineVariant",
-        "lineWidth",
-        "m",
-        "mb",
-        "ml",
-        "mr",
-        "mt",
-        "mx",
-        "my",
-        "p",
-        "pb",
-        "pl",
-        "pr",
-        "pt",
-        "px",
-        "py",
-        "radius",
-        "sx",
-        "title",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        active=None,
-        align=None,
-        bullet=None,
-        bulletSize=None,
-        color=None,
-        lineActive=None,
-        lineVariant=None,
-        lineWidth=None,
-        m=None,
-        mb=None,
-        ml=None,
-        mr=None,
-        mt=None,
-        mx=None,
-        my=None,
-        p=None,
-        pb=None,
-        pl=None,
-        pr=None,
-        pt=None,
-        px=None,
-        py=None,
-        radius=None,
-        sx=None,
-        title=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.active = active
-        self.align = align
-        self.bullet = bullet
-        self.bulletSize = bulletSize
-        self.color = color
-        self.lineActive = lineActive
-        self.lineVariant = lineVariant
-        self.lineWidth = lineWidth
-        self.m = m
-        self.mb = mb
-        self.ml = ml
-        self.mr = mr
-        self.mt = mt
-        self.mx = mx
-        self.my = my
-        self.p = p
-        self.pb = pb
-        self.pl = pl
-        self.pr = pr
-        self.pt = pt
-        self.px = px
-        self.py = py
-        self.radius = radius
-        self.sx = sx
-        self.title = title
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            bullet=None,
+            color=None,
+            lineVariant=None,
+            radius=None,
+            title=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.bullet = bullet
+            self.color = color
+            self.lineVariant = lineVariant
+            self.radius = radius
+            self.title = title
