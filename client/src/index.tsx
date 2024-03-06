@@ -25,12 +25,14 @@ import { register as register_bokeh } from './libraries/bokeh'
 register_bokeh()
 import { register as register_swiper } from './libraries/swiper'
 register_swiper()
-import { register as register_mantine } from './libraries/mantine'
-register_mantine()
+import { register as register_mantine_core } from './libraries/mantine/core'
+register_mantine_core()
+import { register as register_mantine_code_highlight } from './libraries/mantine/code-highlight'
+register_mantine_code_highlight()
+import { register as register_mantine_charts } from './libraries/mantine/charts'
+register_mantine_charts()
 import { register as register_iconify } from './libraries/iconify'
 register_iconify()
 import { register as register_tabler_icons } from './libraries/tabler_icons'
 register_tabler_icons()
-import { register_mantine_prism } from './libraries/mantine_code_highlight'
-register_mantine_prism()
 main()

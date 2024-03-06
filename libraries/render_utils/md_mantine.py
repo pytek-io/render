@@ -2,10 +2,10 @@ import pathlib
 
 import mistune
 import render_html as html
-import render_mantine as mantine
+import render_mantine.core as mantine
 from mistune import AstRenderer, create_markdown
 from mistune.directives import Directive
-from render_mantine_prism import Prism
+import render_mantine.code_highlight as code_highlight
 from render_utils.common import load_module
 
 from render.utils import decode_url, maybe_prefixed_content
@@ -74,12 +74,14 @@ class ExecBlock(BaseDirective):
             if not file_path.endswith(".py"):
                 file_path = file_path.replace(".", "/") + ".py"
             code = remove_header_comment(pathlib.Path(file_path).read_text())
-            editor = Prism(
-                code.replace("\n\n", "\n"), language="python", className="renderer-code"
+            editor = code_highlight.CodeHighlight(
+                code=code.replace("\n\n", "\n"), language="python", className="renderer-code"
             )
             components.append(editor)
         return mantine.Stack(
-            components, spacing=15, style={"marginBlockEnd": 16, "marginBlockStart": 16}
+            components, 
+            gap=15, 
+            style={"marginBlockEnd": 16, "marginBlockStart": 16}
         )
 
 
@@ -102,8 +104,7 @@ class PrismBlock(BaseDirective):
         }
 
     def render(self, file, language):
-        editor = Prism(open(file).read(), language=language, className="renderer-code")
-        return html.div(editor)
+        return html.div(code_highlight.CodeHighlight(code=open(file).read(), language=language))
 
 
 class MantineRenderer(AstRenderer):
@@ -203,7 +204,7 @@ class MantineRenderer(AstRenderer):
         )
 
     def list_item(self, children, level):
-        return mantine.ListItem(children)
+        return mantine.List.Item(children)
 
 
 def parse(content):
