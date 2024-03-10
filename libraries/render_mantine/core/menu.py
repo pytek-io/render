@@ -53,6 +53,7 @@ class Menu(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "trapFocus",
         "trigger",
@@ -121,6 +122,7 @@ class Menu(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         trapFocus=None,
         trigger=None,
@@ -184,6 +186,7 @@ class Menu(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.trapFocus = trapFocus
         self.trigger = trigger
@@ -225,6 +228,7 @@ class Menu(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -261,6 +265,7 @@ class Menu(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -295,6 +300,7 @@ class Menu(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Dropdown(Component):
@@ -329,6 +335,7 @@ class Menu(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -365,6 +372,7 @@ class Menu(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -399,6 +407,7 @@ class Menu(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Item(Component):
@@ -438,6 +447,7 @@ class Menu(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -479,6 +489,7 @@ class Menu(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -518,6 +529,7 @@ class Menu(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Label(Component):
@@ -552,6 +564,7 @@ class Menu(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -588,6 +601,7 @@ class Menu(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -622,6 +636,7 @@ class Menu(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Target(Component):
@@ -653,6 +668,7 @@ class Menu(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -686,6 +702,7 @@ class Menu(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -717,4 +734,5 @@ class Menu(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

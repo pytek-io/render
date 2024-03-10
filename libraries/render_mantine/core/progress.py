@@ -39,6 +39,7 @@ class Progress(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "value",
         "variant",
@@ -83,6 +84,7 @@ class Progress(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         value=None,
         variant=None,
@@ -125,6 +127,7 @@ class Progress(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.value = value
         self.variant = variant
@@ -164,6 +167,7 @@ class Progress(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "transitionDuration",
             "variant",
         ]
@@ -204,6 +208,7 @@ class Progress(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             transitionDuration=None,
             variant=None,
             controller=None,
@@ -242,6 +247,7 @@ class Progress(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.transitionDuration = transitionDuration
             self.variant = variant
 
@@ -280,6 +286,7 @@ class Progress(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "value",
             "variant",
             "withAria",
@@ -321,6 +328,7 @@ class Progress(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             value=None,
             variant=None,
             withAria=None,
@@ -360,6 +368,7 @@ class Progress(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.value = value
             self.variant = variant
             self.withAria = withAria

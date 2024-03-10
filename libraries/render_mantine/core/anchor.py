@@ -39,6 +39,7 @@ class Anchor(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "truncate",
         "underline",
         "variant",
@@ -83,6 +84,7 @@ class Anchor(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         truncate=None,
         underline=None,
         variant=None,
@@ -125,6 +127,7 @@ class Anchor(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.truncate = truncate
         self.underline = underline
         self.variant = variant

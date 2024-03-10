@@ -38,6 +38,7 @@ class CodeHighlight(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withCopyButton",
     ]
@@ -80,6 +81,7 @@ class CodeHighlight(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withCopyButton=None,
         controller=None,
@@ -120,6 +122,7 @@ class CodeHighlight(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withCopyButton = withCopyButton
 
@@ -166,6 +169,7 @@ class CodeHighlight(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withCopyButton",
             "withExpandButton",
@@ -218,6 +222,7 @@ class CodeHighlight(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withCopyButton=None,
             withExpandButton=None,
@@ -270,6 +275,7 @@ class CodeHighlight(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withCopyButton = withCopyButton
             self.withExpandButton = withExpandButton

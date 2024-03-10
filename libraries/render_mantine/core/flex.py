@@ -39,6 +39,7 @@ class Flex(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "wrap",
     ]
@@ -82,6 +83,7 @@ class Flex(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         wrap=None,
         controller=None,
@@ -123,5 +125,6 @@ class Flex(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.wrap = wrap

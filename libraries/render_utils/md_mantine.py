@@ -85,7 +85,7 @@ class ExecBlock(BaseDirective):
         )
 
 
-EXTENSIONS = {"py": "python", "sh": "bash"}
+EXTENSIONS = {"py": "python", "sh": "bash", "json": "json", "yaml": "yaml"}
 
 
 class PrismBlock(BaseDirective):
@@ -104,7 +104,7 @@ class PrismBlock(BaseDirective):
         }
 
     def render(self, file, language):
-        return html.div(code_highlight.CodeHighlight(code=open(file).read(), language=language))
+        return code_highlight.CodeHighlight(code=open(file).read(), language=language, mt=10, mb=10)
 
 
 class MantineRenderer(AstRenderer):

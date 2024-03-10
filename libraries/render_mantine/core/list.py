@@ -38,6 +38,7 @@ class List(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "type",
         "variant",
         "withPadding",
@@ -81,6 +82,7 @@ class List(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         type=None,
         variant=None,
         withPadding=None,
@@ -122,6 +124,7 @@ class List(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.type = type
         self.variant = variant
         self.withPadding = withPadding
@@ -159,6 +162,7 @@ class List(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -196,6 +200,7 @@ class List(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -231,4 +236,5 @@ class List(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

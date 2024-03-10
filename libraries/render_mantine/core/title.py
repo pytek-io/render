@@ -37,6 +37,7 @@ class Title(Component):
         "ta",
         "target",
         "textWrap",
+        "title",
         "variant",
     ]
 
@@ -77,6 +78,7 @@ class Title(Component):
         ta=None,
         target=None,
         textWrap=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -115,4 +117,5 @@ class Title(Component):
         self.ta = ta
         self.target = target
         self.textWrap = textWrap
+        self.title = title
         self.variant = variant

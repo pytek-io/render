@@ -45,6 +45,7 @@ class DonutChart(Component):
         "ta",
         "target",
         "thickness",
+        "title",
         "tooltipAnimationDuration",
         "tooltipDataSource",
         "tooltipProps",
@@ -100,6 +101,7 @@ class DonutChart(Component):
         ta=None,
         target=None,
         thickness=None,
+        title=None,
         tooltipAnimationDuration=None,
         tooltipDataSource=None,
         tooltipProps=None,
@@ -153,6 +155,7 @@ class DonutChart(Component):
         self.ta = ta
         self.target = target
         self.thickness = thickness
+        self.title = title
         self.tooltipAnimationDuration = tooltipAnimationDuration
         self.tooltipDataSource = tooltipDataSource
         self.tooltipProps = tooltipProps

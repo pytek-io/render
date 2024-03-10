@@ -39,6 +39,7 @@ class Grid(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -81,6 +82,7 @@ class Grid(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -121,6 +123,7 @@ class Grid(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
 
     class Col(Component):
@@ -158,6 +161,7 @@ class Grid(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -197,6 +201,7 @@ class Grid(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -234,4 +239,5 @@ class Grid(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

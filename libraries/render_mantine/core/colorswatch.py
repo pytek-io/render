@@ -36,6 +36,7 @@ class ColorSwatch(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withShadow",
     ]
@@ -76,6 +77,7 @@ class ColorSwatch(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withShadow=None,
         controller=None,
@@ -114,5 +116,6 @@ class ColorSwatch(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withShadow = withShadow

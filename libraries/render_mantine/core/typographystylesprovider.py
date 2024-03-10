@@ -33,6 +33,7 @@ class TypographyStylesProvider(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -69,6 +70,7 @@ class TypographyStylesProvider(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -103,4 +105,5 @@ class TypographyStylesProvider(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant

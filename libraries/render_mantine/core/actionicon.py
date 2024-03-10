@@ -41,6 +41,7 @@ class ActionIcon(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -85,6 +86,7 @@ class ActionIcon(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -127,6 +129,7 @@ class ActionIcon(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
 
     class Group(Component):
@@ -163,6 +166,7 @@ class ActionIcon(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -201,6 +205,7 @@ class ActionIcon(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -237,4 +242,5 @@ class ActionIcon(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

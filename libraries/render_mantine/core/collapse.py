@@ -35,6 +35,7 @@ class Collapse(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "transitionTimingFunction",
         "variant",
@@ -76,6 +77,7 @@ class Collapse(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         transitionTimingFunction=None,
         variant=None,
@@ -115,6 +117,7 @@ class Collapse(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
         self.variant = variant

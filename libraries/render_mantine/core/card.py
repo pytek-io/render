@@ -36,6 +36,7 @@ class Card(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withBorder",
     ]
@@ -76,6 +77,7 @@ class Card(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withBorder=None,
         controller=None,
@@ -114,6 +116,7 @@ class Card(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withBorder = withBorder
 
@@ -150,6 +153,7 @@ class Card(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withBorder",
         ]
@@ -188,6 +192,7 @@ class Card(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withBorder=None,
             controller=None,
@@ -224,5 +229,6 @@ class Card(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withBorder = withBorder

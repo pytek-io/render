@@ -1,5 +1,7 @@
 import { registerComponents, registerModuleDeferred } from "../../app";
 import { lazy } from "react";
+import '@mantine/core/styles.css';
+import '@mantine/charts/styles.css';
 const components = [
   ["Sparkline", lazy(() => import("../../fragments/mantine/charts/sparkline.tsx"))],
   ["LineChart", lazy(() => import("../../fragments/mantine/charts/linechart.tsx"))],
@@ -11,7 +13,6 @@ const components = [
 ];
 export function register() {
   registerModuleDeferred("mantine/charts", async () => {
-    import('@mantine/charts/styles.css');
     registerComponents("mantine/charts", components, true);
   });
 }

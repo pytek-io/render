@@ -84,6 +84,7 @@ class TagsInput(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "value",
         "variant",
         "withAsterisk",
@@ -173,6 +174,7 @@ class TagsInput(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         value=None,
         variant=None,
         withAsterisk=None,
@@ -260,6 +262,7 @@ class TagsInput(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.value = value
         self.variant = variant
         self.withAsterisk = withAsterisk

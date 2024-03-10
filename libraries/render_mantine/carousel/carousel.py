@@ -62,6 +62,7 @@ class Carousel(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withControls",
         "withIndicators",
@@ -127,6 +128,7 @@ class Carousel(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withControls=None,
         withIndicators=None,
@@ -190,6 +192,7 @@ class Carousel(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withControls = withControls
         self.withIndicators = withIndicators

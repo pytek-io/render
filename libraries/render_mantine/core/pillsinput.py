@@ -55,6 +55,7 @@ class PillsInput(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withAsterisk",
         "withErrorStyles",
@@ -116,6 +117,7 @@ class PillsInput(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withAsterisk=None,
         withErrorStyles=None,
@@ -175,6 +177,7 @@ class PillsInput(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withAsterisk = withAsterisk
         self.withErrorStyles = withErrorStyles
@@ -213,6 +216,7 @@ class PillsInput(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "type",
             "variant",
         ]
@@ -251,6 +255,7 @@ class PillsInput(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             type=None,
             variant=None,
             controller=None,
@@ -287,5 +292,6 @@ class PillsInput(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.type = type
             self.variant = variant

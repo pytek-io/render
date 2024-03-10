@@ -38,6 +38,7 @@ class Sparkline(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "trendColors",
         "variant",
         "withGradient",
@@ -81,6 +82,7 @@ class Sparkline(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         trendColors=None,
         variant=None,
         withGradient=None,
@@ -122,6 +124,7 @@ class Sparkline(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.trendColors = trendColors
         self.variant = variant
         self.withGradient = withGradient

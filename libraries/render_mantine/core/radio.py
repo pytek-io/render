@@ -46,6 +46,7 @@ class Radio(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "wrapperProps",
     ]
@@ -97,6 +98,7 @@ class Radio(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         wrapperProps=None,
         controller=None,
@@ -143,6 +145,7 @@ class Radio(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.wrapperProps = wrapperProps
 
@@ -192,6 +195,7 @@ class Radio(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withAsterisk",
             "wrapperProps",
@@ -246,6 +250,7 @@ class Radio(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withAsterisk=None,
             wrapperProps=None,
@@ -295,6 +300,7 @@ class Radio(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withAsterisk = withAsterisk
             self.wrapperProps = wrapperProps

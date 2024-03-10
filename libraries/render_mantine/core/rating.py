@@ -44,6 +44,7 @@ class Rating(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "value",
         "variant",
     ]
@@ -94,6 +95,7 @@ class Rating(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         value=None,
         variant=None,
         controller=None,
@@ -142,5 +144,6 @@ class Rating(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.value = value
         self.variant = variant

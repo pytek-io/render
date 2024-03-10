@@ -53,6 +53,7 @@ class LineChart(Component):
         "target",
         "textColor",
         "tickLine",
+        "title",
         "tooltipAnimationDuration",
         "tooltipProps",
         "unit",
@@ -120,6 +121,7 @@ class LineChart(Component):
         target=None,
         textColor=None,
         tickLine=None,
+        title=None,
         tooltipAnimationDuration=None,
         tooltipProps=None,
         unit=None,
@@ -185,6 +187,7 @@ class LineChart(Component):
         self.target = target
         self.textColor = textColor
         self.tickLine = tickLine
+        self.title = title
         self.tooltipAnimationDuration = tooltipAnimationDuration
         self.tooltipProps = tooltipProps
         self.unit = unit

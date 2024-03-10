@@ -45,6 +45,7 @@ class PieChart(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "tooltipAnimationDuration",
         "tooltipDataSource",
         "tooltipProps",
@@ -100,6 +101,7 @@ class PieChart(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         tooltipAnimationDuration=None,
         tooltipDataSource=None,
         tooltipProps=None,
@@ -153,6 +155,7 @@ class PieChart(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.tooltipAnimationDuration = tooltipAnimationDuration
         self.tooltipDataSource = tooltipDataSource
         self.tooltipProps = tooltipProps

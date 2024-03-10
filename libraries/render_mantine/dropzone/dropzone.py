@@ -64,6 +64,7 @@ class Dropzone(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "useFsAccessApi",
         "validator",
         "variant",
@@ -130,6 +131,7 @@ class Dropzone(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         useFsAccessApi=None,
         validator=None,
         variant=None,
@@ -196,6 +198,7 @@ class Dropzone(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.useFsAccessApi = useFsAccessApi
         self.validator = validator
         self.variant = variant
@@ -265,6 +268,7 @@ class Dropzone(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "useFsAccessApi",
             "validator",
             "variant",
@@ -335,6 +339,7 @@ class Dropzone(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             useFsAccessApi=None,
             validator=None,
             variant=None,
@@ -409,6 +414,7 @@ class Dropzone(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.useFsAccessApi = useFsAccessApi
             self.validator = validator
             self.variant = variant

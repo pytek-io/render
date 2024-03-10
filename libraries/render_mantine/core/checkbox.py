@@ -46,6 +46,7 @@ class Checkbox(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "wrapperProps",
     ]
@@ -98,6 +99,7 @@ class Checkbox(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         wrapperProps=None,
         controller=None,
@@ -145,6 +147,7 @@ class Checkbox(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.wrapperProps = wrapperProps
 
@@ -193,6 +196,7 @@ class Checkbox(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withAsterisk",
             "wrapperProps",
@@ -246,6 +250,7 @@ class Checkbox(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withAsterisk=None,
             wrapperProps=None,
@@ -294,6 +299,7 @@ class Checkbox(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withAsterisk = withAsterisk
             self.wrapperProps = wrapperProps

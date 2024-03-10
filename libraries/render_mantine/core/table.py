@@ -44,6 +44,7 @@ class Table(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "verticalSpacing",
         "withColumnBorders",
@@ -95,6 +96,7 @@ class Table(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         verticalSpacing=None,
         withColumnBorders=None,
@@ -144,6 +146,7 @@ class Table(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.verticalSpacing = verticalSpacing
         self.withColumnBorders = withColumnBorders

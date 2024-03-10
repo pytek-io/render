@@ -30,6 +30,7 @@ class CopyButton(Component):
         "ta",
         "target",
         "timeout",
+        "title",
         "value",
         "variant",
     ]
@@ -64,6 +65,7 @@ class CopyButton(Component):
         ta=None,
         target=None,
         timeout=None,
+        title=None,
         value=None,
         variant=None,
         controller=None,
@@ -96,5 +98,6 @@ class CopyButton(Component):
         self.ta = ta
         self.target = target
         self.timeout = timeout
+        self.title = title
         self.value = value
         self.variant = variant

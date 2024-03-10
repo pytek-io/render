@@ -36,6 +36,7 @@ class Burger(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "transitionTimingFunction",
         "variant",
@@ -77,6 +78,7 @@ class Burger(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         transitionTimingFunction=None,
         variant=None,
@@ -116,6 +118,7 @@ class Burger(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
         self.variant = variant

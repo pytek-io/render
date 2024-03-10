@@ -170,6 +170,7 @@ class Notification(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "transitionDuration",
             "variant",
             "withinPortal",
@@ -216,6 +217,7 @@ class Notification(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             transitionDuration=None,
             variant=None,
             withinPortal=None,
@@ -260,6 +262,7 @@ class Notification(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.transitionDuration = transitionDuration
             self.variant = variant
             self.withinPortal = withinPortal

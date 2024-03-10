@@ -31,6 +31,7 @@ class FocusTrap(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -65,6 +66,7 @@ class FocusTrap(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -97,6 +99,7 @@ class FocusTrap(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
 
     class InitialFocus(Component):
@@ -127,6 +130,7 @@ class FocusTrap(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -159,6 +163,7 @@ class FocusTrap(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -189,4 +194,5 @@ class FocusTrap(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

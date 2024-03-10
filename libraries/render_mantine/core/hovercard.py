@@ -51,6 +51,7 @@ class HoverCard(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "trapFocus",
         "variant",
@@ -115,6 +116,7 @@ class HoverCard(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         trapFocus=None,
         variant=None,
@@ -177,6 +179,7 @@ class HoverCard(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.trapFocus = trapFocus
         self.variant = variant
@@ -218,6 +221,7 @@ class HoverCard(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -254,6 +258,7 @@ class HoverCard(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -288,6 +293,7 @@ class HoverCard(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Target(Component):
@@ -321,6 +327,7 @@ class HoverCard(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -356,6 +363,7 @@ class HoverCard(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -389,4 +397,5 @@ class HoverCard(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

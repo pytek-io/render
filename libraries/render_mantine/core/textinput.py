@@ -56,6 +56,7 @@ class TextInput(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withAsterisk",
         "withErrorStyles",
@@ -119,6 +120,7 @@ class TextInput(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withAsterisk=None,
         withErrorStyles=None,
@@ -177,6 +179,7 @@ class TextInput(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withAsterisk = withAsterisk
         self.withErrorStyles = withErrorStyles

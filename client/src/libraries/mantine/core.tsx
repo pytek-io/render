@@ -1,5 +1,6 @@
 import { registerComponents, registerModuleDeferred } from "../../app";
 import { lazy } from "react";
+import '@mantine/core/styles.css';
 const components = [
   ["ColorInput", lazy(() => import("../../fragments/mantine/core/colorinput.tsx"))],
   ["Code", lazy(() => import("../../fragments/mantine/core/code.tsx"))],
@@ -168,7 +169,6 @@ const components = [
 ];
 export function register() {
   registerModuleDeferred("mantine/core", async () => {
-    import('@mantine/core/styles.css');
     registerComponents("mantine/core", components, true);
   });
 }

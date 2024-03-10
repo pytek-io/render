@@ -35,6 +35,7 @@ class Paper(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withBorder",
     ]
@@ -74,6 +75,7 @@ class Paper(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withBorder=None,
         controller=None,
@@ -111,5 +113,6 @@ class Paper(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withBorder = withBorder

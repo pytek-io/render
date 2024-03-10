@@ -1,2 +1,2 @@
-import { AppShellMain } from '@mantine/core';
-export default AppShellMain;
+import { AppShell } from '@mantine/core';
+export default AppShell.Main;

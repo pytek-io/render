@@ -55,6 +55,7 @@ class AreaChart(Component):
         "target",
         "textColor",
         "tickLine",
+        "title",
         "tooltipAnimationDuration",
         "tooltipProps",
         "type",
@@ -126,6 +127,7 @@ class AreaChart(Component):
         target=None,
         textColor=None,
         tickLine=None,
+        title=None,
         tooltipAnimationDuration=None,
         tooltipProps=None,
         type=None,
@@ -195,6 +197,7 @@ class AreaChart(Component):
         self.target = target
         self.textColor = textColor
         self.tickLine = tickLine
+        self.title = title
         self.tooltipAnimationDuration = tooltipAnimationDuration
         self.tooltipProps = tooltipProps
         self.type = type

@@ -45,6 +45,7 @@ class Button(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -93,6 +94,7 @@ class Button(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -139,6 +141,7 @@ class Button(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
 
     class Group(Component):
@@ -175,6 +178,7 @@ class Button(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -213,6 +217,7 @@ class Button(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -249,4 +254,5 @@ class Button(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

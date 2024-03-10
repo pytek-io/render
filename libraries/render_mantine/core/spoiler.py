@@ -38,6 +38,7 @@ class Spoiler(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "variant",
     ]
@@ -80,6 +81,7 @@ class Spoiler(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         variant=None,
         controller=None,
@@ -120,5 +122,6 @@ class Spoiler(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.variant = variant

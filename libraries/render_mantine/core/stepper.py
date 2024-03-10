@@ -46,6 +46,7 @@ class Stepper(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "wrap",
     ]
@@ -97,6 +98,7 @@ class Stepper(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         wrap=None,
         controller=None,
@@ -146,6 +148,7 @@ class Stepper(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.wrap = wrap
 
@@ -195,6 +198,7 @@ class Stepper(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withIcon",
         ]
@@ -246,6 +250,7 @@ class Stepper(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withIcon=None,
             controller=None,
@@ -295,5 +300,6 @@ class Stepper(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withIcon = withIcon

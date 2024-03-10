@@ -37,6 +37,7 @@ class Image(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -78,6 +79,7 @@ class Image(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -117,4 +119,5 @@ class Image(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant

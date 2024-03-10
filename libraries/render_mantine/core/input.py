@@ -48,6 +48,7 @@ class Input(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withAria",
         "withErrorStyles",
@@ -102,6 +103,7 @@ class Input(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withAria=None,
         withErrorStyles=None,
@@ -154,6 +156,7 @@ class Input(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withAria = withAria
         self.withErrorStyles = withErrorStyles
@@ -192,6 +195,7 @@ class Input(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -229,6 +233,7 @@ class Input(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -264,6 +269,7 @@ class Input(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Error(Component):
@@ -299,6 +305,7 @@ class Input(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -336,6 +343,7 @@ class Input(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -371,6 +379,7 @@ class Input(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Label(Component):
@@ -408,6 +417,7 @@ class Input(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -447,6 +457,7 @@ class Input(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -484,6 +495,7 @@ class Input(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Wrapper(Component):
@@ -529,6 +541,7 @@ class Input(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withAsterisk",
         ]
@@ -577,6 +590,7 @@ class Input(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withAsterisk=None,
             controller=None,
@@ -623,5 +637,6 @@ class Input(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withAsterisk = withAsterisk

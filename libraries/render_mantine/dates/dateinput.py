@@ -107,6 +107,7 @@ class DateInput(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "value",
         "valueFormat",
         "variant",
@@ -226,6 +227,7 @@ class DateInput(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         value=None,
         valueFormat=None,
         variant=None,
@@ -343,6 +345,7 @@ class DateInput(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.value = value
         self.valueFormat = valueFormat
         self.variant = variant

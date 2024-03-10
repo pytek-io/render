@@ -40,6 +40,7 @@ class Text(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "truncate",
         "variant",
     ]
@@ -84,6 +85,7 @@ class Text(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         truncate=None,
         variant=None,
         controller=None,
@@ -126,5 +128,6 @@ class Text(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.truncate = truncate
         self.variant = variant

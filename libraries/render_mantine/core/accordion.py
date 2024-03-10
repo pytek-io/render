@@ -42,6 +42,7 @@ class Accordion(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "value",
         "variant",
@@ -90,6 +91,7 @@ class Accordion(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         value=None,
         variant=None,
@@ -136,6 +138,7 @@ class Accordion(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.value = value
         self.variant = variant
@@ -169,6 +172,7 @@ class Accordion(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -202,6 +206,7 @@ class Accordion(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -233,6 +238,7 @@ class Accordion(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Control(Component):
@@ -270,6 +276,7 @@ class Accordion(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -309,6 +316,7 @@ class Accordion(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -346,6 +354,7 @@ class Accordion(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Item(Component):
@@ -380,6 +389,7 @@ class Accordion(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "value",
             "variant",
         ]
@@ -417,6 +427,7 @@ class Accordion(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             value=None,
             variant=None,
             controller=None,
@@ -452,6 +463,7 @@ class Accordion(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.value = value
             self.variant = variant
 
@@ -487,6 +499,7 @@ class Accordion(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -523,6 +536,7 @@ class Accordion(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -557,4 +571,5 @@ class Accordion(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

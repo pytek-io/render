@@ -35,6 +35,7 @@ class LoadingOverlay(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "variant",
         "visible",
@@ -76,6 +77,7 @@ class LoadingOverlay(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         variant=None,
         visible=None,
@@ -115,6 +117,7 @@ class LoadingOverlay(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.variant = variant
         self.visible = visible

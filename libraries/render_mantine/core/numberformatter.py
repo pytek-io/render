@@ -37,6 +37,7 @@ class NumberFormatter(Component):
         "target",
         "thousandSeparator",
         "thousandsGroupStyle",
+        "title",
         "value",
         "variant",
     ]
@@ -78,6 +79,7 @@ class NumberFormatter(Component):
         target=None,
         thousandSeparator=None,
         thousandsGroupStyle=None,
+        title=None,
         value=None,
         variant=None,
         controller=None,
@@ -117,5 +119,6 @@ class NumberFormatter(Component):
         self.target = target
         self.thousandSeparator = thousandSeparator
         self.thousandsGroupStyle = thousandsGroupStyle
+        self.title = title
         self.value = value
         self.variant = variant

@@ -57,6 +57,7 @@ class Pagination(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "total",
         "value",
         "variant",
@@ -120,6 +121,7 @@ class Pagination(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         total=None,
         value=None,
         variant=None,
@@ -178,6 +180,7 @@ class Pagination(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.total = total
         self.value = value
         self.variant = variant
@@ -217,6 +220,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withPadding",
         ]
@@ -255,6 +259,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withPadding=None,
             controller=None,
@@ -291,6 +296,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withPadding = withPadding
 
@@ -327,6 +333,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -364,6 +371,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -399,6 +407,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class First(Component):
@@ -434,6 +443,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -471,6 +481,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -506,6 +517,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Items(Component):
@@ -537,6 +549,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -570,6 +583,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -601,6 +615,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Last(Component):
@@ -636,6 +651,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -673,6 +689,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -708,6 +725,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Next(Component):
@@ -743,6 +761,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -780,6 +799,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -815,6 +835,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Previous(Component):
@@ -850,6 +871,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -887,6 +909,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -922,6 +945,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Root(Component):
@@ -973,6 +997,7 @@ class Pagination(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "total",
             "value",
             "variant",
@@ -1025,6 +1050,7 @@ class Pagination(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             total=None,
             value=None,
             variant=None,
@@ -1075,6 +1101,7 @@ class Pagination(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.total = total
             self.value = value
             self.variant = variant

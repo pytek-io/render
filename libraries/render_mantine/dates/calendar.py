@@ -79,6 +79,7 @@ class Calendar(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "weekdayFormat",
         "weekendDays",
@@ -163,6 +164,7 @@ class Calendar(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         weekdayFormat=None,
         weekendDays=None,
@@ -245,6 +247,7 @@ class Calendar(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.weekdayFormat = weekdayFormat
         self.weekendDays = weekendDays

@@ -56,6 +56,7 @@ class Combobox(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "variant",
         "width",
@@ -117,6 +118,7 @@ class Combobox(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         variant=None,
         width=None,
@@ -176,6 +178,7 @@ class Combobox(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.variant = variant
         self.width = width
@@ -217,6 +220,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -255,6 +259,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -291,6 +296,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Dropdown(Component):
@@ -326,6 +332,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -363,6 +370,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -398,6 +406,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Empty(Component):
@@ -432,6 +441,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -468,6 +478,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -502,6 +513,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class EventsTarget(Component):
@@ -535,6 +547,7 @@ class Combobox(Component):
             "ta",
             "target",
             "targetType",
+            "title",
             "variant",
             "withAriaAttributes",
             "withExpandedAttribute",
@@ -573,6 +586,7 @@ class Combobox(Component):
             ta=None,
             target=None,
             targetType=None,
+            title=None,
             variant=None,
             withAriaAttributes=None,
             withExpandedAttribute=None,
@@ -609,6 +623,7 @@ class Combobox(Component):
             self.ta = ta
             self.target = target
             self.targetType = targetType
+            self.title = title
             self.variant = variant
             self.withAriaAttributes = withAriaAttributes
             self.withExpandedAttribute = withExpandedAttribute
@@ -646,6 +661,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -682,6 +698,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -716,6 +733,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Group(Component):
@@ -751,6 +769,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -788,6 +807,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -823,6 +843,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Header(Component):
@@ -857,6 +878,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -893,6 +915,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -927,6 +950,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Option(Component):
@@ -964,6 +988,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "value",
             "variant",
         ]
@@ -1004,6 +1029,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             value=None,
             variant=None,
             controller=None,
@@ -1042,6 +1068,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.value = value
             self.variant = variant
 
@@ -1092,6 +1119,7 @@ class Combobox(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withAria",
             "withAriaAttributes",
@@ -1148,6 +1176,7 @@ class Combobox(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withAria=None,
             withAriaAttributes=None,
@@ -1202,6 +1231,7 @@ class Combobox(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withAria = withAria
             self.withAriaAttributes = withAriaAttributes
@@ -1240,6 +1270,7 @@ class Combobox(Component):
             "ta",
             "target",
             "targetType",
+            "title",
             "variant",
             "withAriaAttributes",
             "withExpandedAttribute",
@@ -1278,6 +1309,7 @@ class Combobox(Component):
             ta=None,
             target=None,
             targetType=None,
+            title=None,
             variant=None,
             withAriaAttributes=None,
             withExpandedAttribute=None,
@@ -1314,6 +1346,7 @@ class Combobox(Component):
             self.ta = ta
             self.target = target
             self.targetType = targetType
+            self.title = title
             self.variant = variant
             self.withAriaAttributes = withAriaAttributes
             self.withExpandedAttribute = withExpandedAttribute

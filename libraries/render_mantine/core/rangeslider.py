@@ -57,6 +57,7 @@ class RangeSlider(InputComponent):
         "thumbFromLabel",
         "thumbSize",
         "thumbToLabel",
+        "title",
         "variant",
     ]
 
@@ -120,6 +121,7 @@ class RangeSlider(InputComponent):
         thumbFromLabel=None,
         thumbSize=None,
         thumbToLabel=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -178,4 +180,5 @@ class RangeSlider(InputComponent):
         self.thumbFromLabel = thumbFromLabel
         self.thumbSize = thumbSize
         self.thumbToLabel = thumbToLabel
+        self.title = title
         self.variant = variant

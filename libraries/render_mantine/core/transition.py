@@ -34,6 +34,7 @@ class Transition(Component):
         "ta",
         "target",
         "timingFunction",
+        "title",
         "transition",
         "variant",
     ]
@@ -76,6 +77,7 @@ class Transition(Component):
         ta=None,
         target=None,
         timingFunction=None,
+        title=None,
         transition=None,
         variant=None,
         controller=None,
@@ -116,5 +118,6 @@ class Transition(Component):
         self.ta = ta
         self.target = target
         self.timingFunction = timingFunction
+        self.title = title
         self.transition = transition
         self.variant = variant

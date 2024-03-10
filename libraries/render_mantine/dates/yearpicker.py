@@ -55,6 +55,7 @@ class YearPicker(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "type",
         "value",
         "variant",
@@ -114,6 +115,7 @@ class YearPicker(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         type=None,
         value=None,
         variant=None,
@@ -171,6 +173,7 @@ class YearPicker(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.type = type
         self.value = value
         self.variant = variant
@@ -260,6 +263,7 @@ class YearPicker(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "type",
             "value",
             "valueFormat",
@@ -353,6 +357,7 @@ class YearPicker(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             type=None,
             value=None,
             valueFormat=None,
@@ -446,6 +451,7 @@ class YearPicker(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.type = type
             self.value = value
             self.valueFormat = valueFormat

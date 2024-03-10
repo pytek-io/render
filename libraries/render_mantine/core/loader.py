@@ -36,6 +36,7 @@ class Loader(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "type",
         "variant",
     ]
@@ -76,6 +77,7 @@ class Loader(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         type=None,
         variant=None,
         controller=None,
@@ -114,5 +116,6 @@ class Loader(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.type = type
         self.variant = variant

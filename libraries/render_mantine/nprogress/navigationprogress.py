@@ -35,6 +35,7 @@ class NavigationProgress(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withinPortal",
         "zIndex",
@@ -75,6 +76,7 @@ class NavigationProgress(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withinPortal=None,
         zIndex=None,
@@ -113,6 +115,7 @@ class NavigationProgress(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withinPortal = withinPortal
         self.zIndex = zIndex

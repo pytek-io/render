@@ -45,6 +45,7 @@ class Tabs(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -94,6 +95,7 @@ class Tabs(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -138,6 +140,7 @@ class Tabs(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
 
     class List(Component):
@@ -174,6 +177,7 @@ class Tabs(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -212,6 +216,7 @@ class Tabs(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -248,6 +253,7 @@ class Tabs(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Panel(Component):
@@ -283,6 +289,7 @@ class Tabs(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "value",
             "variant",
         ]
@@ -321,6 +328,7 @@ class Tabs(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             value=None,
             variant=None,
             controller=None,
@@ -357,6 +365,7 @@ class Tabs(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.value = value
             self.variant = variant
 
@@ -396,6 +405,7 @@ class Tabs(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "value",
             "variant",
         ]
@@ -437,6 +447,7 @@ class Tabs(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             value=None,
             variant=None,
             controller=None,
@@ -476,5 +487,6 @@ class Tabs(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.value = value
             self.variant = variant

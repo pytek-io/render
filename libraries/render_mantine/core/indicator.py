@@ -43,6 +43,7 @@ class Indicator(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withBorder",
         "zIndex",
@@ -91,6 +92,7 @@ class Indicator(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withBorder=None,
         zIndex=None,
@@ -137,6 +139,7 @@ class Indicator(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withBorder = withBorder
         self.zIndex = zIndex

@@ -44,6 +44,7 @@ class SegmentedControl(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "transitionTimingFunction",
         "variant",
@@ -96,6 +97,7 @@ class SegmentedControl(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         transitionTimingFunction=None,
         variant=None,
@@ -143,6 +145,7 @@ class SegmentedControl(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
         self.variant = variant

@@ -39,6 +39,7 @@ class RingProgress(Component):
         "ta",
         "target",
         "thickness",
+        "title",
         "variant",
     ]
 
@@ -81,6 +82,7 @@ class RingProgress(Component):
         ta=None,
         target=None,
         thickness=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -121,4 +123,5 @@ class RingProgress(Component):
         self.ta = ta
         self.target = target
         self.thickness = thickness
+        self.title = title
         self.variant = variant

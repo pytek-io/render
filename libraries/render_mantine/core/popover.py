@@ -48,6 +48,7 @@ class Popover(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "trapFocus",
         "variant",
@@ -111,6 +112,7 @@ class Popover(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         trapFocus=None,
         variant=None,
@@ -169,6 +171,7 @@ class Popover(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.trapFocus = trapFocus
         self.variant = variant
@@ -210,6 +213,7 @@ class Popover(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -246,6 +250,7 @@ class Popover(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -280,6 +285,7 @@ class Popover(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class Target(Component):
@@ -312,6 +318,7 @@ class Popover(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -346,6 +353,7 @@ class Popover(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -378,4 +386,5 @@ class Popover(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

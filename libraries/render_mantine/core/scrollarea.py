@@ -37,6 +37,7 @@ class ScrollArea(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "type",
         "variant",
         "viewportProps",
@@ -81,6 +82,7 @@ class ScrollArea(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         type=None,
         variant=None,
         viewportProps=None,
@@ -125,6 +127,7 @@ class ScrollArea(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.type = type
         self.variant = variant
         self.viewportProps = viewportProps

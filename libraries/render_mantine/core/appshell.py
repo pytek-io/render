@@ -41,6 +41,7 @@ class AppShell(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionDuration",
         "transitionTimingFunction",
         "variant",
@@ -89,6 +90,7 @@ class AppShell(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionDuration=None,
         transitionTimingFunction=None,
         variant=None,
@@ -135,6 +137,7 @@ class AppShell(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionDuration = transitionDuration
         self.transitionTimingFunction = transitionTimingFunction
         self.variant = variant
@@ -173,6 +176,7 @@ class AppShell(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withBorder",
             "zIndex",
@@ -211,6 +215,7 @@ class AppShell(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withBorder=None,
             zIndex=None,
@@ -247,6 +252,7 @@ class AppShell(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withBorder = withBorder
             self.zIndex = zIndex
@@ -283,6 +289,7 @@ class AppShell(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withBorder",
             "zIndex",
@@ -321,6 +328,7 @@ class AppShell(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withBorder=None,
             zIndex=None,
@@ -357,6 +365,7 @@ class AppShell(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withBorder = withBorder
             self.zIndex = zIndex
@@ -393,6 +402,7 @@ class AppShell(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withBorder",
             "zIndex",
@@ -431,6 +441,7 @@ class AppShell(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withBorder=None,
             zIndex=None,
@@ -467,6 +478,7 @@ class AppShell(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withBorder = withBorder
             self.zIndex = zIndex
@@ -503,6 +515,7 @@ class AppShell(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withBorder",
             "zIndex",
@@ -541,6 +554,7 @@ class AppShell(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withBorder=None,
             zIndex=None,
@@ -577,6 +591,7 @@ class AppShell(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withBorder = withBorder
             self.zIndex = zIndex
@@ -613,6 +628,7 @@ class AppShell(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withBorder",
             "zIndex",
@@ -651,6 +667,7 @@ class AppShell(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withBorder=None,
             zIndex=None,
@@ -687,6 +704,7 @@ class AppShell(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withBorder = withBorder
             self.zIndex = zIndex
@@ -724,6 +742,7 @@ class AppShell(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -761,6 +780,7 @@ class AppShell(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -796,4 +816,5 @@ class AppShell(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

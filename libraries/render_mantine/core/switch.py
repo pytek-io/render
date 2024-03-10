@@ -44,6 +44,7 @@ class Switch(InputComponent):
         "ta",
         "target",
         "thumbIcon",
+        "title",
         "variant",
         "wrapperProps",
     ]
@@ -95,6 +96,7 @@ class Switch(InputComponent):
         ta=None,
         target=None,
         thumbIcon=None,
+        title=None,
         variant=None,
         wrapperProps=None,
         controller=None,
@@ -141,6 +143,7 @@ class Switch(InputComponent):
         self.ta = ta
         self.target = target
         self.thumbIcon = thumbIcon
+        self.title = title
         self.variant = variant
         self.wrapperProps = wrapperProps
 
@@ -189,6 +192,7 @@ class Switch(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withAsterisk",
             "wrapperProps",
@@ -242,6 +246,7 @@ class Switch(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withAsterisk=None,
             wrapperProps=None,
@@ -290,6 +295,7 @@ class Switch(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withAsterisk = withAsterisk
             self.wrapperProps = wrapperProps

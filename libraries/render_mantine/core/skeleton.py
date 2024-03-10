@@ -37,6 +37,7 @@ class Skeleton(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "visible",
         "width",
@@ -79,6 +80,7 @@ class Skeleton(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         visible=None,
         width=None,
@@ -119,6 +121,7 @@ class Skeleton(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.visible = visible
         self.width = width

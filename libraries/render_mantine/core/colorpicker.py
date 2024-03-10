@@ -49,6 +49,7 @@ class ColorPicker(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "value",
         "variant",
         "withPicker",
@@ -100,6 +101,7 @@ class ColorPicker(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         value=None,
         variant=None,
         withPicker=None,
@@ -151,6 +153,7 @@ class ColorPicker(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.value = value
         self.variant = variant
         self.withPicker = withPicker

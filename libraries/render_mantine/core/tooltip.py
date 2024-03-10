@@ -54,6 +54,7 @@ class Tooltip(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "variant",
         "withArrow",
@@ -118,6 +119,7 @@ class Tooltip(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         variant=None,
         withArrow=None,
@@ -177,6 +179,7 @@ class Tooltip(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.variant = variant
         self.withArrow = withArrow

@@ -66,6 +66,7 @@ class FileInput(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "valueComponent",
         "variant",
         "withAsterisk",
@@ -140,6 +141,7 @@ class FileInput(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         valueComponent=None,
         variant=None,
         withAsterisk=None,
@@ -209,6 +211,7 @@ class FileInput(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.valueComponent = valueComponent
         self.variant = variant
         self.withAsterisk = withAsterisk

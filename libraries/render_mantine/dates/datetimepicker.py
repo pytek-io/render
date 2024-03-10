@@ -106,6 +106,7 @@ class DateTimePicker(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "value",
         "valueFormat",
         "valueFormatter",
@@ -224,6 +225,7 @@ class DateTimePicker(Component):
         ta=None,
         target=None,
         timeInputProps=None,
+        title=None,
         value=None,
         valueFormat=None,
         valueFormatter=None,
@@ -340,6 +342,7 @@ class DateTimePicker(Component):
         self.ta = ta
         self.target = target
         self.timeInputProps = create_callback(timeInputProps, "timeInputProps")
+        self.title = title
         self.value = value
         self.valueFormat = valueFormat
         self.valueFormatter = valueFormatter

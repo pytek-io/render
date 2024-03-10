@@ -54,6 +54,7 @@ class Slider(InputComponent):
         "thumbChildren",
         "thumbLabel",
         "thumbSize",
+        "title",
         "variant",
     ]
 
@@ -114,6 +115,7 @@ class Slider(InputComponent):
         thumbChildren=None,
         thumbLabel=None,
         thumbSize=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -169,4 +171,5 @@ class Slider(InputComponent):
         self.thumbChildren = thumbChildren
         self.thumbLabel = thumbLabel
         self.thumbSize = thumbSize
+        self.title = title
         self.variant = variant

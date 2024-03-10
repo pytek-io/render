@@ -1,5 +1,7 @@
 import { registerComponents, registerModuleDeferred } from "../../app";
 import { lazy } from "react";
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
 const components = [
   ["MonthPicker", lazy(() => import("../../fragments/mantine/dates/monthpicker.tsx"))],
   ["MonthPicker.Input", lazy(() => import("../../fragments/mantine/dates/monthpicker_input.tsx"))],
@@ -15,7 +17,6 @@ const components = [
 ];
 export function register() {
   registerModuleDeferred("mantine/dates", async () => {
-    import('@mantine/dates/styles.css');
     registerComponents("mantine/dates", components, true);
   });
 }

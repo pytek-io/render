@@ -40,6 +40,7 @@ class Overlay(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "zIndex",
     ]
@@ -84,6 +85,7 @@ class Overlay(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         zIndex=None,
         controller=None,
@@ -126,5 +128,6 @@ class Overlay(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.zIndex = zIndex

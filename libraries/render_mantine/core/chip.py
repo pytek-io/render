@@ -40,6 +40,7 @@ class Chip(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "type",
         "variant",
         "wrapperProps",
@@ -87,6 +88,7 @@ class Chip(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         type=None,
         variant=None,
         wrapperProps=None,
@@ -129,6 +131,7 @@ class Chip(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.type = type
         self.variant = variant
         self.wrapperProps = wrapperProps
@@ -163,6 +166,7 @@ class Chip(InputComponent):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -199,6 +203,7 @@ class Chip(InputComponent):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -230,4 +235,5 @@ class Chip(InputComponent):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant

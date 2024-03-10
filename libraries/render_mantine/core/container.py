@@ -35,6 +35,7 @@ class Container(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -73,6 +74,7 @@ class Container(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -109,4 +111,5 @@ class Container(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant

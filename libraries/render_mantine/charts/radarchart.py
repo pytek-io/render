@@ -43,6 +43,7 @@ class RadarChart(Component):
         "ta",
         "target",
         "textColor",
+        "title",
         "variant",
         "withPolarAngleAxis",
         "withPolarGrid",
@@ -92,6 +93,7 @@ class RadarChart(Component):
         ta=None,
         target=None,
         textColor=None,
+        title=None,
         variant=None,
         withPolarAngleAxis=None,
         withPolarGrid=None,
@@ -139,6 +141,7 @@ class RadarChart(Component):
         self.ta = ta
         self.target = target
         self.textColor = textColor
+        self.title = title
         self.variant = variant
         self.withPolarAngleAxis = withPolarAngleAxis
         self.withPolarGrid = withPolarGrid

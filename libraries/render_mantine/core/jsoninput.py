@@ -62,6 +62,7 @@ class JsonInput(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "validationError",
         "variant",
         "withAsterisk",
@@ -133,6 +134,7 @@ class JsonInput(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         validationError=None,
         variant=None,
         withAsterisk=None,
@@ -199,6 +201,7 @@ class JsonInput(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.validationError = validationError
         self.variant = variant
         self.withAsterisk = withAsterisk

@@ -40,6 +40,7 @@ class Dialog(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "transitionProps",
         "variant",
         "withBorder",
@@ -89,6 +90,7 @@ class Dialog(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         transitionProps=None,
         variant=None,
         withBorder=None,
@@ -136,6 +138,7 @@ class Dialog(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.transitionProps = transitionProps
         self.variant = variant
         self.withBorder = withBorder

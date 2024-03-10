@@ -38,6 +38,7 @@ class Group(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "wrap",
     ]
@@ -80,6 +81,7 @@ class Group(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         wrap=None,
         controller=None,
@@ -120,5 +122,6 @@ class Group(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.wrap = wrap

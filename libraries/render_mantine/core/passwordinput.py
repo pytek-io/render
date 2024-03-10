@@ -57,6 +57,7 @@ class PasswordInput(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "visibilityToggleButtonProps",
         "visibilityToggleIcon",
@@ -125,6 +126,7 @@ class PasswordInput(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         visibilityToggleButtonProps=None,
         visibilityToggleIcon=None,
@@ -190,6 +192,7 @@ class PasswordInput(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.visibilityToggleButtonProps = visibilityToggleButtonProps
         self.visibilityToggleIcon = visibilityToggleIcon

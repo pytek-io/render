@@ -84,6 +84,7 @@ class MultiSelect(InputComponent):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withAsterisk",
         "withCheckIcon",
@@ -175,6 +176,7 @@ class MultiSelect(InputComponent):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withAsterisk=None,
         withCheckIcon=None,
@@ -261,6 +263,7 @@ class MultiSelect(InputComponent):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withAsterisk = withAsterisk
         self.withCheckIcon = withCheckIcon

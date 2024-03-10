@@ -37,6 +37,7 @@ class Pill(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
         "withRemoveButton",
     ]
@@ -79,6 +80,7 @@ class Pill(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         withRemoveButton=None,
         controller=None,
@@ -119,6 +121,7 @@ class Pill(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant
         self.withRemoveButton = withRemoveButton
 
@@ -157,6 +160,7 @@ class Pill(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
         ]
 
@@ -196,6 +200,7 @@ class Pill(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             controller=None,
         ):
@@ -233,6 +238,7 @@ class Pill(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
 
     class sInput(Component):
@@ -289,6 +295,7 @@ class Pill(Component):
             "sx",
             "ta",
             "target",
+            "title",
             "variant",
             "withAsterisk",
             "withErrorStyles",
@@ -350,6 +357,7 @@ class Pill(Component):
             sx=None,
             ta=None,
             target=None,
+            title=None,
             variant=None,
             withAsterisk=None,
             withErrorStyles=None,
@@ -409,6 +417,7 @@ class Pill(Component):
             self.sx = sx
             self.ta = ta
             self.target = target
+            self.title = title
             self.variant = variant
             self.withAsterisk = withAsterisk
             self.withErrorStyles = withErrorStyles

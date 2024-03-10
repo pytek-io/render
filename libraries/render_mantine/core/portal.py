@@ -29,6 +29,7 @@ class Portal(Component):
         "sx",
         "ta",
         "target",
+        "title",
         "variant",
     ]
 
@@ -61,6 +62,7 @@ class Portal(Component):
         sx=None,
         ta=None,
         target=None,
+        title=None,
         variant=None,
         controller=None,
     ):
@@ -91,4 +93,5 @@ class Portal(Component):
         self.sx = sx
         self.ta = ta
         self.target = target
+        self.title = title
         self.variant = variant

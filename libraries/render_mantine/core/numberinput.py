@@ -76,6 +76,7 @@ class NumberInput(InputComponent):
         "target",
         "thousandSeparator",
         "thousandsGroupStyle",
+        "title",
         "type",
         "valueIsNumericString",
         "variant",
@@ -163,6 +164,7 @@ class NumberInput(InputComponent):
         target=None,
         thousandSeparator=None,
         thousandsGroupStyle=None,
+        title=None,
         type=None,
         valueIsNumericString=None,
         variant=None,
@@ -245,6 +247,7 @@ class NumberInput(InputComponent):
         self.target = target
         self.thousandSeparator = thousandSeparator
         self.thousandsGroupStyle = thousandsGroupStyle
+        self.title = title
         self.type = type
         self.valueIsNumericString = valueIsNumericString
         self.variant = variant
