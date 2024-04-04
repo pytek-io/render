@@ -27,7 +27,6 @@ class Select(InputComponent):
         "allowClear",
         "autoClearSearchValue",
         "autoFocus",
-        "bordered",
         "defaultActiveFirstOption",
         "defaultOpen",
         "disabled",
@@ -37,10 +36,10 @@ class Select(InputComponent):
         "filterOption",
         "filterSort",
         "getPopupContainer",
-        "label",
         "labelInValue",
         "listHeight",
         "loading",
+        "maxCount",
         "maxTagCount",
         "maxTagPlaceholder",
         "maxTagTextLength",
@@ -63,8 +62,8 @@ class Select(InputComponent):
         "status",
         "suffixIcon",
         "tagRender",
-        "title",
         "tokenSeparators",
+        "variant",
         "virtual",
     ]
 
@@ -83,7 +82,6 @@ class Select(InputComponent):
         allowClear=None,
         autoClearSearchValue=None,
         autoFocus=None,
-        bordered=None,
         defaultActiveFirstOption=None,
         defaultOpen=None,
         disabled=None,
@@ -93,10 +91,10 @@ class Select(InputComponent):
         filterOption=None,
         filterSort=None,
         getPopupContainer=None,
-        label=None,
         labelInValue=None,
         listHeight=None,
         loading=None,
+        maxCount=None,
         maxTagCount=None,
         maxTagPlaceholder=None,
         maxTagTextLength=None,
@@ -130,8 +128,8 @@ class Select(InputComponent):
         status=None,
         suffixIcon=None,
         tagRender=None,
-        title=None,
         tokenSeparators=None,
+        variant=None,
         virtual=None,
         controller=None,
     ):
@@ -145,7 +143,6 @@ class Select(InputComponent):
         self.allowClear = allowClear
         self.autoClearSearchValue = autoClearSearchValue
         self.autoFocus = autoFocus
-        self.bordered = bordered
         self.defaultActiveFirstOption = defaultActiveFirstOption
         self.defaultOpen = defaultOpen
         self.disabled = disabled
@@ -155,10 +152,10 @@ class Select(InputComponent):
         self.filterOption = filterOption
         self.filterSort = filterSort
         self.getPopupContainer = getPopupContainer
-        self.label = label
         self.labelInValue = labelInValue
         self.listHeight = listHeight
         self.loading = loading
+        self.maxCount = maxCount
         self.maxTagCount = maxTagCount
         self.maxTagPlaceholder = maxTagPlaceholder
         self.maxTagTextLength = maxTagTextLength
@@ -194,6 +191,6 @@ class Select(InputComponent):
         self.status = status
         self.suffixIcon = suffixIcon
         self.tagRender = tagRender
-        self.title = title
         self.tokenSeparators = tokenSeparators
+        self.variant = variant
         self.virtual = virtual

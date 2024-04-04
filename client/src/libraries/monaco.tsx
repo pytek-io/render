@@ -15,9 +15,9 @@ export function register() {
         );
       }
     }
-    registerComponent("Editor", Editor, "monaco");
+    registerComponent("Editor", "", Editor, "monaco");
     registerComponent(
-      "RelaxedTypeScriptEditor",
+      "RelaxedTypeScriptEditor", "",
       RelaxedTypeScriptEditor,
       "monaco"
     );

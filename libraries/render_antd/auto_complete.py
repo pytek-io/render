@@ -22,8 +22,6 @@ class AutoComplete(InputComponent):
         "allowClear",
         "autoFocus",
         "backfill",
-        "bordered",
-        "compact",
         "defaultActiveFirstOption",
         "defaultOpen",
         "disabled",
@@ -35,6 +33,7 @@ class AutoComplete(InputComponent):
         "placeholder",
         "popupClassName",
         "status",
+        "variant",
     ]
 
     def __init__(
@@ -52,8 +51,6 @@ class AutoComplete(InputComponent):
         allowClear=None,
         autoFocus=None,
         backfill=None,
-        bordered=None,
-        compact=None,
         defaultActiveFirstOption=None,
         defaultOpen=None,
         disabled=None,
@@ -71,6 +68,7 @@ class AutoComplete(InputComponent):
         placeholder=None,
         popupClassName=None,
         status=None,
+        variant=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -83,8 +81,6 @@ class AutoComplete(InputComponent):
         self.allowClear = allowClear
         self.autoFocus = autoFocus
         self.backfill = backfill
-        self.bordered = bordered
-        self.compact = compact
         self.defaultActiveFirstOption = defaultActiveFirstOption
         self.defaultOpen = defaultOpen
         self.disabled = disabled
@@ -104,3 +100,4 @@ class AutoComplete(InputComponent):
         self.placeholder = placeholder
         self.popupClassName = popupClassName
         self.status = status
+        self.variant = variant

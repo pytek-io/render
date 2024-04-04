@@ -23,8 +23,10 @@ export function register() {
   registerModuleDeferred("ant-icons", async () => {
     // Icon has to be imported explicitely (probably because it is not explicitly marked as default or sth...)
     const module = await import("@ant-design/icons");
+    // we define some JS callbacks in demos referencing this module
+    window.render_ant_icons = module;
     registerModuleAttributes("ant-icons", module);
-    registerComponent("Icon", module.default, "ant-icons");
+    registerComponent("Icon", "", module.default, "ant-icons");
     registerMethod("EditSvg", EditSvg);
   });
 }

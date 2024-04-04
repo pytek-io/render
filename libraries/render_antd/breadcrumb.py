@@ -13,7 +13,6 @@ class Breadcrumb(Component):
         "items",
         "params",
         "separator",
-        "type",
     ]
 
     def __init__(
@@ -29,7 +28,6 @@ class Breadcrumb(Component):
         items=None,
         params=None,
         separator=None,
-        type=None,
         controller=None,
     ):
         super().__init__(key, controller)
@@ -43,4 +41,3 @@ class Breadcrumb(Component):
         self.items = items
         self.params = params
         self.separator = separator
-        self.type = type

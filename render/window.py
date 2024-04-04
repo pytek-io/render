@@ -15,7 +15,7 @@ from typing import Callable, Coroutine, Dict, Iterable, Set
 import anyio
 
 from .async_objects import AsyncCachedEvaluation, AsyncGenerator
-from .common import CURRENT_CONTROLLER, CURRENT_WINDOW, SubscribeToKernelUpdates
+from .common import CURRENT_WINDOW, SubscribeToKernelUpdates
 from .components import (
     Callback,
     create_callback,
@@ -26,7 +26,6 @@ from .components import (
     Props,
     js,
 )
-from .controller import Controller
 from .mapping import Mapping
 from .observability import AutoRun, CachedEvaluation, ObservableValue
 from .props import DEFAULT_ARGS_NO_CHILDREN_NAMES
@@ -48,8 +47,8 @@ DEFAULT_ARGS_NAMES = DEFAULT_ARGS_NO_CHILDREN_NAMES
 LINKS_REGISTER = defaultdict(set)
 RGB_WHITE = 255, 255, 255
 DEFAULT_BODY_STYLE = {"backgroundColor": f"rgb{RGB_WHITE}", "margin": 0}
-js_free_method_call = "js free method call"
 
+DATE_FORMATS = {}
 
 class MountStatus:
     mounting = "mounting"
@@ -254,7 +253,6 @@ class Window:
         self.hash_argument = hash_argument
         self.weak_ref = weakref.ref(self)
         CURRENT_WINDOW.set(self.weak_ref)
-        CURRENT_CONTROLLER.set(Controller())
         self.task_group = task_group
         self.session_id = session_id
         self._connection = connection
@@ -459,7 +457,7 @@ class Window:
         if not isinstance(js_method, str):
             js_method, args = self.serialize_js_method(js_method)
         self.send_nowait(
-            js_free_method_call,
+            "js free method call",
             self._serialize(None, [js_method, args]),
         )
 
@@ -581,7 +579,11 @@ class Window:
         if isinstance(value, datetime.time):
             value = convert_time_to_datetime(value)
         if isinstance(value, datetime.datetime):
-            return "date", value.timestamp()
+            package = sys.modules[parent.__module__].__package__
+            if (date_format := DATE_FORMATS.get(package, None)) is None:
+                date_format = getattr(sys.modules[package], "DATE_FORMAT", "date")
+                DATE_FORMATS[package] = date_format
+            return date_format, value.timestamp()
         if callable(value):
             # callable inside data are treated as callbacks
             value = Callback(value, None)
@@ -599,6 +601,8 @@ class Window:
             if value := getattr(component, attribute_name):
                 if not isinstance(value, Callback):
                     value = create_callback(value, attribute_name)
+                elif value.method is None:
+                    continue
                 result[attribute_name] = "callback", self.serialize_callback(attribute_name, value)
         for name in component.ATTRIBUTES + component.DATA:
             attribute = getattr(component, name)
@@ -620,7 +624,7 @@ class Window:
             component()  # forcing dependency
             if component.InputName:
                 result[component.InputName] = self._serialize_value(
-                    True, component.InputName, component.displayed_value()
+                    component, component.InputName, component.displayed_value()
                 )
         # annoyingly defaultValue prevails on value in antd API...
         if not (result.get("defaultValue", None) is None or result.get("value", None) is None):

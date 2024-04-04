@@ -10,12 +10,13 @@ class Popover(Component):
         "className",
         "id",
         "align",
-        "arrowPointAtCenter",
+        "arrow",
         "autoAdjustOverflow",
         "color",
         "content",
         "defaultOpen",
         "destroyTooltipOnHide",
+        "fresh",
         "getPopupContainer",
         "mouseEnterDelay",
         "mouseLeaveDelay",
@@ -39,12 +40,13 @@ class Popover(Component):
         onKeyPress=None,
         onClick=None,
         align=None,
-        arrowPointAtCenter=None,
+        arrow=None,
         autoAdjustOverflow=None,
         color=None,
         content=None,
         defaultOpen=None,
         destroyTooltipOnHide=None,
+        fresh=None,
         getPopupContainer=None,
         mouseEnterDelay=None,
         mouseLeaveDelay=None,
@@ -67,12 +69,13 @@ class Popover(Component):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.align = align
-        self.arrowPointAtCenter = arrowPointAtCenter
+        self.arrow = arrow
         self.autoAdjustOverflow = autoAdjustOverflow
         self.color = color
         self.content = content
         self.defaultOpen = defaultOpen
         self.destroyTooltipOnHide = destroyTooltipOnHide
+        self.fresh = fresh
         self.getPopupContainer = getPopupContainer
         self.mouseEnterDelay = mouseEnterDelay
         self.mouseLeaveDelay = mouseLeaveDelay

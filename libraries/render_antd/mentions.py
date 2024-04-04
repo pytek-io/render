@@ -19,16 +19,19 @@ class Mentions(InputComponent):
         "style",
         "className",
         "id",
+        "allowClear",
         "autoFocus",
         "autoSize",
         "filterOption",
         "getPopupContainer",
+        "loading",
         "notFoundContent",
         "options",
         "placement",
         "prefix",
         "split",
         "status",
+        "variant",
     ]
 
     def __init__(
@@ -43,10 +46,12 @@ class Mentions(InputComponent):
         onChange=None,
         defaultValue=None,
         value=None,
+        allowClear=None,
         autoFocus=None,
         autoSize=None,
         filterOption=None,
         getPopupContainer=None,
+        loading=None,
         notFoundContent=None,
         onBlur=None,
         onFocus=None,
@@ -59,6 +64,7 @@ class Mentions(InputComponent):
         split=None,
         status=None,
         validateSearch=None,
+        variant=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -68,10 +74,12 @@ class Mentions(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.allowClear = allowClear
         self.autoFocus = autoFocus
         self.autoSize = autoSize
         self.filterOption = filterOption
         self.getPopupContainer = getPopupContainer
+        self.loading = loading
         self.notFoundContent = notFoundContent
         self.onBlur = create_callback(onBlur, "onBlur")
         self.onFocus = create_callback(onFocus, "onFocus")
@@ -86,3 +94,4 @@ class Mentions(InputComponent):
         self.split = split
         self.status = status
         self.validateSearch = create_callback(validateSearch, "validateSearch")
+        self.variant = variant

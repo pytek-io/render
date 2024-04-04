@@ -23,10 +23,11 @@ class Tabs(Component):
         "defaultActiveKey",
         "destroyInactiveTabPane",
         "hideAdd",
-        "indicatorSize",
+        "indicator",
         "items",
         "moreIcon",
         "popupClassName",
+        "removeIcon",
         "renderTabBar",
         "size",
         "tabBarExtraContent",
@@ -52,7 +53,7 @@ class Tabs(Component):
         defaultActiveKey=None,
         destroyInactiveTabPane=None,
         hideAdd=None,
-        indicatorSize=None,
+        indicator=None,
         items=None,
         moreIcon=None,
         onChange=None,
@@ -60,6 +61,7 @@ class Tabs(Component):
         onTabClick=None,
         onTabScroll=None,
         popupClassName=None,
+        removeIcon=None,
         renderTabBar=None,
         size=None,
         tabBarExtraContent=None,
@@ -83,7 +85,7 @@ class Tabs(Component):
         self.defaultActiveKey = defaultActiveKey
         self.destroyInactiveTabPane = destroyInactiveTabPane
         self.hideAdd = hideAdd
-        self.indicatorSize = indicatorSize
+        self.indicator = indicator
         self.items = items
         self.moreIcon = moreIcon
         self.onChange = create_callback(onChange, "onChange", [[0]])
@@ -93,6 +95,7 @@ class Tabs(Component):
             onTabScroll, "onTabScroll", [[0, "direction"]]
         )
         self.popupClassName = popupClassName
+        self.removeIcon = removeIcon
         self.renderTabBar = renderTabBar
         self.size = size
         self.tabBarExtraContent = tabBarExtraContent

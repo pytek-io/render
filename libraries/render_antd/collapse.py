@@ -65,47 +65,46 @@ class Collapse(Component):
         self.onChange = create_callback(onChange, "onChange")
         self.size = size
 
+    class Panel(Component):
+        Module = "antd"
+        JSXName = "Collapse.Panel"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "collapsible",
+            "extra",
+            "forceRender",
+            "header",
+            "showArrow",
+        ]
 
-class Panel(Component):
-    Module = "antd"
-    JSXName = "Collapse.Panel"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "collapsible",
-        "extra",
-        "forceRender",
-        "header",
-        "showArrow",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        collapsible=None,
-        extra=None,
-        forceRender=None,
-        header=None,
-        showArrow=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.collapsible = collapsible
-        self.extra = extra
-        self.forceRender = forceRender
-        self.header = header
-        self.showArrow = showArrow
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            collapsible=None,
+            extra=None,
+            forceRender=None,
+            header=None,
+            showArrow=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.collapsible = collapsible
+            self.extra = extra
+            self.forceRender = forceRender
+            self.header = header
+            self.showArrow = showArrow

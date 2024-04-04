@@ -8,12 +8,12 @@ export function register() {
       let actual_style = {};
       let { style, ...rest } = props;
       if (style) {
-        let { height, width }  = style;
+        let { height, width } = style;
         if (!height) {
           style[height] = "inherit"
         }
         if (!width) {
-          style["width"] ="inherit"
+          style["width"] = "inherit"
         }
         actual_style = style
       }
@@ -23,6 +23,6 @@ export function register() {
       };
       return <Vega ref={ref} {...modified_props} />;
     });
-    registerComponent("Chart", MyVega, "altair");
+    registerComponent("Chart", "", MyVega, "altair");
   });
 }

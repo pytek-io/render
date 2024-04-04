@@ -12,10 +12,12 @@ class Switch(InputComponent):
         "id",
         "autoFocus",
         "checkedChildren",
+        "defaultValue",
         "disabled",
         "loading",
         "size",
         "unCheckedChildren",
+        "value",
     ]
 
     def __init__(
@@ -32,10 +34,12 @@ class Switch(InputComponent):
         checked=None,
         autoFocus=None,
         checkedChildren=None,
+        defaultValue=None,
         disabled=None,
         loading=None,
         size=None,
         unCheckedChildren=None,
+        value=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, checked, defaultChecked)
@@ -47,7 +51,9 @@ class Switch(InputComponent):
         self.onClick = create_callback(onClick, "onClick", [[0]])
         self.autoFocus = autoFocus
         self.checkedChildren = checkedChildren
+        self.defaultValue = defaultValue
         self.disabled = disabled
         self.loading = loading
         self.size = size
         self.unCheckedChildren = unCheckedChildren
+        self.value = value

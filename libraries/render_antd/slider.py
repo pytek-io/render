@@ -5,13 +5,14 @@ class Slider(InputComponent):
     Module = "antd"
     JSXName = "Slider"
     InputName = "value"
-    CALLBACKS = ["onKeyPress", "onClick", "onAfterChange"]
+    CALLBACKS = ["onKeyPress", "onClick", "onChangeComplete"]
     ATTRIBUTES = [
         "style",
         "className",
         "id",
         "autoAdjustOverflow",
         "autoFocus",
+        "classNames",
         "disabled",
         "dots",
         "draggableTrack",
@@ -27,6 +28,7 @@ class Slider(InputComponent):
         "range",
         "reverse",
         "step",
+        "styles",
         "tooltip",
         "vertical",
     ]
@@ -45,6 +47,7 @@ class Slider(InputComponent):
         value=None,
         autoAdjustOverflow=None,
         autoFocus=None,
+        classNames=None,
         disabled=None,
         dots=None,
         draggableTrack=None,
@@ -55,12 +58,13 @@ class Slider(InputComponent):
         marks=None,
         max=None,
         min=None,
-        onAfterChange=None,
+        onChangeComplete=None,
         open=None,
         placement=None,
         range=None,
         reverse=None,
         step=None,
+        styles=None,
         tooltip=None,
         vertical=None,
         controller=None,
@@ -74,6 +78,7 @@ class Slider(InputComponent):
         self.onClick = create_callback(onClick, "onClick")
         self.autoAdjustOverflow = autoAdjustOverflow
         self.autoFocus = autoFocus
+        self.classNames = classNames
         self.disabled = disabled
         self.dots = dots
         self.draggableTrack = draggableTrack
@@ -84,11 +89,14 @@ class Slider(InputComponent):
         self.marks = marks
         self.max = max
         self.min = min
-        self.onAfterChange = create_callback(onAfterChange, "onAfterChange", [[0]])
+        self.onChangeComplete = create_callback(
+            onChangeComplete, "onChangeComplete", [[0]]
+        )
         self.open = open
         self.placement = placement
         self.range = range
         self.reverse = reverse
         self.step = step
+        self.styles = styles
         self.tooltip = tooltip
         self.vertical = vertical

@@ -95,6 +95,6 @@ export function register() {
         </Highlight>
       );
     };
-    registerComponent("PrismCodeFormatter", wrapper, "prism");
+    registerComponent("PrismCodeFormatter", "", wrapper, "prism");
   });
 }

@@ -3,11 +3,11 @@ import { lazy } from "react";
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 const components = [
-  ["CodeHighlight", lazy(() => import("../../fragments/mantine/code-highlight/codehighlight.tsx"))],
-  ["CodeHighlight.Tabs", lazy(() => import("../../fragments/mantine/code-highlight/codehighlight_tabs.tsx"))],
+  ['InlineCodeHighlight', [], lazy(() => import("../../fragments/mantine/code-highlight/inlinecodehighlight.tsx"))],
+  ['CodeHighlight', ['Tabs'], lazy(() => import("../../fragments/mantine/code-highlight/codehighlight.tsx"))],
 ];
 export function register() {
   registerModuleDeferred("mantine/code-highlight", async () => {
-    registerComponents("mantine/code-highlight", components, true);
+    registerComponents(components, "mantine/code-highlight", true);
   });
 }

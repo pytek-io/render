@@ -1,8 +1,8 @@
 import { main } from './app'
 import { register_callbacks } from './callbacks'
 register_callbacks()
-import { register as register_react } from './libraries/html'
-register_react()
+import { register as register_html } from './libraries/html'
+register_html()
 import { register as register_antd } from './libraries/antd'
 register_antd()
 import { register as register_ant_icons } from './libraries/ant-icons'

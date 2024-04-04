@@ -48,6 +48,21 @@ function add_links(links: [string, string][][]) {
   }
 }
 
+// function resolveMethod(name: string) {
+//   const [method, ...qualifiers] = name.split(".");
+//   let result = window.methodRegister.get(method);
+//   if (result == undefined) {
+//     throw new Error(`failed to resolve "${name}" callback`);
+//   }
+//   for (const qualifier of qualifiers) {
+//     result = result[qualifier];
+//     if (result == undefined) {
+//       throw new Error(`failed to resolve "${qualifier}" in ${name}`);
+//     }
+//   }
+//   return result;
+// }
+
 function resolveMethod(name: string) {
   const result = window.methodRegister.get(name);
   if (result == undefined) {
@@ -148,18 +163,36 @@ function wrap_inside_suspense(lazy_component) {
   }
 }
 
-export function registerComponent(name, constructor, namespace, lazy = false) {
-  if (constructor == undefined) {
-    console.error(`${name} is not a valid constructor`);
+export function registerComponent(name, sub_class, constructor, namespace, lazy = false) {
+  const render_namespace = "render_" + namespace;
+  if (window[render_namespace] == undefined) {
+    window[render_namespace] = {};
   }
-  // we need to use window as a global because those are created after export
+  let component_name = name;
+  if (sub_class.length > 0) {
+    const wrapping_class = window[render_namespace][name];
+    if (wrapping_class == undefined) {
+      throw new Error(`failed to find wrapping class ${name}`);
+    }
+    wrapping_class[sub_class] = constructor;
+    component_name = `${name}.${sub_class}`;
+  } else {
+    window[render_namespace][name] = constructor;
+  }
+  // fixme: we can probably move this at the top level
   if (window.componentRegister == undefined) {
     window.componentRegister = new Map();
   }
   if (!window.componentRegister.has(namespace)) {
     window.componentRegister.set(namespace, new Map());
   }
-  window.componentRegister.get(namespace).set(name, lazy ? wrap_inside_suspense(constructor): constructor);
+  window.componentRegister.get(namespace).set(component_name, lazy ? wrap_inside_suspense(constructor): constructor);
+  }
+  
+  export function registerComponents(namespace, components, lazy = false) {
+    for (const [name, sub_class, constructor] of components) {
+      registerComponent(name, sub_class, constructor, namespace, lazy);
+    }
   }
 
 export function registerModuleDeferred(name, callback) {
@@ -172,12 +205,6 @@ export function registerModuleDeferred(name, callback) {
 export function registerModuleAttributes(namespace: string, module) {
   for (const [name, attribute] of Object.entries(module)) {
     registerComponent(name, attribute, namespace);
-  }
-}
-
-export function registerComponents(namespace: string, components, lazy=false) {
-  for (const [name, constructor] of components) {
-    registerComponent(name, constructor, namespace, lazy);
   }
 }
 
@@ -877,14 +904,10 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-registerComponent("ErrorBoundary", ErrorBoundary, "core");
+registerComponent("ErrorBoundary", "", ErrorBoundary, "core");
 
 function ServerErrorTraceback({ traceback }) {
   return <pre>{traceback}</pre>;
 }
 
-registerComponent("ServerErrorTraceback", ServerErrorTraceback, "core");
-
-// window.onbeforeunload = function(e) {
-//   return "Do you want to exit this page?";
-// };
+registerComponent("ServerErrorTraceback", "", ServerErrorTraceback, "core");

@@ -17,7 +17,8 @@ from anyio import create_memory_object_stream
 from asyncstdlib.builtins import map as amap
 from websockets.exceptions import ConnectionClosedError, ConnectionClosedOK
 
-from .common import MessageToClient, SessionEnd, get_window
+from .common import CURRENT_CONTROLLER, MessageToClient, SessionEnd, get_window
+from .controller import Controller
 from .utils import (
     import_module,
     msgpack_dumps_many,
@@ -150,6 +151,7 @@ class Kernel:
         self.channels = ChannelManager(connection)
 
     async def manage_session(self, session_id, script_path, browser, start_time, width, height):
+        CURRENT_CONTROLLER.set(Controller())
         with ExitStack() as stack:
             stack.callback(lambda: print(f"Session {session_id} ended."))
             script_path = urllib.parse.unquote(script_path)

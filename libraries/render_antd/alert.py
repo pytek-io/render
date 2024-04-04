@@ -11,7 +11,7 @@ class Alert(Component):
         "id",
         "action",
         "banner",
-        "closeIcon",
+        "closable",
         "description",
         "icon",
         "message",
@@ -31,7 +31,7 @@ class Alert(Component):
         action=None,
         afterClose=None,
         banner=None,
-        closeIcon=None,
+        closable=None,
         description=None,
         icon=None,
         message=None,
@@ -50,40 +50,10 @@ class Alert(Component):
         self.action = action
         self.afterClose = create_callback(afterClose, "afterClose")
         self.banner = banner
-        self.closeIcon = closeIcon
+        self.closable = closable
         self.description = description
         self.icon = icon
         self.message = message
         self.onClose = create_callback(onClose, "onClose")
         self.showIcon = showIcon
         self.type = type
-
-
-class ErrorBoundary(Component):
-    Module = "antd"
-    JSXName = "Alert.ErrorBoundary"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = ["style", "className", "id", "description", "message"]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        description=None,
-        message=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.description = description
-        self.message = message

@@ -16,6 +16,6 @@ export function register() {
         />
       );
     });
-    registerComponent("DockLayout", MyDockLayout, "rc-dock");
+    registerComponent("DockLayout", "", MyDockLayout, "rc-dock");
   });
 }

@@ -45,7 +45,7 @@ export function register() {
         ></AgGridReact>
       );
     });
-    registerComponent("AgGridReact", MyAgGridReact, "ag-grid");
-    registerComponent("AgGridColumn", AgGridColumn, "ag-grid");
+    registerComponent("AgGridReact", "", MyAgGridReact, "ag-grid");
+    registerComponent("AgGridColumn", "", AgGridColumn, "ag-grid");
   });
 }

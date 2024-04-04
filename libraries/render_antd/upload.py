@@ -116,3 +116,53 @@ class Upload(Component):
         self.progress = progress
         self.showUploadList = showUploadList
         self.withCredentials = withCredentials
+
+    class UploadFile(Component):
+        Module = "antd"
+        JSXName = "Upload.UploadFile"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = [
+            "style",
+            "className",
+            "id",
+            "crossOrigin",
+            "name",
+            "percent",
+            "status",
+            "thumbUrl",
+            "uid",
+            "url",
+        ]
+
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            crossOrigin=None,
+            name=None,
+            percent=None,
+            status=None,
+            thumbUrl=None,
+            uid=None,
+            url=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.crossOrigin = crossOrigin
+            self.name = name
+            self.percent = percent
+            self.status = status
+            self.thumbUrl = thumbUrl
+            self.uid = uid
+            self.url = url

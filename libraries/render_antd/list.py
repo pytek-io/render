@@ -102,47 +102,31 @@ class List(Component):
         self.xs = xs
         self.xxl = xxl
 
+    class Item(Component):
+        Module = "antd"
+        JSXName = "List.Item"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id", "actions", "extra"]
 
-class Item(Component):
-    Module = "antd"
-    JSXName = "List.Item"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "actions",
-        "avatar",
-        "description",
-        "extra",
-        "title",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        actions=None,
-        avatar=None,
-        description=None,
-        extra=None,
-        title=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.actions = actions
-        self.avatar = avatar
-        self.description = description
-        self.extra = extra
-        self.title = title
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            actions=None,
+            extra=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.actions = actions
+            self.extra = extra

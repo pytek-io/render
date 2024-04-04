@@ -30,6 +30,6 @@ export function register() {
         );
       }
     }
-    registerComponent("Figure", Figure, "bokeh");
+    registerComponent("Figure", "", Figure, "bokeh");
   });
 }

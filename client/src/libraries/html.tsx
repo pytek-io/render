@@ -46,7 +46,7 @@ export function register() {
     "blockquote",
   ];
   for (const tag of tags) {
-    registerComponent(tag, tag, "html");
+    registerComponent(tag, "", tag, "html", false);
   }
 
   // rmk: we should factor out this code...
@@ -58,7 +58,7 @@ export function register() {
       </div>
     );
   }
-  registerComponent("inline_svg", inline_svg, "html");
+  registerComponent("inline_svg", "", inline_svg, "html");
 
   function inline_png(args) {
     const image = args["children"];
@@ -68,5 +68,5 @@ export function register() {
       </div>
     );
   }
-  registerComponent("inline_png", inline_png, "html");
+  registerComponent("inline_png", "", inline_png, "html");
 }

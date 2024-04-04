@@ -12,7 +12,6 @@ class Drawer(Component):
         "autoFocus",
         "classNames",
         "closeIcon",
-        "contentWrapperStyle",
         "destroyOnClose",
         "extra",
         "footer",
@@ -47,7 +46,6 @@ class Drawer(Component):
         autoFocus=None,
         classNames=None,
         closeIcon=None,
-        contentWrapperStyle=None,
         destroyOnClose=None,
         extra=None,
         footer=None,
@@ -83,7 +81,6 @@ class Drawer(Component):
         self.autoFocus = autoFocus
         self.classNames = classNames
         self.closeIcon = closeIcon
-        self.contentWrapperStyle = contentWrapperStyle
         self.destroyOnClose = destroyOnClose
         self.extra = extra
         self.footer = footer

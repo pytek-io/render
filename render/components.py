@@ -5,6 +5,7 @@ from more_itertools import first
 from .common import get_window
 from .observability import ObservableValue, ObserverBase
 from .dict_of_observables import ObservableElement
+from .observable_collections import ObservableList
 from .utils import CatchError
 
 JSMETHODS_REPOSITORY = {}
@@ -134,7 +135,7 @@ class InputComponent(Component):
     def __init__(self, key, controller, onChange, value, default_value):
         super().__init__(key=key, controller=controller)
         self.input_value_update = False
-        if isinstance(value, (ObservableValue, ObservableElement)):
+        if isinstance(value, (ObservableValue, ObservableElement, ObservableList)):
             if default_value is not None:
                 raise Exception("Input component value and default value cannot be both speficied.")
             self._value, default_value = value, value._eval()

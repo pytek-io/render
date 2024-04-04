@@ -20,13 +20,15 @@ class TreeSelect(InputComponent):
         "id",
         "allowClear",
         "autoClearSearchValue",
-        "bordered",
+        "checkable",
+        "disableCheckbox",
         "disabled",
         "dropdownRender",
         "dropdownStyle",
         "fieldNames",
         "filterTreeNode",
         "getPopupContainer",
+        "isLeaf",
         "labelInValue",
         "listHeight",
         "maxTagCount",
@@ -39,6 +41,7 @@ class TreeSelect(InputComponent):
         "popupClassName",
         "popupMatchSelectWidth",
         "searchValue",
+        "selectable",
         "showCheckedStrategy",
         "showSearch",
         "size",
@@ -46,6 +49,7 @@ class TreeSelect(InputComponent):
         "suffixIcon",
         "switcherIcon",
         "tagRender",
+        "title",
         "treeCheckStrictly",
         "treeCheckable",
         "treeData",
@@ -59,6 +63,7 @@ class TreeSelect(InputComponent):
         "treeLoadedKeys",
         "treeNodeFilterProp",
         "treeNodeLabelProp",
+        "variant",
         "virtual",
     ]
 
@@ -76,13 +81,15 @@ class TreeSelect(InputComponent):
         value=None,
         allowClear=None,
         autoClearSearchValue=None,
-        bordered=None,
+        checkable=None,
+        disableCheckbox=None,
         disabled=None,
         dropdownRender=None,
         dropdownStyle=None,
         fieldNames=None,
         filterTreeNode=None,
         getPopupContainer=None,
+        isLeaf=None,
         labelInValue=None,
         listHeight=None,
         loadData=None,
@@ -100,6 +107,7 @@ class TreeSelect(InputComponent):
         popupClassName=None,
         popupMatchSelectWidth=None,
         searchValue=None,
+        selectable=None,
         showCheckedStrategy=None,
         showSearch=None,
         size=None,
@@ -107,6 +115,7 @@ class TreeSelect(InputComponent):
         suffixIcon=None,
         switcherIcon=None,
         tagRender=None,
+        title=None,
         treeCheckStrictly=None,
         treeCheckable=None,
         treeData=None,
@@ -120,6 +129,7 @@ class TreeSelect(InputComponent):
         treeLoadedKeys=None,
         treeNodeFilterProp=None,
         treeNodeLabelProp=None,
+        variant=None,
         virtual=None,
         controller=None,
     ):
@@ -132,13 +142,15 @@ class TreeSelect(InputComponent):
         self.onClick = create_callback(onClick, "onClick")
         self.allowClear = allowClear
         self.autoClearSearchValue = autoClearSearchValue
-        self.bordered = bordered
+        self.checkable = checkable
+        self.disableCheckbox = disableCheckbox
         self.disabled = disabled
         self.dropdownRender = dropdownRender
         self.dropdownStyle = dropdownStyle
         self.fieldNames = fieldNames
         self.filterTreeNode = filterTreeNode
         self.getPopupContainer = getPopupContainer
+        self.isLeaf = isLeaf
         self.labelInValue = labelInValue
         self.listHeight = listHeight
         self.loadData = create_callback(
@@ -160,6 +172,7 @@ class TreeSelect(InputComponent):
         self.popupClassName = popupClassName
         self.popupMatchSelectWidth = popupMatchSelectWidth
         self.searchValue = searchValue
+        self.selectable = selectable
         self.showCheckedStrategy = showCheckedStrategy
         self.showSearch = showSearch
         self.size = size
@@ -167,6 +180,7 @@ class TreeSelect(InputComponent):
         self.suffixIcon = suffixIcon
         self.switcherIcon = switcherIcon
         self.tagRender = tagRender
+        self.title = title
         self.treeCheckStrictly = treeCheckStrictly
         self.treeCheckable = treeCheckable
         self.treeData = treeData
@@ -180,55 +194,5 @@ class TreeSelect(InputComponent):
         self.treeLoadedKeys = treeLoadedKeys
         self.treeNodeFilterProp = treeNodeFilterProp
         self.treeNodeLabelProp = treeNodeLabelProp
+        self.variant = variant
         self.virtual = virtual
-
-
-class TreeNode(Component):
-    Module = "antd"
-    JSXName = "TreeSelect.TreeNode"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = [
-        "style",
-        "className",
-        "id",
-        "checkable",
-        "disableCheckbox",
-        "disabled",
-        "isLeaf",
-        "selectable",
-        "title",
-        "value",
-    ]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        checkable=None,
-        disableCheckbox=None,
-        disabled=None,
-        isLeaf=None,
-        selectable=None,
-        title=None,
-        value=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.checkable = checkable
-        self.disableCheckbox = disableCheckbox
-        self.disabled = disabled
-        self.isLeaf = isLeaf
-        self.selectable = selectable
-        self.title = title
-        self.value = value

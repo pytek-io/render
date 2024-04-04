@@ -62,68 +62,35 @@ class Anchor(Component):
         self.showInkInFixed = showInkInFixed
         self.targetOffset = targetOffset
 
+    class Item(Component):
+        Module = "antd"
+        JSXName = "Anchor.Item"
+        CALLBACKS = ["onKeyPress", "onClick"]
+        ATTRIBUTES = ["style", "className", "id", "href", "replace", "target", "title"]
 
-class Item(Component):
-    Module = "antd"
-    JSXName = "Anchor.Item"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = ["style", "className", "id", "href", "replace", "target", "title"]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        href=None,
-        replace=None,
-        target=None,
-        title=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.href = href
-        self.replace = replace
-        self.target = target
-        self.title = title
-
-
-class Link(Component):
-    Module = "antd"
-    JSXName = "Anchor.Link"
-    CALLBACKS = ["onKeyPress", "onClick"]
-    ATTRIBUTES = ["style", "className", "id", "href", "target", "title"]
-
-    def __init__(
-        self,
-        children=None,
-        key=None,
-        style=None,
-        className=None,
-        id=None,
-        onKeyPress=None,
-        onClick=None,
-        href=None,
-        target=None,
-        title=None,
-        controller=None,
-    ):
-        super().__init__(key, controller)
-        self.children = children
-        self.style = style
-        self.className = className
-        self.id = id
-        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
-        self.onClick = create_callback(onClick, "onClick")
-        self.href = href
-        self.target = target
-        self.title = title
+        def __init__(
+            self,
+            children=None,
+            key=None,
+            style=None,
+            className=None,
+            id=None,
+            onKeyPress=None,
+            onClick=None,
+            href=None,
+            replace=None,
+            target=None,
+            title=None,
+            controller=None,
+        ):
+            super().__init__(key, controller)
+            self.children = children
+            self.style = style
+            self.className = className
+            self.id = id
+            self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+            self.onClick = create_callback(onClick, "onClick")
+            self.href = href
+            self.replace = replace
+            self.target = target
+            self.title = title

@@ -19,7 +19,6 @@ class Cascader(InputComponent):
         "allowClear",
         "autoClearSearchValue",
         "autoFocus",
-        "bordered",
         "changeOnSelect",
         "disabled",
         "displayRender",
@@ -53,6 +52,7 @@ class Cascader(InputComponent):
         "status",
         "suffixIcon",
         "tagRender",
+        "variant",
     ]
 
     def __init__(
@@ -70,7 +70,6 @@ class Cascader(InputComponent):
         allowClear=None,
         autoClearSearchValue=None,
         autoFocus=None,
-        bordered=None,
         changeOnSelect=None,
         disabled=None,
         displayRender=None,
@@ -107,6 +106,7 @@ class Cascader(InputComponent):
         status=None,
         suffixIcon=None,
         tagRender=None,
+        variant=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -119,7 +119,6 @@ class Cascader(InputComponent):
         self.allowClear = allowClear
         self.autoClearSearchValue = autoClearSearchValue
         self.autoFocus = autoFocus
-        self.bordered = bordered
         self.changeOnSelect = changeOnSelect
         self.disabled = disabled
         self.displayRender = displayRender
@@ -158,3 +157,4 @@ class Cascader(InputComponent):
         self.status = status
         self.suffixIcon = suffixIcon
         self.tagRender = tagRender
+        self.variant = variant

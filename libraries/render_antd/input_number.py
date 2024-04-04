@@ -13,8 +13,8 @@ class InputNumber(InputComponent):
         "addonAfter",
         "addonBefore",
         "autoFocus",
-        "bordered",
         "changeOnBlur",
+        "changeOnWheel",
         "controls",
         "decimalSeparator",
         "disabled",
@@ -31,6 +31,7 @@ class InputNumber(InputComponent):
         "status",
         "step",
         "stringMode",
+        "variant",
     ]
 
     def __init__(
@@ -48,8 +49,8 @@ class InputNumber(InputComponent):
         addonAfter=None,
         addonBefore=None,
         autoFocus=None,
-        bordered=None,
         changeOnBlur=None,
+        changeOnWheel=None,
         controls=None,
         decimalSeparator=None,
         disabled=None,
@@ -68,6 +69,7 @@ class InputNumber(InputComponent):
         status=None,
         step=None,
         stringMode=None,
+        variant=None,
         controller=None,
     ):
         super().__init__(key, controller, onChange, value, defaultValue)
@@ -80,8 +82,8 @@ class InputNumber(InputComponent):
         self.addonAfter = addonAfter
         self.addonBefore = addonBefore
         self.autoFocus = autoFocus
-        self.bordered = bordered
         self.changeOnBlur = changeOnBlur
+        self.changeOnWheel = changeOnWheel
         self.controls = controls
         self.decimalSeparator = decimalSeparator
         self.disabled = disabled
@@ -102,3 +104,4 @@ class InputNumber(InputComponent):
         self.status = status
         self.step = step
         self.stringMode = stringMode
+        self.variant = variant
