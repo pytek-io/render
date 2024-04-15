@@ -24,7 +24,7 @@ from .components import (
     JSMethod,
     JSPartiallyAppliedCall,
     Props,
-    js,
+    js_call,
 )
 from .mapping import Mapping
 from .observability import AutoRun, CachedEvaluation, ObservableValue
@@ -100,7 +100,7 @@ def register_css_for_module(module, href, cross_origin=None):
 
 
 def is_pod_or_component(value):
-    return isinstance(value, (str, bool, int, float, Component, js)) or value is None
+    return isinstance(value, (str, bool, int, float, Component, js_call)) or value is None
 
 
 def check_children_value(component, children_values):
@@ -563,7 +563,7 @@ class Window:
             ]
         if isinstance(value, (list, tuple, set)):
             return "list", [self._serialize(parent, element) for element in value]
-        if isinstance(value, js):
+        if isinstance(value, js_call):
             return "js_method", (
                 value.name,
                 [self._serialize(parent, arg) for arg in value.args],
@@ -673,7 +673,9 @@ class Window:
                 if callback := getattr(component, change_event_name):
                     props[change_event_name] = "callback", (
                         self.serialize_callback(
-                            change_event_name, callback, [component.InputName, component.NewValuePath]
+                            change_event_name,
+                            callback,
+                            [component.InputName, component.NewValuePath],
                         )
                     )
         # react children need to be keyed, we want the wrapper to have the same key if any (this is needed when wrapping ant menu items)

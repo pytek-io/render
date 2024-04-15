@@ -38,7 +38,6 @@ from .avatar import Avatar
 from .tabs import Tabs
 from .skeleton import Skeleton
 from .list import List
-from .notification import Notification
 from .radio import Radio
 from .auto_complete import AutoComplete
 from .time_picker import TimePicker

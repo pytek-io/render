@@ -29,7 +29,7 @@ let current_promise_id = 1; // starting from 1 to make it nullable
 const pending_promises = new Map();
 const variables = new Map();
 
-export function registerMethod(name: string, method) {
+export function registerMethod(name: string, method: string) {
   if (window.methodRegister == undefined) {
     window.methodRegister = new Map();
   }
@@ -152,14 +152,14 @@ function getOS() {
 }
 
 function wrap_inside_suspense(lazy_component) {
-  return ({children, ...props}) => {
-    return React.createElement(Suspense, {}, React.createElement(lazy_component, props, 
-                  ...(children
-              ? children.constructor.name == "Array"
-                ? children
-                : [children]
-              : [])
-      ));
+  return ({ children, ...props }) => {
+    return React.createElement(Suspense, {}, React.createElement(lazy_component, props,
+      ...(children
+        ? children.constructor.name == "Array"
+          ? children
+          : [children]
+        : [])
+    ));
   }
 }
 
@@ -169,10 +169,13 @@ export function registerComponent(name, sub_class, constructor, namespace, lazy 
     window[render_namespace] = {};
   }
   let component_name = name;
+  if (sub_class == undefined) {
+    console.log(`registering undefined ${name} in ${namespace}`);
+  }
   if (sub_class.length > 0) {
     const wrapping_class = window[render_namespace][name];
     if (wrapping_class == undefined) {
-      throw new Error(`failed to find wrapping class ${name}`);
+      throw new Error(`Failed to find wrapping class ${name} for ${sub_class}`);
     }
     wrapping_class[sub_class] = constructor;
     component_name = `${name}.${sub_class}`;
@@ -186,14 +189,14 @@ export function registerComponent(name, sub_class, constructor, namespace, lazy 
   if (!window.componentRegister.has(namespace)) {
     window.componentRegister.set(namespace, new Map());
   }
-  window.componentRegister.get(namespace).set(component_name, lazy ? wrap_inside_suspense(constructor): constructor);
+  window.componentRegister.get(namespace).set(component_name, lazy ? wrap_inside_suspense(constructor) : constructor);
+}
+
+export function registerComponents(components, namespace) {
+  for (const [name, sub_class, constructor, lazy] of components) {
+    registerComponent(name, sub_class, constructor, namespace, lazy);
   }
-  
-  export function registerComponents(namespace, components, lazy = false) {
-    for (const [name, sub_class, constructor] of components) {
-      registerComponent(name, sub_class, constructor, namespace, lazy);
-    }
-  }
+}
 
 export function registerModuleDeferred(name, callback) {
   if (window.modules_callbacks == undefined) {
@@ -204,7 +207,11 @@ export function registerModuleDeferred(name, callback) {
 
 export function registerModuleAttributes(namespace: string, module) {
   for (const [name, attribute] of Object.entries(module)) {
-    registerComponent(name, attribute, namespace);
+    try {
+      registerComponent(name, [], attribute, namespace);
+    } catch (e) {
+      console.error(`failed to register ${name} in ${namespace}`, e);
+    }
   }
 }
 
@@ -220,7 +227,7 @@ export async function loadScript(module_name, url: string) {
   return window[module_name];
 }
 
-function resolveComponent({module, js_name}: {module: string, js_name: string}) {
+function resolveComponent({ module, js_name }: { module: string, js_name: string }) {
   const componentsForNamespace = window.componentRegister.get(module);
   if (!componentsForNamespace) {
     throw new Error(`unknown library ${module}`);
@@ -771,7 +778,7 @@ function createOrReuseComponent(details) {
 }
 
 function deserializeComponentOrData(
-  component_record, 
+  component_record,
   name: string,
   [dataType, details],
   call_method = false

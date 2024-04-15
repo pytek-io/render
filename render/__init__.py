@@ -8,7 +8,7 @@ from .components import (
     Props,
     create_callback,
     create_js_callback,
-    js,
+    js_call,
     js_arrow,
 )
 from .controller import Controller
@@ -65,7 +65,7 @@ __all__ = [
     "create_callback",
     "create_js_callback",
     "get_window",
-    "js",
+    "js_call",
     "js_arrow",
     "launch_server",
     "memoize",

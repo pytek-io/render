@@ -15,7 +15,7 @@ class JSRemoteCallError(Exception):
     pass
 
 
-class js:
+class js_call:
     def __init__(self, name: str, *args):
         self.name = name
         self.args = args
@@ -46,6 +46,7 @@ class Props:
     """This is a marker class for the props of a component. It is transformed into a regular JS object."""
 
     pass
+
 
 class RemoteObject:
     def __init__(self):

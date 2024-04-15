@@ -28,7 +28,7 @@ def create_edit_link(file_path, base_path=None, title=None, css=()):
     if css:
         kwargs["css"] = [create_absolute_path(base_path, path) for path in css]
     return html.a(
-        antd_icon.Icon(component=r.js("EditSvg")),
+        antd_icon.Icon(component=r.js_call("EditSvg")),
         href=encode_url("/app/demos/online_editor", kwargs),
         title=title or "Edit " + file_path,
         className="edit-button",

@@ -218,7 +218,7 @@ class WindowProxy:
     def __init__(self, hash_argument: str) -> None:
         self.actual_window = r.get_window()
         self.hash = ObservableValue(hash_argument)
-        for attribute in ["start_soon", "update_title", "size", "client_connection"]:
+        for attribute in ["start_soon", "update_title", "call_js_method", "size", "client_connection"]:
             setattr(self, attribute, getattr(self.actual_window, attribute))
 
     def set_title(self, _title):
