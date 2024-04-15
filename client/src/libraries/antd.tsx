@@ -1,4 +1,4 @@
-import { registerComponents, registerModuleDeferred } from "../app";
+import { registerComponents, registerModuleDeferred, registerMethod } from "../app";
 import { lazy } from "react";
 const components = [
   ['Result', '', lazy(() => import("../fragments/antd/result.tsx")), true],
@@ -116,5 +116,6 @@ const components = [
 export function register() {
   registerModuleDeferred("antd", async () => {
     registerComponents(components, "antd");
+    registerMethod("antd", "notification", (await import("../fragments/antd/notification.tsx")).default);
   });
 }

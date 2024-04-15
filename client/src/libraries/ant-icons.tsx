@@ -27,6 +27,6 @@ export function register() {
     window.render_ant_icons = module;
     registerModuleAttributes("ant-icons", module);
     registerComponent("Icon", "", module.default, "ant-icons");
-    registerMethod("EditSvg", EditSvg);
+    registerMethod("", "EditSvg", EditSvg);
   });
 }

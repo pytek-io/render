@@ -29,34 +29,34 @@ function add_event_listener(eventName: string, callBack) {
 }
 
 export function register_callbacks() {
-    registerMethod("call_js_builtin_method", call_js_builtin_method);
-    registerMethod("add_event_listener", add_event_listener);
-    registerMethod("update_element_prop", update_element_prop);
-    registerMethod("window.open", window.open);
-    registerMethod("constant", (x: any) => () => x);
-    registerMethod("identity", (x: any) => x);
-    registerMethod("key", (event: any) => event.key);
-    registerMethod("id", (data: any) => data.id);
+    registerMethod("", "call_js_builtin_method", call_js_builtin_method);
+    registerMethod("", "add_event_listener", add_event_listener);
+    registerMethod("", "update_element_prop", update_element_prop);
+    registerMethod("", "window.open", window.open);
+    registerMethod("", "constant", (x: any) => () => x);
+    registerMethod("", "identity", (x: any) => x);
+    registerMethod("", "key", (event: any) => event.key);
+    registerMethod("", "id", (data: any) => data.id);
 
-    registerMethod("location.reload", () => window.location.reload());
-    registerMethod("reset_zoom", () => {
+    registerMethod("", "location.reload", () => window.location.reload());
+    registerMethod("", "reset_zoom", () => {
         const viewportmeta = document.querySelector("meta[name=viewport]");
         viewportmeta.setAttribute("content", "width=device-width, initial-scale=0");
     });
-    registerMethod("history.pushState", (newUrl: string) =>
+    registerMethod("", "history.pushState", (newUrl: string) =>
         history.pushState({}, null, newUrl)
     );
-    registerMethod("trigger.resize", () =>
+    registerMethod("", "trigger.resize", () =>
         window.dispatchEvent(new Event("resize"))
     );
-    registerMethod("update_full_screen", (full_screen: boolean) => {
+    registerMethod("", "update_full_screen", (full_screen: boolean) => {
         if (full_screen) {
             document.documentElement.requestFullscreen();
         } else {
             document.exitFullscreen();
         }
     });
-    registerMethod("update_hash", (content: null|string) => {
+    registerMethod("", "update_hash", (content: null|string) => {
         if (window.location.hash || (content != null && content != "")) {
             window.location.hash = content;
         }

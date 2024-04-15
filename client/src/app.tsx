@@ -29,11 +29,20 @@ let current_promise_id = 1; // starting from 1 to make it nullable
 const pending_promises = new Map();
 const variables = new Map();
 
-export function registerMethod(name: string, method: string) {
+export function registerMethod(namespace: str, name: string, method: string) {
   if (window.methodRegister == undefined) {
     window.methodRegister = new Map();
   }
   window.methodRegister.set(name, method);
+  console.log(`registered ${name} in ${namespace}`);
+  if (namespace) {
+    namespace = "render_" + namespace;
+    console.log(`registered ${name} in ${namespace}`);
+    if (window[namespace] == undefined) {
+      window[namespace] = {};
+    }
+    window[namespace][name] = method;
+  }
 }
 
 function add_links(links: [string, string][][]) {
@@ -533,7 +542,7 @@ function process_message(event) {
       case "method_def":
         const [name, definition] = data;
         try {
-          registerMethod(name, create_js_callback(name, definition));
+          registerMethod("", name, create_js_callback(name, definition));
         } catch (e) {
           console.error("invalid method definition", data, e);
         }
