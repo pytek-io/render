@@ -1,15 +1,15 @@
-from render import Component, create_callback
+from render import Component, create_callback, InputComponent
 
 
-class Upload(Component):
+class Upload(InputComponent):
     Module = "antd"
     JSXName = "Upload"
+    InputName = "fileList"
+    NewValuePath = "fileList"
     CALLBACKS = [
         "onKeyPress",
         "onClick",
-        "action",
         "beforeUpload",
-        "onChange",
         "onDownload",
         "onDrop",
         "onPreview",
@@ -21,6 +21,7 @@ class Upload(Component):
         "className",
         "id",
         "accept",
+        "action",
         "customRequest",
         "data",
         "defaultFileList",
@@ -51,8 +52,10 @@ class Upload(Component):
         id=None,
         onKeyPress=None,
         onClick=None,
+        onChange=None,
+        defaultValue=None,
+        value=None,
         accept=None,
-        action=None,
         beforeUpload=None,
         customRequest=None,
         data=None,
@@ -69,7 +72,6 @@ class Upload(Component):
         method=None,
         multiple=None,
         name=None,
-        onChange=None,
         onDownload=None,
         onDrop=None,
         onPreview=None,
@@ -81,7 +83,7 @@ class Upload(Component):
         withCredentials=None,
         controller=None,
     ):
-        super().__init__(key, controller)
+        super().__init__(key, controller, onChange, value, defaultValue)
         self.children = children
         self.style = style
         self.className = className
@@ -89,7 +91,7 @@ class Upload(Component):
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
         self.accept = accept
-        self.action = create_callback(action, "action")
+        self.action = None
         self.beforeUpload = create_callback(beforeUpload, "beforeUpload", [[0], [1]])
         self.customRequest = customRequest
         self.data = data
@@ -106,7 +108,6 @@ class Upload(Component):
         self.method = method
         self.multiple = multiple
         self.name = name
-        self.onChange = create_callback(onChange, "onChange")
         self.onDownload = create_callback(onDownload, "onDownload", [[0]])
         self.onDrop = create_callback(onDrop, "onDrop")
         self.onPreview = create_callback(onPreview, "onPreview", [[0]])
@@ -116,6 +117,7 @@ class Upload(Component):
         self.progress = progress
         self.showUploadList = showUploadList
         self.withCredentials = withCredentials
+        self.initialize_hidden_arguments()
 
     class UploadFile(Component):
         Module = "antd"

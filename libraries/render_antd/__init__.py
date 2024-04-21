@@ -1,18 +1,20 @@
 import contextlib
+import render as r
 
-from render_html import label
 
-from render.common import call_if_callable, get_window
-from render.components import JSMethod
+from render.common import get_window
 
 from ._auto import *
 from .auto_complete import AutoComplete as AutoCompleteBase
-from .form import Form as BaseForm
-from .grid import Col, Row
 from .input_number import InputNumber as InputNumberBase
 from .modal import Modal as ModalBase
+from .upload import Upload as UploadBase
+
+from .form import Form as BaseForm
+from .grid import Col, Row
 
 DATE_FORMAT = "dayjs"
+
 
 def create_row(elements, col_kwargs={}, gutter=10, align="middle", **kwargs):
     return Row(
@@ -23,25 +25,26 @@ def create_row(elements, col_kwargs={}, gutter=10, align="middle", **kwargs):
     )
 
 
-def create_method_call(message_type, notification_type):
-    def result(args, duration=None):
-        if duration is not None and isinstance(args, str):
-            args = [args, duration]
-        get_window().call_js_method(
-            "call_ant_free_function",
-            [message_type, notification_type, args],
-        )
+def create_method_call(js_method):
+    def result(*args):
+        get_window().call_js_method(js_method(*args))
 
     return result
 
 
 class notification:
-    open = create_method_call("notification", "open")
-    info = create_method_call("notification", "info")
-    success = create_method_call("notification", "success")
-    warning = create_method_call("notification", "warning")
-    error = create_method_call("notification", "error")
-    close = create_method_call("notification", "close")
+    open = create_method_call(r.js_arrow("notification_open", "render_antd.notification.open"))
+    info = create_method_call(r.js_arrow("notification_info", "render_antd.notification.info"))
+    success = create_method_call(
+        r.js_arrow("notification_success", "render_antd.notification.success")
+    )
+    warning = create_method_call(
+        r.js_arrow("notification_warning", "render_antd.notification.warning")
+    )
+    error = create_method_call(r.js_arrow("notification_error", "render_antd.notification.error"))
+    destroy = create_method_call(
+        r.js_arrow("notification_destroy", "render_antd.notification.destroy")
+    )
 
 
 @contextlib.contextmanager
@@ -68,19 +71,17 @@ if get_window(throw_if_none=False):
 
 
 class message:
-    loading = create_method_call("message", "loading")
-    info = create_method_call("message", "info")
-    success = create_method_call("message", "success")
-    error = create_method_call("message", "error")
-    warning = create_method_call("message", "warning")
+    loading = create_method_call(r.js_arrow("message_loading", "render_antd.message.loading"))
+    open = create_method_call(r.js_arrow("message_open", "render_antd.message.open"))
+    info = create_method_call(r.js_arrow("message_info", "render_antd.message.info"))
+    success = create_method_call(r.js_arrow("message_success", "render_antd.message.success"))
+    warning = create_method_call(r.js_arrow("message_warning", "render_antd.message.warning"))
+    error = create_method_call(r.js_arrow("message_error", "render_antd.message.error"))
+    destroy = create_method_call(r.js_arrow("message_destroy", "render_antd.message.destroy"))
 
 
 class Modal(ModalBase):
-    confirm = create_method_call("Modal", "confirm")
-    info = create_method_call("Modal", "info")
-    success = create_method_call("Modal", "success")
-    error = create_method_call("Modal", "error")
-    warning = create_method_call("Modal", "warning")
+    confirm = create_method_call(r.js_arrow("modal_confirm", "render_antd.Modal.confirm"))
 
 
 class Form(BaseForm):
@@ -156,3 +157,22 @@ def centered(content, **kwargs):
         align="middle",
         **kwargs,
     )
+
+
+class Wrapper:
+    """Wrapper to make can be weakreferred."""
+    def __init__(self, method):
+        self.method = method
+
+    def __call__(self, *args):
+        return self.method(*args)
+
+
+class Upload(UploadBase):
+    def initialize_hidden_arguments(self):
+        window = r.get_window()
+        self._value = r.ObservableDict()
+        self.update_value = Wrapper(self._value.__setitem__)
+        callback_id = id(self.update_value)
+        window.callbacks[callback_id] = self.update_value
+        self.action = f"/post?kernel={window.kernel.kernel_id}&session={window.session_id}&callback={callback_id}"

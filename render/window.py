@@ -1,3 +1,7 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from .kernel import Kernel
 import asyncio
 import datetime
 import enum
@@ -49,6 +53,7 @@ RGB_WHITE = 255, 255, 255
 DEFAULT_BODY_STYLE = {"backgroundColor": f"rgb{RGB_WHITE}", "margin": 0}
 
 DATE_FORMATS = {}
+
 
 class MountStatus:
     mounting = "mounting"
@@ -137,11 +142,6 @@ def convert_time_to_datetime(value: datetime.time):
         second=value.second,
         microsecond=value.microsecond,
     )
-
-
-async def delayed_callback(callbacks_sink, delay, callback, args):
-    await anyio.sleep(delay)
-    await callbacks_sink.send((callback, args))
 
 
 def is_callable_but_not_input_component(arg):
@@ -233,7 +233,7 @@ def evaluate_child(component: Component):
 class Window:
     def __init__(
         self,
-        kernel,
+        kernel: Kernel,
         task_group,
         session_id,
         connection,
@@ -255,12 +255,11 @@ class Window:
         CURRENT_WINDOW.set(self.weak_ref)
         self.task_group = task_group
         self.session_id = session_id
-        self._connection = connection
+        self.connection = connection
         self.kwargs = {}
         self.root_components = {}
         self.components = weakref.WeakValueDictionary()
         self.callbacks = weakref.WeakValueDictionary()
-        self.callbacks_hard_refs = set()
         self.callback_counter = count()
         self.components_counter = count()
         self.pending_results_counter = count()
@@ -268,7 +267,6 @@ class Window:
         self.message_id = count()
         self.stale_components = set()
         self.deleted_components = []
-        self.delayed_callbacks = []
         self.pending_results: Dict[int, asyncio.Future] = {}
         self.loaded_modules: Set[str] = set(["html", "core"])
         self.loaded_links = set()
@@ -336,7 +334,7 @@ class Window:
 
     def send_nowait(self, code, payload):
         try:
-            self._connection.send_nowait((next(self.message_id), (code, payload)))
+            self.connection.send_nowait((next(self.message_id), (code, payload)))
         except:  # noqa: E722
             print(code, payload)
             traceback.print_exc()
@@ -353,6 +351,13 @@ class Window:
             self.send_nowait("promise_result", (promise_id, success, result))
 
         return result
+
+    async def delayed_callback(self, delay, callback, args):
+        await anyio.sleep(delay)
+        await self.callback_sink.send((callback, args))
+
+    def schedule_callback(self, delay: int, method, *args):
+        self.task_group.start_soon(self.delayed_callback, delay, method, args, name=f"delayed {method} execution")
 
     async def schedule_callback_execution(self, method, args):
         await self.callback_sink.send((method, args))
@@ -376,7 +381,7 @@ class Window:
         self.browser_details = data
 
     async def connection_loop(self):
-        async for code, data in self._connection:
+        async for code, data in self.connection:
             if code == "event":
                 description, callback_id, promise_id, value = data
                 if method := self.callbacks.get(callback_id, None):
@@ -485,17 +490,6 @@ class Window:
                 for component_nb in self.deleted_components:
                     self.send_nowait("delete", component_nb)
                 self.deleted_components.clear()
-            if self.delayed_callbacks:
-                delayed_callbacks, self.delayed_callbacks = (self.delayed_callbacks, [])
-                for delay, callback, args in delayed_callbacks:
-                    self.start_soon(
-                        delayed_callback,
-                        self.callback_sink,
-                        delay,
-                        callback,
-                        args,
-                        name="delayed_callback",
-                    )
 
     def create_pending_result(self):
         result_id, remote_call_outcome = (
@@ -632,21 +626,15 @@ class Window:
                 result.pop("defaultValue")
         return result
 
-    def register_callback(self, method, hard_ref=False):
-        callback_id = next(self.callback_counter)
-        self.callbacks[callback_id] = method
-        if hard_ref:
-            self.callbacks_hard_refs.add(method)
-        return callback_id
-
     def serialize_callback(self, argument_name: str, callback: Callback, input_control_params=None):
         result = callback.__dict__.copy()
         method = result.pop("method")
+        self.callbacks[callback.callback_id] = method
         result.update(
             argument_name=argument_name,
             input_control_params=input_control_params,
             description=method_description(method),
-            callback_id=self.register_callback(method),
+            callback_id=callback.callback_id,
         )
         return result
 
@@ -820,7 +808,7 @@ class Window:
         await self.update_components()
 
     async def subscribe_to_kernel_updates(self):
-        await self._connection.send_to_server(SubscribeToKernelUpdates)
+        await self.connection.send_to_server(SubscribeToKernelUpdates)
 
 
 class Document:

@@ -1,14 +1,12 @@
 use async_channel;
 use axum::{
-    error_handling::HandleErrorLayer,
     extract::{
         ws::{Message, WebSocket, WebSocketUpgrade},
-        Extension, TypedHeader,
+        Multipart, Query, State,
     },
-    handler::Handler,
-    http::{StatusCode, Uri},
+    http::Uri,
     response::{Html, IntoResponse},
-    routing::{get, get_service},
+    routing::{get, post},
     Router,
 };
 use clap::Parser;
@@ -22,6 +20,7 @@ use rmp_serde::encode::to_vec;
 use rmp_serde::Deserializer as RmpDeserializer;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
+use std::collections::HashMap;
 use std::collections::{BTreeMap, BTreeSet};
 use std::error::Error;
 use std::fmt;
@@ -32,16 +31,15 @@ use std::ops::RangeFrom;
 use std::path::PathBuf;
 use std::process;
 use std::str;
+use std::sync::Arc;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
-use std::{borrow::Cow, net::SocketAddr, sync::Arc};
 use sys_info;
 use tokio::io::{AsyncBufReadExt, AsyncRead, BufReader};
 use tokio::sync::{mpsc, RwLock};
 use tokio::{process::Command as TokioCommand, sync::oneshot};
 use tokio::{signal, time::sleep};
-use tower::{BoxError, ServiceBuilder};
-use tower_http::trace::TraceLayer;
-use tower_http::{add_extension::AddExtensionLayer, services::ServeDir};
+use tower_http::services::ServeDir;
+use serde_bytes::Bytes;
 
 #[macro_use]
 extern crate simple_error;
@@ -750,30 +748,9 @@ where
     }
 }
 
-async fn manage_http_request(
-    _user_agent: Option<TypedHeader<headers::UserAgent>>,
-    uri: Uri,
-    Extension(server): Extension<ServerPtr>,
-) -> Html<String> {
+async fn manage_http_request(uri: Uri, server: State<ServerPtr>) -> Html<String> {
     info!("Serving html page at {uri}.");
     Html(server.html.clone())
-}
-
-async fn handle_error(error: BoxError) -> impl IntoResponse {
-    if error.is::<tower::timeout::error::Elapsed>() {
-        return (StatusCode::REQUEST_TIMEOUT, Cow::from("request timed out"));
-    }
-
-    if error.is::<tower::load_shed::error::Overloaded>() {
-        return (
-            StatusCode::SERVICE_UNAVAILABLE,
-            Cow::from("service is overloaded, try again later"),
-        );
-    }
-    (
-        StatusCode::INTERNAL_SERVER_ERROR,
-        Cow::from(format!("Unhandled internal error: {}", error)),
-    )
 }
 
 async fn manage_connection_to_kernel(server: ServerPtr, socket: WebSocket) {
@@ -784,76 +761,95 @@ async fn manage_connection_to_kernel(server: ServerPtr, socket: WebSocket) {
 
 async fn accept_kernel_connection(
     ws: WebSocketUpgrade,
-    Extension(server): Extension<ServerPtr>,
+    State(server): State<ServerPtr>,
 ) -> impl IntoResponse {
     ws.on_upgrade(|socket: WebSocket| manage_connection_to_kernel(server, socket))
 }
 
 async fn accept_client_connection(
     ws: WebSocketUpgrade,
-    _user_agent: Option<TypedHeader<headers::UserAgent>>,
-    Extension(server): Extension<ServerPtr>,
+    State(server): State<ServerPtr>,
 ) -> impl IntoResponse {
     ws.on_upgrade(|socket: WebSocket| manage_client_connection(server, socket))
 }
 
-async fn handler_404() -> impl IntoResponse {
-    (StatusCode::NOT_FOUND, "Invalid app request.")
+async fn upload_file_impl(
+    params: HashMap<String, String>,
+    server: ServerPtr,
+    mut multipart: Multipart,
+) -> Result<()> {
+    let kernel_id = params
+        .get("kernel")
+        .ok_or("Failed to find kernel field")?
+        .parse::<KernelIdType>()
+        .map_err(|e| format!("Failed to parse kernel id {e}"))?;
+    let session_id = params
+        .get("session")
+        .ok_or("Failed to find session field")?
+        .parse::<SessionIdType>()
+        .map_err(|e| format!("Failed to parse session id {e}"))?;
+    let callback_id = params
+        .get("callback")
+        .ok_or("Failed to find callback field")?
+        .parse::<usize>()
+        .map_err(|e| format!("Failed to parse callback id {e}"))?;
+    let kernel = server
+        .kernels
+        .read()
+        .await
+        .get(&kernel_id)
+        .map(|k| k.clone())
+        .ok_or("Failed to find kernel")?;
+    while let Some(field) = multipart.next_field().await? {
+        let file_name = field
+            .file_name()
+            .ok_or("cannot extract field file name")?
+            .to_string();
+        send_message_to_kernel_process(
+            &kernel.sink,
+            "upload file",
+            &serialize(&(
+                session_id,
+                callback_id,
+                file_name.clone(),
+                &Bytes::new(&field.bytes().await?[..]),
+            )),
+        )?;
+        info!("Uploaded {file_name} to kernel {kernel_id} session {session_id}.")
+    }
+    Ok(())
 }
 
-async fn websocket_server(server: ServerPtr) -> Result<()> {
-    let external_routes = Router::new()
-        .nest(
-            "/js",
-            get_service(ServeDir::new(server.render_folder.join("js"))).handle_error(
-                |error: std::io::Error| async move {
-                    (
-                        StatusCode::INTERNAL_SERVER_ERROR,
-                        format!("Unhandled internal error: {}", error),
-                    )
-                },
-            ),
-        )
-        .nest(
+async fn upload_file(
+    Query(params): Query<HashMap<String, String>>,
+    State(server): State<ServerPtr>,
+    multipart: Multipart,
+) {
+    info!("Uploading file.");
+    if let Err(e) = upload_file_impl(params, server, multipart).await {
+        error!("Failed to upload file. {e}");
+    }
+}
+
+async fn render_server(server: ServerPtr) -> Result<()> {
+    let app = Router::new()
+        .nest_service("/js", ServeDir::new(server.render_folder.join("js")))
+        .nest_service(
             "/static",
-            get_service(ServeDir::new(server.render_folder.join("static"))).handle_error(
-                |error: std::io::Error| async move {
-                    (
-                        StatusCode::INTERNAL_SERVER_ERROR,
-                        format!("Unhandled internal error: {}", error),
-                    )
-                },
-            ),
+            ServeDir::new(server.render_folder.join("static")),
         )
-        .nest(
-            "/data",
-            get_service(ServeDir::new(&server.app_folder)).handle_error(
-                |error: std::io::Error| async move {
-                    (
-                        StatusCode::INTERNAL_SERVER_ERROR,
-                        format!("Unhandled internal error: {}", error),
-                    )
-                },
-            ),
-        )
-        .nest("/app", get(manage_http_request))
-        .route("/", get(manage_http_request))
+        .nest_service("/data", ServeDir::new(&server.app_folder))
+        .route("/app/*path", get(manage_http_request))
+        .route("/post", post(upload_file))
         .route("/ws", get(accept_client_connection))
         .route("/ws_kernels", get(accept_kernel_connection))
-        .fallback(handler_404.into_service())
-        .layer(
-            ServiceBuilder::new()
-                // Handle errors from middleware
-                .layer(HandleErrorLayer::new(handle_error))
-                .load_shed()
-                .concurrency_limit(1024)
-                .timeout(Duration::from_secs(10))
-                .layer(TraceLayer::new_for_http())
-                .layer(AddExtensionLayer::new(server.clone()))
-                .into_inner(),
-        );
-    axum::Server::bind(&SocketAddr::from(([0, 0, 0, 0], server.arguments.port)))
-        .serve(external_routes.into_make_service())
+        .route("/", get(manage_http_request))
+        .with_state(server.clone());
+
+    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{}", server.arguments.port))
+        .await
+        .unwrap();
+    axum::serve(listener, app)
         .await
         .map_err(|e| format!("Failed to start web server. {e}").into())
 }
@@ -996,8 +992,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
             .manage_kernel_updates(kernel_updates_receiver)
             .await;
     });
-    websocket_server(server).await?;
-    Ok(())
+    Ok(render_server(server).await?)
 }
 
 async fn main_aync(terminate: tokio::sync::mpsc::Sender<i32>) {

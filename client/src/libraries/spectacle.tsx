@@ -19,7 +19,7 @@ export function register() {
         </Box>
       </FlexBox>
     );
-    registerMethod("presentation_template", template);
+    registerMethod("spectacle", "presentation_template", template);
     registerModuleAttributes("spectacle", module);
   });
 }

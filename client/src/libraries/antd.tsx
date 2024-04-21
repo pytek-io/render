@@ -116,6 +116,9 @@ const components = [
 export function register() {
   registerModuleDeferred("antd", async () => {
     registerComponents(components, "antd");
-    registerMethod("antd", "notification", (await import("../fragments/antd/notification.tsx")).default);
+    const methods = (await import("../fragments/antd/methods.tsx")).default;
+    registerMethod("antd", "notification", methods["notification"]);
+    registerMethod("antd", "message", methods["message"]);
+    registerMethod("antd", "Modal", methods["Modal"]);
   });
 }

@@ -34,10 +34,8 @@ export function registerMethod(namespace: str, name: string, method: string) {
     window.methodRegister = new Map();
   }
   window.methodRegister.set(name, method);
-  console.log(`registered ${name} in ${namespace}`);
   if (namespace) {
     namespace = "render_" + namespace;
-    console.log(`registered ${name} in ${namespace}`);
     if (window[namespace] == undefined) {
       window[namespace] = {};
     }

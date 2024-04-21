@@ -34,7 +34,8 @@ stdout, stderr = sys.stdout, sys.stderr
 CLIENT_MESSAGE_PREFIX = 0
 KERNEL_MESSAGE_PREFIX = 1
 MAX_KERNEL_UPDATE_LAG = 100
-MAX_CHANNEL_LAG = 1000  # we can send dozens of messages at once when deleting a ui component and its children
+# we can send dozens of messages at once when deleting a ui component and its children
+MAX_CHANNEL_LAG = 1000
 
 
 def import_uv_loop():
@@ -166,6 +167,7 @@ class Kernel:
                     self.task_group.start_soon,
                     self.connection.send,
                     msgpack_dumps_many(SessionEnd, session_id),
+                    name=f"connection {session_id} send termination",
                 )
             )
             async with anyio.create_task_group() as task_group:
@@ -222,6 +224,7 @@ class Kernel:
                         start_time,
                         width,
                         height,
+                        name=f"manage session {session_id}",
                     )
                 elif code == "terminate session":
                     session_id = message
@@ -236,6 +239,12 @@ class Kernel:
                         self.dev,
                     ) = message
                     os.chdir(current_path)
+                elif code == "upload file":
+                    session_id, callback_id, file_name, data = message
+                    if maybe_window := self.windows.get(session_id):
+                        await maybe_window.schedule_callback_execution(
+                            maybe_window.callbacks[callback_id], (file_name, data)
+                        )
                 else:
                     raise Exception(f"unexpected prefix {code} {message}")
             else:
@@ -272,7 +281,7 @@ async def main_async(webserver_port):
         async with anyio.create_task_group() as task_group:
             kernel = Kernel(connection, task_group)
             task_group.start_soon(kernel.channels.forward_messages_to_connection)
-            await task_group.start(kernel.manage_connection)
+            await task_group.start(kernel.manage_connection, name="manage kernel connection")
 
 
 if __name__ == "__main__":

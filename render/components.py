@@ -102,7 +102,7 @@ class Component(ObserverBase, RemoteObject):
         self.children_counter = 0
 
     def _window(self):
-        maybe_window = get_window(throw_if_none=False)
+        maybe_window = get_window(throw_if_none=True)
         return maybe_window.weak_ref() if maybe_window else None
 
     def _children(self):
@@ -122,6 +122,10 @@ class Component(ObserverBase, RemoteObject):
     def _update(self):
         if self.mount_status != "unknown":
             self._window().record_stale_component(self)
+
+    def initialize_hidden_arguments(self):
+        """to be called in the __init__ of the subclass if needed"""
+        pass
 
 
 class InputComponent(Component):
@@ -224,6 +228,7 @@ class Callback:
         self.stop_propagation = stop_propagation
         self.prevent_default = prevent_default
         self.callback_name = callback_name
+        self.callback_id = next(get_window().callback_counter)
 
 
 def create_callback(maybe_callback_or_callable, argument_name="", data_paths=(), is_promise=False):

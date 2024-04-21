@@ -34,3 +34,7 @@ def get_window(throw_if_none=True) -> Window:
 
 def call_if_callable(maybe_callable):
     return maybe_callable() if callable(maybe_callable) else maybe_callable
+
+
+def schedule_callback(delay: int, callback):
+    get_window().schedule_callback(delay, callback)

@@ -89,7 +89,7 @@ class ObservableList(ObservableCollectionMixin, Generic[T]):
 class ObservableDict(ObservableCollectionMixin, Generic[K, V]):
     def __init__(self, values=None, key=None, controller=None):
         super().__init__(key=key)
-        self.values = Observable[Dict[K, V]](values, key=f"{key} values", controller=controller)
+        self.values = Observable[Dict[K, V]](values or {}, key=f"{key} values", controller=controller)
 
     def set(self, values: Dict[K, V]):
         self.values.reset(values)

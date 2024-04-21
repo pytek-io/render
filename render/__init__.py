@@ -1,5 +1,5 @@
 from .async_objects import AsyncCachedEvaluation, AsyncGenerator
-from .common import get_window
+from .common import get_window, schedule_callback
 from .components import (
     Callback,
     Component,
@@ -70,4 +70,5 @@ __all__ = [
     "launch_server",
     "memoize",
     "register_css_for_module",
+    "schedule_callback",
 ]

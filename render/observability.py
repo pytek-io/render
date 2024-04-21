@@ -305,7 +305,7 @@ class AutoRun(ObserverBase):
         with self.register_as_current_observer():
             result = self.method()
             if inspect.isawaitable(result):
-                self.maybe_window().start_soon(await_coroutine, result)
+                self.maybe_window().start_soon(await_coroutine, result, name=f"{self} autorun")
 
 
 class CachedEvaluation(ObserverBase):
