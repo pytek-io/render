@@ -198,7 +198,7 @@ def _add_data_namespace(path):
 
 def add_data_namespace(path):
     if callable(path):
-        from .observability import CachedEvaluation
+        from .reactor.observability import CachedEvaluation
 
         return CachedEvaluation(lambda: _add_data_namespace(path()))
     return _add_data_namespace(path)

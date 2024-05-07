@@ -2,9 +2,9 @@ import traceback
 
 import anyio
 
-from .common import get_window
+from ..common import CURRENT_TASK_GROUP
 from .observability import Observable, ObserverBase
-from .utils import safe_execute_async
+from ..utils import safe_execute_async
 
 
 class AsyncCachedEvaluation(ObserverBase):
@@ -20,7 +20,7 @@ class AsyncCachedEvaluation(ObserverBase):
     ):
         super().__init__(key=key, controller=controller)
         self.method = method
-        self.task_group = task_group or get_window().task_group
+        self.task_group = task_group or CURRENT_TASK_GROUP.get()
         self.current_value = Observable(loading_value)
         self.is_evaluating = False
         self.is_stale = True

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from .kernel import Kernel
 import asyncio
@@ -18,8 +19,8 @@ from typing import Callable, Coroutine, Dict, Iterable, Set
 
 import anyio
 
-from .async_objects import AsyncCachedEvaluation, AsyncGenerator
-from .common import CURRENT_WINDOW, SubscribeToKernelUpdates
+from .reactor.async_objects import AsyncCachedEvaluation, AsyncGenerator
+from .common import CURRENT_WINDOW, CURRENT_TASK_GROUP, SUBSCRIBE_TO_KERNEL_UPDATES
 from .components import (
     Callback,
     create_callback,
@@ -30,9 +31,8 @@ from .components import (
     Props,
     js_call,
 )
-from .mapping import Mapping
-from .observability import AutoRun, CachedEvaluation, ObservableValue
-from .props import DEFAULT_ARGS_NO_CHILDREN_NAMES
+from .reactor.mapping import Mapping
+from .reactor.observability import AutoRun, CachedEvaluation, ObservableValue
 from .utils import (
     CatchError,
     add_data_namespace,
@@ -46,7 +46,7 @@ from .utils import (
 )
 
 POD_TYPE = str, float, int, bool, type(None)
-DEFAULT_ARGS_NAMES = DEFAULT_ARGS_NO_CHILDREN_NAMES
+DEFAULT_ARGS_NAMES = ["style", "className", "id", "onKeyPress"]
 
 LINKS_REGISTER = defaultdict(set)
 RGB_WHITE = 255, 255, 255
@@ -252,7 +252,6 @@ class Window:
         self.title = title
         self.hash_argument = hash_argument
         self.weak_ref = weakref.ref(self)
-        CURRENT_WINDOW.set(self.weak_ref)
         self.task_group = task_group
         self.session_id = session_id
         self.connection = connection
@@ -303,6 +302,8 @@ class Window:
             ) = anyio.create_memory_object_stream(math.inf)
             self.hash_updater = AutoRun(lambda: w().update_hash(w().hash()))
         self.update_title(title)
+        CURRENT_WINDOW.set(self.weak_ref)
+        CURRENT_TASK_GROUP.set(task_group)
 
     def __str__(self) -> str:
         return f"<SessionManager:{self.session_id}>"
@@ -357,7 +358,9 @@ class Window:
         await self.callback_sink.send((callback, args))
 
     def schedule_callback(self, delay: int, method, *args):
-        self.task_group.start_soon(self.delayed_callback, delay, method, args, name=f"delayed {method} execution")
+        self.task_group.start_soon(
+            self.delayed_callback, delay, method, args, name=f"delayed {method} execution"
+        )
 
     async def schedule_callback_execution(self, method, args):
         await self.callback_sink.send((method, args))
@@ -808,7 +811,7 @@ class Window:
         await self.update_components()
 
     async def subscribe_to_kernel_updates(self):
-        await self.connection.send_to_server(SubscribeToKernelUpdates)
+        await self.connection.send_to_server(SUBSCRIBE_TO_KERNEL_UPDATES)
 
 
 class Document:

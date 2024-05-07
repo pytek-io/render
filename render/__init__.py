@@ -1,4 +1,4 @@
-from .async_objects import AsyncCachedEvaluation, AsyncGenerator
+from .reactor.async_objects import AsyncCachedEvaluation, AsyncGenerator
 from .common import get_window, schedule_callback
 from .components import (
     Callback,
@@ -11,10 +11,10 @@ from .components import (
     js_call,
     js_arrow,
 )
-from .controller import Controller
-from .dict_of_observables import DictOfObservables
-from .mapping import Mapping, MultiMapping
-from .observability import (
+from .reactor.controller import Controller
+from .reactor.dict_of_observables import DictOfObservables
+from .reactor.mapping import Mapping, MultiMapping
+from .reactor.observability import (
     AutoRun,
     CachedEvaluation,
     MemoizedMethod,
@@ -24,8 +24,7 @@ from .observability import (
     autorun,
     memoize,
 )
-from .observable_collections import ObservableDict, ObservableList
-from .props import Container
+from .reactor.observable_collections import ObservableDict, ObservableList
 from .utils import (
     ResponsiveValue,
     add_data_namespace,
@@ -42,7 +41,6 @@ __all__ = [
     "CachedEvaluation",
     "Callback",
     "Component",
-    "Container",
     "Controller",
     "DictOfObservables",
     "InputComponent",

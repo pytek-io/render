@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Callable, Generic, Iterable, List, TypeVar
 
-from .common import call_if_callable
+from ..common import call_if_callable
 from .observability import CachedEvaluation
 from .observable_collections import ObservableList, SmartObject
 

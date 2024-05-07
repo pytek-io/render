@@ -15,11 +15,11 @@ from weakref import ReferenceType, ref
 from typing_extensions import Self
 
 if TYPE_CHECKING:
-    from .window import Window
+    from ..window import Window
     from .controller import Controller
 
-from .common import get_current_controller, get_window
-from .utils import await_coroutine, copy_value
+from ..common import get_current_controller, get_window
+from ..utils import await_coroutine, copy_value
 
 T = TypeVar("T")
 K = TypeVar("K")

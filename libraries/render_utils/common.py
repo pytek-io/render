@@ -13,7 +13,7 @@ import render_html as html
 
 
 import render as r
-from render.observability import ObservableValue
+from render.reactor.observability import ObservableValue
 from render.utils import apartial, decode_url, import_module, modify_attribute
 
 

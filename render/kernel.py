@@ -17,8 +17,8 @@ from anyio import create_memory_object_stream
 from asyncstdlib.builtins import map as amap
 from websockets.exceptions import ConnectionClosedError, ConnectionClosedOK
 
-from .common import CURRENT_CONTROLLER, MessageToClient, SessionEnd, get_window
-from .controller import Controller
+from .common import CURRENT_CONTROLLER, MESSAGE_TO_CLIENT, SESSION_END, get_window
+from .reactor.controller import Controller
 from .utils import (
     import_module,
     msgpack_dumps_many,
@@ -36,15 +36,6 @@ KERNEL_MESSAGE_PREFIX = 1
 MAX_KERNEL_UPDATE_LAG = 100
 # we can send dozens of messages at once when deleting a ui component and its children
 MAX_CHANNEL_LAG = 1000
-
-
-def import_uv_loop():
-    try:
-        import uvloop  # noqa: F401
-
-        return True
-    except ModuleNotFoundError:
-        return False
 
 
 def try_import_module(module_path):
@@ -132,7 +123,7 @@ class ChannelManager:
         with scoped_dict_insert(self.receive_sinks, channel_id, receive_sink):
             yield Channel(
                 channel_manager=self,
-                prefix=msgpack_dumps_many(MessageToClient, channel_id),
+                prefix=msgpack_dumps_many(MESSAGE_TO_CLIENT, channel_id),
                 receive_stream=receive_stream,
             )
 
@@ -166,7 +157,7 @@ class Kernel:
                 partial(
                     self.task_group.start_soon,
                     self.connection.send,
-                    msgpack_dumps_many(SessionEnd, session_id),
+                    msgpack_dumps_many(SESSION_END, session_id),
                     name=f"connection {session_id} send termination",
                 )
             )
@@ -282,6 +273,15 @@ async def main_async(webserver_port):
             kernel = Kernel(connection, task_group)
             task_group.start_soon(kernel.channels.forward_messages_to_connection)
             await task_group.start(kernel.manage_connection, name="manage kernel connection")
+
+
+def import_uv_loop():
+    try:
+        import uvloop  # noqa: F401
+
+        return True
+    except ModuleNotFoundError:
+        return False
 
 
 if __name__ == "__main__":

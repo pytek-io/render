@@ -3,9 +3,9 @@ from typing import Callable, Iterable, List, Optional, Set
 from weakref import ReferenceType
 
 from itertools import chain
-from .common import CURRENT_CONTROLLER
+from ..common import CURRENT_CONTROLLER
 from .observability import ObservableBase, ObserverBase, Revertable
-from .utils import groupby, print_exception, resolve_weak_refs
+from ..utils import groupby, print_exception, resolve_weak_refs
 
 
 class Controller:

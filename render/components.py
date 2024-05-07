@@ -3,9 +3,9 @@ from collections.abc import Iterable
 from more_itertools import first
 
 from .common import get_window
-from .observability import ObservableValue, ObserverBase
-from .dict_of_observables import ObservableElement
-from .observable_collections import ObservableList
+from .reactor.observability import ObservableValue, ObserverBase
+from .reactor.dict_of_observables import ObservableElement
+from .reactor.observable_collections import ObservableList
 from .utils import CatchError
 
 JSMETHODS_REPOSITORY = {}
