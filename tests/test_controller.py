@@ -32,6 +32,7 @@ def create_check_number_of_calls(observer):
 
 
 class BaseTest:
+    """Will apply mutations defined in subclasses to the observable, and check that the observer is triggered exactely once."""
     def accessor(self):
         return self.observable()
 
@@ -81,7 +82,7 @@ class TestObservableValueAlteringValue(BaseTest):
         return 3
 
 
-class TestDictOfObservablesAlteringValue(BaseTest):
+class TestDictOfObservablesMutations(BaseTest):
     def setup_class(self) -> None:
         with r.Controller() as self.controller:
             self.observable = r.DictOfObservables({"a": 1})
@@ -149,7 +150,7 @@ class TestObservableListOfDictOfObservables(BaseTest):
         return 24
 
 
-class TestObservableDict(BaseTest):
+class TestObservableDictSetItemCall(BaseTest):
     def setup_class(self) -> None:
         with r.Controller() as self.controller:
             self.observable = r.ObservableDict()
@@ -170,7 +171,7 @@ class TestObservableDict(BaseTest):
         return {"a": 2, "b": 2}
 
 
-class TestObservableDictSet(BaseTest):
+class TestObservableDictSetCall(BaseTest):
     def initialize(self):
         self.observable.set({"a": 1})
 
@@ -191,7 +192,7 @@ class TestObservableDictSet(BaseTest):
         return {"a": 12}
 
 
-class TestObservableListSet(BaseTest):
+class TestObservableListSetCall(BaseTest):
     def initialize(self):
         self.observable.set([0])
 

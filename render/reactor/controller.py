@@ -53,21 +53,19 @@ class Controller:
     def notify_observers(self, observers: Iterable[ObserverBase]):
         with self.notify_transaction():
             for observer in observers:
-                if (
+                if not (
                     observer in self.stale_inside_observers
                     or observer in self.stale_outside_observers
                 ):
-                    continue
-                if observer.controller is self:
-                    self.stale_inside_observers.add(observer)
-                    observer.notify()
-                else:
-                    self.stale_outside_observers.add(observer)
+                    if observer.controller is self:
+                        self.stale_inside_observers.add(observer)
+                        observer.notify()
+                    else:
+                        self.stale_outside_observers.add(observer)
         # In rare cases, new observers may have been notified during the updates (eg: inside AutoRun updates)
         if not self.inside_transaction and self.stale_inside_observers:
             self.stale_inside_observers, stale_inside_observers = set(), self.stale_inside_observers
             self.notify_observers(stale_inside_observers)
-
 
     def notify_observables_observers(self, observables: List[ObservableBase]):
         observers = set(chain.from_iterable(observable.observers for observable in observables))

@@ -1,7 +1,5 @@
 from typing import Dict
 
-import anyio
-
 import render as r
 
 from .utils import (  # noqa: F401
@@ -94,17 +92,16 @@ def test_observable_list():
 
 def test_multi_mapping():
     def test(a, b):
-        print("test_multi_mapping")
         return a, b
 
-    l = [{"a": 2}]
-    l1 = r.ObservableList(l)
-    l2 = r.Mapping(identity, l1, key="l2")
-    m = r.MultiMapping(test, [l2, l1], key="m")
-    print(list(m))
+    underlying_list = [{"a": 2}]
+    observable_list_1 = r.ObservableList(underlying_list)
+    observable_list_2 = r.Mapping(identity, observable_list_1, key="l2")
+    mapping = r.MultiMapping(test, [observable_list_2, observable_list_1], key="m")
+    print(list(mapping))
     print("-" * 20)
-    l1.append({"b": 2})
-    print(list(m))
+    observable_list_1.append({"b": 2})
+    print(list(mapping))
 
 
 class A:
@@ -112,20 +109,11 @@ class A:
 
 
 def test_list_set():
-    l = []
-    o = r.ObservableList[int](l)
+    underlying_list = []
+    o = r.ObservableList[int](underlying_list)
     o.append(1)
     o.set([2])
     print(o())
-
-
-def test_simple():
-    l = []
-    o = r.ObservableList[r.ObservableList[int]](l)
-    o.append([1])
-    print(o(), l)
-    o.set([[2]])
-    print(o(), l)
 
 
 def test_nested():
@@ -157,14 +145,6 @@ def test_controlled_cached_evaluation():
     r.autorun(lambda: print(cached_eval()))
     value.set(2)
     print(cached_eval())
-
-
-async def test_controlled_cached_evaluation_async():
-    try:
-        async with anyio.create_task_group() as tg:
-            tg.start_soon(test)
-    except Exception as e:
-        print(e)
 
 
 def test_notification_during_updates():

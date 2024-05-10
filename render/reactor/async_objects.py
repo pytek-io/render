@@ -2,7 +2,7 @@ import traceback
 
 import anyio
 
-from ..common import CURRENT_TASK_GROUP
+from ..common import CURRENT_TASK_GROUP, get_window
 from .observability import Observable, ObserverBase
 from ..utils import safe_execute_async
 
@@ -11,6 +11,7 @@ class AsyncCachedEvaluation(ObserverBase):
     def __init__(
         self,
         method,
+        args=(),
         task_group=None,
         loading_value=None,
         reset_value=True,
@@ -20,6 +21,7 @@ class AsyncCachedEvaluation(ObserverBase):
     ):
         super().__init__(key=key, controller=controller)
         self.method = method
+        self.args = args
         self.task_group = task_group or CURRENT_TASK_GROUP.get()
         self.current_value = Observable(loading_value)
         self.is_evaluating = False
@@ -35,15 +37,14 @@ class AsyncCachedEvaluation(ObserverBase):
         self.is_evaluating = True
         with self.register_as_current_observer():
             try:
-                result = await self.method()
+                result = await self.method(*self.args)
             except anyio.get_cancelled_exc_class():
                 raise
             except:  # noqa E722
                 result = traceback.format_exc()
                 if self.error_constructor:
                     result = self.error_constructor(result)
-            self.current_value.value = result
-            # FIXME: this won't work with in controlled mode ?
+            self.current_value.reset(result)
             self.is_evaluating = False
             self.is_stale = False
 

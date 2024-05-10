@@ -328,8 +328,7 @@ class CachedEvaluation(ObserverBase):
         if self.is_stale:
             self.is_stale = False
             with self.register_as_current_observer():
-                r = self.method(*self.args)
-                self.current_value.update_value(r)
+                self.current_value.update_value(self.method(*self.args))
         return self.current_value.read()
 
     def notify(self):
