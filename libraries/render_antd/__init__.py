@@ -160,19 +160,21 @@ def centered(content, **kwargs):
 
 
 class Wrapper:
-    """Wrapper to make can be weakreferred."""
-    def __init__(self, method):
-        self.method = method
+    """Wrapper that can be weakreferred."""
+    def __init__(self, value):
+        self.value = value
 
-    def __call__(self, *args):
-        return self.method(*args)
+    def __call__(self, document_name: str, document_content: bytes):
+        self.value[document_name] = document_content
 
 
 class Upload(UploadBase):
+    DEPENDS_ON_OBSERVABLE_INPUT = True
     def initialize_hidden_arguments(self):
         window = r.get_window()
         self._value = r.ObservableDict()
-        self.update_value = Wrapper(self._value.__setitem__)
+        self.onChange = None
+        self.update_value = Wrapper(self._value)
         callback_id = id(self.update_value)
         window.callbacks[callback_id] = self.update_value
         self.action = f"/post?kernel={window.kernel.kernel_id}&session={window.session_id}&callback={callback_id}"

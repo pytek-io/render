@@ -618,7 +618,8 @@ class Window:
             )
             component._props_values[name] = attribute
         if isinstance(component, InputComponent):
-            component()  # forcing dependency
+            if getattr(component, "DEPENDS_ON_OBSERVABLE_INPUT", True):
+                component()  # forcing dependency
             if component.InputName:
                 result[component.InputName] = self._serialize_value(
                     component, component.InputName, component.displayed_value()
