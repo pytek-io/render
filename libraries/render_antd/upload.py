@@ -4,7 +4,7 @@ from render import Component, create_callback, InputComponent
 class Upload(InputComponent):
     Module = "antd"
     JSXName = "Upload"
-    InputName = "fileList"
+    InputName = "value"
     NewValuePath = "fileList"
     CALLBACKS = [
         "onKeyPress",
