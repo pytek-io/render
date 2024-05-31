@@ -105,11 +105,9 @@ type ServerPtr = Arc<Server>;
 
 static PRINT_PYTHON_LOCATION: &str = "import sys; print(sys.executable)";
 static PRINT_PYTHON_VERSION: &str = "import platform; print(platform.python_version())";
-static PRINT_REFLECT_PATH: &str = "import render, os; print(os.path.dirname(render.__file__))";
-static PRINT_REFLECT_VERSION: &str = "import render; print(render.__version__)";
+static PRINT_RENDER_PATH: &str = "import render, os; print(os.path.dirname(os.path.dirname(render.__file__)))";
+static PRINT_RENDER_VERSION: &str = "import render; print(render.__version__)";
 
-static START_SCRIPT_PATH: &str = "src=\"";
-static END_SCRIPT_PATH: &str = "></script>";
 
 #[derive(Parser)]
 struct Options {
@@ -833,10 +831,10 @@ async fn upload_file(
 
 async fn render_server(server: ServerPtr) -> Result<()> {
     let app = Router::new()
-        .nest_service("/js", ServeDir::new(server.render_folder.join("js")))
+        .nest_service("/js_files", ServeDir::new(server.render_folder.clone()))
         .nest_service(
             "/static",
-            ServeDir::new(server.render_folder.join("static")),
+            ServeDir::new(server.render_folder.join("render").join("static")),
         )
         .nest_service("/data", ServeDir::new(&server.app_folder))
         .route("/app/*path", get(manage_http_request))
@@ -870,8 +868,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
     if let Err(_) = enable_ansi_support::enable_ansi_support() {
         println!("{}", "Unable to activate ansi color support. Display will most likely contain ansi color in Power Shell.".to_string().red())
     }
-    let render_folder = invoke_python_command(PRINT_REFLECT_PATH).await?;
-    let client_version = invoke_python_command(PRINT_REFLECT_VERSION).await?;
+    let client_version = invoke_python_command(PRINT_RENDER_VERSION).await?;
     println!(
         "{}: {} {}",
         "OS".green(),
@@ -896,7 +893,9 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
             client_version, server_version
         );
     }
-    let render_folder = PathBuf::from(&render_folder);
+    let test = invoke_python_command(PRINT_RENDER_PATH).await?;
+    let render_folder = PathBuf::from(&test);
+    println!("Render folder: {}", test);
     let opts: Options = Options::parse();
     let app_folder = PathBuf::from(&opts.app_folder)
         .normalize()
@@ -913,60 +912,22 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         app_folder.to_str().unwrap().blue()
     );
     println!("{}: {}", "Default app".green(), opts.default_app);
-    println!(
-        "Serving apps locally at: {}",
-        format!("http://localhost:{}", opts.port).blue()
-    );
-
-    let content = fs::read_to_string(
+    let html = fs::read_to_string(
         &render_folder
             .join("index.html")
             .to_str()
             .expect("Should have been able to append path"),
     )
     .expect("Failed to read index.html");
-    let start = content
-        .find(START_SCRIPT_PATH)
-        .expect(&format!("Failed to find {START_SCRIPT_PATH} in {content}"));
-    let end = content
-        .find(END_SCRIPT_PATH)
-        .expect(&format!("Failed to find {END_SCRIPT_PATH} in {content}"));
-    let script_path = &content[start + START_SCRIPT_PATH.len()..end];
-    let html = format!(
-        r#"<!DOCTYPE html>
-    <html>
-      <head>
-        <title>Render app</title>
-        <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
-        <meta content="Render web app" name="description">
-        <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control">
-        <meta content="no-cache" http-equiv="Pragma">
-        <meta content="0" http-equiv="Expires">
-        <link href="/static/cogs.svg" rel="icon" type="image/x-icon">
-        <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-        <script defer="" src="{script_path}"></script>
-      </head>
-      <body style="height: 100%; background-color: rgb(15, 23, 36)">
-        <div id="root" style="height: 100%">
-          <div style="height: 100%; display: flex; justify-content: center;align-items: center;">
-            <img alt="Loading data" src="/static/three_cogs_colors_vs.svg" width="40%">
-          </div>
-        </div>
-        <style>
-    html {{
-      height: 100%;
-    }},
-    </style>
-      </body>
-    </html>"#
-    );
     let max_sessions = if opts.dev { 1000 } else { opts.max_sessions };
     let port_as_str = opts.port.to_string();
     let port = opts.port;
     let (kernel_updates_sender, kernel_updates_receiver) = mpsc::channel(MAX_KERNELS_UPDATE_LAG);
     let (new_kernel_sender, new_kernel_receiver) = async_channel::unbounded();
+    println!(
+        "Serving apps locally at: {}",
+        format!("http://localhost:{}", opts.port).blue()
+    );
     let server = Arc::new(Server {
         kernel_counter: RwLock::new(1..),
         arguments: opts,

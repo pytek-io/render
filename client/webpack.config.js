@@ -1,20 +1,18 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-module.exports = function (env, argv) {
+module.exports = (env, argv) => {
   const production = argv.mode === "production";
-  const output = production ? "../dist" : "../render";
   return {
     watch: !production,
-    entry: { index: path.resolve(__dirname, "src", "index.tsx") },
+    mode : production ? "production" : "development",
+    entry: { index: path.resolve(__dirname, "src", "index.jsx") },
     output: {
-      path: path.resolve(output), 
-      publicPath: '/',
-      filename: './js/[contenthash].[name].js',
+      publicPath: "/js_files/",
+      path: path.resolve(__dirname, ".."),
+      filename: 'render/js/index.js',
+      chunkFilename: "render/js/[contenthash].[name].js",
     },
-    plugins: [new HtmlWebpackPlugin({
-      template: "src/index.html"
-    })],
+
     resolve: {
       extensions: [".tsx", ".ts", ".js", "scss", "css"],
     },
@@ -62,7 +60,7 @@ module.exports = function (env, argv) {
           use: ["style-loader", "css-loader", "sass-loader"],
         },
         {
-          test: /\.js$/,
+          test: /\.jsx/,
           exclude: /node_modules/,
           use: ["babel-loader"],
         },
