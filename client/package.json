@@ -1,7 +1,7 @@
 {
   "name": "render",
   "version": "1.0.0",
-  "description": "",
+  "description": "Main render client",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
@@ -10,7 +10,7 @@
     "start": "webpack serve --open 'Firefox'"
   },
   "keywords": [],
-  "author": "",
+  "author": "Francois du Vignaud",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -62,7 +62,6 @@
     "react-plotly.js": "^2.5.1",
     "react-vega": "^7.4.4",
     "spectacle": "^9.6.0",
-    "styled-components": "^5.3.1",
-    "swiper": "^7.4.1"
+    "styled-components": "^5.3.1"
   }
 }

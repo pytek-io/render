@@ -23,8 +23,6 @@ import { register as register_altair } from './libraries/altair'
 register_altair()
 import { register as register_bokeh } from './libraries/bokeh'
 register_bokeh()
-import { register as register_swiper } from './libraries/swiper'
-register_swiper()
 import { register as register_mantine_core } from './libraries/mantine/core'
 register_mantine_core()
 import { register as register_mantine_code_highlight } from './libraries/mantine/code-highlight'

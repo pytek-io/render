@@ -20,6 +20,7 @@ use rmp_serde::encode::to_vec;
 use rmp_serde::Deserializer as RmpDeserializer;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
+use serde_bytes::Bytes;
 use std::collections::HashMap;
 use std::collections::{BTreeMap, BTreeSet};
 use std::error::Error;
@@ -39,7 +40,6 @@ use tokio::sync::{mpsc, RwLock};
 use tokio::{process::Command as TokioCommand, sync::oneshot};
 use tokio::{signal, time::sleep};
 use tower_http::services::ServeDir;
-use serde_bytes::Bytes;
 
 #[macro_use]
 extern crate simple_error;
@@ -105,9 +105,9 @@ type ServerPtr = Arc<Server>;
 
 static PRINT_PYTHON_LOCATION: &str = "import sys; print(sys.executable)";
 static PRINT_PYTHON_VERSION: &str = "import platform; print(platform.python_version())";
-static PRINT_RENDER_PATH: &str = "import render, os; print(os.path.dirname(os.path.dirname(render.__file__)))";
+static PRINT_PYTHON_LIBRARIES_PATH: &str =
+    "import render, os; print(os.path.dirname(os.path.dirname(render.__file__)))";
 static PRINT_RENDER_VERSION: &str = "import render; print(render.__version__)";
-
 
 #[derive(Parser)]
 struct Options {
@@ -205,7 +205,7 @@ struct Server {
     arguments: Options,
     pending_kernels: RwLock<PendingKernelRegistry>,
     kernels: RwLock<KernelRegistry>,
-    render_folder: PathBuf,
+    python_libraries_path: PathBuf,
     app_folder: String,
     max_sessions: usize,
     html: String,
@@ -831,10 +831,10 @@ async fn upload_file(
 
 async fn render_server(server: ServerPtr) -> Result<()> {
     let app = Router::new()
-        .nest_service("/js_files", ServeDir::new(server.render_folder.clone()))
+        .nest_service("/js_files", ServeDir::new(&server.python_libraries_path))
         .nest_service(
             "/static",
-            ServeDir::new(server.render_folder.join("render").join("static")),
+            ServeDir::new(server.python_libraries_path.join("render").join("static")),
         )
         .nest_service("/data", ServeDir::new(&server.app_folder))
         .route("/app/*path", get(manage_http_request))
@@ -893,9 +893,8 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
             client_version, server_version
         );
     }
-    let test = invoke_python_command(PRINT_RENDER_PATH).await?;
-    let render_folder = PathBuf::from(&test);
-    println!("Render folder: {}", test);
+    let python_libraries_path =
+        PathBuf::from(&invoke_python_command(PRINT_PYTHON_LIBRARIES_PATH).await?);
     let opts: Options = Options::parse();
     let app_folder = PathBuf::from(&opts.app_folder)
         .normalize()
@@ -913,7 +912,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
     );
     println!("{}: {}", "Default app".green(), opts.default_app);
     let html = fs::read_to_string(
-        &render_folder
+        &python_libraries_path
             .join("index.html")
             .to_str()
             .expect("Should have been able to append path"),
@@ -935,7 +934,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         kernels: RwLock::new(KernelRegistry::new()),
         subscribed_kernels: RwLock::new(BTreeSet::new()),
         session_counter: RwLock::new((NOT_A_SESSION_ID + 1)..),
-        render_folder: render_folder.clone(),
+        python_libraries_path: python_libraries_path.clone(),
         app_folder: app_folder.to_str().unwrap().to_string(),
         max_sessions,
         html,

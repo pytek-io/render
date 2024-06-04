@@ -16,7 +16,7 @@ import weakref
 from collections import defaultdict
 from itertools import chain, count
 from typing import Callable, Coroutine, Dict, Iterable, Set
-
+from pathlib import Path
 import anyio
 
 from .reactor.async_objects import AsyncCachedEvaluation, AsyncGenerator
@@ -90,7 +90,7 @@ def media_size(width):
     return WindowSize.xs
 
 
-def create_link_definition(href, cross_origin):
+def create_css_link_definition(href, cross_origin):
     return (
         ("rel", "stylesheet"),
         ("type", "text/css"),
@@ -101,7 +101,7 @@ def create_link_definition(href, cross_origin):
 
 def register_css_for_module(module, href, cross_origin=None):
     global LINKS_REGISTER
-    LINKS_REGISTER[module].add(create_link_definition(href, cross_origin))
+    LINKS_REGISTER[module].add(create_css_link_definition(href, cross_origin))
 
 
 def is_pod_or_component(value):
@@ -419,9 +419,7 @@ class Window:
                 await self.client_message_sink.send(data)
             elif code == "module loaded":
                 self.loaded_modules.add(data)
-                m = self.pending_modules.pop(data, None)
-                if m:
-                    m.set()
+                self.pending_modules.pop(data).set()
             elif code == "remote call error":
                 print("remote call error", data)
                 # ref_id, method_name, error = data
@@ -644,7 +642,7 @@ class Window:
 
     def _serialize_component(self, parent, component: Component):
         if component._nb is None:
-            self.load_js_module(component.Module)
+            self.load_js_module_new(component)
             component.mount_status, component._nb = "mounting", next(self.components_counter)
             self.components[component._nb] = component
             if parent is None:
@@ -704,6 +702,20 @@ class Window:
             if links := LINKS_REGISTER.get(module, None):
                 self.send_nowait("add links", tuple(links))
 
+    def load_js_module_new(self, component: Component):
+        module = component.Module
+        if module not in chain(self.loaded_modules, self.pending_modules):
+            python_module = Path(sys.modules[component.__module__].__file__).parts[
+                len(Path(__file__).parts) - 2
+            ]
+            self.pending_modules[module] = anyio.Event()
+            if python_module != "libraries":
+                self.send_nowait("add script", (python_module, module))
+            else:
+                self.send_nowait("load js module", module)
+                if links := LINKS_REGISTER.get(module, None):
+                    self.send_nowait("add links", tuple(links))
+
     def update_title(self, name):
         self.send_nowait("update tab name", name)
 
@@ -720,7 +732,7 @@ class Window:
             self.loaded_links.update(new_links)
 
     def add_css(self, hrefs):
-        self.update_client_links([create_link_definition(href, None) for href in hrefs])
+        self.update_client_links([create_css_link_definition(href, None) for href in hrefs])
 
     def delete_component(self, component_nb):
         self.deleted_components.append(component_nb)

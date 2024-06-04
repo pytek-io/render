@@ -1,0 +1,3 @@
+[submodule "render_swiper"]
+	path = render_swiper
+	url = https://github.com/pytek-io/render_swiper.git

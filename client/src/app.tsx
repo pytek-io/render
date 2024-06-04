@@ -51,24 +51,16 @@ function add_links(links: [string, string][][]) {
         element.setAttribute(name, value);
       }
     }
-    document.getElementsByTagName("head")[0].appendChild(element);
+    document.head.appendChild(element);
   }
 }
 
-// function resolveMethod(name: string) {
-//   const [method, ...qualifiers] = name.split(".");
-//   let result = window.methodRegister.get(method);
-//   if (result == undefined) {
-//     throw new Error(`failed to resolve "${name}" callback`);
-//   }
-//   for (const qualifier of qualifiers) {
-//     result = result[qualifier];
-//     if (result == undefined) {
-//       throw new Error(`failed to resolve "${qualifier}" in ${name}`);
-//     }
-//   }
-//   return result;
-// }
+function add_script(python_module: string, module: string) {
+    const element = document.createElement("script");
+    element.setAttribute('src', `/js_files/${python_module}/js/index.js`);
+    document.head.appendChild(element);
+    context.send("module loaded", module);
+}
 
 function resolveMethod(name: string) {
   const result = window.methodRegister.get(name);
@@ -510,6 +502,9 @@ function process_message(event) {
       case "add links":
         add_links(data);
         break;
+      case "add script":
+        add_script(...data);
+        break;
       case "variable":
         const [variable_id, operation, operation_args] = data;
         switch (operation) {
@@ -925,3 +920,5 @@ function ServerErrorTraceback({ traceback }) {
 }
 
 registerComponent("ServerErrorTraceback", "", ServerErrorTraceback, "core");
+
+window.render = {registerComponent}
