@@ -32,8 +32,7 @@ class Result(Component):
         title=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id

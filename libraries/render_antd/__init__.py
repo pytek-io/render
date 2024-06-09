@@ -1,17 +1,16 @@
 import contextlib
 import render as r
 
-
-from render.common import get_window
-
 from ._auto import *
-from .auto_complete import AutoComplete as AutoCompleteBase
-from .input_number import InputNumber as InputNumberBase
-from .modal import Modal as ModalBase
-from .upload import Upload as UploadBase
-
-from .form import Form as BaseForm
-from .grid import Col, Row
+from ._auto import (
+    AutoComplete as AutoCompleteBase,
+    InputNumber as InputNumberBase,
+    Modal as ModalBase,
+    Upload as UploadBase,
+    Form as FormBase,
+    Col,
+    Row,
+)
 
 DATE_FORMAT = "dayjs"
 
@@ -27,7 +26,7 @@ def create_row(elements, col_kwargs={}, gutter=10, align="middle", **kwargs):
 
 def create_method_call(js_method):
     def result(*args):
-        get_window().call_js_method(js_method(*args))
+        r.get_window().call_js_method(js_method(*args))
 
     return result
 
@@ -66,8 +65,8 @@ def create_loading_message(message_):
         )
 
 
-if get_window(throw_if_none=False):
-    get_window().set_notification_hook(create_loading_message)
+if r.get_window(throw_if_none=False):
+    r.get_window().set_notification_hook(create_loading_message)
 
 
 class message:
@@ -84,7 +83,7 @@ class Modal(ModalBase):
     confirm = create_method_call(r.js_arrow("modal_confirm", "render_antd.Modal.confirm"))
 
 
-class Form(BaseForm):
+class Form(FormBase):
 
     async def resetFields(self):
         return await self.call_method("resetFields")
@@ -107,12 +106,12 @@ def flatten_options_values(options):
 class AutoComplete(AutoCompleteBase):
     def validate(self, value):
         return value in set(
-            flatten_options_values(call_if_callable(self.options)) if self.options else []
+            flatten_options_values(r.call_if_callable(self.options)) if self.options else []
         )
 
     @classmethod
     def case_insensitive_filter_options(cls, case_insensitive=True):
-        return JSMethod(
+        return r.JSMethod(
             "filter",
             f"(inputValue, {{value}}) => value{'.toUpperCase()' if case_insensitive else ''}.indexOf(inputValue{'.toUpperCase()' if case_insensitive else ''}) !== -1",
         )
@@ -161,6 +160,7 @@ def centered(content, **kwargs):
 
 class Wrapper:
     """Wrapper that can be weakreferred."""
+
     def __init__(self, value):
         self.value = value
 
@@ -170,6 +170,7 @@ class Wrapper:
 
 class Upload(UploadBase):
     DEPENDS_ON_OBSERVABLE_INPUT = True
+
     def initialize_hidden_arguments(self):
         window = r.get_window()
         self._value = r.ObservableDict()

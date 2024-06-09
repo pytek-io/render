@@ -4,7 +4,7 @@ from render import Component, create_callback, Props
 class FileButton(Component):
     Module = "mantine/core"
     JSXName = "FileButton"
-    CALLBACKS = ["children", "onKeyPress", "onClick", "onChange", "resetRef"]
+    CALLBACKS = ["onKeyPress", "onClick", "onChange", "resetRef"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -82,8 +82,7 @@ class FileButton(Component):
         variant=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = create_callback(children, "children")
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id

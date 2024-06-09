@@ -129,8 +129,7 @@ class Pagination(InputComponent):
         withEdges=None,
         controller=None,
     ):
-        super().__init__(key, controller, onChange, page, defaultPage)
-        self.children = children
+        super().__init__(key, controller, children, onChange, page, defaultPage)
         self.style = style
         self.className = className
         self.id = id
@@ -264,8 +263,7 @@ class Pagination(InputComponent):
             withPadding=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -375,8 +373,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -485,8 +482,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -587,8 +583,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -693,8 +688,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -803,8 +797,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -913,8 +906,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -1056,8 +1048,7 @@ class Pagination(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id

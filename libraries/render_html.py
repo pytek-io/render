@@ -26,13 +26,13 @@ class Container(Component):
     ):
         super().__init__(
             key=key,
+            children=children,
             componentDidMount=componentDidMount,
             componentWillUnmount=componentWillUnmount,
         )
         self.className = className
         self.style = style
         assert self.CHILDREN_CAN_BE_EMPTY or children, "Containers must have one child at least"
-        self.children = children
         assert not isinstance(id, int), id
         self.id = id
         self.onClick = create_callback(onClick)
@@ -101,8 +101,7 @@ class Link(Component):
         download=None,
         key=None,
     ):
-        super().__init__(key)
-        self.children = children
+        super().__init__(key, children=children)
         self.style = style
         self.className = className
         self.id = id
@@ -132,8 +131,7 @@ class svg(Component):
         onClick=None,
         preserveAspectRatio=None,
     ):
-        super().__init__(key=key)
-        self.children = children
+        super().__init__(key=key, children=children)
         self.width = width
         self.height = height
         self.fill = fill
@@ -199,7 +197,7 @@ class circle(Component):
         componentWillUnmount=None,
         onClick=None,
     ):
-        super().__init__(key, controller, componentDidMount, componentWillUnmount)
+        super().__init__(key, controller, componentDidMount=componentDidMount, componentWillUnmount=componentWillUnmount)
         self.cx = cx
         self.cy = cy
         self.r = r

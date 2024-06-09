@@ -55,8 +55,7 @@ class Card(Component):
         type=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
@@ -98,8 +97,7 @@ class Card(Component):
             hoverable=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -127,8 +125,7 @@ class Card(Component):
             title=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id

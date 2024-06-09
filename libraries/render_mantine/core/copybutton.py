@@ -4,7 +4,7 @@ from render import Component, create_callback
 class CopyButton(Component):
     Module = "mantine/core"
     JSXName = "CopyButton"
-    CALLBACKS = ["children", "onKeyPress", "onClick"]
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -70,8 +70,7 @@ class CopyButton(Component):
         variant=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = create_callback(children, "children")
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id

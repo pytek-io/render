@@ -842,8 +842,9 @@ class AgGridReact(Component):
         componentWillUnmount=None,
         controller=None,
     ):
-        super().__init__(key, controller, componentDidMount, componentWillUnmount)
-        self.children = children
+        super().__init__(
+            key, controller, children, componentDidMount, componentWillUnmount
+        )
         self.style = style
         self.className = className
         self.id = id

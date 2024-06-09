@@ -127,8 +127,7 @@ class Combobox(Component):
         zIndex=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
@@ -263,8 +262,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -374,8 +372,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -482,8 +479,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -593,8 +589,7 @@ class Combobox(Component):
             withKeyboardNavigation=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -702,8 +697,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -811,8 +805,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -919,8 +912,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -1034,8 +1026,7 @@ class Combobox(Component):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -1185,8 +1176,7 @@ class Combobox(Component):
             wrapperProps=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id
@@ -1316,8 +1306,7 @@ class Combobox(Component):
             withKeyboardNavigation=None,
             controller=None,
         ):
-            super().__init__(key, controller)
-            self.children = children
+            super().__init__(key, controller, children)
             self.style = style
             self.className = className
             self.id = id

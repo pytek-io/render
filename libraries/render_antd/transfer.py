@@ -79,8 +79,9 @@ class Transfer(InputComponent):
         titles=None,
         controller=None,
     ):
-        super().__init__(key, controller, onChange, targetKeys, defaultTargetkeys)
-        self.children = children
+        super().__init__(
+            key, controller, children, onChange, targetKeys, defaultTargetkeys
+        )
         self.style = style
         self.className = className
         self.id = id

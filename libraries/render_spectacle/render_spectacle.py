@@ -1,11 +1,18 @@
-from render import create_callback, Component
+from render import Component, create_callback
 
 
 class Appear(Component):
     Module = "spectacle"
     JSXName = "Appear"
-    ATTRIBUTES = ["style", "className", "activeStyle", "inactiveStyle", "stepIndex", "id"]
-    CALLBACKS = ["onKeyPress"]
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "activeStyle",
+        "inactiveStyle",
+        "stepIndex",
+    ]
 
     def __init__(
         self,
@@ -15,28 +22,37 @@ class Appear(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         activeStyle=None,
         inactiveStyle=None,
         stepIndex=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.activeStyle = activeStyle
         self.inactiveStyle = inactiveStyle
         self.stepIndex = stepIndex
-        assert id is None or isinstance(id, str)
 
 
 class Box(Component):
     Module = "spectacle"
     JSXName = "Box"
-    ATTRIBUTES = ["style", "className", "id", "border", "color", "layout", "position", "space"]
-    CALLBACKS = ["onKeyPress"]
+    CALLBACKS = ["onKeyPress", "onClick"]
+    ATTRIBUTES = [
+        "style",
+        "className",
+        "id",
+        "border",
+        "color",
+        "layout",
+        "position",
+        "space",
+    ]
 
     def __init__(
         self,
@@ -46,6 +62,7 @@ class Box(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         border=None,
         color=None,
         layout=None,
@@ -53,25 +70,24 @@ class Box(Component):
         space=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.border = border
         self.color = color
         self.layout = layout
         self.position = position
         self.space = space
-        assert id is None or isinstance(id, str)
 
 
 class CodePane(Component):
     Module = "spectacle"
     JSXName = "CodePane"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "highlightRanges", "language", "theme"]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -81,38 +97,37 @@ class CodePane(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         highlightRanges=None,
         language=None,
         theme=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.highlightRanges = highlightRanges
         self.language = language
         self.theme = theme
-        assert id is None or isinstance(id, str)
 
 
 class CodeSpan(Component):
     Module = "spectacle"
     JSXName = "CodeSpan"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
         "id",
         "color",
-        "fontSize",
         "fontFamily",
         "fontSize",
         "space",
         "typography",
     ]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -122,30 +137,31 @@ class CodeSpan(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         color=None,
-        fontFamily=None,
-        fontSize=None,
+        fontFamily="monospace",
+        fontSize="text",
         space=None,
         typography=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.fontFamily = fontFamily
         self.fontSize = fontSize
         self.space = space
         self.typography = typography
-        assert id is None or isinstance(id, str)
 
 
 class Deck(Component):
     Module = "spectacle"
     JSXName = "Deck"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -160,7 +176,6 @@ class Deck(Component):
         "theme",
         "transition",
     ]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -170,6 +185,7 @@ class Deck(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         autoPlay=None,
         autoPlayInterval=None,
         autoPlayLoop=None,
@@ -181,12 +197,12 @@ class Deck(Component):
         transition=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.autoPlay = autoPlay
         self.autoPlayInterval = autoPlayInterval
         self.autoPlayLoop = autoPlayLoop
@@ -196,12 +212,12 @@ class Deck(Component):
         self.template = template
         self.theme = theme
         self.transition = transition
-        assert id is None or isinstance(id, str)
 
 
 class FlexBox(Component):
     Module = "spectacle"
     JSXName = "FlexBox"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -218,7 +234,6 @@ class FlexBox(Component):
         "position",
         "space",
     ]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -228,25 +243,26 @@ class FlexBox(Component):
         className=None,
         id=None,
         onKeyPress=None,
-        alignItems=None,
+        onClick=None,
+        alignItems="center",
         border=None,
         color=None,
-        display=None,
-        flexDirection=None,
+        display="flex",
+        flexDirection="column",
         flexbox=None,
         height=None,
-        justifyContent=None,
+        justifyContent="center",
         layout=None,
         position=None,
         space=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.alignItems = alignItems
         self.border = border
         self.color = color
@@ -258,14 +274,13 @@ class FlexBox(Component):
         self.layout = layout
         self.position = position
         self.space = space
-        assert id is None or isinstance(id, str)
 
 
 class Grid(Component):
     Module = "spectacle"
     JSXName = "Grid"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "display", "grid", "layout", "position"]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -275,28 +290,29 @@ class Grid(Component):
         className=None,
         id=None,
         onKeyPress=None,
-        display=None,
+        onClick=None,
+        display="grid",
         grid=None,
         layout=None,
         position=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.display = display
         self.grid = grid
         self.layout = layout
         self.position = position
-        assert id is None or isinstance(id, str)
 
 
 class Heading(Component):
     Module = "spectacle"
     JSXName = "Heading"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -308,7 +324,6 @@ class Heading(Component):
         "margin",
         "textAlign",
     ]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -318,34 +333,34 @@ class Heading(Component):
         className=None,
         id=None,
         onKeyPress=None,
-        color=None,
-        fontFamily=None,
-        fontSize=None,
-        fontWeight=None,
-        margin=None,
-        textAlign=None,
+        onClick=None,
+        color="secondary",
+        fontFamily="header",
+        fontSize="h1",
+        fontWeight="bold",
+        margin=1,
+        textAlign="center",
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.fontFamily = fontFamily
         self.fontSize = fontSize
         self.fontWeight = fontWeight
         self.margin = margin
         self.textAlign = textAlign
-        assert id is None or isinstance(id, str)
 
 
 class ListItem(Component):
     Module = "spectacle"
     JSXName = "ListItem"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = ["style", "className", "id", "color", "margin", "space", "typography"]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -355,28 +370,29 @@ class ListItem(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         color=None,
-        margin=None,
+        margin=0,
         space=None,
         typography=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.margin = margin
         self.space = space
         self.typography = typography
-        assert id is None or isinstance(id, str)
 
 
 class Slide(Component):
     Module = "spectacle"
     JSXName = "Slide"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -393,7 +409,6 @@ class Slide(Component):
         "textColor",
         "transition",
     ]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -403,6 +418,7 @@ class Slide(Component):
         className=None,
         id=None,
         onKeyPress=None,
+        onClick=None,
         backgroundColor=None,
         backgroundImage=None,
         backgroundOpacity=None,
@@ -416,12 +432,12 @@ class Slide(Component):
         transition=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.backgroundColor = backgroundColor
         self.backgroundImage = backgroundImage
         self.backgroundOpacity = backgroundOpacity
@@ -433,12 +449,12 @@ class Slide(Component):
         self.template = template
         self.textColor = textColor
         self.transition = transition
-        assert id is None or isinstance(id, str)
 
 
 class UnorderedList(Component):
     Module = "spectacle"
     JSXName = "UnorderedList"
+    CALLBACKS = ["onKeyPress", "onClick"]
     ATTRIBUTES = [
         "style",
         "className",
@@ -452,7 +468,6 @@ class UnorderedList(Component):
         "textAlign",
         "typography",
     ]
-    CALLBACKS = ["onKeyPress"]
 
     def __init__(
         self,
@@ -462,22 +477,23 @@ class UnorderedList(Component):
         className=None,
         id=None,
         onKeyPress=None,
-        color=None,
-        fontFamily=None,
-        fontSize=None,
+        onClick=None,
+        color="primary",
+        fontFamily="text",
+        fontSize="text",
         listStyle=None,
-        margin=None,
+        margin=0,
         space=None,
-        textAlign=None,
+        textAlign="left",
         typography=None,
         controller=None,
     ):
-        super().__init__(key, controller)
-        self.children = children
+        super().__init__(key, controller, children)
         self.style = style
         self.className = className
         self.id = id
-        self.onKeyPress = create_callback(onKeyPress)
+        self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
+        self.onClick = create_callback(onClick, "onClick")
         self.color = color
         self.fontFamily = fontFamily
         self.fontSize = fontSize
@@ -486,4 +502,3 @@ class UnorderedList(Component):
         self.space = space
         self.textAlign = textAlign
         self.typography = typography
-        assert id is None or isinstance(id, str)

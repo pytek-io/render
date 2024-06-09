@@ -57,8 +57,7 @@ class Pagination(InputComponent):
         total=None,
         controller=None,
     ):
-        super().__init__(key, controller, onChange, current, defaultCurrent)
-        self.children = children
+        super().__init__(key, controller, children, onChange, current, defaultCurrent)
         self.style = style
         self.className = className
         self.id = id

@@ -127,8 +127,7 @@ class Tooltip(InputComponent):
         zIndex=None,
         controller=None,
     ):
-        super().__init__(key, controller, onChange, opened, defaultOpened)
-        self.children = children
+        super().__init__(key, controller, children, onChange, opened, defaultOpened)
         self.style = style
         self.className = className
         self.id = id

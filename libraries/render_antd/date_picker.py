@@ -48,8 +48,7 @@ class DatePicker(InputComponent):
         showWeek=None,
         controller=None,
     ):
-        super().__init__(key, controller, onChange, value, defaultValue)
-        self.children = children
+        super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style
         self.className = className
         self.id = id
@@ -196,8 +195,7 @@ class DatePicker(InputComponent):
             variant=None,
             controller=None,
         ):
-            super().__init__(key, controller, onChange, value, defaultValue)
-            self.children = children
+            super().__init__(key, controller, children, onChange, value, defaultValue)
             self.style = style
             self.className = className
             self.id = id

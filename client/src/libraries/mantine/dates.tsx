@@ -1,4 +1,4 @@
-import { registerComponents, registerModuleDeferred } from "../../app";
+import { registerComponents, registerModuleDeferred, registerMethod } from "../../app";
 import { lazy } from "react";
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';

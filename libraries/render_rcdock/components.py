@@ -44,8 +44,7 @@ class DockLayout(Component):
         defaultLayout=None,
         componentDidMount=None,
     ):
-        super().__init__(key=key, componentDidMount=componentDidMount)
-        self.children = children
+        super().__init__(key=key, children=children, componentDidMount=componentDidMount)
         self.style = style
         self.className = className
         self.id = id

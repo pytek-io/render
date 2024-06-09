@@ -85,11 +85,13 @@ class Component(ObserverBase, RemoteObject):
         self,
         key,
         controller=None,
+        children=None,
         componentDidMount=None,
         componentWillUnmount=None,
     ):
         ObserverBase.__init__(self, controller=controller, key=key)
         RemoteObject.__init__(self)
+        self.children = children
         self._cached_children = None
         self._props_values = {}
         self.on_didmount = componentDidMount
@@ -106,7 +108,7 @@ class Component(ObserverBase, RemoteObject):
         return maybe_window.weak_ref() if maybe_window else None
 
     def _children(self):
-        children = getattr(self, "children", None)
+        children = self.children
         while not isinstance(children, InputComponent) and callable(children):
             children = children()
         if children is None:
@@ -137,8 +139,8 @@ class InputComponent(Component):
     NewValuePath = ""
     ChangeEventName = "onChange"
 
-    def __init__(self, key, controller, onChange, value, default_value):
-        super().__init__(key=key, controller=controller)
+    def __init__(self, key, controller, children, onChange, value, default_value):
+        super().__init__(key, controller, children)
         self.input_value_update = False
         if isinstance(value, (ObservableValue, ObservableElement, ObservableList)):
             if default_value is not None:
