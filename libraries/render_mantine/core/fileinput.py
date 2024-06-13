@@ -83,9 +83,6 @@ class FileInput(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         accept=None,
         capture=None,
         clearButtonProps=None,
@@ -148,6 +145,9 @@ class FileInput(InputComponent):
         withErrorStyles=None,
         wrapperProps=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style

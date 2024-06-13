@@ -83,9 +83,6 @@ class ColorInput(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue="",
-        value=None,
         closeOnColorSwatchClick=None,
         component=None,
         description=None,
@@ -150,6 +147,9 @@ class ColorInput(InputComponent):
         withPreview=None,
         wrapperProps=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style

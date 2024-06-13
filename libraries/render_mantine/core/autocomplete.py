@@ -87,9 +87,6 @@ class Autocomplete(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         comboboxProps=None,
         component=None,
         data=None,
@@ -154,6 +151,9 @@ class Autocomplete(InputComponent):
         withScrollArea=None,
         wrapperProps=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style

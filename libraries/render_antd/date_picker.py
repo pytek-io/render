@@ -31,9 +31,6 @@ class DatePicker(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         defaultPickerValue=None,
         disabledTime=None,
         format=None,
@@ -47,6 +44,9 @@ class DatePicker(InputComponent):
         showTime_defaultValue=None,
         showWeek=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style
@@ -140,9 +140,6 @@ class DatePicker(InputComponent):
             id=None,
             onKeyPress=None,
             onClick=None,
-            onChange=None,
-            defaultValue=None,
-            value=None,
             allowClear=None,
             allowEmpty=None,
             autoFocus=None,
@@ -194,6 +191,9 @@ class DatePicker(InputComponent):
             superPrevIcon=None,
             variant=None,
             controller=None,
+            onChange=None,
+            value=None,
+            defaultValue=None,
         ):
             super().__init__(key, controller, children, onChange, value, defaultValue)
             self.style = style

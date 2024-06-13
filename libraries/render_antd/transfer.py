@@ -49,9 +49,6 @@ class Transfer(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultTargetkeys=None,
-        targetKeys=None,
         dataSource=None,
         direction=None,
         disabled=None,
@@ -78,6 +75,9 @@ class Transfer(InputComponent):
         status=None,
         titles=None,
         controller=None,
+        onChange=None,
+        targetKeys=None,
+        defaultTargetkeys=None,
     ):
         super().__init__(
             key, controller, children, onChange, targetKeys, defaultTargetkeys

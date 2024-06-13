@@ -74,9 +74,6 @@ class Pagination(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultPage=None,
-        page=None,
         autoContrast=None,
         boundaries=None,
         color=None,
@@ -128,6 +125,9 @@ class Pagination(InputComponent):
         withControls=None,
         withEdges=None,
         controller=None,
+        onChange=None,
+        page=None,
+        defaultPage=None,
     ):
         super().__init__(key, controller, children, onChange, page, defaultPage)
         self.style = style

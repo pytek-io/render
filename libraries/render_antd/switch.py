@@ -29,9 +29,6 @@ class Switch(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultChecked=None,
-        checked=None,
         autoFocus=None,
         checkedChildren=None,
         defaultValue=None,
@@ -41,6 +38,9 @@ class Switch(InputComponent):
         unCheckedChildren=None,
         value=None,
         controller=None,
+        onChange=None,
+        checked=None,
+        defaultChecked=None,
     ):
         super().__init__(key, controller, children, onChange, checked, defaultChecked)
         self.style = style

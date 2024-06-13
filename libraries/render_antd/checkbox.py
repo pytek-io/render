@@ -17,13 +17,13 @@ class Checkbox(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultChecked=None,
-        checked=None,
         autoFocus=None,
         disabled=None,
         indeterminate=None,
         controller=None,
+        onChange=None,
+        checked=None,
+        defaultChecked=None,
     ):
         super().__init__(key, controller, children, onChange, checked, defaultChecked)
         self.style = style
@@ -51,13 +51,13 @@ class Checkbox(InputComponent):
             id=None,
             onKeyPress=None,
             onClick=None,
-            onChange=None,
-            defaultValue=None,
-            value=None,
             disabled=None,
             name=None,
             options=None,
             controller=None,
+            onChange=None,
+            value=None,
+            defaultValue=None,
         ):
             super().__init__(key, controller, children, onChange, value, defaultValue)
             self.style = style

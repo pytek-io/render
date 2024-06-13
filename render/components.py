@@ -125,9 +125,9 @@ class Component(ObserverBase, RemoteObject):
         if self.mount_status != "unknown":
             self._window().record_stale_component(self)
 
-    def initialize_hidden_arguments(self):
-        """to be called in the __init__ of the subclass if needed"""
-        pass
+    def finalize(self):
+        """will be called in the __init__ of the subclass if needed"""
+        raise NotImplementedError("finalize must be implemented in the subclass")
 
 
 class InputComponent(Component):

@@ -60,9 +60,6 @@ class SegmentedControl(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         autoContrast=None,
         color=None,
         component=None,
@@ -103,6 +100,9 @@ class SegmentedControl(InputComponent):
         variant=None,
         withItemsBorders=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style

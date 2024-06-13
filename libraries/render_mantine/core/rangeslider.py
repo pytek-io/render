@@ -70,9 +70,6 @@ class RangeSlider(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         color=None,
         component=None,
         disabled=None,
@@ -124,6 +121,9 @@ class RangeSlider(InputComponent):
         title=None,
         variant=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style

@@ -47,9 +47,6 @@ class TimePicker(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         allowClear=None,
         autoFocus=None,
         cellRender=None,
@@ -79,6 +76,9 @@ class TimePicker(InputComponent):
         use12Hours=None,
         variant=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style
@@ -162,9 +162,6 @@ class TimePicker(InputComponent):
             id=None,
             onKeyPress=None,
             onClick=None,
-            onChange=None,
-            defaultValue=None,
-            value=None,
             allowClear=None,
             autoFocus=None,
             cellRender=None,
@@ -195,6 +192,9 @@ class TimePicker(InputComponent):
             use12Hours=None,
             variant=None,
             controller=None,
+            onChange=None,
+            value=None,
+            defaultValue=None,
         ):
             super().__init__(key, controller, children, onChange, value, defaultValue)
             self.style = style

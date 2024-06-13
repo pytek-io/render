@@ -1,4 +1,4 @@
-from render import Component, create_callback, get_window
+from render import Component, create_callback
 
 
 class AgGridReact(Component):
@@ -838,9 +838,9 @@ class AgGridReact(Component):
         viewportRowModelPageSize=None,
         virtualColumnsChanged=None,
         virtualRowRemoved=None,
+        controller=None,
         componentDidMount=None,
         componentWillUnmount=None,
-        controller=None,
     ):
         super().__init__(
             key, controller, children, componentDidMount, componentWillUnmount
@@ -2101,7 +2101,7 @@ class AgGridReact(Component):
             "virtualRowRemoved",
             [[0, "node", "data", "id"], [0, "rowIndex"], [0, "rowPinned"], [0, "type"]],
         )
-        get_window().add_css([f"/static/{className}.css"])
+        self.finalize()
 
     async def applyTransactionAsync(self, *args):
         return await self.call_method("api.applyTransactionAsync", args)

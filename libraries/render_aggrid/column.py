@@ -271,9 +271,9 @@ class AgGridColumn(Component):
         width=None,
         wrapHeaderText=None,
         wrapText=None,
+        controller=None,
         componentDidMount=None,
         componentWillUnmount=None,
-        controller=None,
     ):
         super().__init__(
             key, controller, children, componentDidMount, componentWillUnmount

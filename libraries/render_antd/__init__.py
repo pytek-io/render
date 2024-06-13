@@ -171,7 +171,7 @@ class Wrapper:
 class Upload(UploadBase):
     DEPENDS_ON_OBSERVABLE_INPUT = True
 
-    def initialize_hidden_arguments(self):
+    def finalize(self):
         window = r.get_window()
         self._value = r.ObservableDict()
         self.onChange = None

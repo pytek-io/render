@@ -18,13 +18,13 @@ class Radio(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultChecked=None,
-        checked=None,
         autoFocus=None,
         disabled=None,
         value=None,
         controller=None,
+        onChange=None,
+        checked=None,
+        defaultChecked=None,
     ):
         super().__init__(key, controller, children, onChange, checked, defaultChecked)
         self.style = style
@@ -53,13 +53,13 @@ class Radio(InputComponent):
             id=None,
             onKeyPress=None,
             onClick=None,
-            onChange=None,
-            defaultChecked=None,
-            checked=None,
             autoFocus=None,
             disabled=None,
             value=None,
             controller=None,
+            onChange=None,
+            checked=None,
+            defaultChecked=None,
         ):
             super().__init__(
                 key, controller, children, onChange, checked, defaultChecked
@@ -100,9 +100,6 @@ class Radio(InputComponent):
             id=None,
             onKeyPress=None,
             onClick=None,
-            onChange=None,
-            defaultValue=None,
-            value=None,
             buttonStyle=None,
             disabled=None,
             name=None,
@@ -110,6 +107,9 @@ class Radio(InputComponent):
             options=None,
             size=None,
             controller=None,
+            onChange=None,
+            value=None,
+            defaultValue=None,
         ):
             super().__init__(key, controller, children, onChange, value, defaultValue)
             self.style = style

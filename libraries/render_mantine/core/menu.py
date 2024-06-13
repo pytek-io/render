@@ -73,9 +73,6 @@ class Menu(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultOpened=None,
-        opened=None,
         arrowOffset=None,
         arrowPosition=None,
         arrowRadius=None,
@@ -132,6 +129,9 @@ class Menu(InputComponent):
         withinPortal=None,
         zIndex=None,
         controller=None,
+        onChange=None,
+        opened=None,
+        defaultOpened=None,
     ):
         super().__init__(key, controller, children, onChange, opened, defaultOpened)
         self.style = style

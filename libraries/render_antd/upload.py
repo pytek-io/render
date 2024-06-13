@@ -52,10 +52,8 @@ class Upload(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         accept=None,
+        action=None,
         beforeUpload=None,
         customRequest=None,
         data=None,
@@ -82,6 +80,9 @@ class Upload(InputComponent):
         showUploadList=None,
         withCredentials=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style
@@ -116,7 +117,7 @@ class Upload(InputComponent):
         self.progress = progress
         self.showUploadList = showUploadList
         self.withCredentials = withCredentials
-        self.initialize_hidden_arguments()
+        self.finalize()
 
     class UploadFile(Component):
         Module = "antd"

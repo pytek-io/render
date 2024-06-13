@@ -64,9 +64,6 @@ class Cascader(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultValue=None,
-        value=None,
         allowClear=None,
         autoClearSearchValue=None,
         autoFocus=None,
@@ -108,6 +105,9 @@ class Cascader(InputComponent):
         tagRender=None,
         variant=None,
         controller=None,
+        onChange=None,
+        value=None,
+        defaultValue=None,
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style

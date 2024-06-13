@@ -55,9 +55,6 @@ class Chip(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
-        onChange=None,
-        defaultChecked=None,
-        checked=None,
         autoContrast=None,
         color=None,
         component=None,
@@ -93,6 +90,9 @@ class Chip(InputComponent):
         variant=None,
         wrapperProps=None,
         controller=None,
+        onChange=None,
+        checked=None,
+        defaultChecked=None,
     ):
         super().__init__(key, controller, children, onChange, checked, defaultChecked)
         self.style = style
@@ -178,9 +178,6 @@ class Chip(InputComponent):
             id=None,
             onKeyPress=None,
             onClick=None,
-            onChange=None,
-            defaultValue=None,
-            value=None,
             component=None,
             h=None,
             href=None,
@@ -205,6 +202,9 @@ class Chip(InputComponent):
             title=None,
             variant=None,
             controller=None,
+            onChange=None,
+            value=None,
+            defaultValue=None,
         ):
             super().__init__(key, controller, children, onChange, value, defaultValue)
             self.style = style
