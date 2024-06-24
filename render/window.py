@@ -618,9 +618,9 @@ class Window:
         if isinstance(component, InputComponent):
             if getattr(component, "DEPENDS_ON_OBSERVABLE_INPUT", True):
                 component()  # forcing dependency
-            if component.InputName:
-                result[component.InputName] = self._serialize_value(
-                    component, component.InputName, component.displayed_value()
+            if input_name := getattr(component, "InputName", None):
+                result[input_name] = self._serialize_value(
+                    component, input_name, component.displayed_value()
                 )
         # annoyingly defaultValue prevails on value in antd API...
         if not (result.get("defaultValue", None) is None or result.get("value", None) is None):
@@ -705,12 +705,14 @@ class Window:
     def load_js_module_new(self, component: Component):
         module = component.Module
         if module not in chain(self.loaded_modules, self.pending_modules):
-            python_module = Path(sys.modules[component.__module__].__file__).parts[
+            python_module = sys.modules[component.__module__]
+            python_module_path = Path(python_module.__file__)
+            python_module_name = python_module_path.parts[
                 len(Path(__file__).parts) - 2
             ]
             self.pending_modules[module] = anyio.Event()
-            if python_module != "libraries":
-                self.send_nowait("add script", (python_module, module))
+            if "libraries" not in python_module_path.parts:
+                self.send_nowait("add script", (python_module_name, module))
             else:
                 self.send_nowait("load js module", module)
                 if links := LINKS_REGISTER.get(module, None):
