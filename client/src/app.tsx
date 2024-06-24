@@ -55,11 +55,14 @@ function add_links(links: [string, string][][]) {
   }
 }
 
+function signal_script_loaded(module: string) {
+  context.send("module loaded", module);
+}
+
 function add_script(python_module: string, module: string) {
     const element = document.createElement("script");
-    element.setAttribute('src', `/js_files/${python_module}/js/index.js`);
+    element.setAttribute('src', `/js_files/${python_module.replace("-", "_")}/js/index.js`);
     document.head.appendChild(element);
-    context.send("module loaded", module);
 }
 
 function resolveMethod(name: string) {
@@ -429,7 +432,7 @@ function process_message(event) {
           throw new Error(`failed to load unknown module ${data}`);
         }
         callback().then(() => {
-          context.send("module loaded", data);
+          signal_script_loaded(data);
           console.info(`loaded ${data} module`);
         });
         break;
@@ -921,4 +924,4 @@ function ServerErrorTraceback({ traceback }) {
 
 registerComponent("ServerErrorTraceback", "", ServerErrorTraceback, "core");
 
-window.render = {registerComponent}
+window.render = {registerComponent, signal_script_loaded}
