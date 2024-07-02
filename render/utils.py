@@ -54,7 +54,7 @@ def import_module(module_path, reload=True):
             importlib.reload(result)
         return result
     except ModuleNotFoundError as e:
-        lines = [f"Failed to load {module_path}. {e}"]
+        lines = [f"Failed to find {module_path}. {e}"]
     except:  # noqa: E722
         lines = traceback.format_exc().splitlines()
     result = importlib.import_module("render.import_error")

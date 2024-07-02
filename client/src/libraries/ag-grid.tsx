@@ -19,33 +19,8 @@ export function register() {
     window.numeral = numeral.default;
     window.filesize = filesize.default;
     const { AgGridColumn, AgGridReact } = module;
-    function convert_row_data(data) {
-      if (data && data.constructor.name != "Array") {
-        let actual_data = [];
-        const entries = Object.values(data);
-        const keys = Object.keys(data);
-        for (var i = 0; i < entries[0].length; i++) {
-          const obj = {};
-          for (var j = 0; j < entries.length; j++) {
-            obj[keys[j]] = entries[j][i];
-          }
-          actual_data.push(obj);
-        }
-        return actual_data;
-      }
-      return data;
-    }
-    const MyAgGridReact = React.forwardRef((props, ref) => {
-      let { rowData, ...rest } = props;
-      return (
-        <AgGridReact
-          ref={ref}
-          rowData={convert_row_data(rowData)}
-          {...rest}
-        ></AgGridReact>
-      );
-    });
-    registerComponent("AgGridReact", "", MyAgGridReact, "ag-grid");
+
+    registerComponent("AgGridReact", "", AgGridReact, "ag-grid");
     registerComponent("AgGridColumn", "", AgGridColumn, "ag-grid");
   });
 }

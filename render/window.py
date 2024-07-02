@@ -817,7 +817,7 @@ class Window:
                 self.update_tag_style(DEFAULT_BODY_STYLE.items())
                 from render_html import pre
 
-                self.app_root = pre("".join(extract_client_stack()))
+                self.app_root = pre("".join(extract_client_stack()), style={"color": "black"})
                 serialized_root = self._serialize(None, self.app_root)
             except:  # noqa: E722
                 traceback.print_exc()

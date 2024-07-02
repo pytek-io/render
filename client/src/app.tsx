@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, forwardRef } from "react";
 import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import "regenerator-runtime/runtime.js";
@@ -165,7 +165,19 @@ function wrap_inside_suspense(lazy_component) {
   }
 }
 
-export function registerComponent(name, sub_class, constructor, namespace, lazy = false) {
+function wrap_forward_ref(lazy_component) {
+  return forwardRef(({ children, ...props }, ref) => {
+    const new_props = { ...props, "ref": ref };
+    const actual_children = (children
+      ? children.constructor.name == "Array"
+        ? children
+        : [children]
+      : []);
+    return React.createElement(lazy_component, new_props, ...actual_children);
+  });
+}
+
+export function registerComponent(name, sub_class, constructor, namespace, lazy = false, forward_ref = false) {
   const render_namespace = "render_" + namespace;
   if (window[render_namespace] == undefined) {
     window[render_namespace] = {};
@@ -191,7 +203,7 @@ export function registerComponent(name, sub_class, constructor, namespace, lazy 
   if (!window.componentRegister.has(namespace)) {
     window.componentRegister.set(namespace, new Map());
   }
-  window.componentRegister.get(namespace).set(component_name, lazy ? wrap_inside_suspense(constructor) : constructor);
+  window.componentRegister.get(namespace).set(component_name, lazy ? wrap_inside_suspense(constructor) : (forward_ref ? wrap_forward_ref(constructor) : constructor));
 }
 
 export function registerComponents(components, namespace) {
@@ -924,4 +936,4 @@ function ServerErrorTraceback({ traceback }) {
 
 registerComponent("ServerErrorTraceback", "", ServerErrorTraceback, "core");
 
-window.render = {registerComponent, signal_script_loaded}
+window.render = { registerComponent, signal_script_loaded }

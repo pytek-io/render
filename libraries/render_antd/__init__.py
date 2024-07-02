@@ -1,6 +1,6 @@
 import contextlib
 import render as r
-
+from render_html import label
 from ._auto import *
 from ._auto import (
     AutoComplete as AutoCompleteBase,
