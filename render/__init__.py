@@ -1,5 +1,5 @@
 from .reactor.async_objects import AsyncCachedEvaluation, AsyncGenerator
-from .common import get_window, schedule_callback
+from .common import get_window, schedule_callback, call_if_callable
 from .components import (
     Callback,
     Component,
@@ -69,4 +69,5 @@ __all__ = [
     "memoize",
     "register_css_for_module",
     "schedule_callback",
+    "call_if_callable",
 ]

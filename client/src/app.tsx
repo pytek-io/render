@@ -1,8 +1,11 @@
 import React, { Suspense, forwardRef } from "react";
 import ReactDOM from "react-dom";
+import dayjs from "dayjs";
 import { createRoot } from "react-dom/client";
 import "regenerator-runtime/runtime.js";
 import WeakValueMap from "./weakvaluemap";
+
+window.dayjs = dayjs;
 
 const R = require("ramda");
 const autoBind = require("auto-bind");
@@ -827,6 +830,8 @@ function deserializeComponentOrData(
       return create_callback(component_record, details);
     case "object":
       return variables.get(details);
+    case "dayjs":
+      return dayjs.unix(details);
     default:
       throw new Error(`unexpected ${dataType}: ${details}`);
   }

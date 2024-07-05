@@ -11,6 +11,7 @@ class DatePicker(InputComponent):
         "className",
         "id",
         "defaultPickerValue",
+        "disabledDate",
         "disabledTime",
         "format",
         "multiple",
@@ -20,6 +21,7 @@ class DatePicker(InputComponent):
         "showTime",
         "showTime_defaultValue",
         "showWeek",
+        "picker",
     ]
 
     def __init__(
@@ -33,6 +35,7 @@ class DatePicker(InputComponent):
         onClick=None,
         defaultPickerValue=None,
         disabledTime=None,
+        disabledDate=None,
         format=None,
         multiple=None,
         onOk=None,
@@ -47,6 +50,7 @@ class DatePicker(InputComponent):
         onChange=None,
         value=None,
         defaultValue=None,
+        picker = None
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style
@@ -56,6 +60,7 @@ class DatePicker(InputComponent):
         self.onClick = create_callback(onClick, "onClick")
         self.defaultPickerValue = defaultPickerValue
         self.disabledTime = disabledTime
+        self.disabledDate = disabledDate
         self.format = format
         self.multiple = multiple
         self.onOk = create_callback(onOk, "onOk")
@@ -66,6 +71,7 @@ class DatePicker(InputComponent):
         self.showTime = showTime
         self.showTime_defaultValue = showTime_defaultValue
         self.showWeek = showWeek
+        self.picker = picker
 
     class RangePicker(InputComponent):
         Module = "antd"
