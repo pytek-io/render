@@ -5,23 +5,53 @@ class DatePicker(InputComponent):
     Module = "antd"
     JSXName = "DatePicker"
     InputName = "value"
-    CALLBACKS = ["onKeyPress", "onClick", "onOk", "onPanelChange"]
+    CALLBACKS = ["onKeyPress", "onClick", "onOk", "onOpenChange", "onPanelChange"]
     ATTRIBUTES = [
         "style",
         "className",
         "id",
+        "allowClear",
+        "autoFocus",
+        "cellRender",
+        "components",
+        "dateRender",
         "defaultPickerValue",
+        "disabled",
         "disabledDate",
         "disabledTime",
         "format",
+        "getPopupContainer",
+        "inputReadOnly",
+        "locale",
+        "maxDate",
+        "minDate",
+        "mode",
         "multiple",
+        "needConfirm",
+        "nextIcon",
+        "open",
+        "order",
+        "panelRender",
+        "picker",
         "pickerValue",
+        "placeholder",
+        "placement",
+        "popupClassName",
+        "popupStyle",
+        "preserveInvalidOnBlur",
+        "presets",
+        "prevIcon",
         "renderExtraFooter",
         "showNow",
         "showTime",
         "showTime_defaultValue",
         "showWeek",
-        "picker",
+        "size",
+        "status",
+        "suffixIcon",
+        "superNextIcon",
+        "superPrevIcon",
+        "variant",
     ]
 
     def __init__(
@@ -33,24 +63,55 @@ class DatePicker(InputComponent):
         id=None,
         onKeyPress=None,
         onClick=None,
+        allowClear=None,
+        autoFocus=None,
+        cellRender=None,
+        components=None,
+        dateRender=None,
         defaultPickerValue=None,
-        disabledTime=None,
+        disabled=None,
         disabledDate=None,
+        disabledTime=None,
         format=None,
+        getPopupContainer=None,
+        inputReadOnly=None,
+        locale=None,
+        maxDate=None,
+        minDate=None,
+        mode=None,
         multiple=None,
+        needConfirm=None,
+        nextIcon=None,
         onOk=None,
+        onOpenChange=None,
         onPanelChange=None,
+        open=None,
+        order=None,
+        panelRender=None,
+        picker=None,
         pickerValue=None,
+        placeholder=None,
+        placement=None,
+        popupClassName=None,
+        popupStyle=None,
+        preserveInvalidOnBlur=None,
+        presets=None,
+        prevIcon=None,
         renderExtraFooter=None,
         showNow=None,
         showTime=None,
         showTime_defaultValue=None,
         showWeek=None,
+        size=None,
+        status=None,
+        suffixIcon=None,
+        superNextIcon=None,
+        superPrevIcon=None,
+        variant=None,
         controller=None,
         onChange=None,
         value=None,
         defaultValue=None,
-        picker = None
     ):
         super().__init__(key, controller, children, onChange, value, defaultValue)
         self.style = style
@@ -58,20 +119,51 @@ class DatePicker(InputComponent):
         self.id = id
         self.onKeyPress = create_callback(onKeyPress, "onKeyPress")
         self.onClick = create_callback(onClick, "onClick")
+        self.allowClear = allowClear
+        self.autoFocus = autoFocus
+        self.cellRender = cellRender
+        self.components = components
+        self.dateRender = dateRender
         self.defaultPickerValue = defaultPickerValue
-        self.disabledTime = disabledTime
+        self.disabled = disabled
         self.disabledDate = disabledDate
+        self.disabledTime = disabledTime
         self.format = format
+        self.getPopupContainer = getPopupContainer
+        self.inputReadOnly = inputReadOnly
+        self.locale = locale
+        self.maxDate = maxDate
+        self.minDate = minDate
+        self.mode = mode
         self.multiple = multiple
+        self.needConfirm = needConfirm
+        self.nextIcon = nextIcon
         self.onOk = create_callback(onOk, "onOk")
+        self.onOpenChange = create_callback(onOpenChange, "onOpenChange", [[0]])
         self.onPanelChange = create_callback(onPanelChange, "onPanelChange", [[0], [1]])
+        self.open = open
+        self.order = order
+        self.panelRender = panelRender
+        self.picker = picker
         self.pickerValue = pickerValue
+        self.placeholder = placeholder
+        self.placement = placement
+        self.popupClassName = popupClassName
+        self.popupStyle = popupStyle
+        self.preserveInvalidOnBlur = preserveInvalidOnBlur
+        self.presets = presets
+        self.prevIcon = prevIcon
         self.renderExtraFooter = renderExtraFooter
         self.showNow = showNow
         self.showTime = showTime
         self.showTime_defaultValue = showTime_defaultValue
         self.showWeek = showWeek
-        self.picker = picker
+        self.size = size
+        self.status = status
+        self.suffixIcon = suffixIcon
+        self.superNextIcon = superNextIcon
+        self.superPrevIcon = superPrevIcon
+        self.variant = variant
 
     class RangePicker(InputComponent):
         Module = "antd"
