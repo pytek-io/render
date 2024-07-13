@@ -1,14 +1,13 @@
-import { registerComponents, registerModuleDeferred, registerMethod } from "../../app";
+/* AUTO GENERATED FILE - DO NOT EDIT! */
+
+import { registerComponent, registerModuleDeferred, registerMethod } from "../../app";
 import { lazy } from "react";
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
-const components = [
-  ['InlineCodeHighlight', '', lazy(() => import("../../fragments/mantine/code-highlight/inlinecodehighlight.tsx")), true],
-  ['CodeHighlight', '', lazy(() => import("../../fragments/mantine/code-highlight/codehighlight.tsx")), true],
-  ['CodeHighlight', 'Tabs', lazy(() => import("../../fragments/mantine/code-highlight/codehighlight_tabs.tsx")), true],
-];
 export function register() {
   registerModuleDeferred("mantine/code-highlight", async () => {
-    registerComponents(components, "mantine/code-highlight");
+    registerComponent('InlineCodeHighlight', '', lazy(() => import("../../fragments/mantine/code-highlight/inlinecodehighlight.tsx")), 'mantine/code-highlight', true)
+    registerComponent('CodeHighlight', '', lazy(() => import("../../fragments/mantine/code-highlight/codehighlight.tsx")), 'mantine/code-highlight', true)
+    registerComponent('CodeHighlight', 'Tabs', lazy(() => import("../../fragments/mantine/code-highlight/codehighlight_tabs.tsx")), 'mantine/code-highlight', true)
   });
 }

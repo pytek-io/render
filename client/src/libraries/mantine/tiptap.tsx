@@ -1,12 +1,11 @@
-import { registerComponents, registerModuleDeferred, registerMethod } from "../../app";
+/* AUTO GENERATED FILE - DO NOT EDIT! */
+
+import { registerComponent, registerModuleDeferred, registerMethod } from "../../app";
 import { lazy } from "react";
 import '@mantine/core/styles.css';
 import '@mantine/tiptap/styles.css';
-const components = [
-  ['RichTextEditor', '', lazy(() => import("../../fragments/mantine/tiptap/richtexteditor.tsx")), true],
-];
 export function register() {
   registerModuleDeferred("mantine/tiptap", async () => {
-    registerComponents(components, "mantine/tiptap");
+    registerComponent('RichTextEditor', '', lazy(() => import("../../fragments/mantine/tiptap/richtexteditor.tsx")), 'mantine/tiptap', true)
   });
 }

@@ -1,29 +1,26 @@
-import { registerComponents, registerModuleDeferred } from "../app";
+import { registerComponent, registerModuleDeferred } from "../app";
 
 
 export function register() {
   const module_name = "tabler_icons";
   registerModuleDeferred(module_name, async () => {
     const tabler = (await import("@tabler/icons"));
-    const components = [
-      ["IconCheck", [], tabler.IconCheck, false],
-      ["IconCookie", [], tabler.IconCookie, false],
-      ["IconGauge", [], tabler.IconGauge, false],
-      ["IconLock", [], tabler.IconLock, false],
-      ["IconMessage2", [], tabler.IconMessage2, false],
-      ["IconUser", [], tabler.IconUser, false],
-      ["IconChevronDown", [], tabler.IconChevronDown, false],
-      ["IconTimeline", [], tabler.IconTimeline, false],
-      ["IconDeviceDesktop", [], tabler.IconDeviceDesktop, false],
-      ["IconChartInfographic", [], tabler.IconChartInfographic, false],
-      ["IconSettings", [], tabler.IconSettings, false],
-      ["IconApps", [], tabler.IconApps, false],
-      ["IconCloudComputing", [], tabler.IconCloudComputing, false],
-      ["IconArrowLeft", [], tabler.IconArrowLeft, false],
-      ["IconArrowRight", [], tabler.IconArrowRight, false],
-      ["IconPuzzle2", [], tabler.IconPuzzle2, false],
-      ["IconExternalLink", [], tabler.IconExternalLink, false],
-    ];
-    registerComponents(components, module_name, false);
+    registerComponent("IconCheck", "", tabler.IconCheck, module_name, false)
+    registerComponent("IconCookie", "", tabler.IconCookie, module_name, false)
+    registerComponent("IconGauge", "", tabler.IconGauge, module_name, false)
+    registerComponent("IconLock", "", tabler.IconLock, module_name, false)
+    registerComponent("IconMessage2", "", tabler.IconMessage2, module_name, false)
+    registerComponent("IconUser", "", tabler.IconUser, module_name, false)
+    registerComponent("IconChevronDown", "", tabler.IconChevronDown, module_name, false)
+    registerComponent("IconTimeline", "", tabler.IconTimeline, module_name, false)
+    registerComponent("IconDeviceDesktop", "", tabler.IconDeviceDesktop, module_name, false)
+    registerComponent("IconChartInfographic", "", tabler.IconChartInfographic, module_name, false)
+    registerComponent("IconSettings", "", tabler.IconSettings, module_name, false)
+    registerComponent("IconApps", "", tabler.IconApps, module_name, false)
+    registerComponent("IconCloudComputing", "", tabler.IconCloudComputing, module_name, false)
+    registerComponent("IconArrowLeft", "", tabler.IconArrowLeft, module_name, false)
+    registerComponent("IconArrowRight", "", tabler.IconArrowRight, module_name, false)
+    registerComponent("IconPuzzle2", "", tabler.IconPuzzle2, module_name, false)
+    registerComponent("IconExternalLink", "", tabler.IconExternalLink, module_name, false)
   });
 }

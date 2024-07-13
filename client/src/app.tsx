@@ -209,12 +209,6 @@ export function registerComponent(name, sub_class, constructor, namespace, lazy 
   window.componentRegister.get(namespace).set(component_name, lazy ? wrap_inside_suspense(constructor) : (forward_ref ? wrap_forward_ref(constructor) : constructor));
 }
 
-export function registerComponents(components, namespace) {
-  for (const [name, sub_class, constructor, lazy] of components) {
-    registerComponent(name, sub_class, constructor, namespace, lazy);
-  }
-}
-
 export function registerModuleDeferred(name, callback) {
   if (window.modules_callbacks == undefined) {
     window.modules_callbacks = new Map();
