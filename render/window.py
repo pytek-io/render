@@ -270,6 +270,7 @@ class Window:
         self.loaded_modules: Set[str] = set(["html", "core"])
         self.loaded_links = set()
         self.pending_modules = {}
+        self.pending_messages = []
         self.js_methods = {}
         self.notification_hook = None
         self.log_file = None  # FIXME: remove?
@@ -284,18 +285,11 @@ class Window:
         self.document = Document(self)
         w = self.weak_ref
         if is_async_context():
-            (
-                self.callback_sink,
-                self.callback_stream,
-            ) = anyio.create_memory_object_stream()
-            (
-                self.client_message_sink,
-                self.client_connection,
-            ) = anyio.create_memory_object_stream()
-            (
-                self.reset_client_thread_sink,
-                self.reset_client_thread_stream,
-            ) = anyio.create_memory_object_stream()
+            self.callback_sink, self.callback_stream = anyio.create_memory_object_stream()
+            self.client_message_sink, self.client_connection = anyio.create_memory_object_stream()
+            self.reset_client_thread_sink, self.reset_client_thread_stream = (
+                anyio.create_memory_object_stream()
+            )
             (
                 self.stale_components_event_sink,
                 self.stale_components_event_stream,
@@ -333,12 +327,11 @@ class Window:
             if self.log_file:
                 self.log_file.close()
 
-    def send_nowait(self, code, payload):
-        try:
+    def send_nowait(self, code, payload, wait_for_modules_to_load=False):
+        if wait_for_modules_to_load and self.pending_modules:
+            self.pending_messages.append((code, payload, wait_for_modules_to_load))
+        else:
             self.connection.send_nowait((next(self.message_id), (code, payload)))
-        except:  # noqa: E722
-            print(code, payload)
-            traceback.print_exc()
 
     def set_notification_hook(self, hook):
         self.notification_hook = hook
@@ -420,6 +413,10 @@ class Window:
             elif code == "module loaded":
                 self.loaded_modules.add(data)
                 self.pending_modules.pop(data).set()
+                if not self.pending_modules:
+                    for message in self.pending_messages:
+                        self.send_nowait(*message)
+                    self.pending_messages = []
             elif code == "remote call error":
                 print("remote call error", data)
                 # ref_id, method_name, error = data
@@ -439,9 +436,6 @@ class Window:
             else:
                 print(f"unknown code {code} received", code, data)
 
-    async def wait_for_modules_to_load(self):
-        [(await event.wait()) for event in list(self.pending_modules.values())]
-
     async def update_components(self):
         counter = count()
         async for _ in self.stale_components_event_stream:
@@ -455,9 +449,10 @@ class Window:
                         if component.is_stale and (data := self._serialize(None, component)):
                             updates.append(data)
                             component.is_stale = False
-                    await self.wait_for_modules_to_load()
                     if updates:
-                        self.send_nowait("update", [next(counter), updates])
+                        self.send_nowait(
+                            "update", [next(counter), updates], wait_for_modules_to_load=True
+                        )
 
     def call_js_method(self, js_method, args=()):
         if not isinstance(js_method, str):
@@ -465,6 +460,7 @@ class Window:
         self.send_nowait(
             "js free method call",
             self._serialize(None, [js_method, args]),
+            wait_for_modules_to_load=True,
         )
 
     def register_js_method(self, name, args, definition):
@@ -698,25 +694,24 @@ class Window:
     def load_js_module(self, module):
         if module not in chain(self.loaded_modules, self.pending_modules):
             self.pending_modules[module] = anyio.Event()
-            self.send_nowait("load js module", module)
+            self.send_nowait("load js module", module, wait_for_modules_to_load=False)
             if links := LINKS_REGISTER.get(module, None):
-                self.send_nowait("add links", tuple(links))
+                self.send_nowait("add links", tuple(links), module, wait_for_modules_to_load=False)
 
     def load_js_module_new(self, component: Component):
         module = component.Module
         if module not in chain(self.loaded_modules, self.pending_modules):
             python_module = sys.modules[component.__module__]
             python_module_path = Path(python_module.__file__)
-            python_module_name = python_module_path.parts[
-                len(Path(__file__).parts) - 2
-            ]
+            python_module_name = python_module_path.parts[len(Path(__file__).parts) - 2]
             self.pending_modules[module] = anyio.Event()
-            if "libraries" not in python_module_path.parts:
-                self.send_nowait("add script", (python_module_name, module))
-            else:
+            # we distinguish old style from new style modules using the path
+            if "libraries" in python_module_path.parts:
                 self.send_nowait("load js module", module)
                 if links := LINKS_REGISTER.get(module, None):
-                    self.send_nowait("add links", tuple(links))
+                    self.send_nowait("add links", tuple(links), module)
+            else:
+                self.send_nowait("add script", (python_module_name, module), module)
 
     def update_title(self, name):
         self.send_nowait("update tab name", name)
@@ -775,10 +770,10 @@ class Window:
 
     async def start_app(self, update_client_history: bool, module):
         for method in (
+            self.tear_down,
             self.write_outputs,
             self.execution_loop,
             self.connection_loop,
-            self.tear_down,
         ):
             self.task_group.start_soon(method)
         try:
@@ -807,7 +802,6 @@ class Window:
             serialized_root = self._serialize(None, self.app_root)
             for module in js_modules:
                 self.load_js_module(module)
-            await self.wait_for_modules_to_load()
         except Exception as e:
             try:
                 # reset counter since it the root component
@@ -816,13 +810,12 @@ class Window:
                 self.display_error_message(message)
                 self.update_tag_style(DEFAULT_BODY_STYLE.items())
                 from render_html import pre
-
                 self.app_root = pre("".join(extract_client_stack()), style={"color": "black"})
                 serialized_root = self._serialize(None, self.app_root)
             except:  # noqa: E722
                 traceback.print_exc()
                 raise
-        self.send_nowait("root", serialized_root)
+        self.send_nowait("root", serialized_root, wait_for_modules_to_load=True)
         await self.update_components()
 
     async def subscribe_to_kernel_updates(self):

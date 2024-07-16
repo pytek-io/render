@@ -60,8 +60,7 @@ class RemoteObject:
         )
         result_id, remote_call_outcome = window.create_pending_result()
         arguments = [window._serialize(None, arg) for arg in args]
-        await window.wait_for_modules_to_load()
-        window.send_nowait("remote call", (self._nb, method_name.split("."), arguments, result_id))
+        window.send_nowait("remote call", (self._nb, method_name.split("."), arguments, result_id), wait_for_modules_to_load=True)
         success, result = await remote_call_outcome
         if not success:
             with CatchError():
