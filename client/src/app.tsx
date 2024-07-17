@@ -69,9 +69,16 @@ function add_script(python_module: string, module: string) {
 }
 
 function resolveMethod(name: string) {
-  const result = window.methodRegister.get(name);
-  if (result == undefined) {
-    throw new Error(`failed to resolve "${name}" callback`);
+  var result = window.methodRegister.get(name);
+  if (!result) {
+    const [module_name, ...method] = name.split(".");
+    result = window[module_name];
+    for (let part of method) {
+      result = result[part];
+      if (!result) {
+        throw new Error(`failed to resolve "${name}" callback`);
+      }
+    }
   }
   return result;
 }
