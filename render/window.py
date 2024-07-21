@@ -707,11 +707,11 @@ class Window:
             self.pending_modules[module] = anyio.Event()
             # we distinguish old style from new style modules using the path
             if "libraries" in python_module_path.parts:
-                self.send_nowait("load js module", module)
+                self.send_nowait("load js module", module, wait_for_modules_to_load=False)
                 if links := LINKS_REGISTER.get(module, None):
-                    self.send_nowait("add links", tuple(links), module)
+                    self.send_nowait("add links", tuple(links), module, wait_for_modules_to_load=False)
             else:
-                self.send_nowait("add script", (python_module_name, module), module)
+                self.send_nowait("add script", (python_module_name, module), wait_for_modules_to_load=False)
 
     def update_title(self, name):
         self.send_nowait("update tab name", name)
