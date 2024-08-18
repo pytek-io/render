@@ -54,6 +54,7 @@ DEFAULT_BODY_STYLE = {"backgroundColor": f"rgb{RGB_WHITE}", "margin": 0}
 
 DATE_FORMATS = {}
 
+NEW_LIBRARIES = ["swiper", "rcdock"]
 
 class MountStatus:
     mounting = "mounting"
@@ -570,7 +571,7 @@ class Window:
         if isinstance(value, datetime.time):
             value = convert_time_to_datetime(value)
         if isinstance(value, datetime.datetime):
-            package = sys.modules[parent.__module__].__package__
+            package = sys.modules[parent.__module__].__package__ or parent.__module__
             if (date_format := DATE_FORMATS.get(package, None)) is None:
                 date_format = getattr(sys.modules[package], "DATE_FORMAT", "date")
                 DATE_FORMATS[package] = date_format
@@ -699,19 +700,18 @@ class Window:
                 self.send_nowait("add links", tuple(links), module, wait_for_modules_to_load=False)
 
     def load_js_module_new(self, component: Component):
-        module = component.Module
-        if module not in chain(self.loaded_modules, self.pending_modules):
-            python_module = sys.modules[component.__module__]
-            python_module_path = Path(python_module.__file__)
-            python_module_name = python_module_path.parts[len(Path(__file__).parts) - 2]
-            self.pending_modules[module] = anyio.Event()
-            # we distinguish old style from new style modules using the path
-            if "libraries" in python_module_path.parts:
-                self.send_nowait("load js module", module, wait_for_modules_to_load=False)
-                if links := LINKS_REGISTER.get(module, None):
-                    self.send_nowait("add links", tuple(links), module, wait_for_modules_to_load=False)
+        module_name = component.Module
+        if module_name not in chain(self.loaded_modules, self.pending_modules):
+            self.pending_modules[module_name] = anyio.Event()
+            if any(name in module_name for name in NEW_LIBRARIES):
+                module_path = Path(sys.modules[component.__module__].__file__)
+                index = next(i for i in range(len(module_path.parts)) if Path(*module_path.parts[:-i], "js").exists())
+                module_relative_path = "/".join(module_path.parts[len(Path(__file__).parts) - 2: -index])
+                self.send_nowait("add script", (module_relative_path, module_name), wait_for_modules_to_load=False)
             else:
-                self.send_nowait("add script", (python_module_name, module), wait_for_modules_to_load=False)
+                self.send_nowait("load js module", module_name, wait_for_modules_to_load=False)
+                if links := LINKS_REGISTER.get(module_name, None):
+                    self.send_nowait("add links", tuple(links), module_name, wait_for_modules_to_load=False)
 
     def update_title(self, name):
         self.send_nowait("update tab name", name)

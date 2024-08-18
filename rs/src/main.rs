@@ -205,7 +205,7 @@ struct Server {
     arguments: Options,
     pending_kernels: RwLock<PendingKernelRegistry>,
     kernels: RwLock<KernelRegistry>,
-    python_libraries_path: PathBuf,
+    python_site_packages_path: PathBuf,
     app_folder: String,
     max_sessions: usize,
     html: String,
@@ -831,10 +831,10 @@ async fn upload_file(
 
 async fn render_server(server: ServerPtr) -> Result<()> {
     let app = Router::new()
-        .nest_service("/js_files", ServeDir::new(&server.python_libraries_path))
+        .nest_service("/js_files", ServeDir::new(&server.python_site_packages_path))
         .nest_service(
             "/static",
-            ServeDir::new(server.python_libraries_path.join("render").join("static")),
+            ServeDir::new(server.python_site_packages_path.join("render").join("static")),
         )
         .nest_service("/data", ServeDir::new(&server.app_folder))
         .route("/app/*path", get(manage_http_request))
@@ -893,8 +893,13 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
             client_version, server_version
         );
     }
-    let python_libraries_path =
+    let python_site_packages_path =
         PathBuf::from(&invoke_python_command(PRINT_PYTHON_LIBRARIES_PATH).await?);
+    println!(
+        "{}: {}",
+        "Python libraries path".green(),
+        python_site_packages_path.to_str().unwrap().blue()
+    );
     let opts: Options = Options::parse();
     let app_folder = PathBuf::from(&opts.app_folder)
         .normalize()
@@ -912,7 +917,8 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
     );
     println!("{}: {}", "Default app".green(), opts.default_app);
     let html = fs::read_to_string(
-        &python_libraries_path
+        &python_site_packages_path
+            .join("render")
             .join("index.html")
             .to_str()
             .expect("Should have been able to append path"),
@@ -934,7 +940,7 @@ async fn main_aync_impl(_terminate: tokio::sync::mpsc::Sender<i32>) -> Result<()
         kernels: RwLock::new(KernelRegistry::new()),
         subscribed_kernels: RwLock::new(BTreeSet::new()),
         session_counter: RwLock::new((NOT_A_SESSION_ID + 1)..),
-        python_libraries_path: python_libraries_path.clone(),
+        python_site_packages_path: python_site_packages_path.clone(),
         app_folder: app_folder.to_str().unwrap().to_string(),
         max_sessions,
         html,

@@ -58,7 +58,7 @@ function add_links(links: [string, string][][]) {
   }
 }
 
-function signal_script_loaded(module: string) {
+export function signal_script_loaded(module: string) {
   context.send("module loaded", module);
 }
 

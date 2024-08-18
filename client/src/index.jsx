@@ -11,8 +11,6 @@ import { register as register_monaco } from './libraries/monaco'
 register_monaco()
 import { register as register_prism } from './libraries/prism'
 register_prism()
-import { register as register_rc_dock } from './libraries/rc-dock'
-register_rc_dock()
 import { register as register_ag_grid } from './libraries/ag-grid'
 register_ag_grid()
 import { register as register_plotly } from './libraries/plotly'
